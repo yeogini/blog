@@ -19,20 +19,27 @@
 
 </head>
 <body>
-<!DOCTYPE html>
-<head>
-    
-</head>
-<body>
- <div id="top_right"><button id="js-trigger-overlay" type="button">Button Effect</button></div>
- <div id="center">
- 	<div id="">회원가입</div>
- 	<div id="">
- 	id : <input type="text"/>
- 	</div>
- 	<div id="">
- 	pw : <input type="password"/>
- 	</div>
- </div>
+<div id=top><button>블로그 보러가기</button></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <div id="my-tab-content" class="tab-content">
+						<div class="tab-pane active" id="login">
+               		    <img class="profile-img" src="./resources/images/Tulips.jpg"
+                    				alt="">
+               			<form class="form-signin" action="" method="">
+               				<input type="text" class="form-control" placeholder="Username" required autofocus>
+               				<input type="submit" class="btn btn-lg btn-default btn-block" value="회원가입" />
+               				<input type="password" class="form-control" placeholder="Password" required>
+               				 
+               				<input type="submit" class="btn btn-lg btn-default btn-block" value="로그인" />
+               			</form>
+               		</div>
+               	</div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
