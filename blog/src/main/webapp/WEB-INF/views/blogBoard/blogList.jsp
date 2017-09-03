@@ -16,7 +16,8 @@
     <link href="resources/assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-      <script src="resources/assets/js/jquery-1.10.2.js"></script>
+     
+      <script src="resources/assets/js/jquery-3.2.1.js"></script>
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="resources/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
@@ -27,8 +28,16 @@
       <!-- CUSTOM SCRIPTS -->
     <script src="resources/assets/js/custom.js"></script>
    <script>
-   var xmlhttp = new XMLHttpRequest();;
-   	window.onload = function () {
+   
+   
+   	$(function () {
+   		var xmlhttp = new XMLHttpRequest();
+   		var x = document.getElementById("test");
+   		x.click(function () {
+			console.log("ㅁㅁㅁㅁ");
+		});
+   		
+   		
 		xmlhttp.onreadystatechange = function () {
 			if(xmlhttp.readyState==4 && xmlhttp.status==200) {
 				document.getElementById("page-inner").innerHTML = xmlhttp.responseText;
@@ -36,7 +45,7 @@
 		}
 		xmlhttp.open("GET","/blog/insertUser.do","true");
 		xmlhttp.send();
-	}
+	});
    </script>
 </head>
 <body>
@@ -68,7 +77,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                         <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> profile</a>
                     </li>
                      <li>
-                        <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> category</a>
+                        <a  href="#" id="category"><i class="fa fa-desktop fa-3x"></i> category</a>
                     </li>
                     <li>
                         <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> 레이아웃</a>
@@ -78,6 +87,9 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                     </li>	
                       <li  >
                         <a  href="table.html"><i class="fa fa-table fa-3x"></i> 블랙리스트</a>
+                    </li>
+                    <li>
+                    	<button id="test">테스트</button>
                     </li>
                 </ul>
                
