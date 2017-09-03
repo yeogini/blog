@@ -17,4 +17,18 @@ public class UsersController {
 		System.out.println(usersService.getUsersList());
 		return "/users/login";
 	}
+	
+	@RequestMapping("/insertUser.do")
+	public String insertUser(){
+		return "/users/member";
+	}
+	
+	@RequestMapping("/blogList.do")
+	public String getBlogList(){
+		return "/blogBoard/blogList";
+	}
+	@RequestMapping("/blogList?hh.do")
+	public String getBlogListDemo(){
+		return "blogBoard/ajax_info";
+	}
 }
