@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	
         <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
         <script src="//code.jquery.com/jquery.js"></script>
@@ -58,51 +58,56 @@
                  
  
  		
-        <form class="form-horizontal" role="form" method="post" action="javascript:alert( 'success!' );">
+        <form class="form-horizontal" role="form" method="post" action="insertUser.do">
         <div class="row" align="center"><h1 class="h1">회원 가입</h1></div>
            <div class="form-group" id="divId">
            <p></p><br>
                 <label for="inputId" class="col-lg-2 control-label">아이디</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control onlyAlphabetAndNumber" id="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
+                    <input type="text" class="form-control onlyAlphabetAndNumber" id="userid" name="userid"
+                    data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
                 </div>
             </div>
             <div class="form-group" id="divPassword">
                 <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control" id="password" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30">
+                    <input type="password" class="form-control" id="userPass" name="userPass" data-rule-required="true" placeholder="패스워드" maxlength="30">
                 </div>
             </div>
             <div class="form-group" id="divPasswordCheck">
                 <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
+                    <input type="password" class="form-control" id="userPassCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
                 </div>
             </div>
             <div class="form-group" id="divName">
                 <label for="inputName" class="col-lg-2 control-label">이름</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control onlyHangul" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
+                    <input type="text" class="form-control onlyHangul" id="userName" name="userName"
+                    data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
                 </div>
             </div>
              
             <div class="form-group" id="divNickname">
                 <label for="inputNickname" class="col-lg-2 control-label">별명</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="nickname" data-rule-required="true" placeholder="별명" maxlength="15">
+                    <input type="text" class="form-control" id="nickName" name="nickName"
+                    data-rule-required="true" placeholder="별명" maxlength="15">
                 </div>
             </div>
              
             <div class="form-group" id="divEmail">
                 <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
                 <div class="col-lg-10">
-                    <input type="email" class="form-control" id="email" data-rule-required="true" placeholder="이메일" maxlength="40">
+                    <input type="email" class="form-control" id="eMail" name="eMail"
+                    data-rule-required="true" placeholder="이메일" maxlength="40">
                 </div>
             </div>
             <div class="form-group" id="divPhoneNumber">
                 <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
                 <div class="col-lg-10">
-                    <input type="tel" class="form-control onlyNumber" id="phoneNumber" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
+                    <input type="tel" class="form-control onlyNumber" id="phone" name="phone"
+                    data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
                 </div>
             </div>
             <div class="form-group">
@@ -155,11 +160,11 @@
                     }
                 });
                  
-                $('#password').keyup(function(event){
+                $('#userPass').keyup(function(event){
                      
                     var divPassword = $('#divPassword');
                      
-                    if($('#password').val()==""){
+                    if($('#userPass').val()==""){
                         divPassword.removeClass("has-success");
                         divPassword.addClass("has-error");
                     }else{
@@ -168,9 +173,9 @@
                     }
                 });
                  
-                $('#passwordCheck').keyup(function(event){
+                $('#userPassCheck').keyup(function(event){
                      
-                    var passwordCheck = $('#passwordCheck').val();
+                    var passwordCheck = $('#puserPassCheck').val();
                     var password = $('#password').val();
                     var divPasswordCheck = $('#divPasswordCheck');
                      
@@ -183,11 +188,11 @@
                     }
                 });
                  
-                $('#name').keyup(function(event){
+                $('#userName').keyup(function(event){
                      
                     var divName = $('#divName');
                      
-                    if($.trim($('#name').val())==""){
+                    if($.trim($('#userName').val())==""){
                         divName.removeClass("has-success");
                         divName.addClass("has-error");
                     }else{
@@ -196,11 +201,11 @@
                     }
                 });
                  
-                $('#nickname').keyup(function(event){
+                $('#nickName').keyup(function(event){
                      
                     var divNickname = $('#divNickname');
                      
-                    if($.trim($('#nickname').val())==""){
+                    if($.trim($('#nickName').val())==""){
                         divNickname.removeClass("has-success");
                         divNickname.addClass("has-error");
                     }else{
@@ -209,11 +214,11 @@
                     }
                 });
                  
-                $('#email').keyup(function(event){
+                $('#eMail').keyup(function(event){
                      
                     var divEmail = $('#divEmail');
                      
-                    if($.trim($('#email').val())==""){
+                    if($.trim($('#eMail').val())==""){
                         divEmail.removeClass("has-success");
                         divEmail.addClass("has-error");
                     }else{
@@ -222,11 +227,11 @@
                     }
                 });
                  
-                $('#phoneNumber').keyup(function(event){
+                $('#phone').keyup(function(event){
                      
                     var divPhoneNumber = $('#divPhoneNumber');
                      
-                    if($.trim($('#phoneNumber').val())==""){
+                    if($.trim($('#phone').val())==""){
                         divPhoneNumber.removeClass("has-success");
                         divPhoneNumber.addClass("has-error");
                     }else{
@@ -249,13 +254,13 @@
                     
                      
                     //아이디 검사
-                    if($('#id').val()==""){
+                    if($('#userid').val()==""){
                         modalContents.text("아이디를 입력하여 주시기 바랍니다.");
                         modal.modal('show');
                          
                         divId.removeClass("has-success");
                         divId.addClass("has-error");
-                        $('#id').focus();
+                        $('#userid').focus();
                         return false;
                     }else{
                         divId.removeClass("has-error");
@@ -347,13 +352,13 @@
                     }
                      
                     //휴대폰 번호
-                    if($('#phoneNumber').val()==""){
+                    if($('#phone').val()==""){
                         modalContents.text("휴대폰 번호를 입력하여 주시기 바랍니다.");
                         modal.modal('show');
                          
                         divPhoneNumber.removeClass("has-success");
                         divPhoneNumber.addClass("has-error");
-                        $('#phoneNumber').focus();
+                        $('#phone').focus();
                         return false;
                     }else{
                         divPhoneNumber.removeClass("has-error");
@@ -362,7 +367,7 @@
                      
                  
                 });
-                 
+                  
             });
              
         </script>

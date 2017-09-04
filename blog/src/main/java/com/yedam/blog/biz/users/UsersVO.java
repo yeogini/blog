@@ -1,74 +1,80 @@
 package com.yedam.blog.biz.users;
 
 public class UsersVO {
-	private String id;
-	private String name;
-	private String password;
-	private String email;
-	private String nickname;
-	private String s_date;
-	private String title;
-	private String profile;
-	private String sub;
-	public String getId() {
-		return id;
+	private String userid;
+	private String userName;
+	private String userPass;
+	private String eMail;
+	private String nickName;
+	private String joinDate;
+	private String blog_title;
+	private String blog_img;
+	private String intro;
+	private String phone;
+	
+	public String getPhone() {
+		return phone;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public String getName() {
-		return name;
+
+
+	public String getUserid() {
+		return userid;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-	public String getPassword() {
-		return password;
+	public String getUserName() {
+		return userName;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getEmail() {
-		return email;
+	public String getUserPass() {
+		return userPass;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserPass(String userPass) {
+		this.userPass = userPass;
 	}
-	public String getNickname() {
-		return nickname;
+	public String geteMail() {
+		return eMail;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
 	}
-	public String getS_date() {
-		return s_date;
+	public String getNickName() {
+		return nickName;
 	}
-	public void setS_date(String s_date) {
-		this.s_date = s_date;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
-	public String getTitle() {
-		return title;
+	public String getJoinDate() {
+		return joinDate;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setJoinDate(String joinDate) {
+		this.joinDate = joinDate;
 	}
-	public String getProfile() {
-		return profile;
+	public String getBlog_title() {
+		return blog_title;
 	}
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setBlog_title(String blog_title) {
+		this.blog_title = blog_title;
 	}
-	public String getSub() {
-		return sub;
+	public String getBlog_img() {
+		return blog_img;
 	}
-	public void setSub(String sub) {
-		this.sub = sub;
+	public void setBlog_img(String blog_img) {
+		this.blog_img = blog_img;
 	}
-	@Override
-	public String toString() {
-		return "UsersVO [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", nickname="
-				+ nickname + ", s_date=" + s_date + ", title=" + title + ", profile=" + profile + ", sub=" + sub + "]";
+	public String getIntro() {
+		return intro;
 	}
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+	
 	
 	
 }
