@@ -100,7 +100,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         this.el = $(options.element);
       }
       if ((this.el == null) || this.el.length === 0) {
+<<<<<<< HEAD
         //throw new Error("Graph container element not found");
+=======
+        throw new Error("Graph container element not found");
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
       }
       if (this.el.css('position') === 'static') {
         this.el.css('position', 'relative');

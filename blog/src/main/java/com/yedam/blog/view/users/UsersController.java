@@ -18,6 +18,7 @@ public class UsersController {
 		return "/users/login";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping("/insertUser.do")
 	public String insertUser(){
 		return "/users/member";
@@ -30,5 +31,15 @@ public class UsersController {
 	@RequestMapping("/blogList?hh.do")
 	public String getBlogListDemo(){
 		return "blogBoard/ajax_info";
+=======
+	@RequestMapping("/getBlogAdmin.do")
+	public String getBlogAdmin() {
+		return "/blogAdmin/admin";
+	}
+	
+	@RequestMapping("/test.do")
+	public String getTest() {
+		return "/blogAdmin/test";
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 	}
 }
