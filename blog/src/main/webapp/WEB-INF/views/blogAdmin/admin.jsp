@@ -5,7 +5,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>블로그 관리</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -23,18 +23,26 @@
 	  var test = document.getElementById("test");
 	  console.log(test); 
 	   $("#test").click(function(event){
-		  
-		  xmlhttp.onreadystatechange = function() {
-			if(xmlhttp.readyState==4 && xmlhttp.status==200) {
-				console.log("#page-inner");
-				document.getElementById("page-inner").innerHTML = xmlhttp.responseText;
-			}  
-		  };
+		   event.preventDefault();
+		  xmlhttp.onreadystatechange = xmlOnready();
 		  xmlhttp.open("GET","/blog/test.do",true);
 		  xmlhttp.send();
 		 
 	  }); 
-   });
+	   $("#test2").click(function(envet) {
+		   event.preventDefault();
+		   xmlhttp.onreadystatechange = xmlOnready();
+			  xmlhttp.open("GET","/blog/test.do",true);
+			  xmlhttp.send();
+	   })
+	   function xmlOnready(){
+		   if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+				console.log("#page-inner");
+				document.getElementById("page-inner").innerHTML = xmlhttp.responseText;
+			}  
+	   }
+	   
+   }); 
    </script>
 </head>
 <body>
@@ -64,55 +72,21 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
 				
 					
                     <li>
-                        <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> 프로필</a>
                     </li>
                      <li>
-                        <button id="test"><i class="fa fa-desktop fa-3x"></i> UI Elements</button>
+                        <a  href="ui.html" id="test"><i class="fa fa-desktop fa-3x"></i> 카테고리</a>
                     </li>
                     <li>
-                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
+                        <a  href="tab-panel.html" id="test2"><i class="fa fa-qrcode fa-3x"></i> 레이아웃</a>
                     </li>
 						   <li  >
-                        <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
+                        <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> 친구 관리</a>
                     </li>	
-                      <li  >
-                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
+                      <li  > 
+                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> 블랙 리스트</a>
                     </li>
-                    <li  >
-                        <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
-                    </li>				
-					
-					                   
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-                               
-                            </li>
-                        </ul>
-                      </li>  
-                  <li  >
-                        <a  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
-                    </li>	
+                   
                 </ul>
                
             </div>
