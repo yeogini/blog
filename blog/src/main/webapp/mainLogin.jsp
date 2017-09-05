@@ -21,6 +21,9 @@
 <body>
 <div id=top><button>블로그 보러가기</button></div>
 <div class="container">
+<<<<<<< HEAD
+    <div class="row">
+=======
 		<p></p>
 		<div class="col-md-6">
 			<p class="text-right">
@@ -28,6 +31,7 @@
 			</p>
 		</div>
 		<div class="row">
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <div class="account-wall">
                 <div id="my-tab-content" class="tab-content">

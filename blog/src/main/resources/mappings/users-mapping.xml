@@ -5,6 +5,9 @@
 <mapper namespace="com.yedam.blog.biz.users.impl.UsersMapper"> 
      
     <resultMap id="usersResult" type="users">
+
+    
+
         <id property="userid" column="userID" />
         <result property="userPass" column="USERPASS" />
         <result property="userName" column="USERNAME" />
@@ -33,6 +36,7 @@
 		SELECT *
 			FROM USERS 
 		WHERE userID = #{userid}
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 	</select>
 
 </mapper>
