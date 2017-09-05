@@ -36,7 +36,7 @@ a {
                 <p></p>
 
                    <p align="right">
-					<strong><a href="#">블로그 가기</a></strong>
+					<strong><a href="list.do">블로그 가기</a></strong>
            			</p>
 
             </div>
