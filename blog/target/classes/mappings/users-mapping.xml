@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yedam.blog.biz.users.impl.UsersMapper"> 
+     
+    <resultMap id="usersResult" type="users">
+        <id property="id" column="ID" />
+        <result property="password" column="password" />
+        <result property="name" column="name" />
+        <result property="nickname" column="nickname" />
+    </resultMap>
+	<!-- 등록 -->
+    <insert id="insertUsers" parameterType="users">
+        <![CDATA[
+        INSERT INTO USERS(id, password, name, nickname) 
+        VALUES(#{id},#{password},#{name},#{role})
+        ]]>
+    </insert>
+    <!-- 목록 -->
+	<select id="getUsersList" resultMap="usersResult">
+		SELECT ID, PASSWORD, NAME, nickname
+			FROM USERS ORDER BY ID
+	</select>
+
+</mapper>
