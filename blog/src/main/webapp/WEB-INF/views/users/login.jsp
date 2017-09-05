@@ -34,9 +34,9 @@
 						<div class="tab-pane active" id="login">
                		    <img class="profile-img" src="./resources/images/Tulips.jpg"
                     				alt="">
-               			<form class="form-signin" action="" method="post">
-               				<input type="text" class="form-control" placeholder="Username" required autofocus>
-               				<input type="password" class="form-control" placeholder="Password" required>
+               			<form class="form-signin" action="login.do" method="post">
+               				<input type="text" class="form-control" placeholder="Username" required autofocus name="userid">
+               				<input type="password" class="form-control" placeholder="Password" required name="userPass">
                				<input type="submit" class="btn btn-lg btn-default btn-block" value="로그인" />
                				<input type="button" class="btn btn-lg btn-default btn-block" value="회원가입" />
                			</form>

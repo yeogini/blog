@@ -1,8 +1,11 @@
 package com.yedam.blog.view.users;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.yedam.blog.biz.users.UsersService;
 import com.yedam.blog.biz.users.UsersVO;
@@ -18,8 +21,6 @@ public class UsersController {
 		System.out.println(usersService.getUsersList());
 		return "/users/login";
 	}
-	
-
 	@RequestMapping("/insertUserForm.do")
 	public String insertUserForm(){
 		return "/users/member";
@@ -35,11 +36,6 @@ public class UsersController {
 	public String getBlogList(){
 		return "/blogBoard/blogList";
 	}
-	@RequestMapping("/blogList?hh.do")
-	public String getBlogListDemo(){
-		return "blogBoard/ajax_info";
-	}
-
 	@RequestMapping("/getBlogAdmin.do")
 	public String getBlogAdmin() {
 		return "/blogAdmin/admin";
@@ -48,5 +44,35 @@ public class UsersController {
 	@RequestMapping("/test.do")
 	public String getTest() {
 		return "/blogAdmin/test";
+	}
+	
+	//로그인
+	@RequestMapping(value="login.do",method=RequestMethod.POST)
+	public String login(UsersVO vo,HttpSession session){
+		UsersVO result = new UsersVO();
+		if(vo!=null) {
+			result = usersService.getUsers(vo);
+			if(result==null) {
+				
+				return "/users/login";
+			} else {
+				if(result.getUserPass().equals(vo.getUserPass())) {
+					session.setAttribute("login",result.getUserid());
+					return "/board/list";
+				} else {
+					return "/users/login";
+				}
+			}
+		} else {
+			return "/users/login";
+		}
+		
+	}
+	//로그아웃
+	@RequestMapping("logout.do")
+	public String logout(HttpSession session)
+	{
+		session.invalidate();
+		return "/users/login";
 	}
 }
