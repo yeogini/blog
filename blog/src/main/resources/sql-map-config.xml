@@ -5,6 +5,7 @@
 
 	<!-- properties 파일 설정  -->
     <properties resource="database.properties" />
+<<<<<<< HEAD
     
     <settings>
     	<setting name="mapUnderscoreToCamelCase" value="true"></setting>
@@ -13,6 +14,12 @@
     <typeAliases>
         <typeAlias alias="users" type="com.yedam.blog.biz.users.UsersVO"/>
         <typeAlias alias="visit" type="com.yedam.blog.biz.visit.VisitVO"/>  
+=======
+    	    
+    <!-- Alias 설정 -->
+    <typeAliases>
+        <typeAlias alias="users" type="com.yedam.blog.biz.users.UsersVO"/>
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
     </typeAliases>
 
 	<!-- DataSource 설정 -->

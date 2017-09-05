@@ -25,7 +25,11 @@ public class UsersServiceImpl implements UsersService{
 	@Override
 	public void insertUsers(UsersVO vo) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
+=======
+		usersDAO.insertUsers(vo);
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 	}
 
 	@Override

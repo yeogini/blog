@@ -5,22 +5,38 @@
 <mapper namespace="com.yedam.blog.biz.users.impl.UsersMapper"> 
      
     <resultMap id="usersResult" type="users">
-        <id property="id" column="ID" />
-        <result property="password" column="password" />
-        <result property="name" column="name" />
-        <result property="nickname" column="nickname" />
+
+    
+
+        <id property="userid" column="userID" />
+        <result property="userPass" column="USERPASS" />
+        <result property="userName" column="USERNAME" />
+        <result property="nickName" column="NICKNAME" />
+        <result property="joinDate" column="joindate"/>
+        <result property="eMail" column="email"/>
+        <result property="blog_title" column="blog_title"/>
+        <result property="blog_img" column="blog_img"/>
+        <result property="phone" column="PHONE"/>
+        <result property="intro" column="intro"/>
     </resultMap>
-	<!-- 등록 -->
+	<!-- 등록 --> 
     <insert id="insertUsers" parameterType="users">
         <![CDATA[
-        INSERT INTO USERS(id, password, name, nickname) 
-        VALUES(#{id},#{password},#{name},#{role})
+        INSERT INTO USERS (userID,USERNAME, USERPASS, NICKNAME,joindate,email,PHONE,blog_title) 
+        VALUES (#{userid},#{userName},#{userPass},#{nickName},SYSDATE,#{eMail},#{phone},#{userid})
         ]]>
     </insert>
     <!-- 목록 -->
 	<select id="getUsersList" resultMap="usersResult">
-		SELECT ID, PASSWORD, NAME, nickname
-			FROM USERS ORDER BY ID
+		SELECT userID, USERPASS, USERNAME, nickname
+			FROM USERS ORDER BY userID
+	</select>
+	
+	<select id="getUsers" resultMap="usersResult">
+		SELECT *
+			FROM USERS 
+		WHERE userID = #{userid}
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 	</select>
 
 </mapper>

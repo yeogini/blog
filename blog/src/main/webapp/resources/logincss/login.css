@@ -1,6 +1,16 @@
 body{
+<<<<<<< HEAD
     background-color:#f5f5f5;
 }
+=======
+     background-image: url("resources/assets/img/bg.jpg");
+}
+ a{
+ 	color: SkyBlue;
+ 	font-size: 20px;
+ 	
+ }
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 .form-signin
 {
     max-width: 330px;
