@@ -12,17 +12,23 @@
 
 <!-- 부가적인 테마 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	
+	<style type="text/css">
+/* body {
+	background-image: url("resources/assets/img/bg.jpg");
+}
+
+a {
+	color: SkyBlue;
+	font-size: 20px;
+} */
+</style>
         <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
         <script src="//code.jquery.com/jquery.js"></script>
         <!-- 모든 합쳐진 플러그인을 포함하거나 (아래) 필요한 각각의 파일들을 포함하세요 -->
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <!-- Respond.js 으로 IE8 에서 반응형 기능을 활성화하세요 (https://github.com/scottjehl/Respond) -->
         <!-- 합쳐지고 최소화된 최신 CSS -->
-
-
-
-    </head>
+</head>
     <body>
         <div class="container"><!-- 좌우측의 공간 확보 -->
             <!-- 헤더 들어가는 부분 -->
@@ -30,7 +36,7 @@
                 <p></p>
 
                    <p align="right">
-					<a href="#">블로그 가기</a>
+					<strong><a href="#">블로그 가기</a></strong>
            			</p>
 
             </div>
@@ -55,10 +61,7 @@
             <!--// 모달창 -->
             <hr/>
                 <!-- 본문 들어가는 부분 -->
-                 
- 
- 		
-        <form class="form-horizontal" role="form" method="post" action="insertUser.do">
+    <form class="form-horizontal" role="form" method="post" action="insertUser.do">
         <div class="row" align="center"><h1 class="h1">회원 가입</h1></div>
            <div class="form-group" id="divId">
            <p></p><br>

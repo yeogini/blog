@@ -21,6 +21,7 @@ public class UsersController {
 		System.out.println(usersService.getUsersList());
 		return "/users/login";
 	}
+	//회원가입
 	@RequestMapping("/insertUserForm.do")
 	public String insertUserForm(){
 		return "/users/member";
