@@ -1,7 +1,6 @@
 package com.yedam.blog.biz.users;
 
 public class UsersVO {
-<<<<<<< HEAD
 	private String id;
 	private String name;
 	private String password;
@@ -70,7 +69,7 @@ public class UsersVO {
 		return "UsersVO [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", nickname="
 				+ nickname + ", s_date=" + s_date + ", title=" + title + ", profile=" + profile + ", sub=" + sub + "]";
 	}
-=======
+
 	private String userid;
 	private String userName;
 	private String userPass;
@@ -145,7 +144,6 @@ public class UsersVO {
 		this.intro = intro;
 	}
 	
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
-	
+
 	
 }
