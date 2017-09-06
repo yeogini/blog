@@ -77,12 +77,16 @@ $(function(){
 			<div class="list-group">
 	            <div class="list-group-item clearfix">
 	                <div class="profile-teaser-left">
-	                    <div class="profile-img"><img src="resources/bloglist/css/profile.jpg"/></div>
+	                    <div class="profile-img">
+	                     <c:if test="${not empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if>
+	                    <c:if test="${empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if></div>
 	                </div>
 	                <div class="profile-teaser-main">
 	                    <h2 class="profile-name"><a href="#" class="a">${list.userid}</a></h2>
 	                    <div class="profile-info">
-	                        <div class="info"><span class="">Title:</span> 블로그 제목</div>
+	                        <div class="info"><span class="">Title:</span>
+	                         <c:if test="${not empty list.blog_title}">${list.blog_title}</c:if>
+							<c:if test="${empty list.blog_title}">	블로그 제목</c:if></div>
 	                    </div>
 	                </div>
 	            </div><!-- item -->

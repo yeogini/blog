@@ -85,6 +85,11 @@ public class UsersController {
 	{
 		session.invalidate();
 		return "/users/login";
-
+	}
+	
+	//프로필 관리
+	@RequestMapping("userProfile.do")
+	public String userProfile(){
+		return "/layoutview/profile"; 
 	}
 }
