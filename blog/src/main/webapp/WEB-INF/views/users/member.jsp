@@ -12,15 +12,8 @@
 
 <!-- 부가적인 테마 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	<style type="text/css">
-/* body {
-	background-image: url("resources/assets/img/bg.jpg");
-}
+<style type="text/css">
 
-a {
-	color: SkyBlue;
-	font-size: 20px;
-} */
 </style>
         <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
         <script src="//code.jquery.com/jquery.js"></script>
@@ -38,7 +31,6 @@ a {
                    <p align="right">
 					<strong><a href="list.do">블로그 가기</a></strong>
            			</p>
-
             </div>
             <!--// 헤더 들어가는 부분 -->
             <!-- 모달창 -->
@@ -377,5 +369,4 @@ a {
             
         </div>
     </body>
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 </html>
