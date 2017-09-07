@@ -6,5 +6,5 @@ public interface BlogListService {
 
 	public List<BlogListVO> getBlogList(BlogListVO vo);
 	
-	public List<BlogSearchListVO> getBlogSearchList(BlogSearchListVO vo);
+	public List<BlogListVO> getBlogSearchList(BlogSearchListVO vo);
 }

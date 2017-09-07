@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+      <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,20 +16,16 @@
 </style>
 <script src="resources/assets/js/jquery-3.2.1.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <script src="resources/bloglist/js/blog_list.js"></script>
+ <script src="resources/bloglist/js/blog_list.js"></script>
+ <script src="resources/assets/js/json.min.js"></script>
 <style>
 </style>
 <script>
-$(function(){
-	$(".a").click(function(event) {
-		event.preventDefault();
-		console.dir($(this).text());
-	});
-	
-});
+
 </script>
 </head>
 <body>
+<div class="container">
 <div class="row" align="right">
 <c:if test="${empty sessionScope.login }">
 				<p/>
@@ -45,10 +42,10 @@ $(function(){
 </c:if>
 </div>
 <hr>
+
 <div id="wrap">
     <div class="row">
          <div class="col-md-6 col-md-offset-3">
-
         <!-- Search Form -->
         <form role="form">
         <!-- Search Field -->
@@ -70,22 +67,20 @@ $(function(){
         </div>
 	</div>
 <c:forEach items="${bloglist}" var="list">
-	
-
 	<div class="container">
 		<div class="row">
 			<div class="list-group">
 	            <div class="list-group-item clearfix">
 	                <div class="profile-teaser-left">
 	                    <div class="profile-img">
-	                     <c:if test="${not empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if>
+	                    <c:if test="${not empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if>
 	                    <c:if test="${empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if></div>
 	                </div>
 	                <div class="profile-teaser-main">
 	                    <h2 class="profile-name"><a href="#" class="a">${list.userid}</a></h2>
 	                    <div class="profile-info">
 	                        <div class="info"><span class="">Title:</span>
-	                         <c:if test="${not empty list.blog_title}">${list.blog_title}</c:if>
+	                        <c:if test="${not empty list.blog_title}">${list.blog_title}</c:if>
 							<c:if test="${empty list.blog_title}">	블로그 제목</c:if></div>
 	                    </div>
 	                </div>
@@ -94,7 +89,8 @@ $(function(){
 		</div>
 	</div>
 </c:forEach>	
-	<div id="paging"></div>
+	<div id="paging" class="row" align="center"><mytag:paging paging="${paging}"></mytag:paging></div>
+</div>
 </div>
 </body>
 </html>

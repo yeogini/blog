@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yedam.blog.biz.admin.ProfileService;
 import com.yedam.blog.biz.users.UsersService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,8 @@ public class UsersController {
 
 	@Autowired
 	UsersService usersService;
+	@Autowired
+	ProfileService profileservice;
 	
 	@RequestMapping("/getUsersList.do")
 	public String getUsers(){
@@ -64,7 +67,6 @@ public class UsersController {
 		if(vo!=null) {
 			result = usersService.getUsers(vo);
 			if(result==null) {
-				
 				return "/users/login";
 			} else {
 				if(result.getUserPass().equals(vo.getUserPass())) {
@@ -88,8 +90,8 @@ public class UsersController {
 	}
 	
 	//프로필 관리
-	@RequestMapping("userProfile.do")
-	public String userProfile(){
-		return "/layoutview/profile"; 
+	@RequestMapping("adminProfile.do")
+	public String adminProfile(){
+		return "/blogAdmin/profile"; 
 	}
 }

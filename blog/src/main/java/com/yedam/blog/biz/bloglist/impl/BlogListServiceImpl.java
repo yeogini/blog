@@ -22,7 +22,7 @@ public class BlogListServiceImpl implements BlogListService{
 	}
 
 	@Override
-	public List<BlogSearchListVO> getBlogSearchList(BlogSearchListVO vo) {
+	public List<BlogListVO> getBlogSearchList(BlogSearchListVO vo) {
 		// TODO Auto-generated method stub
 		return blogListDAO.getBlogSearchList(vo);
 	}

@@ -25,6 +25,7 @@
      <!-- MORRIS CHART SCRIPTS -->
      <script src="resources/assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="resources/assets/js/morris/morris.js"></script>
+    
       <!-- CUSTOM SCRIPTS -->
     <script src="resources/assets/js/custom.js"></script>
    <script>
@@ -37,14 +38,17 @@
 			console.log("けけけけ");
 		});
    		
-   		
-		xmlhttp.onreadystatechange = function () {
-			if(xmlhttp.readyState==4 && xmlhttp.status==200) {
-				document.getElementById("page-inner").innerHTML = xmlhttp.responseText;
-			}
-		}
-		xmlhttp.open("GET","/blog/insertUser.do","true");
-		xmlhttp.send();
+   		$("#profile").click(function(event){
+   			event.preventDefault();
+   			xmlhttp.onreadystatechange = function () {
+   				if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+   					document.getElementById("page-inner").innerHTML = xmlhttp.responseText;
+   				}
+   			}
+   			xmlhttp.open("GET","/blog/adminProfile.do","true");
+   			xmlhttp.send();
+   		});
+		
 	});
    </script>
 </head>
@@ -74,7 +78,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
 					</li>
 
                     <li>
-                        <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> profile</a>
+                        <a class="active-menu"  href="index.html" id="profile"><i class="fa fa-dashboard fa-3x"></i> profile</a>
                     </li>
                      <li>
                         <a  href="#" id="category"><i class="fa fa-desktop fa-3x"></i> category</a>

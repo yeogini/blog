@@ -15,6 +15,7 @@
         <typeAlias alias="users" type="com.yedam.blog.biz.users.UsersVO"/>
         <typeAlias alias="visit" type="com.yedam.blog.biz.visit.VisitVO"/>  
         <typeAlias alias="bloglist" type="com.yedam.blog.biz.bloglist.BlogListVO"/>
+        <typeAlias alias="profile" type="com.yedam.blog.biz.admin.ProfileVO"/>
 	</typeAliases>
     	    
   

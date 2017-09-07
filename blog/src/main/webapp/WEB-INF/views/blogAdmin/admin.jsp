@@ -5,8 +5,8 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<<<<<<< HEAD
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>프로필 관리</title>
+     <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -17,7 +17,7 @@
     <link href="resources/assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-   <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
+  
    <script>
    $(function() {
 	  var xmlhttp = new XMLHttpRequest();

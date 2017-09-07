@@ -7,6 +7,6 @@ import com.yedam.blog.biz.bloglist.BlogSearchListVO;
 
 public interface BlogListMapper {
 	public List<BlogListVO> getBlogList(BlogListVO vo);
-	
-	public List<BlogSearchListVO> getBlogSearchList(BlogSearchListVO vo);
+	 
+	public List<BlogListVO> getBlogSearchList(BlogSearchListVO vo);
 }

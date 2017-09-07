@@ -8,16 +8,24 @@
         <result property="blog_title" column="blog_title"/>
         <result property="blog_img" column="blog_img"/>
     </resultMap>
+ 
     <select id="getBlogList" resultMap="bloglistResult">
     	<![CDATA[
     	SELECT USERID,BLOG_TITLE,BLOG_IMG
     	FROM USERS
     	  ]]>
     </select>
-    <select id="getBlogSearchList" resultMap="bloglistResult">
-    	<![CDATA[
-    	SELECT USERID,BLOG_TITLE,BLOG_IMG
-    	FROM USERS
-    	  ]]>
+    <select id="getBlogSearchList" resultMap="bloglistResult" parameterType="com.yedam.blog.biz.bloglist.BlogSearchListVO">
+    	SELECT B.USERID,B.BLOG_TITLE,B.BLOG_IMG FROM(SELECT ROWNUM RN, A.USERID,A.BLOG_TITLE,A.BLOG_IMG FROM
+    	<if test="search != null"> 
+    	(SELECT * FROM USERS WHERE USERID LIKE('%' || #{search} || '%') ORDER BY 1 ) A
+    	</if>
+    	<if test="search ==null || search ==''">
+    	(SELECT * FROM USERS ORDER BY 1 ) A
+    	</if>
+    	
+    	) B WHERE RN BETWEEN #{start} AND #{end}
+    	
+    	
     </select>
 </mapper>
