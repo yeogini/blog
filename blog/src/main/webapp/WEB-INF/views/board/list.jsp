@@ -38,7 +38,6 @@
 				<p align="right">
 					<strong>${sessionScope.login} 님 <a href="logout.do" class="topLink">로그아웃</a></strong>
 				</p>
-	${sessionScope.login} 님 <a href="logout.do">로그아웃</a>
 </c:if>
 </div>
 <hr>
@@ -67,7 +66,7 @@
         </div>
 	</div>
 <c:forEach items="${bloglist}" var="list">
-	<div class="container">
+	<div class="container" id="bloglist">
 		<div class="row">
 			<div class="list-group">
 	            <div class="list-group-item clearfix">
