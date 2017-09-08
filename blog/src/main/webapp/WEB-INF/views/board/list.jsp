@@ -30,13 +30,13 @@
 <c:if test="${empty sessionScope.login }">
 				<p/>
 				<p align="right">
-					<strong><a href="/blog" class="topLink">로그인</a></strong>
+					<strong><a href="/blog">로그인</a></strong>
 				</p>
 </c:if>
 <c:if test="${not empty sessionScope.login}">
 <p/>
-				<p align="right">
-					<strong>${sessionScope.login} 님 <a href="logout.do" class="topLink">로그아웃</a></strong>
+				<p align="right"> 
+					<strong>${sessionScope.login} 님 <a href="logout.do" >로그아웃</a></strong><a href="adminView.do">내 블로그</a>
 				</p>
 </c:if>
 </div>
@@ -71,8 +71,8 @@
 			<div class="list-group">
 	            <div class="list-group-item clearfix">
 	                <div class="profile-teaser-left">
-	                    <div class="profile-img">
-	                    <c:if test="${not empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if>
+	                    <div class="profile-img">	                    
+	                    <c:if test="${not empty list.blog_img}"><img src="resources/upload/${list.userid}.jpg"/></c:if>
 	                    <c:if test="${empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if></div>
 	                </div>
 	                <div class="profile-teaser-main">

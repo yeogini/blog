@@ -89,9 +89,4 @@ public class UsersController {
 		return "/users/login";
 	}
 	
-	//프로필 관리
-	@RequestMapping("adminProfile.do")
-	public String adminProfile(){
-		return "/blogAdmin/profile"; 
-	}
 }

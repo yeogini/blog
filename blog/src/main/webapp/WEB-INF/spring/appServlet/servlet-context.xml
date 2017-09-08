@@ -30,7 +30,9 @@
 	<beans:bean id="log" class="com.yedam.blog.biz.common.LogAdvice"></beans:bean>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<context:property-placeholder location="classpath:/database.properties"/>
-	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10000000"></beans:property>
+	</beans:bean>
 	<beans:bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName" value="${jdbc.driver}" />
