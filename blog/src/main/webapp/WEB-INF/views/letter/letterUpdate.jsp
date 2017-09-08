@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-°Ô½Ã±Û ¼öÁ¤
+ê²Œì‹œê¸€ ìˆ˜ì •
 <form action="letterUpdate.do" method="post">
 	<%-- <input type="hidden" name="seq" value="${board.seq}"><br/> --%>
 	
@@ -20,9 +20,9 @@
 	<br>
 	
 	
-	Á¦¸ñ<input type="text" name="letterTitle"  value="${letter.letterTitle}"><br/>
-	³»¿ë<textarea name="letterSub">${letter.letterSub}</textarea>
-	<input type="submit" value="ÀúÀå">
+	ì œëª©<input type="text" name="letterTitle"  value="${letter.letterTitle}"><br/>
+	ë‚´ìš©<textarea name="letterSub">${letter.letterSub}</textarea>
+	<input type="submit" value="ì €ìž¥">
 	
 </form> 
 </body>

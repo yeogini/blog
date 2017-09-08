@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-°Ô½Ã±Û ¾²±â
+ê²Œì‹œê¸€ ì“°ê¸°
 <form action="letterInsert.do" method="post">
 
 	<select name="categoryNo">
@@ -18,13 +18,13 @@
 
 	<br>
 
-	<!-- ¹øÈ£<input type="text" name="seq"><br/> -->
-	<!-- ÀÛ¼ºÀÚ<input type="text" name="writer"><br/> -->
-	<!-- ±Û ¹øÈ£<input type="text" name="letterNo"><br/> -->
-	Á¦¸ñ<input type="text" name="letterTitle"><br/>
-	³»¿ë<textarea name="letterSub"></textarea><br/>
-	<!-- ¾ÆÀÌµð<input type="text" name="userId"><br/> -->
-	<input type="submit" value="ÀúÀå">
+	<!-- ë²ˆí˜¸<input type="text" name="seq"><br/> -->
+	<!-- ìž‘ì„±ìž<input type="text" name="writer"><br/> -->
+	<!-- ê¸€ ë²ˆí˜¸<input type="text" name="letterNo"><br/> -->
+	ì œëª©<input type="text" name="letterTitle"><br/>
+	ë‚´ìš©<textarea name="letterSub"></textarea><br/>
+	<!-- ì•„ì´ë””<input type="text" name="userId"><br/> -->
+	<input type="submit" value="ì €ìž¥">
 </form> 
 </body>
 </html>

@@ -1,26 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
 <title>Insert title here</title>
 </head>
 <body>
 
-»ó¼¼º¸±â
+ìƒì„¸ë³´ê¸°
 <hr>
-±Û ¹øÈ£ ${letter.letterNo} <br/>
-Ä«Å×°í¸® ${letter.categoryNo} <br/>
-Á¦¸ñ ${letter.letterTitle} <br/>
-³»¿ë ${letter.letterSub} <br/>
+ê¸€ ë²ˆí˜¸ ${letter.letterNo} <br/>
+ì¹´í…Œê³ ë¦¬ ${letter.categoryNo} <br/>
+ì œëª© ${letter.letterTitle} <br/>
+ë‚´ìš© ${letter.letterSub} <br/>
 
-<a href="letterUpdate.do?letterNo=${letter.letterNo}">¼öÁ¤</a>
+<a href="letterUpdate.do?letterNo=${letter.letterNo}">ìˆ˜ì •</a>
 
 <form name="frm" action="deleteLetter.do">
 	<input type="hidden" name="letterNo" value="${letter.letterNo}"/>
-	<input type="submit" value="»èÁ¦">
+	<input type="submit" value="ì‚­ì œ">
 </form>
 
 </body>
