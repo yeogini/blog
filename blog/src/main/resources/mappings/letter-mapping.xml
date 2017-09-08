@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.yedam.blog.letter.impl.LetterMapper">
+
+	<!-- 기본 -->
+	<resultMap id="letterResult" type="letter">
+		<id property="letterNo" column="LETTER_NO" />
+		<result property="letterTitle" column="LETTER_TITLE" />
+		<result property="letterSub" column="LETTER_SUB" />
+		<result property="categoryNo" column="CATEGORY_NO" />
+		<result property="userId" column="USERID" />
+		<result property="letterDate" column="LETTER_DATE" />
+		<result property="hits" column="HITS" />
+	</resultMap>
+
+	<!-- 글 등록 insert -->
+	<insert id="insertLetter" parameterType="letter">
+		<selectKey keyProperty="letterNo" resultType="string" order="BEFORE">
+			SELECT NVL(MAX(LETTER_NO), 0) + 1 FROM LETTER
+		</selectKey>
+		        <![CDATA[
+		        INSERT INTO LETTER(LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, USERID, LETTER_DATE, HITS) 
+		        VALUES
+		        ( 	#{letterNo},
+		        	#{letterTitle}, 
+			        #{letterSub},
+			        #{categoryNo}, 
+			        #{userId}, 
+		        	SYSDATE, 
+		        	0 )
+		        ]]>
+	</insert>
+
+	<!-- 글 수정 update -->
+	<select id="updateLetter" resultType="letter">
+		        <![CDATA[
+		        UPDATE LETTER SET
+		     	CATEGORY_NO = #{categoryNo},
+		        LETTER_TITLE = #{letterTitle},
+		        LETTER_SUB = #{letterSub}
+		        WHERE LETTER_NO = #{letterNo}
+		        ]]>
+	</select>
+
+	<!-- 글 삭제 delete -->
+	<select id="deleteLetter" resultType="letter">
+		        <![CDATA[
+		        DELETE FROM LETTER
+		        WHERE LETTER_NO = #{letterNo}
+		        ]]>
+	</select>
+
+	<!-- 단건조회 -->
+	<select id="getLetter" resultType="letter">
+		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
+		        <![CDATA[
+				SELECT 
+				LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
+				FROM LETTER
+				WHERE LETTER_NO = #{letterNo}	 
+		        ]]>
+	</select>
+
+	<!-- 블로그 글 -->
+	<select id="getLetterList" resultType="letter">
+		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
+		        <![CDATA[
+				select * from (select a.*, rownum rnum 
+							from ( SELECT 
+							LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
+							FROM LETTER order by LETTER_DATE desc) a ) b 
+		        ]]>
+	</select>
+
+
+
+</mapper>

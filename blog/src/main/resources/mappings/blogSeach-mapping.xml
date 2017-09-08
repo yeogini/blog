@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                        
+    <mapper namespace="com.yedam.blog.search.impl.BlogSearchMapper">
+    
+<!--        
+		<resultMap id="usersResult" type="users">
+			
+		     <result property="letter_no" column="letter_no" />
+		     <result property="letter_title" column="letter_title" />
+		     <result property="letter_sub" column="letter_sub" />
+		     <result property="category" column="category" />
+		     <id property="userId" column="userId" />
+		     <result property="letter_date" column="letter_date" />
+		     <result property="hits" column="hits" />
+	        
+    	</resultMap>
+-->
+    	
+<!--     	<insert id="insertBlogSearch" parameterType="BlogSearch">
+	        <![CDATA[
+	        INSERT INTO BlogSearch(LETTER_NO, LETTER_TITLE, LETTER_SUB, USERID, LETTER_DATE, HITS, REPLY_NO, RE_DATE, REPLY_SUB) 
+	        VALUES((SELECT NVL(MAX(SEQ), 0) + 1 FROM BOARD),
+	        #{letter_no}, #{letter_title}, #{letter_sub}, #{userId}, #{letter_date}, #{hits}, #{reply_no}, #{re_date}, #{reply_sub})
+	        ]]>
+    	</insert>
+    	
+   		<update id="updateBlogSearch">
+	        <![CDATA[
+	        UPDATE LETTER SET
+	            LETTER_TITLE = #{letter_title}, 
+	            LETTER_SUB = #{letter_sub} 
+	        WHERE SEQ = #{seq}
+	        ]]>
+    	</update>   	
+    
+		<delete id="deleteBlogSearch">
+	        <![CDATA[
+	        DELETE LETTER
+	        WHERE SEQ = #{seq}
+        ]]>
+    	</delete>    --> 
+    	
+    	
+    	
+    	<!-- 최신 글 ( =최신 글 작성일 ) --> 
+    	<select id="getBlogSearchNewestLetter" resultType="blogSearch">
+    		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
+	        <![CDATA[
+			select * from (select a.*, rownum rnum 
+							from ( SELECT 
+							LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
+							FROM LETTER order by LETTER_DATE desc) a ) b where rnum >= 1 and rnum <= 5 
+	        ]]>
+    	</select>
+    	
+    	<!-- 최신 댓글 ( =최신 댓글 작성일 ) --> 
+    	<select id="getBlogSearchNewestReply" resultType="blogSearch">
+    		<!-- 컬럼번호, 댓글내용, 아이디, 작성일 -->
+	        <![CDATA[
+	        select * from (select a.*, rownum rnum 
+							from ( SELECT
+							REPLY_NO, RE_DATE, REPLY_SUB, LETTER_NO, USERID			
+							FROM REPLY order by RE_DATE desc) a ) b where rnum >= 1 and rnum <= 5
+	        ]]>
+    	</select>
+    	
+    	<!-- 베스트 글 ( =조회수 많은 글) --> 
+    	<select id="getBlogSearchBestLetter" resultType="blogSearch">
+    		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
+	        <![CDATA[
+	       	select * from (select a.*, rownum rnum 
+							from ( SELECT 
+							LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
+							FROM LETTER order by HITS desc) a ) b where rnum >= 1 and rnum <= 5
+	        ]]>
+    	</select>
+    	
+    	<!-- 게시글 검색 -->
+    	
+    	<select id="getBlogSearchListLetter" resultType="blogSearch">
+		    SELECT * 
+		    FROM LETTER
+		    WHERE 1 = 1
+	    	<if test="searchCondition == 'LETTER_NO'">
+	        AND LETTER_NO LIKE '%'||#{searchKeyword}||'%' 
+	    	</if>
+	    	<if test="searchCondition == 'LETTER_TITLE'">
+	        AND LETTER_TITLE LIKE '%'||#{searchKeyword}||'%' 
+	    	</if>
+	    	<if test="searchCondition == 'LETTER_SUB'">
+	        AND LETTER_SUB LIKE '%'||#{searchKeyword}||'%' 
+	    	</if>
+	    	<if test="searchCondition == 'USERID'">
+	        AND USERID LIKE '%'||#{searchKeyword}||'%' 
+	    	</if>
+	    	<if test="searchCondition == 'LETTER_DATE'">
+	    	</if>
+	    	<if test="searchCondition == 'HITS'">
+	        AND HITS LIKE '%'||#{searchKeyword}||'%' 
+	    	</if>
+	    	ORDER BY SEQ DESC
+		</select>  	
+		
+		<!-- 댓글  검색-->
+		
+		<select id="getBlogSearchListReply" resultType="blogSearch">
+		    SELECT * 
+		    FROM REPLY
+		    WHERE 1 = 1
+	    	<if test="searchCondition == 'REPLY_NO'">
+	        AND REPLY_NO LIKE '%'||#{searchKeyword}||'%' 
+	    	</if>
+	    	<if test="searchCondition == 'RE_DATE'">
+	        AND RE_DATE LIKE '%'||#{searchKeyword}||'%' 
+	    	</if>
+	    	<if test="searchCondition == 'REPLY_SUB'">
+	        AND REPLY_SUB LIKE '%'||#{searchKeyword}||'%' 
+	    	</if>
+	    	ORDER BY SEQ DESC
+		</select>  
+    
+    </mapper>	
