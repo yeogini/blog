@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yedam.blog.biz.layout.impl.LayoutMapper">  
+
+	<resultMap id="layoutResult" type="layout">
+        <id property="userid" column="userid" />
+        <result property="title" column="title" />
+        <result property="top" column="top" />
+        <result property="latest_posts" column="latest_posts" />
+        <result property="reply" column="reply" />
+        <result property="category" column="category" />
+        <result property="profile" column="profile" />
+        <result property="visitors" column="visitors" />
+	</resultMap>
+
+<!-- 등록 -->
+    <insert id="insertLayout" parameterType="layout">
+        <![CDATA[
+        INSERT INTO LAYOUT(userid, title, top, latest_posts, reply, category, profile, visitors) 
+        VALUES(#{userid},#{title},#{top},#{latest_posts},#{reply},#{category},#{profile},#{visitors})
+        ]]>
+    </insert>
+   
+     <!-- 단건조한 -->
+	 <select id="getLayout" resultType="layout">
+        <![CDATA[
+        SELECT * 
+        FROM LAYOUT
+        WHERE USERID = #{userid}
+        ]]>
+    </select>
+	
+	
+	<!-- 수정  -->
+	<update id="updateLayout">
+		<![CDATA[
+		UPDATE LAYOUT SET
+			TITLE =#{title},
+			TOP = #{top},
+			LATEST_POSTS = #{latest_posts},
+			REPLY = #{reply},
+			CATEGORY = #{category},
+			PROFILE	= #{profile},
+			VISITORS = #{visitors}
+		WHERE USERID = #{userid}
+		 ]]>
+	</update>                      
+</mapper>                

@@ -9,6 +9,7 @@
     <!-- Alias 설정 -->
     <typeAliases>
         <typeAlias alias="users" type="com.yedam.blog.biz.users.UsersVO"/>
+        <typeAlias alias="layout" type="com.yedam.blog.biz.layout.LayoutVO"/>
     </typeAliases>
 
 	<!-- DataSource 설정 -->
