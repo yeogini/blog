@@ -67,6 +67,6 @@
  
 	
  	<beans:bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<beans:property name="basePackage" value="com.yedam.blog.biz.*.impl" />
+		<beans:property name="basePackage" value="com.yedam.blog.biz.*.impl com.yedam.blog.*.impl" />
 	</beans:bean> 
 </beans:beans>

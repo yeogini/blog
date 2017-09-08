@@ -71,7 +71,7 @@ public class UsersController {
 			} else {
 				if(result.getUserPass().equals(vo.getUserPass())) {
 					session.setAttribute("login",result.getUserid());
-					return "/board/list";
+					return "/blogAdmin/admin";
 				} else {
 					return "/users/login";
 				}

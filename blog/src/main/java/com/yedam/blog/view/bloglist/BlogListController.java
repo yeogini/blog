@@ -1,6 +1,7 @@
 package com.yedam.blog.view.bloglist;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,10 +47,19 @@ public class BlogListController {
 		return mv;
 	}
 	@RequestMapping("getBlogListAjax.do")
-	public BlogSearchListVO getBlogListAjax(String page){
+	public List<BlogListVO> getBlogListAjax(Map<String,String> map){
+		
+		Paging paging = new Paging();
+		int page = 1;
+		System.out.println(map.get("page"));
+		paging.setPage(page);
+		int start, end;
+		start = (page*paging.getPageUnit())-(paging.getPageUnit()-1);
+		end = start + paging.getPageUnit() -1;
 		BlogSearchListVO vo = new BlogSearchListVO();
-		
-		
-		return vo;
+		vo.setStart(start);
+		vo.setEnd(end);
+
+		return bloglistService.getBlogSearchList(vo);
 	}
 }
