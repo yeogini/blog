@@ -13,10 +13,10 @@
     <!-- Alias 설정 -->
     <typeAliases>
         <typeAlias alias="users" type="com.yedam.blog.biz.users.UsersVO"/>
-<<<<<<< HEAD
+
         <typeAlias alias="layout" type="com.yedam.blog.biz.layout.LayoutVO"/>
     </typeAliases>
-=======
+
         <typeAlias alias="visit" type="com.yedam.blog.biz.visit.VisitVO"/>  
         <typeAlias alias="bloglist" type="com.yedam.blog.biz.bloglist.BlogListVO"/>
         <typeAlias alias="profile" type="com.yedam.blog.biz.admin.ProfileVO"/>
@@ -26,7 +26,7 @@
 	</typeAliases>
     	    
   
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
+
 
 	<!-- DataSource 설정 -->
 	<environments default="development">
