@@ -1,118 +1,113 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
         <meta charset="utf-8">
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>∫Ì∑Œ±◊</title>
+        <title>Î∏îÎ°úÍ∑∏</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-<!-- ∫Œ∞°¿˚¿Œ ≈◊∏∂ -->
+<!-- Î∂ÄÍ∞ÄÏ†ÅÏù∏ ÌÖåÎßà -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	
-        <!-- jQuery (∫Œ∆ÆΩ∫∆Æ∑¶¿« ¿⁄πŸΩ∫≈©∏≥∆Æ «√∑Ø±◊¿Œ¿ª ¿ß«ÿ « ø‰«—) -->
+<style type="text/css">
+
+</style>
+        <!-- jQuery (Î∂ÄÌä∏Ïä§Ìä∏Îû©Ïùò ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ ÌîåÎü¨Í∑∏Ïù∏ÏùÑ ÏúÑÌï¥ ÌïÑÏöîÌïú) -->
         <script src="//code.jquery.com/jquery.js"></script>
-        <!-- ∏µÁ «’√ƒ¡¯ «√∑Ø±◊¿Œ¿ª ∆˜«‘«œ∞≈≥™ (æ∆∑°) « ø‰«— ∞¢∞¢¿« ∆ƒ¿œµÈ¿ª ∆˜«‘«œººø‰ -->
+        <!-- Î™®Îì† Ìï©Ï≥êÏßÑ ÌîåÎü¨Í∑∏Ïù∏ÏùÑ Ìè¨Ìï®ÌïòÍ±∞ÎÇò (ÏïÑÎûò) ÌïÑÏöîÌïú Í∞ÅÍ∞ÅÏùò ÌååÏùºÎì§ÏùÑ Ìè¨Ìï®ÌïòÏÑ∏Ïöî -->
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-        <!-- Respond.js ¿∏∑Œ IE8 ø°º≠ π›¿¿«¸ ±‚¥…¿ª »∞º∫»≠«œººø‰ (https://github.com/scottjehl/Respond) -->
-        <!-- «’√ƒ¡ˆ∞Ì √÷º“»≠µ» √÷Ω≈ CSS -->
-
-
-
-    </head>
+        <!-- Respond.js ÏúºÎ°ú IE8 ÏóêÏÑú Î∞òÏùëÌòï Í∏∞Îä•ÏùÑ ÌôúÏÑ±ÌôîÌïòÏÑ∏Ïöî (https://github.com/scottjehl/Respond) -->
+        <!-- Ìï©Ï≥êÏßÄÍ≥† ÏµúÏÜåÌôîÎêú ÏµúÏã† CSS -->
+</head>
     <body>
-        <div class="container"><!-- ¡¬øÏ√¯¿« ∞¯∞£ »Æ∫∏ -->
-            <!-- «Ï¥ı µÈæÓ∞°¥¬ ∫Œ∫– -->
+        <div class="container"><!-- Ï¢åÏö∞Ï∏°Ïùò Í≥µÍ∞Ñ ÌôïÎ≥¥ -->
+            <!-- Ìó§Îçî Îì§Ïñ¥Í∞ÄÎäî Î∂ÄÎ∂Ñ -->
             <div class="row" align="right">
                 <p></p>
 
                    <p align="right">
-					<a href="#">∫Ì∑Œ±◊ ∞°±‚</a>
+					<strong><a href="list.do">Î∏îÎ°úÍ∑∏ Í∞ÄÍ∏∞</a></strong>
            			</p>
-
             </div>
-            <!--// «Ï¥ı µÈæÓ∞°¥¬ ∫Œ∫– -->
-            <!-- ∏¥ﬁ√¢ -->
+            <!--// Ìó§Îçî Îì§Ïñ¥Í∞ÄÎäî Î∂ÄÎ∂Ñ -->
+            <!-- Î™®Îã¨Ï∞Ω -->
             <div class="modal fade" id="defaultModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">°ø</button>
-                            <h4 class="modal-title">æÀ∏≤</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">√ó</button>
+                            <h4 class="modal-title">ÏïåÎ¶º</h4>
                         </div>
                         <div class="modal-body">
                             <p class="modal-contents"></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">¥›±‚</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Îã´Í∏∞</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-            <!--// ∏¥ﬁ√¢ -->
+            <!--// Î™®Îã¨Ï∞Ω -->
             <hr/>
-                <!-- ∫ªπÆ µÈæÓ∞°¥¬ ∫Œ∫– -->
-                 
- 
- 		
-        <form class="form-horizontal" role="form" method="post" action="insertUser.do">
-        <div class="row" align="center"><h1 class="h1">»∏ø¯ ∞°¿‘</h1></div>
+                <!-- Î≥∏Î¨∏ Îì§Ïñ¥Í∞ÄÎäî Î∂ÄÎ∂Ñ -->
+    <form class="form-horizontal" role="form" method="post" action="insertUser.do">
+        <div class="row" align="center"><h1 class="h1">ÌöåÏõê Í∞ÄÏûÖ</h1></div>
            <div class="form-group" id="divId">
            <p></p><br>
-                <label for="inputId" class="col-lg-2 control-label">æ∆¿Ãµ</label>
+                <label for="inputId" class="col-lg-2 control-label">ÏïÑÏù¥Îîî</label>
                 <div class="col-lg-10">
                     <input type="text" class="form-control onlyAlphabetAndNumber" id="userid" name="userid"
-                    data-rule-required="true" placeholder="30¿⁄¿Ã≥ª¿« æÀ∆ƒ∫™, æ¥ıΩ∫ƒ⁄æÓ(_), º˝¿⁄∏∏ ¿‘∑¬ ∞°¥…«’¥œ¥Ÿ." maxlength="30">
+                    data-rule-required="true" placeholder="30ÏûêÏù¥ÎÇ¥Ïùò ÏïåÌååÎ≤≥, Ïñ∏ÎçîÏä§ÏΩîÏñ¥(_), Ïà´ÏûêÎßå ÏûÖÎ†• Í∞ÄÎä•Ìï©ÎãàÎã§." maxlength="30">
                 </div>
             </div>
             <div class="form-group" id="divPassword">
-                <label for="inputPassword" class="col-lg-2 control-label">∆–Ω∫øˆµÂ</label>
+                <label for="inputPassword" class="col-lg-2 control-label">Ìå®Ïä§ÏõåÎìú</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control" id="userPass" name="userPass" data-rule-required="true" placeholder="∆–Ω∫øˆµÂ" maxlength="30">
+                    <input type="password" class="form-control" id="userPass" name="userPass" data-rule-required="true" placeholder="Ìå®Ïä§ÏõåÎìú" maxlength="30">
                 </div>
             </div>
             <div class="form-group" id="divPasswordCheck">
-                <label for="inputPasswordCheck" class="col-lg-2 control-label">∆–Ω∫øˆµÂ »Æ¿Œ</label>
+                <label for="inputPasswordCheck" class="col-lg-2 control-label">Ìå®Ïä§ÏõåÎìú ÌôïÏù∏</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control" id="userPassCheck" data-rule-required="true" placeholder="∆–Ω∫øˆµÂ »Æ¿Œ" maxlength="30">
+                    <input type="password" class="form-control" id="userPassCheck" data-rule-required="true" placeholder="Ìå®Ïä§ÏõåÎìú ÌôïÏù∏" maxlength="30">
                 </div>
             </div>
             <div class="form-group" id="divName">
-                <label for="inputName" class="col-lg-2 control-label">¿Ã∏ß</label>
+                <label for="inputName" class="col-lg-2 control-label">Ïù¥Î¶Ñ</label>
                 <div class="col-lg-10">
                     <input type="text" class="form-control onlyHangul" id="userName" name="userName"
-                    data-rule-required="true" placeholder="«—±€∏∏ ¿‘∑¬ ∞°¥…«’¥œ¥Ÿ." maxlength="15">
+                    data-rule-required="true" placeholder="ÌïúÍ∏ÄÎßå ÏûÖÎ†• Í∞ÄÎä•Ìï©ÎãàÎã§." maxlength="15">
                 </div>
             </div>
              
             <div class="form-group" id="divNickname">
-                <label for="inputNickname" class="col-lg-2 control-label">∫∞∏Ì</label>
+                <label for="inputNickname" class="col-lg-2 control-label">Î≥ÑÎ™Ö</label>
                 <div class="col-lg-10">
                     <input type="text" class="form-control" id="nickName" name="nickName"
-                    data-rule-required="true" placeholder="∫∞∏Ì" maxlength="15">
+                    data-rule-required="true" placeholder="Î≥ÑÎ™Ö" maxlength="15">
                 </div>
             </div>
              
             <div class="form-group" id="divEmail">
-                <label for="inputEmail" class="col-lg-2 control-label">¿Ã∏ﬁ¿œ</label>
+                <label for="inputEmail" class="col-lg-2 control-label">Ïù¥Î©îÏùº</label>
                 <div class="col-lg-10">
                     <input type="email" class="form-control" id="eMail" name="eMail"
-                    data-rule-required="true" placeholder="¿Ã∏ﬁ¿œ" maxlength="40">
+                    data-rule-required="true" placeholder="Ïù¥Î©îÏùº" maxlength="40">
                 </div>
             </div>
             <div class="form-group" id="divPhoneNumber">
-                <label for="inputPhoneNumber" class="col-lg-2 control-label">»ﬁ¥Î∆˘ π¯»£</label>
+                <label for="inputPhoneNumber" class="col-lg-2 control-label">Ìú¥ÎåÄÌè∞ Î≤àÌò∏</label>
                 <div class="col-lg-10">
                     <input type="tel" class="form-control onlyNumber" id="phone" name="phone"
-                    data-rule-required="true" placeholder="-∏¶ ¡¶ø‹«œ∞Ì º˝¿⁄∏∏ ¿‘∑¬«œººø‰." maxlength="11">
+                    data-rule-required="true" placeholder="-Î•º Ï†úÏô∏ÌïòÍ≥† Ïà´ÏûêÎßå ÏûÖÎ†•ÌïòÏÑ∏Ïöî." maxlength="11">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                    <button type="submit" class="btn btn-default">∞°¿‘</button>
+                    <button type="submit" class="btn btn-default">Í∞ÄÏûÖ</button>
                 </div>
             </div> 
         </form>
@@ -121,14 +116,14 @@
         <script>
          
             $(function(){
-                //∏¥ﬁ¿ª ¿¸ø™∫Øºˆ∑Œ º±æ
+                //Î™®Îã¨ÏùÑ Ï†ÑÏó≠Î≥ÄÏàòÎ°ú ÏÑ†Ïñ∏
                 var modalContents = $(".modal-contents");
                 var modal = $("#defaultModal");
                  
                 $('.onlyAlphabetAndNumber').keyup(function(event){
                     if (!(event.keyCode >=37 && event.keyCode<=40)) {
                         var inputVal = $(this).val();
-                        $(this).val($(this).val().replace(/[^_a-z0-9]/gi,'')); //_(underscore), øµæÓ, º˝¿⁄∏∏ ∞°¥…
+                        $(this).val($(this).val().replace(/[^_a-z0-9]/gi,'')); //_(underscore), ÏòÅÏñ¥, Ïà´ÏûêÎßå Í∞ÄÎä•
                     }
                 });
                  
@@ -146,7 +141,7 @@
                     }
                 });
                  
-                //------- ∞ÀªÁ«œø© ªÛ≈¬∏¶ classø° ¿˚øÎ
+                //------- Í≤ÄÏÇ¨ÌïòÏó¨ ÏÉÅÌÉúÎ•º classÏóê Ï†ÅÏö©
                 $('#id').keyup(function(event){
                      
                     var divId = $('#divId');
@@ -241,7 +236,7 @@
                 });
                  
                  
-                //------- validation ∞ÀªÁ
+                //------- validation Í≤ÄÏÇ¨
                 $( "form" ).submit(function( event ) {
                     var divId = $('#divId');
                     var divPassword = $('#divPassword');
@@ -253,9 +248,9 @@
                      
                     
                      
-                    //æ∆¿Ãµ ∞ÀªÁ
+                    //ÏïÑÏù¥Îîî Í≤ÄÏÇ¨
                     if($('#userid').val()==""){
-                        modalContents.text("æ∆¿Ãµ∏¶ ¿‘∑¬«œø© ¡÷Ω√±‚ πŸ∂¯¥œ¥Ÿ.");
+                        modalContents.text("ÏïÑÏù¥ÎîîÎ•º ÏûÖÎ†•ÌïòÏó¨ Ï£ºÏãúÍ∏∞ Î∞îÎûçÎãàÎã§.");
                         modal.modal('show');
                          
                         divId.removeClass("has-success");
@@ -267,9 +262,9 @@
                         divId.addClass("has-success");
                     }
                      
-                    //∆–Ω∫øˆµÂ ∞ÀªÁ
+                    //Ìå®Ïä§ÏõåÎìú Í≤ÄÏÇ¨
                     if($('#password').val()==""){
-                        modalContents.text("∆–Ω∫øˆµÂ∏¶ ¿‘∑¬«œø© ¡÷Ω√±‚ πŸ∂¯¥œ¥Ÿ.");
+                        modalContents.text("Ìå®Ïä§ÏõåÎìúÎ•º ÏûÖÎ†•ÌïòÏó¨ Ï£ºÏãúÍ∏∞ Î∞îÎûçÎãàÎã§.");
                         modal.modal('show');
                          
                         divPassword.removeClass("has-success");
@@ -281,9 +276,9 @@
                         divPassword.addClass("has-success");
                     }
                      
-                    //∆–Ω∫øˆµÂ »Æ¿Œ
+                    //Ìå®Ïä§ÏõåÎìú ÌôïÏù∏
                     if($('#passwordCheck').val()==""){
-                        modalContents.text("∆–Ω∫øˆµÂ »Æ¿Œ¿ª ¿‘∑¬«œø© ¡÷Ω√±‚ πŸ∂¯¥œ¥Ÿ.");
+                        modalContents.text("Ìå®Ïä§ÏõåÎìú ÌôïÏù∏ÏùÑ ÏûÖÎ†•ÌïòÏó¨ Ï£ºÏãúÍ∏∞ Î∞îÎûçÎãàÎã§.");
                         modal.modal('show');
                          
                         divPasswordCheck.removeClass("has-success");
@@ -295,9 +290,9 @@
                         divPasswordCheck.addClass("has-success");
                     }
                      
-                    //∆–Ω∫øˆµÂ ∫Ò±≥
+                    //Ìå®Ïä§ÏõåÎìú ÎπÑÍµê
                     if($('#password').val()!=$('#passwordCheck').val() || $('#passwordCheck').val()==""){
-                        modalContents.text("∆–Ω∫øˆµÂ∞° ¿œƒ°«œ¡ˆ æ Ω¿¥œ¥Ÿ.");
+                        modalContents.text("Ìå®Ïä§ÏõåÎìúÍ∞Ä ÏùºÏπòÌïòÏßÄ ÏïäÏäµÎãàÎã§.");
                         modal.modal('show');
                          
                         divPasswordCheck.removeClass("has-success");
@@ -309,9 +304,9 @@
                         divPasswordCheck.addClass("has-success");
                     }
                      
-                    //¿Ã∏ß
+                    //Ïù¥Î¶Ñ
                     if($('#name').val()==""){
-                        modalContents.text("¿Ã∏ß¿ª ¿‘∑¬«œø© ¡÷Ω√±‚ πŸ∂¯¥œ¥Ÿ.");
+                        modalContents.text("Ïù¥Î¶ÑÏùÑ ÏûÖÎ†•ÌïòÏó¨ Ï£ºÏãúÍ∏∞ Î∞îÎûçÎãàÎã§.");
                         modal.modal('show');
                          
                         divName.removeClass("has-success");
@@ -323,9 +318,9 @@
                         divName.addClass("has-success");
                     }
                      
-                    //∫∞∏Ì
+                    //Î≥ÑÎ™Ö
                     if($('#nickname').val()==""){
-                        modalContents.text("∫∞∏Ì¿ª ¿‘∑¬«œø© ¡÷Ω√±‚ πŸ∂¯¥œ¥Ÿ.");
+                        modalContents.text("Î≥ÑÎ™ÖÏùÑ ÏûÖÎ†•ÌïòÏó¨ Ï£ºÏãúÍ∏∞ Î∞îÎûçÎãàÎã§.");
                         modal.modal('show');
                          
                         divNickname.removeClass("has-success");
@@ -337,9 +332,9 @@
                         divNickname.addClass("has-success");
                     }
                      
-                    //¿Ã∏ﬁ¿œ
+                    //Ïù¥Î©îÏùº
                     if($('#email').val()==""){
-                        modalContents.text("¿Ã∏ﬁ¿œ¿ª ¿‘∑¬«œø© ¡÷Ω√±‚ πŸ∂¯¥œ¥Ÿ.");
+                        modalContents.text("Ïù¥Î©îÏùºÏùÑ ÏûÖÎ†•ÌïòÏó¨ Ï£ºÏãúÍ∏∞ Î∞îÎûçÎãàÎã§.");
                         modal.modal('show');
                          
                         divEmail.removeClass("has-success");
@@ -351,9 +346,9 @@
                         divEmail.addClass("has-success");
                     }
                      
-                    //»ﬁ¥Î∆˘ π¯»£
+                    //Ìú¥ÎåÄÌè∞ Î≤àÌò∏
                     if($('#phone').val()==""){
-                        modalContents.text("»ﬁ¥Î∆˘ π¯»£∏¶ ¿‘∑¬«œø© ¡÷Ω√±‚ πŸ∂¯¥œ¥Ÿ.");
+                        modalContents.text("Ìú¥ÎåÄÌè∞ Î≤àÌò∏Î•º ÏûÖÎ†•ÌïòÏó¨ Ï£ºÏãúÍ∏∞ Î∞îÎûçÎãàÎã§.");
                         modal.modal('show');
                          
                         divPhoneNumber.removeClass("has-success");

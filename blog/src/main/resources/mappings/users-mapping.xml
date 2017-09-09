@@ -28,5 +28,11 @@
 		SELECT userID, USERPASS, USERNAME, nickname
 			FROM USERS ORDER BY userID
 	</select>
+	
+	<select id="getUsers" resultMap="usersResult">
+		SELECT *
+			FROM USERS 
+		WHERE userID = #{userid}
+	</select>
 
 </mapper>

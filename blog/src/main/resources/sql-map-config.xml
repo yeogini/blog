@@ -5,11 +5,23 @@
 
 	<!-- properties 파일 설정  -->
     <properties resource="database.properties" />
-    	    
+
+    
+    <settings>
+    	<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+    </settings>	    
     <!-- Alias 설정 -->
     <typeAliases>
         <typeAlias alias="users" type="com.yedam.blog.biz.users.UsersVO"/>
-    </typeAliases>
+        <typeAlias alias="visit" type="com.yedam.blog.biz.visit.VisitVO"/>  
+        <typeAlias alias="bloglist" type="com.yedam.blog.biz.bloglist.BlogListVO"/>
+        <typeAlias alias="profile" type="com.yedam.blog.biz.admin.ProfileVO"/>
+        <typeAlias alias="blogSearch" type="com.yedam.blog.search.BlogSearchVO"/>
+        <typeAlias alias="letter" type="com.yedam.blog.letter.LetterVO"/>
+        
+	</typeAliases>
+    	    
+  
 
 	<!-- DataSource 설정 -->
 	<environments default="development">
