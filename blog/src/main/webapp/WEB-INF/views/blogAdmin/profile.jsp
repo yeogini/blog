@@ -41,7 +41,7 @@
             <div class="form-group" id="divPassword">
                 <label for="inputPassword" class="col-lg-2 control-label">프로필 사진</label>
                 <div class="col-lg-10">
-                    <input type="file"  id="blog_img" name="blog_img_file" maxlength="30">
+                    <input type="file"  id="blog_img" name="blog_img_file">
                 		<img>
                 </div>
             </div>

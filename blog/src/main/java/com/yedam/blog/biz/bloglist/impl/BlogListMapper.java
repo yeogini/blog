@@ -9,4 +9,6 @@ public interface BlogListMapper {
 	public List<BlogListVO> getBlogList(BlogListVO vo);
 	 
 	public List<BlogListVO> getBlogSearchList(BlogSearchListVO vo);
+	
+	public int getTotalBlogSearch(BlogSearchListVO vo);
 }
