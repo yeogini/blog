@@ -31,7 +31,7 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<context:property-placeholder location="classpath:/database.properties"/>
 	
-	<beans:bean id="dataSource"
+	<beans:bean id="dataSourceSpied"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName" value="${jdbc.driver}" />
 		<beans:property name="url"
@@ -39,6 +39,24 @@
 		<beans:property name="username" value="${jdbc.username}" />
 		<beans:property name="password" value="${jdbc.password}" />
 	</beans:bean>
+
+
+
+	<!-- 로그기록 추가사항 -->
+
+	<beans:bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<beans:constructor-arg ref="dataSourceSpied" />
+		<beans:property name="logFormatter">
+			<beans:bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<beans:property name="loggingType" value="MULTI_LINE" />
+				<beans:property name="sqlPrefix" value="SQL:::" />
+			</beans:bean>
+		</beans:property>
+	</beans:bean>
+
+	<!-- 로그기록 추가사항 -->
+
+
 
 	<!-- <beans:bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>

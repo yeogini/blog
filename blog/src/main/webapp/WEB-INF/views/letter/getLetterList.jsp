@@ -78,7 +78,7 @@
 				</c:forEach>
 			</select>
 
-			<!-- 로그인 전 -->
+		<%-- 	<!-- 로그인 전 -->
 			<c:if test="${empty sessionScope.login}">
 				<a href="getUsersList.do">로그인</a>
 			</c:if>
@@ -86,7 +86,8 @@
 			<!-- 로그인 후 -->
 			<c:if test="${not empty sessionScope.login}">
 				${sessionScope.login} 님 <a href="logout.do">로그아웃</a>
-			</c:if>
+			</c:if> --%>
+			
 	</table>
 
 
