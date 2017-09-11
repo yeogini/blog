@@ -181,6 +181,6 @@
 		</div>
 		</form>
 
-		<a href="letterInsert.do">등록</a>
+		<a href="letterInsert.do" class="btn btn-primary">등록</a>
 </body>
 </html>

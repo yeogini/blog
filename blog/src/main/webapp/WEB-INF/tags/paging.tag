@@ -1,7 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ attribute name="paging" type="com.yedam.util.Paging" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<input type="hidden" value="${paging.page}">
 <c:if test="${paging.page!=1}">
 <a href="/blog/blog.do?page=${paging.page-1}">이전</a>
 </c:if>

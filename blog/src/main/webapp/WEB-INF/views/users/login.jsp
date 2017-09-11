@@ -35,7 +35,7 @@ function insertUser(){
 		<div class="col-sm-6 col-md-4 col-md-offset-4">
             <div class="account-wall">
 
-					<img class="profile-img" src="./resources/images/Tulips.jpg" alt="">
+					<img class="profile-img" src="./resources/images/logo.jpg" alt="">
 					<form class="form-signin" action="login.do" method="post"
 						name="frm">
 						<input type="text" class="form-control" placeholder="Username"

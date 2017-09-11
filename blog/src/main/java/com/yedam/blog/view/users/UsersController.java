@@ -71,7 +71,7 @@ public class UsersController {
 			} else {
 				if(result.getUserPass().equals(vo.getUserPass())) {
 					session.setAttribute("login",result.getUserid());
-					return "/board/list";
+					return "/blogAdmin/admin";
 				} else {
 					return "/users/login";
 				}
@@ -89,9 +89,4 @@ public class UsersController {
 		return "/users/login";
 	}
 	
-	//프로필 관리
-	@RequestMapping("adminProfile.do")
-	public String adminProfile(){
-		return "/blogAdmin/profile"; 
-	}
 }
