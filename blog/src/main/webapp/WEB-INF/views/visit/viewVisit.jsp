@@ -11,12 +11,58 @@ function addVit(){
 	vit.action = "<%=request.getContextPath()%>/insertVisit.do";
 	vit.submit();
 }
+function Delvit(viNo){
+	vit.action = "<%=request.getContextPath()%>/deleteVisit.do?viNo="+viNo;
+	vit.submit();
+}
+function viewUpdate(visitNo){ 
+	var commentDiv = document.getElementById("v"+visitNo);
+	var vsub = commentDiv.innerHTML;
+	commentDiv.innerHTML = '';
+	var updateFormDiv = document.getElementById("commentUpdate");
+	
+	commentDiv.appendChild(updateFormDiv);
+	updateFormDiv.style.display = '';
+
+	document.updateForm.vSub.value = vsub;
+	document.updateForm.viNo.value = visitNo;
+}
+function Updatevit(vino){
+	updateForm.action = "<%=request.getContextPath()%>/updateVisit.do"
+	updateForm.submit();
+}
+function cancelUpdate() {
+	hideUpdateForm();
+}
+
+function hideUpdateForm() {
+	var updateFormDiv = document.getElementById("commentUpdate");
+	updateFormDiv.style.display = 'none';
+	var no = updateFormDiv.viNo.value;
+	var sub = updateFormDiv.vSub.value;
+	updateFormDiv.parentNode.removeChild(updateFormDiv);
+	document.documentElement.appendChild(updateFormDiv);
+	document.getElementById("v"+no).innerHTML = sub;
+}
+
 </script>
 </head>
 <body>
+<!-- 방명록 수정폼시작 -->
+<!--  -->
+<div id="commentUpdate"  style="display:none" >
+	<form action="" name="updateForm" >
+	<input type="hidden" name="viNo" value=""/>
+	<input type="text" name="vSub"/>3
+	<input type="button" value="수정" onclick="Updatevit()"/>
+	<input type="button" value="취소" onclick="cancelUpdate()"/>
+	</form>
+</div>
+<!-- 방명록수정폼끝 -->
+
 <form name="vit" action="<%=request.getContextPath()%>/getVisitList.do" method="post">
 
-<input type="text" name="vSub"/>
+<input type="text" name="vSub" value="50자이내로 작성을하시오."/>
 <input type="button" value="등록" onclick="addVit()"/><br/><br/>
 <h3> 방명록 목록 </h3>
 <table>
@@ -25,7 +71,9 @@ function addVit(){
 	</tr>
 	<c:forEach var="map" items="${VisitList}">
 	<tr>
-		<td>${map.nickname}(${map.vid})</td><td>${map.vsub}</td><td>${map.vdate }</td>
+		<td>${map.nickname}(${map.vid})</td><td id="v${map.vino}">${map.vsub}</td><td>${map.vdate }</td>
+		<td><input type="button" value="수정" onclick="viewUpdate('${map.vino}')"></td>
+		<td><c:if test="${login == map.vid}"><input type="button" value="삭제" onclick="Delvit('${map.vino}')"></c:if></td>
 	</tr>
 	</c:forEach>
 </table>

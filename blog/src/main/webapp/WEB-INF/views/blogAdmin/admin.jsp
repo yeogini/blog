@@ -5,7 +5,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<<<<<<< HEAD
+
     <title>Free Bootstrap Admin Template : Binary Admin</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
@@ -114,7 +114,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                   <li  >
                         <a  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
                     </li>	
-=======
+
     <title>블로그 관리</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
@@ -197,7 +197,6 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                         <a  href="table.html"><i class="fa fa-table fa-3x"></i> 블랙 리스트</a>
                     </li>
                    
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
                 </ul>
                
             </div>

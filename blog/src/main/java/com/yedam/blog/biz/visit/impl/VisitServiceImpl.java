@@ -29,20 +29,20 @@ public class VisitServiceImpl implements VisitService{
 
 	@Override
 	public void updateVisit(VisitVO vo) {
-		// TODO Auto-generated method stub
 		
+		visitDAO.updateVisit(vo);
 	}
 
 	@Override
 	public void deleteVisit(VisitVO vo) {
-		// TODO Auto-generated method stub
-		
+
+		visitDAO.deleteVisit(vo);
 	}
 
 	@Override
 	public void deleteVisitList(VisitVO vo) {
-		// TODO Auto-generated method stub
-		
+
+		visitDAO.deleteAllVisit(vo);
 	}
 
 }

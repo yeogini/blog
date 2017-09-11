@@ -36,7 +36,6 @@
 		SELECT *
 			FROM USERS 
 		WHERE userID = #{userid}
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 	</select>
 
 </mapper>
