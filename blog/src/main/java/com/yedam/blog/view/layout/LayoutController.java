@@ -56,6 +56,14 @@ public class LayoutController {
 				return "redirect:/getBlogLayout.do";
 	
 		}
+	
+	//메인 뷰 불러오기
+	@RequestMapping("getMainView.do")
+	public String getMainView(Model model, LayoutVO layoutvo, HttpSession session){
+		layoutvo.setUserid((String)session.getAttribute("login"));
+		model.addAttribute("layout",layoutService.getLayout(layoutvo));
+		return "/layoutview/layoutmain";
+	}
 
 	
 }

@@ -71,11 +71,11 @@
 
 
 <script>
+
 	$(function() {
 		/*  var p = $( "p" );
 		 var position = p.position();
  	  */
-
 		$("#profile").draggable({
 			scroll : true
 		});
@@ -146,7 +146,9 @@
 			});
 			$("#blog_form").submit();
 		})
+		
 	});
+	
 </script>
 
 
@@ -168,6 +170,7 @@
 
 	<div id="profile" class="layoutdiv ui-widget-content">
 		<p>프로필</p>
+	
 	</div>
 
 	<div id="visitors" class="layoutdiv ui-widget-content">

@@ -122,6 +122,7 @@
 padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;"> 
+		<a href="getMainView.do" class="btn btn-info square-btn-adjust">내 블로그</a>
 		<a href="blog.do" class="btn btn-info square-btn-adjust">블로그 목록가기</a>
 		<a href="logout.do" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
