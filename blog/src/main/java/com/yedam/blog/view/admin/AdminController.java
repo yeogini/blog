@@ -16,13 +16,15 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.yedam.blog.biz.admin.ProfileService;
 import com.yedam.blog.biz.admin.ProfileVO;
+import com.yedam.blog.biz.friend.FriendService;
 
 
 @Controller
 public class AdminController {
 	@Autowired
 	ProfileService profileservice;
-
+	@Autowired
+	FriendService friendService;
 	//프로필 관리폼
 	@RequestMapping("adminProfile.do")
 	public String adminProfile(HttpSession session,ProfileVO vo,Model model){
@@ -61,4 +63,23 @@ public class AdminController {
 	public String adminView(){
 		return "/blogAdmin/admin";
 	}
+	
+	//친구관리
+	@RequestMapping("adminFriend.do")
+	public String adminFriend(){
+		return "/blogAdmin/friendad";
+	}
+	
+	//친구 요청
+	
+	
+	//친구 수락
+	
+	
+	//친구 거절 ,삭제
+	@RequestMapping("deleteFriend.do")
+	public String deleteFriend(){
+		return "";
+	}
+	
 }

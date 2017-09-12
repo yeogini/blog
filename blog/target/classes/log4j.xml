@@ -31,7 +31,30 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+	
+	
+	
+	<!-- 로그기록 추가사항 -->
 
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="jdbc.sqlonly" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="console" />
+	</logger>
+	<!-- <logger name="jdbc.resultset" additivity="false"> <level value="DEBUG"/> 
+		<appender-ref ref="console"/> </logger> -->
+	<logger name="jdbc.resultsettable" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="console" />
+	</logger>
+
+	<!-- 로그기록 추가사항 -->
+	
+	
+	
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>╨М╥н╠в╟Э╦╝</title>
+    <title>К╦■К║°Й╥╦Й╢─К╕╛</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -35,7 +35,7 @@
    		var xmlhttp = new XMLHttpRequest();
    		var x = document.getElementById("test");
    		x.click(function () {
-			console.log("╓╠╓╠╓╠╓╠");
+			console.log("Ц┘│Ц┘│Ц┘│Ц┘│");
 		});
    		
    		$("#profile").click(function(event){
@@ -84,16 +84,16 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                         <a  href="#" id="category"><i class="fa fa-desktop fa-3x"></i> category</a>
                     </li>
                     <li>
-                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> ╥╧юл╬ф©Т</a>
+                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> К═┬Л²╢Л∙└Л⌡┐</a>
                     </li>
 						   <li  >
-                        <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> дё╠╦╟Э╦╝</a>
+                        <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Л╧°Й╣╛Й╢─К╕╛</a>
                     </li>	
                       <li  >
-                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> ╨М╥╒╦╝╫╨ф╝</a>
+                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> К╦■К·≥К╕╛Л┼╓М┼╦</a>
                     </li>
                     <li>
-                    	<button id="test">ев╫╨ф╝</button>
+                    	<button id="test">М┘▄Л┼╓М┼╦</button>
                     </li>
                 </ul>
                
@@ -195,7 +195,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
               <div class="row">
                 <div class="col-xs-6"> <i class="fa fa-cloud fa-3x"></i> Newyork City </div>
                 <div class="col-xs-6">
-                  <div class="text-temp"> 10║ф </div>
+                  <div class="text-temp"> 10б╟ </div>
                 </div>
               </div>
             </div>

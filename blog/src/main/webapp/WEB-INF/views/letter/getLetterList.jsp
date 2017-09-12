@@ -1,114 +1,233 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="assets/images/logo.png"
+	type="image/x-icon">
+<meta name="description"
+	content="Responsive Bootstrap HTML Mobile Application Template - Free Download">
+
+<title>ê¸€ ëª©ë¡</title>
+
+
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+<link rel="stylesheet"
+	href="resources/assets/bootstrap-material-design-font/css/material.css">
+<link rel="stylesheet"
+	href="resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
+<link rel="stylesheet"
+	href="resources/assets/et-line-font-plugin/style.css">
+<link rel="stylesheet" href="resources/assets/tether/tether.min.css">
+<link rel="stylesheet"
+	href="resources/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/assets/dropdown/css/style.css">
+<link rel="stylesheet"
+	href="resources/assets/animate.css/animate.min.css">
+<link rel="stylesheet" href="resources/assets/theme/css/style.css">
+<link rel="stylesheet"
+	href="resources/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+
+<!-- BOOTSTRAP STYLES-->
+<link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
+
+<!-- FONTAWESOME STYLES-->
+<link href="resources/assets/css/font-awesome.css" rel="stylesheet" />
+
+<!-- MORRIS CHART STYLES-->
+<link href="resources/assets/js/morris/morris-0.4.3.min.css"
+	rel="stylesheet" />
+
+<!-- CUSTOM STYLES-->
+<link href="resources/assets/css/custom.css" rel="stylesheet" />
+
+<!-- GOOGLE FONTS-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css' />
+<script src="resources/assets/js/jquery-3.2.1.js"></script>
+
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="resources/assets/js/bootstrap.min.js"></script>
+
+<!-- METISMENU SCRIPTS -->
+<script src="resources/assets/js/jquery.metisMenu.js"></script>
+
+<!-- MORRIS CHART SCRIPTS -->
+<script src="resources/assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="resources/assets/js/morris/morris.js"></script>
+
+<!-- CUSTOM SCRIPTS -->
+<script src="resources/assets/js/custom.js"></script>
+
+<!-- TABLE STYLES-->
+<link href="assets/js/dataTables/dataTables.bootstrap.css"
+	rel="stylesheet" />
+
+
+
+<div id="menu-0" custom-code="true"></div>
+
+
+
+
+
+
+
 <script>
 
-function setOrderColumn(orderColumn) {
-	frm.orderColumn.value =  orderColumn;
-	frm.submit();
-}
+	function setOrderColumn(orderColumn) {
+		frm.orderColumn.value = orderColumn;
+		frm.submit();
+	}
 
-function selDel(){
-	frm.action = "<%=request.getContextPath()%>/deleteLetterList.do";
-	frm.submit();
-	
-}
+	function selDel() {
+		frm.action = "<%=request.getContextPath()%>/deleteLetterList.do";
+		frm.submit();
 
+	}
 </script>
 </head>
 <body>
 
-<%-- <!-- ·Î±×ÀÎ Àü -->
-<c:if test="${empty sessionScope.login}">
-	<a href="login.do">·Î±×ÀÎ</a>
-</c:if>
 
-<!-- ·Î±×ÀÎ ÈÄ -->
-<c:if test="${not empty sessionScope.login}">
-	${sessionScope.login} ´Ô <a href="logout.do">·Î±×¾Æ¿ô</a>
-</c:if> --%>
-<hr>
-	<table align="center" >
-		°Ô½ÃÆÇ ¸ñ·Ï
-		<form name="frm" action="<%=request.getContextPath()%>/getLetterList.do" method="post">
-		<hr>
-		<select>
-			<c:forEach items="${conditionMap}" var="map">
-				<option value="${map.key}"> ${map.value} </option>
-			</c:forEach>
-		</select>
+
+
+
+	<table align="center">
+
+		<div class="form-group">
+			<label class="nav-link link mbr-editable-menu-item">ì¹´í…Œê³ ë¦¬ ì„¤ì •</label>
+		</div>
+
+		<form name="frm"
+			action="<%=request.getContextPath()%>/getLetterList.do" method="post">
+
+			<select>
+				<c:forEach items="${conditionMap}" var="map">
+					<option value="${map.key}">${map.value}</option>
+				</c:forEach>
+			</select>
+
+			<%-- 	<!-- ë¡œê·¸ì¸ ì „ -->
+			<c:if test="${empty sessionScope.login}">
+				<a href="getUsersList.do">ë¡œê·¸ì¸</a>
+			</c:if>
+
+			<!-- ë¡œê·¸ì¸ í›„ -->
+			<c:if test="${not empty sessionScope.login}">
+				${sessionScope.login} ë‹˜ <a href="logout.do">ë¡œê·¸ì•„ì›ƒ</a>
+			</c:if> --%>
 	</table>
-<!-- 			
+
+
+	<!-- 			
 	<table>
 	 	<tr>
 			<td>
 				<select name="searchCondition">
-					<option value="TITLE"> Á¦¸ñ </option>
-					<option value="CONTENT"> ³»¿ë </option>
+					<option value="TITLE"> ì œëª© </option>
+					<option value="CONTENT"> ë‚´ìš© </option>
 				</select>
 				<input type="text" name="searchKeyword"/>
-				<input type="submit" name="°Ë»ö"/>
+				<input type="submit" name="ê²€ìƒ‰"/>
 			</td>
 		</tr> 
 	</table>
--->
 
-	<!-- <input type="button" value="»èÁ¦" onclick="selDel()"> -->
-	
-	
-			
-<!--			
+
+	<!-- <input type="button" value="ì‚­ì œ" onclick="selDel()"> -->
+
+
+
+	<!--			
 		<table>
  		<tr>
-			<th>¼±ÅÃ</th>
-			<th>¹øÈ£ <input type="button" value="¡ã" onclick="setOrderColumn('letterNo')"></th>
-			<th>Á¦¸ñ <input type="button" value="¡ã" onclick="setOrderColumn('letterTitle')"></th>
-			<th>ÀÛ¼ºÀÚ</th>
-			<th>ÀÛ¼ºÀÏÀÚ</th>
-			<th>Á¶È¸¼ö</th>
-			<th>Ã·ºÎÆÄÀÏ</th>
+			<th>ì„ íƒ</th>
+			<th>ë²ˆí˜¸ <input type="button" value="â–²" onclick="setOrderColumn('letterNo')"></th>
+			<th>ì œëª© <input type="button" value="â–²" onclick="setOrderColumn('letterTitle')"></th>
+			<th>ì‘ì„±ì</th>
+			<th>ì‘ì„±ì¼ì</th>
+			<th>ì¡°íšŒìˆ˜</th>
+			<th>ì²¨ë¶€íŒŒì¼</th>
 		</tr>
  -->
- 
- 
- 
- 			<table border="0" width="500" height=" 100" align="center">
 
-				<tr> <td colspan="4"> ±Û ¸ñ·Ï </td> </tr>
- 
-					<tr> 
-						  <th bgcolor="#EAEAEA"> NO  	</th> 
-						  <th bgcolor="#EAEAEA"> Á¦¸ñ	</th>
-						  <th bgcolor="#EAEAEA"> ¾ÆÀÌµğ 	</th>
-						  <th bgcolor="#EAEAEA"> ÀÛ¼ºÀÏ 	</th>
-						  <th bgcolor="#EAEAEA"> Á¶È¸¼ö 	</th>
-					</tr>
+	<!-- í…Œì´ë¸” CSS -->
+
+	<hr />
+
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Advanced Tables -->
+			<div class="panel panel-default">
+				<div class="panel-heading" align="center">
+					<h2>
+						ê¸€ ëª©ë¡
+						<h2>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+
+						<!-- í…Œì´ë¸” CSS -->
+
+						<table border="0" width="500" height=" 100" align="center"
+							class="table table-striped table-bordered table-hover"
+							id="dataTables-example">
+
+							<!-- <tr>
+								<td colspan="4">ê¸€ ëª©ë¡</td>
+							</tr> -->
+
+							<tr>
+								<th>NO</th>
+								<th>ì œëª©</th>
+								<th>ì•„ì´ë””</th>
+								<th>ì‘ì„±ì¼</th>
+								<th>ì¡°íšŒìˆ˜</th>
+							</tr>
 
 
 
-				<c:forEach var="letter" items="${LetterList}">
-					<tr>
-					    <td>${letter.rnum}																	</td>
-						<%-- <td>${letter.letterNo}																</td> --%>
-						<td><a href="getLetter.do?letterNo=${letter.letterNo}">${letter.letterTitle}</a>	</td>
-						<td>${letter.userId}																</td>
-						<td>${letter.letterDate}															</td>
-						<td>${letter.hits}																	</td>
-						
-					</tr>
-				</c:forEach>
-				
-			</table>
-			
-	</form>
-	<a href="letterInsert.do">µî·Ï</a>
-	
-	
-	
+							<c:forEach var="letter" items="${LetterList}">
+								<tr>
+									<td>${letter.rnum}</td>
+									<%-- <td>${letter.letterNo}																</td> --%>
+									<td><a href="getLetter.do?letterNo=${letter.letterNo}">${letter.letterTitle}</a>
+									</td>
+									<td>${letter.userId}</td>
+									<td>${letter.letterDate}</td>
+									<td>${letter.hits}</td>
+
+								</tr>
+							</c:forEach>
+
+						</table>
+						<!-- í…Œì´ë¸” CSS -->
+					</div>
+				</div>
+			</div>
+			<!-- í…Œì´ë¸” CSS -->
+		</div>
+		</form>
+
+		<div class="mbr-section-btn" align="center">
+			<a href="letterInsert.do" class="btn btn-white">ê¸€ ë“±ë¡</a>
+		</div>
 </body>
 </html>
