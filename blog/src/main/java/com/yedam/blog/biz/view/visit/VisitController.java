@@ -41,8 +41,11 @@ public class VisitController {
 	public String getVisitList(Model model, VisitDaySearchVO vo){
 		List<Map<String, Object>> list = visitService.getVisitList(vo);
 		Calendar ca = Calendar.getInstance();
-		model.addAttribute("Mon",ca.get(Calendar.MONTH)+1);
-		model.addAttribute("Day",ca.getActualMaximum(Calendar.DAY_OF_MONTH));
+		model.addAttribute("year",ca.get(Calendar.YEAR));
+		int mon = ca.get(Calendar.MONTH)+1;
+		if(mon <= 10)
+		model.addAttribute("mon");
+		model.addAttribute("day",ca.getActualMaximum(Calendar.DAY_OF_MONTH));
 		model.addAttribute("VisitList",list);
 		System.out.println(list);
 		return "/visit/viewVisit";

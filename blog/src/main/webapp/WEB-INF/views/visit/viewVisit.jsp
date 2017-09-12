@@ -65,8 +65,8 @@ function change(){
 
 <form name="vit" action="<%=request.getContextPath()%>/getVisitList.do" method="post">
 
-<a href="<%=request.getContextPath()%>/getVisitList.do">${Mon}월</a> <br/>
-<c:forEach var="cal" begin="1" end="${Day}"><a href="<%=request.getContextPath()%>/getVisitList.do?day=${cal}" >${cal}일 </a></c:forEach> <br/>
+<a href="<%=request.getContextPath()%>/getVisitList.do">${mon}월</a> <br/>
+<c:forEach var="cal" begin="1" end="${day}"><a href="<%=request.getContextPath()%>/getVisitList.do?year=${year}&mon=${mon}&day=${cal}" >${cal}일 </a></c:forEach> <br/>
 
 <input type="text" name="vSub" value="50자이내로 작성을하시오."/>
 <input type="button" value="등록" onclick="addVit()"/><br/>
