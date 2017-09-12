@@ -10,10 +10,11 @@ import com.yedam.blog.biz.admin.ProfileVO;
 public class ProfileServiceImpl implements ProfileService{
 	@Autowired
 	ProfileMapper profileDAO;
+	
 	@Override
-	public void insertProfile(ProfileVO vo) {
+	public void updateProfile(ProfileVO vo) {
 		// TODO Auto-generated method stub
-		profileDAO.insertProfile(vo);
+		profileDAO.updateProfile(vo);
 	}
 
 	@Override

@@ -34,5 +34,6 @@
 			FROM USERS 
 		WHERE userID = #{userid}
 	</select>
+	
 
 </mapper>

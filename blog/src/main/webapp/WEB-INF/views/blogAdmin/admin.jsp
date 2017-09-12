@@ -15,6 +15,7 @@
     <link href="resources/assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   
     <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
    <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
      <!-- JQUERY SCRIPTS -->
@@ -27,25 +28,33 @@
    $(function() {
 	  var xmlhttp = new XMLHttpRequest();
 
-	 /*  $("#main-menu").on('click','a',function(event){
+	   $("#main-menu").on('click','a',function(event){
 		  event.preventDefault();
 		  var menu =  $(this).attr("id");
-		  var a;
+		  var url;
 		  if(menu == "profile") {
 			  console.log("a");
-			  a = "/blog/adminProfile.do";
+			  url = "/blog/adminProfile.do";
+		  } else if(menu == "category") {
+			  url ="/blog/test.do";
+		  } else if (menu =="layout") {
+			  url ="/blog/test.do";
+		  } else if(menu == "friend") {
+			  url ="/blog/test.do";
+		  } else if(menu == "blacklist") {
+			  url ="/blog/test.do";
 		  }
-		  /* xmlhttp.onreadystatechange = xmlOnready();
+		  xmlhttp.onreadystatechange = xmlOnready;
 		  xmlhttp.open("GET",url,true);
-		  xmlhttp.send(); 
-		 $.get(a,xmlOnready());
-	  }); */
-	   $("#profile").click(function(envet) {
+		  xmlhttp.send();
+		 //$.get("/blog/adminProfile.do",xmlOnready());
+	  });  
+	/*   $("#profile").click(function(envet) {
 		   event.preventDefault();
 		   xmlhttp.onreadystatechange = xmlOnready();
 			  xmlhttp.open("GET","/blog/adminProfile.do",true);
 			  xmlhttp.send();
-	   });
+	   });  */
 	   function xmlOnready(){
 		   if(xmlhttp.readyState==4) {
 			   console.log("bbb");
@@ -70,32 +79,34 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">블로그 관리</a> 
-            </div>
+                <a class="navbar-brand" href="#">블로그 관리</a> 
+            </div> 
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;"> <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+font-size: 16px;"> 
+		<a href="blog.do" class="btn btn-info square-btn-adjust">블로그 목록가기</a>
+		<a href="logout.do" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="resources/assets/img/find_user.png" class="user-image img-responsive"/>
+                    <img src="./resources/images/adminlogo.jpg" class="user-image img-responsive"/>
 					</li>
 					<li>환영합니다</li>
                     <li>
                         <a href="index.html" id="profile"><i class="fa fa-user fa-3x"></i> 프로필</a>
                     </li>
                      <li>
-                        <a  href="ui.html" id="category"><i class="fa fa-list fa-3x"></i> 카테고리</a>
+                        <a  href="ui.html" id="category"><i class="fa fa-bars fa-3x"></i> 카테고리</a>
                     </li>
                     <li>
-                        <a  href="tab-panel.html" id="layout"><i class="fa fa-qrcode fa-3x"></i> 레이아웃</a>
+                        <a  href="tab-panel.html" id="layout"><i class="fa fa-th fa-3x"></i> 레이아웃</a>
                     </li> 
 						   <li>
-                        <a   href="chart.html" id="friend"><i class="fa fa-plus fa-3x"></i> 친구 관리</a>
+                        <a   href="chart.html" id="friend"><i class="fa fa-users fa-3x"></i> 친구 관리</a>
                     </li>	
                       <li> 
                         <a  href="table.html" id="blacklist"><i class="fa fa-list fa-3x"></i> 블랙 리스트</a>

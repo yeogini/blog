@@ -21,7 +21,9 @@
 <style>
 </style>
 <script>
-
+function blogsearch() {
+	
+};
 </script>
 </head>
 <body>
@@ -30,13 +32,13 @@
 <c:if test="${empty sessionScope.login }">
 				<p/>
 				<p align="right">
-					<strong><a href="/blog" class="topLink">로그인</a></strong>
+					<strong><a href="/blog">로그인</a></strong>
 				</p>
 </c:if>
 <c:if test="${not empty sessionScope.login}">
 <p/>
-				<p align="right">
-					<strong>${sessionScope.login} 님 <a href="logout.do" class="topLink">로그아웃</a></strong>
+				<p align="right"> 
+					<strong>${sessionScope.login} 님 <a href="logout.do" >로그아웃</a></strong><a href="adminView.do">내 블로그</a>
 				</p>
 </c:if>
 </div>
@@ -46,7 +48,7 @@
     <div class="row">
          <div class="col-md-6 col-md-offset-3">
         <!-- Search Form -->
-        <form role="form">
+        <form role="form" name="frm">
         <!-- Search Field -->
             <div class="row">
                 <h1 class="text-center">블로그 검색</h1>
@@ -54,7 +56,7 @@
                     <div class="input-group">
                         <input class="form-control" type="text" name="search" placeholder="Search" required/>
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+                            <button class="btn btn-success" type="button" onclick="blogsearch()"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
                         </span>
                         </span>
                     </div>
@@ -71,8 +73,8 @@
 			<div class="list-group">
 	            <div class="list-group-item clearfix">
 	                <div class="profile-teaser-left">
-	                    <div class="profile-img">
-	                    <c:if test="${not empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if>
+	                    <div class="profile-img">	                    
+	                    <c:if test="${not empty list.blog_img}"><img src="resources/upload/${list.userid}.jpg"/></c:if>
 	                    <c:if test="${empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if></div>
 	                </div>
 	                <div class="profile-teaser-main">

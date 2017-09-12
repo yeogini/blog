@@ -27,4 +27,10 @@ public class BlogListServiceImpl implements BlogListService{
 		return blogListDAO.getBlogSearchList(vo);
 	}
 
+	@Override
+	public int getTotalBlogSearch(BlogSearchListVO vo) {
+		// TODO Auto-generated method stub
+		return blogListDAO.getTotalBlogSearch(vo);
+	}
+
 }
