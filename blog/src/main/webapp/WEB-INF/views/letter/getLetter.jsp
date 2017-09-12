@@ -1,26 +1,75 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+
+
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- BOOTSTRAP STYLES-->
+<link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
+
+<!-- FONTAWESOME STYLES-->
+<link href="resources/assets/css/font-awesome.css" rel="stylesheet" />
+
+<!-- MORRIS CHART STYLES-->
+<link href="resources/assets/js/morris/morris-0.4.3.min.css"
+	rel="stylesheet" />
+
+<!-- CUSTOM STYLES-->
+<link href="resources/assets/css/custom.css" rel="stylesheet" />
+
+<!-- GOOGLE FONTS-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css' />
+<script src="resources/assets/js/jquery-3.2.1.js"></script>
+
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="resources/assets/js/bootstrap.min.js"></script>
+
+<!-- METISMENU SCRIPTS -->
+<script src="resources/assets/js/jquery.metisMenu.js"></script>
+
+<!-- MORRIS CHART SCRIPTS -->
+<script src="resources/assets/js/morris/raphael-2.1.0.min.js"></script>
+<script src="resources/assets/js/morris/morris.js"></script>
+
+<!-- CUSTOM SCRIPTS -->
+<script src="resources/assets/js/custom.js"></script>
+
+<!-- TABLE STYLES-->
+<link href="assets/js/dataTables/dataTables.bootstrap.css"
+	rel="stylesheet" />
+
+
+
+<title>ìƒì„¸ë³´ê¸°</title>
 </head>
 <body>
 
-»ó¼¼º¸±â
-<hr>
-±Û ¹øÈ£ ${letter.letterNo} <br/>
-Ä«Å×°í¸® ${letter.categoryNo} <br/>
-Á¦¸ñ ${letter.letterTitle} <br/>
-³»¿ë ${letter.letterSub} <br/>
 
-<a href="letterUpdate.do?letterNo=${letter.letterNo}">¼öÁ¤</a>
+
+
+ìƒì„¸ë³´ê¸°
+<hr>
+ê¸€ ë²ˆí˜¸ ${letter.letterNo} <br/>
+ì¹´í…Œê³ ë¦¬ ${letter.categoryNo} <br/>
+ì œëª© ${letter.letterTitle} <br/>
+ë‚´ìš© ${letter.letterSub} <br/>
+
+
+
+
+<a href="letterUpdate.do?letterNo=${letter.letterNo}">ìˆ˜ì •</a>
 
 <form name="frm" action="deleteLetter.do">
 	<input type="hidden" name="letterNo" value="${letter.letterNo}"/>
-	<input type="submit" value="»èÁ¦">
+	<input type="submit" value="ì‚­ì œ">
 </form>
 
 </body>
