@@ -7,19 +7,20 @@
 	<!-- 목록 조회 -->
     <select id="getVisitList" resultType="map">
         <![CDATA[
-        SELECT  NICKNAME AS "nickname",
+        SELECT  VI_NO AS "vino",
+        		NICKNAME AS "nickname",
                 V_ID AS "vid",
                 V_SUB AS "vsub",
                 TO_CHAR(V_DATE,'hh24:mi') AS "vdate"
         FROM USERS, BLOG_VISITORS
         WHERE USERS.USERID = BLOG_VISITORS.V_ID
         AND BLOG_VISITORS.USERID = 'a'
+        AND to_char(V_DATE,'yyyy/mm/dd') LIKE #{year} || '/' || #{mon} || '/' || #{day}
         ]]>
     </select>
     
     <!-- 등록 -->
     <insert id="insertVisit" parameterType="visit">
-    	<!-- 1.viNO자동 증가  2.작성자 "test,test22" 3.id = a 4. vdate sysdate 시간분으로 자동 설정 -->
     	<selectKey keyProperty="viNo" resultType="string" order="BEFORE">
     		SELECT NVL(MAX(VI_NO),0) + 1 FROM BLOG_VISITORS
     	</selectKey>
@@ -29,18 +30,29 @@
     	]]>
     </insert>
     
-<!--     수정
+     <!-- 수정 -->
     <update id="updateVisit">
     	<![CDATA[
     		UPDATE BLOG_VISITORS SET
-    		
+    			V_SUB = #{vSub}
+    		WHERE VI_NO = #{viNo}
     	]]>
     </update>
     
-    삭제
+   <!-- 삭제 -->
     <delete id="deleteVisit">
     	<![CDATA[
-    	
+    		DELETE BLOG_VISITORS
+    		WHERE VI_NO = #{viNo}
     	]]>
-    </delete>  -->
+    </delete>
+    
+    <!-- 전체삭제 -->
+    <delete id="deleteAllVisit">
+     	<![CDATA[
+    		DELETE BLOG_VISITORS
+    		WHERE USERID = #{id} 
+    		OR V_ID = #{viId} 
+    	]]>   	
+    </delete>
 </mapper>
