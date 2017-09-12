@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yedam.blog.biz.visit.VisitDaySearchVO;
 import com.yedam.blog.biz.visit.VisitService;
 import com.yedam.blog.biz.visit.VisitVO;
 
@@ -43,6 +44,12 @@ public class VisitServiceImpl implements VisitService{
 	public void deleteVisitList(VisitVO vo) {
 
 		visitDAO.deleteAllVisit(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> getVisitList(VisitDaySearchVO vo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

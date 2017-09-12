@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.yedam.blog.biz.visit.VisitDaySearchVO;
 import com.yedam.blog.biz.visit.VisitService;
 import com.yedam.blog.biz.visit.VisitVO;
 
@@ -37,8 +38,8 @@ public class VisitController {
 	
 	//방명록 목록 조회
 	@RequestMapping("/getVisitList.do")
-	public String getVisitList(Model model){
-		List<Map<String, Object>> list = visitService.getVisitList(null);
+	public String getVisitList(Model model, VisitDaySearchVO vo){
+		List<Map<String, Object>> list = visitService.getVisitList(vo);
 		Calendar ca = Calendar.getInstance();
 		model.addAttribute("Mon",ca.get(Calendar.MONTH)+1);
 		model.addAttribute("Day",ca.getActualMaximum(Calendar.DAY_OF_MONTH));

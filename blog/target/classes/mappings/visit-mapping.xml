@@ -15,6 +15,7 @@
         FROM USERS, BLOG_VISITORS
         WHERE USERS.USERID = BLOG_VISITORS.V_ID
         AND BLOG_VISITORS.USERID = 'a'
+        AND V_DATE LIKE = #{year} || '/' || #{mon} || '/' || #{day}
         ]]>
     </select>
     

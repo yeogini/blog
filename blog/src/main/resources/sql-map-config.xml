@@ -13,7 +13,8 @@
     <!-- Alias 설정 -->
     <typeAliases>
         <typeAlias alias="users" type="com.yedam.blog.biz.users.UsersVO"/>
-        <typeAlias alias="visit" type="com.yedam.blog.biz.visit.VisitVO"/>  
+        <typeAlias alias="visit" type="com.yedam.blog.biz.visit.VisitVO"/>
+        <typeAlias alias="search" type="com.yedam.blog.biz.visit.VisitDaySearchVO"/>  
 	</typeAliases>
     	    
   

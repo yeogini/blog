@@ -78,7 +78,7 @@ function change(){
 	</tr>
 	<c:forEach var="map" items="${VisitList}">
 	<tr>
-		<td>${map.nickname}(${map.vid})</td><td id="v${map.vino}">${map.vsub}</td><td>${map.vdate }</td>
+		<td>${map.nickname}(${map.vid})</td><td id="v${map.vino}">${map.vsub}</td><td>${map.vdate}</td>
 		<c:if test="${login == map.vid}"><td><input type="button" value="수정" onclick="viewUpdate('${map.vino}')"></td>
 		<td><input type="button" value="삭제" onclick="Delvit('${map.vino}')"></td></c:if>
 	</tr>
