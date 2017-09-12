@@ -4,10 +4,44 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8" />
+
+
+
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="assets/images/logo.png"
+	type="image/x-icon">
+<meta name="description"
+	content="Responsive Bootstrap HTML Mobile Application Template - Free Download">
 
 <title>글 목록</title>
+
+
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+<link rel="stylesheet"
+	href="resources/assets/bootstrap-material-design-font/css/material.css">
+<link rel="stylesheet"
+	href="resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
+<link rel="stylesheet"
+	href="resources/assets/et-line-font-plugin/style.css">
+<link rel="stylesheet" href="resources/assets/tether/tether.min.css">
+<link rel="stylesheet"
+	href="resources/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/assets/dropdown/css/style.css">
+<link rel="stylesheet"
+	href="resources/assets/animate.css/animate.min.css">
+<link rel="stylesheet" href="resources/assets/theme/css/style.css">
+<link rel="stylesheet"
+	href="resources/assets/mobirise/css/mbr-additional.css" type="text/css">
+
 
 
 <!-- BOOTSTRAP STYLES-->
@@ -46,6 +80,15 @@
 	rel="stylesheet" />
 
 
+
+<div id="menu-0" custom-code="true"></div>
+
+
+
+
+
+
+
 <script>
 
 	function setOrderColumn(orderColumn) {
@@ -68,7 +111,10 @@
 
 	<table align="center">
 
-		카테고리 설정
+		<div class="form-group">
+			<label class="nav-link link mbr-editable-menu-item">카테고리 설정</label>
+		</div>
+
 		<form name="frm"
 			action="<%=request.getContextPath()%>/getLetterList.do" method="post">
 
@@ -78,7 +124,7 @@
 				</c:forEach>
 			</select>
 
-		<%-- 	<!-- 로그인 전 -->
+			<%-- 	<!-- 로그인 전 -->
 			<c:if test="${empty sessionScope.login}">
 				<a href="getUsersList.do">로그인</a>
 			</c:if>
@@ -87,7 +133,6 @@
 			<c:if test="${not empty sessionScope.login}">
 				${sessionScope.login} 님 <a href="logout.do">로그아웃</a>
 			</c:if> --%>
-			
 	</table>
 
 
@@ -181,6 +226,8 @@
 		</div>
 		</form>
 
-		<a href="letterInsert.do" class="btn btn-primary">등록</a>
+		<div class="mbr-section-btn" align="center">
+			<a href="letterInsert.do" class="btn btn-white">글 등록</a>
+		</div>
 </body>
 </html>
