@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.blog.biz.admin.impl.ProfileMapper"> 
+
+	<resultMap id="profileResult" type="profile">
+        <id property="userid" column="userID" />
+        <result property="blog_title" column="blog_title"/>
+        <result property="blog_img" column="blog_img"/>
+        <result property="intro" column="intro"/>
+        <result property="nickName" column="nickname"/>
+    </resultMap>
+	<update id="updateProfile" parameterType="profile">
+		UPDATE USERS 
+		SET BLOG_TITLE = #{blog_title}
+		, INTRO = #{intro}
+		<if test="blog_img !=null and blog_img !=''">
+		, BLOG_IMG = #{blog_img}
+		</if>
+		WHERE USERID = #{userid}
+	</update>
+    
+    <select id="getProfile" resultMap="profileResult">
+    	SELECT USERID,BLOG_TITLE,INTRO,BLOG_IMG,NICKNAME FROM USERS
+    	WHERE USERID = #{userid}
+    </select>
+</mapper>

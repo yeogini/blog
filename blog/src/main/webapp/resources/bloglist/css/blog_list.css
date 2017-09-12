@@ -2,7 +2,7 @@
     float: left; width: 20%; margin-right: 1%;
 }
 .profile-img img {
-    width: 100%; height: auto;
+    width: 50%; height: auto;
 }
 
 .profile-teaser-main {
@@ -11,3 +11,6 @@
 
 .info { display: inline-block; margin-right: 10px; color: #777; }
 .info span { font-weight: bold; }
+.topLink {
+	margin-right: 200px; 
+}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+      <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,29 +14,41 @@
  <link href="resources/bloglist/css/blog_list.css" rel="stylesheet" />
 <style>
 </style>
+<script src="resources/assets/js/jquery-3.2.1.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
-  <script src="resources/bloglist/js/blog_list.js"></script>
+ <script src="resources/bloglist/js/blog_list.js"></script>
+ <script src="resources/assets/js/json.min.js"></script>
 <style>
 </style>
 <script>
+function blogsearch() {
+	
+};
 </script>
 </head>
 <body>
-<div>
+<div class="container">
+<div class="row" align="right">
 <c:if test="${empty sessionScope.login }">
-	<a href="login.do">로그인</a>
+				<p/>
+				<p align="right">
+					<strong><a href="/blog">로그인</a></strong>
+				</p>
 </c:if>
 <c:if test="${not empty sessionScope.login}">
-	${sessionScope.login} 님 <a href="logout.do">로그아웃</a>
+<p/>
+				<p align="right"> 
+					<strong>${sessionScope.login} 님 <a href="logout.do" >로그아웃</a></strong><a href="adminView.do">내 블로그</a>
+				</p>
 </c:if>
 </div>
+<hr>
+
 <div id="wrap">
     <div class="row">
          <div class="col-md-6 col-md-offset-3">
-
         <!-- Search Form -->
-        <form role="form">
+        <form role="form" name="frm">
         <!-- Search Field -->
             <div class="row">
                 <h1 class="text-center">블로그 검색</h1>
@@ -43,7 +56,7 @@
                     <div class="input-group">
                         <input class="form-control" type="text" name="search" placeholder="Search" required/>
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+                            <button class="btn btn-success" type="button" onclick="blogsearch()"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
                         </span>
                         </span>
                     </div>
@@ -54,42 +67,31 @@
             
         </div>
 	</div>
-<div class="container">
-	<div class="row">
-		<div class="list-group">
-            <div class="list-group-item clearfix">
-                <div class="profile-teaser-left">
-                    <div class="profile-img"><img src="https://static.pexels.com/photos/21011/pexels-photo-large.jpg"/></div>
-                </div>
-                <div class="profile-teaser-main">
-                    <h2 class="profile-name">Jane Doe</h2>
-                    <div class="profile-info">
-                        <div class="info"><span class="">Info:</span> Something here</div>
-                        <div class="info"><span class="">Info:</span> Something here</div>
-                        <div class="info"><span class="">Info:</span> Something here</div>
-                        <div class="info"><span class="">Info:</span> Something here</div>
-                    </div>
-                </div>
-            </div><!-- item -->
-            
-            <div class="list-group-item clearfix">
-                <div class="profile-teaser-left">
-                    <div class="profile-img"><img src="https://static.pexels.com/photos/21011/pexels-photo-large.jpg"/></div>
-                </div>
-                <div class="profile-teaser-main">
-                    <h2 class="profile-name">Jane Doe</h2>
-                    <div class="profile-info">
-                        <div class="info"><span class="">Info:</span> Something here</div>
-                        <div class="info"><span class="">Info:</span> Something here</div>
-                        <div class="info"><span class="">Info:</span> Something here</div>
-                        <div class="info"><span class="">Info:</span> Something here</div>
-                    </div>
-                </div>
-            </div><!-- item -->
-        </div>
+<c:forEach items="${bloglist}" var="list">
+	<div class="container" id="bloglist">
+		<div class="row">
+			<div class="list-group">
+	            <div class="list-group-item clearfix">
+	                <div class="profile-teaser-left">
+	                    <div class="profile-img">	                    
+	                    <c:if test="${not empty list.blog_img}"><img src="resources/upload/${list.userid}.jpg"/></c:if>
+	                    <c:if test="${empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if></div>
+	                </div>
+	                <div class="profile-teaser-main">
+	                    <h2 class="profile-name"><a href="#" class="a">${list.userid}</a></h2>
+	                    <div class="profile-info">
+	                        <div class="info"><span class="">Title:</span>
+	                        <c:if test="${not empty list.blog_title}">${list.blog_title}</c:if>
+							<c:if test="${empty list.blog_title}">	블로그 제목</c:if></div>
+	                    </div>
+	                </div>
+	            </div><!-- item -->
+	        </div>
+		</div>
 	</div>
+</c:forEach>	
+	<div id="paging" class="row" align="center"><mytag:paging paging="${paging}"></mytag:paging></div>
 </div>
-	<div id="paging"></div>
 </div>
 </body>
 </html>

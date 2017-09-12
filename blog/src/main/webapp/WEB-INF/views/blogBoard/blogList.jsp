@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ºí·Î±×°ü¸®</title>
+    <title>ë¸”ë¡œê·¸ê´€ë¦¬</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -25,6 +25,7 @@
      <!-- MORRIS CHART SCRIPTS -->
      <script src="resources/assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="resources/assets/js/morris/morris.js"></script>
+    
       <!-- CUSTOM SCRIPTS -->
     <script src="resources/assets/js/custom.js"></script>
    <script>
@@ -34,17 +35,20 @@
    		var xmlhttp = new XMLHttpRequest();
    		var x = document.getElementById("test");
    		x.click(function () {
-			console.log("¤±¤±¤±¤±");
+			console.log("ã…ã…ã…ã…");
 		});
    		
-   		
-		xmlhttp.onreadystatechange = function () {
-			if(xmlhttp.readyState==4 && xmlhttp.status==200) {
-				document.getElementById("page-inner").innerHTML = xmlhttp.responseText;
-			}
-		}
-		xmlhttp.open("GET","/blog/insertUser.do","true");
-		xmlhttp.send();
+   		$("#profile").click(function(event){
+   			event.preventDefault();
+   			xmlhttp.onreadystatechange = function () {
+   				if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+   					document.getElementById("page-inner").innerHTML = xmlhttp.responseText;
+   				}
+   			}
+   			xmlhttp.open("GET","/blog/adminProfile.do","true");
+   			xmlhttp.send();
+   		});
+		
 	});
    </script>
 </head>
@@ -74,22 +78,22 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
 					</li>
 
                     <li>
-                        <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> profile</a>
+                        <a class="active-menu"  href="index.html" id="profile"><i class="fa fa-dashboard fa-3x"></i> profile</a>
                     </li>
                      <li>
                         <a  href="#" id="category"><i class="fa fa-desktop fa-3x"></i> category</a>
                     </li>
                     <li>
-                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> ·¹ÀÌ¾Æ¿ô</a>
+                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> ë ˆì´ì•„ì›ƒ</a>
                     </li>
 						   <li  >
-                        <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Ä£±¸°ü¸®</a>
+                        <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> ì¹œêµ¬ê´€ë¦¬</a>
                     </li>	
                       <li  >
-                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> ºí·¢¸®½ºÆ®</a>
+                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> ë¸”ë™ë¦¬ìŠ¤íŠ¸</a>
                     </li>
                     <li>
-                    	<button id="test">Å×½ºÆ®</button>
+                    	<button id="test">í…ŒìŠ¤íŠ¸</button>
                     </li>
                 </ul>
                
@@ -191,7 +195,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
               <div class="row">
                 <div class="col-xs-6"> <i class="fa fa-cloud fa-3x"></i> Newyork City </div>
                 <div class="col-xs-6">
-                  <div class="text-temp"> 10¡Æ </div>
+                  <div class="text-temp"> 10Â° </div>
                 </div>
               </div>
             </div>

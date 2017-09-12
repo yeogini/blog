@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.blog.biz.bloglist.impl.BlogListMapper"> 
+
+   <resultMap id="bloglistResult" type="bloglist">
+        <id property="userid" column="userID" />
+        <result property="blog_title" column="blog_title"/>
+        <result property="blog_img" column="blog_img"/>
+    </resultMap>
+ 	
+ 	
+    <select id="getBlogList" resultMap="bloglistResult">
+    	<![CDATA[
+    	SELECT USERID,BLOG_TITLE,BLOG_IMG
+    	FROM USERS
+    	  ]]>
+    </select>
+    <select id="getBlogSearchList" resultMap="bloglistResult" parameterType="blogSearch">
+    
+    	SELECT B.USERID,B.BLOG_TITLE,B.BLOG_IMG FROM(SELECT ROWNUM RN, A.USERID,A.BLOG_TITLE,A.BLOG_IMG FROM
+    	<if test="search != null"> 
+    	(SELECT * FROM USERS WHERE USERID LIKE('%' || #{search} || '%') ORDER BY 1 ) A
+    	</if>
+    	<if test="search ==null || search ==''">
+    	(SELECT * FROM USERS ORDER BY 1 ) A
+    	</if>
+    	
+    	) B WHERE RN BETWEEN #{start} AND #{end}
+    </select>
+    <select id="getTotalBlogSearch" resultType="int">
+    	SELECT count(*) FROM USERS 
+    	<if test="search != null"> 
+    	WHERE USERID LIKE('%' || #{search} || '%') 
+    	</if>
+    	ORDER BY 1
+    </select>
+	
+</mapper>
