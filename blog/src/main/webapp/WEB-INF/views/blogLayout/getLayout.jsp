@@ -11,7 +11,7 @@
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 
-
+ 
 <style>
 #profile {
 	width: 100px;
