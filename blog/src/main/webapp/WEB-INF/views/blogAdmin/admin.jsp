@@ -6,7 +6,7 @@
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>프로필 관리</title>
-    
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -15,7 +15,20 @@
     <link href="resources/assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-   
+   <style>
+     #profile{ width: 100px; height: 100px; padding: 0.5em; 
+/*  <c:if test="${not empty profile}">
+ 	top:()
+ 
+ </c:if> */
+   }
+  #category{ width: 100px; height: 100px; padding: 0.5em;  }
+#visitors{ width: 100px; height: 100px; padding: 0.5em;  }
+#reply{ width: 100px; height: 100px; padding: 0.5em;  }
+#latest_posts{ width: 100px; height: 100px; padding: 0.5em;  }
+#top{ width: 100px; height: 100px; padding: 0.5em;  }
+#title{ width: 100px; height: 100px; padding: 0.5em;  }
+   </style>
     <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
    <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
      <!-- JQUERY SCRIPTS -->
@@ -24,6 +37,8 @@
     <script src="resources/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="resources/assets/js/jquery.metisMenu.js"></script>
+    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
    <script>  
    $(function() {
 	  var xmlhttp = new XMLHttpRequest();
@@ -38,7 +53,7 @@
 		  } else if(menu == "category") {
 			  url ="/blog/test.do";
 		  } else if (menu =="layout") {
-			  url ="/blog/test.do";
+			  url ="/blog/getBlogLayout.do";
 		  } else if(menu == "friend") {
 			  url ="/blog/test.do";
 		  } else if(menu == "blacklist") {
@@ -66,6 +81,28 @@
 				console.log("aaa");
 			}
 	   }
+	   
+	   //레이아웃
+	   $( "#profile" ).draggable({ scroll: true});
+    $( "#visitors" ).draggable({ scroll: true, scrollSensitivity: 100 });
+    $( "#category" ).draggable({ scroll: true, scrollSpeed: 100 });
+    $( "#reply" ).draggable({ scroll: true, scrollSpeed: 100 });
+    $( "#latest_posts" ).draggable({ scroll: true, scrollSpeed: 100 });
+    $( "#top" ).draggable({ scroll: true, scrollSpeed: 100 });
+    $( "#title" ).draggable({ scroll: true, scrollSpeed: 100 });
+ 
+
+	$("#save").click(function(){
+		console.log("클릭");
+		 
+		$(".layoutdiv").each(function(){
+			console.log($(this).position());
+			var id = $(this).attr("id")
+			var position = $(this).position() 
+			$("#t_"+id).val(position.left+","+position.top);
+		});
+		$("#blog_form").submit();
+	})
    }); 
    </script>
 </head>

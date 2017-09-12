@@ -19,8 +19,8 @@ public class LayoutController {
 	LayoutService layoutService;
 	
 	@RequestMapping("/getBlogLayout.do")
-	public String getBlogLayout(Model model, LayoutVO layoutvo){
-		layoutvo.setUserid("userid");
+	public String getBlogLayout(Model model, LayoutVO layoutvo, HttpSession session){
+		layoutvo.setUserid((String)session.getAttribute("login"));
 		model.addAttribute("layout",layoutService.getLayout(layoutvo));
 		return "/blogLayout/getLayout";
 	}
@@ -34,7 +34,7 @@ public class LayoutController {
 	//저장
 	@RequestMapping(value="/layoutInsert.do", method=RequestMethod.POST )
 	public String layoutInsert(@ModelAttribute("layout") LayoutVO vo, HttpSession session){
-		vo.setUserid("userid");
+		vo.setUserid((String)session.getAttribute("login"));
 		if(vo.getMode().equals("ins"))
 				layoutService.insertLayout(vo);
 		else{
@@ -47,9 +47,9 @@ public class LayoutController {
 	
 	@RequestMapping(value="/layoutUpdate.do",method=RequestMethod.POST )
 		public String layoutUpdate(@ModelAttribute("layout") LayoutVO vo, HttpSession session){
-			vo.setUserid("userid");
+			vo.setUserid((String)session.getAttribute("login"));
 			if(vo.getMode().equals("ins"))
-					layoutService.updateLayout(vo);
+					layoutService.insertLayout(vo);
 			else{
 				layoutService.updateLayout(vo);
 			}
