@@ -40,7 +40,7 @@
 		  } else if (menu =="layout") {
 			  url ="/blog/test.do";
 		  } else if(menu == "friend") {
-			  url ="/blog/test.do";
+			  url ="/blog/adminFriend.do";
 		  } else if(menu == "blacklist") {
 			  url ="/blog/test.do";
 		  }

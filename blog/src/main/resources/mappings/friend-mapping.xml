@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.blog.biz.friend.impl.FriendMapper">
+
+	<resultMap type="friend" id="friendResult">
+		<id property="f_no" column="f_no" />
+        <result property="userid" column="userid"/>
+        <result property="f_id" column="f_id"/>
+        <result property="f_state" column="f_state"/>
+        <result property="userName" column="username"/>
+	</resultMap>
+	
+	<select id="getFriendList" resultMap="friendResult" parameterType="friend">
+		SELECT A.F_NO, A.USERID, A.F_ID, A.f_STATE, B.USERNAME
+		FROM USERS B, F_LIST A
+		WHERE A.USERID = B.USERID
+		AND A.USERID =#{userid}
+	</select>
+	
+	<insert id="insertFriend"></insert>
+
+	<update id="updateFrined"></update>
+	
+	<delete id="deleteFriend"></delete>
+
+
+</mapper> 

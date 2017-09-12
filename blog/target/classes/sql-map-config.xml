@@ -18,7 +18,7 @@
         <typeAlias alias="profile" type="com.yedam.blog.biz.admin.ProfileVO"/>
         <typeAlias alias="blogSearch" type="com.yedam.blog.search.BlogSearchVO"/>
         <typeAlias alias="letter" type="com.yedam.blog.letter.LetterVO"/>
-        
+        <typeAlias alias="friend" type="com.yedam.blog.biz.friend.FriendVO"/>
 	</typeAliases>
     	    
   
