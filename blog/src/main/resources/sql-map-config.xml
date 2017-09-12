@@ -13,11 +13,17 @@
     <!-- Alias 설정 -->
     <typeAliases>
         <typeAlias alias="users" type="com.yedam.blog.biz.users.UsersVO"/>
-        <typeAlias alias="visit" type="com.yedam.blog.biz.visit.VisitVO"/>
-        <typeAlias alias="search" type="com.yedam.blog.biz.visit.VisitDaySearchVO"/>  
+        <typeAlias alias="layout" type="com.yedam.blog.biz.layout.LayoutVO"/>
+        <typeAlias alias="visit" type="com.yedam.blog.biz.visit.VisitVO"/>  
+        <typeAlias alias="bloglist" type="com.yedam.blog.biz.bloglist.BlogListVO"/>
+        <typeAlias alias="profile" type="com.yedam.blog.biz.admin.ProfileVO"/>
+        <typeAlias alias="blogSearch" type="com.yedam.blog.search.BlogSearchVO"/>
+        <typeAlias alias="letter" type="com.yedam.blog.letter.LetterVO"/>
+        
 	</typeAliases>
     	    
   
+
 
 	<!-- DataSource 설정 -->
 	<environments default="development">
