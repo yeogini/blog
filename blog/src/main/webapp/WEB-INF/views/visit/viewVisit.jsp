@@ -45,6 +45,9 @@ function hideUpdateForm() {
 	document.getElementById("v"+no).innerHTML = sub;
 }
 
+function change(){
+	
+}
 </script>
 </head>
 <body>
@@ -62,9 +65,13 @@ function hideUpdateForm() {
 
 <form name="vit" action="<%=request.getContextPath()%>/getVisitList.do" method="post">
 
+<a href="<%=request.getContextPath()%>/getVisitList.do">${Mon}월</a> <br/>
+<c:forEach var="cal" begin="1" end="${Day}"><a href="<%=request.getContextPath()%>/getVisitList.do?day=${cal}" >${cal}일 </a></c:forEach> <br/>
+
 <input type="text" name="vSub" value="50자이내로 작성을하시오."/>
-<input type="button" value="등록" onclick="addVit()"/><br/><br/>
-<h3> 방명록 목록 </h3>
+<input type="button" value="등록" onclick="addVit()"/><br/>
+
+<h3 align="center"> 방명록 목록 </h3>
 <table>
 	<tr>
 		<td>별명(아이디)</td><td>내용</td><td>시간</td>
@@ -72,8 +79,8 @@ function hideUpdateForm() {
 	<c:forEach var="map" items="${VisitList}">
 	<tr>
 		<td>${map.nickname}(${map.vid})</td><td id="v${map.vino}">${map.vsub}</td><td>${map.vdate }</td>
-		<td><input type="button" value="수정" onclick="viewUpdate('${map.vino}')"></td>
-		<td><c:if test="${login == map.vid}"><input type="button" value="삭제" onclick="Delvit('${map.vino}')"></c:if></td>
+		<c:if test="${login == map.vid}"><td><input type="button" value="수정" onclick="viewUpdate('${map.vino}')"></td>
+		<td><input type="button" value="삭제" onclick="Delvit('${map.vino}')"></td></c:if>
 	</tr>
 	</c:forEach>
 </table>

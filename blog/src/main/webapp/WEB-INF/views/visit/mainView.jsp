@@ -11,6 +11,7 @@ function addVit(){
 	vit.submit();
 }
 
+
 var myVar = setInterval(myTimer ,1000);
 function myTimer() {
     var d = new Date();
@@ -19,11 +20,11 @@ function myTimer() {
 </script>
 </head>
 <body>
-<form name="vit" action="<%=request.getContextPath()%>/getVisitList.do" method="post">
-
+<form name="vit" action="" method="post">
+<input type="hidden" name="mv" value="Main"/>
 <table border="1">
-<tr><p id="demo"></p></tr>
-<tr><input type="text" name="vSub"/></tr>
+<tr><td id="demo"></td></tr>
+<tr><td><input type="text" name="vSub"/></td></tr>
 </table>
 <input type="button" value="등록" onclick="addVit()"/>
 
