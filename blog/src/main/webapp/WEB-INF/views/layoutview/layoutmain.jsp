@@ -91,11 +91,7 @@ $(function(){
 		$("#title").css("top", titlePosition[1] + "px");
 
 	}
-	$("button").click(function(){
-		$.get('/blog/getVisitList.do',function(data){
-			$("#visitors").html(data);	
-		})
-	});
+
 });
 </script>
 </head>
@@ -104,9 +100,12 @@ $(function(){
 		<p>프로필</p>
 	</div>
 
+
 	<div id="visitors" class="layoutdiv ui-widget-content">
+	
+<iframe src="/blog/mainviewVisit.do">
 		<p>방명록</p>
-			<button type="button">클릭!</button>
+</iframe>				
 	</div>
 
 	<div id="category" class="layoutdiv ui-widget-content">

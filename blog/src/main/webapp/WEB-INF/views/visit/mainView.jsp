@@ -9,6 +9,7 @@
 function addVit(){
 	vit.action = "<%=request.getContextPath()%>/insertVisit.do";
 	vit.submit();
+	
 }
 
 
