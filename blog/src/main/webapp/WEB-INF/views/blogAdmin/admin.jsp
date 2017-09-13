@@ -6,10 +6,10 @@
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>프로필 관리</title>
-<<<<<<< HEAD
- <link href="resources/assets/css/jquery.contextMenu.css" rel="stylesheet" />
-=======
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
+
+
+
+
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -19,11 +19,7 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <style>
-<<<<<<< HEAD
-     
-=======
 
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
    </style>
     <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
    <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
@@ -33,11 +29,8 @@
     <script src="resources/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="resources/assets/js/jquery.metisMenu.js"></script>
-<<<<<<< HEAD
-    <script src="resources/assets/js/jquery.contextMenu.js"></script>
-    <script src="resources/assets/js/jquery.ui.position.js"></script>
-=======
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
+
+
    <script>  
    $(function() {
 	  var xmlhttp = new XMLHttpRequest();
@@ -80,42 +73,6 @@
 				console.log("aaa");
 			}
 	   }
-<<<<<<< HEAD
-	   
-=======
-
- 
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
-
-<<<<<<< HEAD
-	 $.contextMenu({
-         selector: '#myblog',
-         trigger: 'left',
-         callback: function(key, options) {
-             var m = "clicked: " + key;
-             window.console && console.log(m) || alert(m); 
-         },
-         items: {
-             "edit": {name: "Edit"},
-             "cut": {name: "Cut"},
-            copy: {name: "Copy", icon: "copy"},
-             "paste": {name: "Paste", icon: "paste"},
-             "delete": {name: "Delete", icon: "delete"},
-             "sep1": "---------",
-             "quit": {name: "Quit", icon: function(){
-                 return 'context-menu-icon context-menu-icon-quit';
-             }}
-         }
-     });
-
-     $('.context-menu-one').on('click', function(e){
-         console.log('clicked', this);
-     })  
-
-
-=======
-	
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
    }); 
    </script>
 </head>
@@ -135,8 +92,8 @@
 padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;"> 
-		<span id="myblog">컨텍스트메뉴</span>
-		<a href="getMainView.do" class="btn btn-info square-btn-adjust" >내 블로그</a>
+
+		<a href="getMainView.do?blogId=<%=session.getAttribute("login") %>" class="btn btn-info square-btn-adjust" >내 블로그</a>
 		<a href="blog.do" class="btn btn-info square-btn-adjust">블로그 목록가기</a>
 		<a href="logout.do" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   

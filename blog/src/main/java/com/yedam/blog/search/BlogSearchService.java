@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface BlogSearchService {
 
-	public List<BlogSearchVO>  getBlogSearchNewestLetter();
+public List<BlogSearchVO>  getBlogSearchNewestLetter(String userid);
 	
-	public List<BlogSearchVO>  getBlogSearchNewestReply();
+	public List<BlogSearchVO>  getBlogSearchNewestReply(String userid);
 	
-	public List<BlogSearchVO>  getBlogSearchBestLetter();
+	public List<BlogSearchVO>  getBlogSearchBestLetter(String userid);
 	
 	public List<BlogSearchVO>  getBlogSearchListLetter();
 

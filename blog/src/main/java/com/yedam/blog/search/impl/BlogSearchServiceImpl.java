@@ -15,21 +15,21 @@ public class BlogSearchServiceImpl implements BlogSearchService{
 	BlogSearchMapper blogShearchDAO;
 	
 	@Override
-	public List<BlogSearchVO> getBlogSearchNewestLetter() {
+	public List<BlogSearchVO> getBlogSearchNewestLetter(String userId) {
 		// TODO Auto-generated method stub
-		return blogShearchDAO.getBlogSearchNewestLetter();
+		return blogShearchDAO.getBlogSearchNewestLetter(userId);
 	}
 
 	@Override
-	public List<BlogSearchVO> getBlogSearchNewestReply() {
+	public List<BlogSearchVO> getBlogSearchNewestReply(String userId) {
 		// TODO Auto-generated method stub
-		return blogShearchDAO.getBlogSearchNewestReply();
+		return blogShearchDAO.getBlogSearchNewestReply(userId);
 	}
 
 	@Override
-	public List<BlogSearchVO> getBlogSearchBestLetter() {
+	public List<BlogSearchVO> getBlogSearchBestLetter(String userId) {
 		// TODO Auto-generated method stub
-		return blogShearchDAO.getBlogSearchBestLetter();
+		return blogShearchDAO.getBlogSearchBestLetter(userId);
 	}
 
 	@Override

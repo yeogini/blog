@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +79,7 @@
 #mainView {
 	border:1px solid black;
 	position: absolute;
-	top: 300px;
+	top: 450px;
 	left: 460px;
 	width :1000px;
 	height :100%;
@@ -89,6 +90,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
 <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 <script>
 $(function(){
@@ -121,36 +123,48 @@ $(function(){
 		var titlePosition = "${layout.title}".split(",")
 		$("#title").css("left", titlePosition[0] + "px");
 		$("#title").css("top", titlePosition[1] + "px");
-
+	
+		 $.get('getProfileView.do?blogId=${layout.userid}',
+				function (data) {
+					$("#profile").html(data);
+		}); 
 	}
-	console.log(screen.availHeight);
-	console.log(screen.availWidth);
+	
 
 });
 function goBack(){
 	history.back();
-}
+};
+
 </script>
 </head>
 <body>
 
 <div class="row" align="right">
-                <p></p>
-
-                   <p align="right">
-					<strong><a href="blog.do">블로그 목록 가기</a></strong>
-           			</p>
+		<c:if test="${empty sessionScope.login }">
+			<p />
+			<p align="right">
+				<strong><a href="/blog">로그인</a></strong>
+			</p>
+		</c:if>
+		<c:if test="${not empty sessionScope.login}">
+			<p />
+			<p align="right">
+			<strong>${sessionScope.login}님 <a href="logout.do">로그아웃</a></strong>
+				<a href="adminView.do">내 블로그</a> <a href="blog.do">블로그 목록 가기</a>
+			</p>
+		</c:if>
 </div>
-	<iframe src="/blog/getProfileView.do?blogId=${layout.userid}" id="profile" scrolling="no"></iframe>
+	<div id="profile" class="profile"></div>
 	<iframe src="/blog/mainviewVisit.do?blogId=${layout.userid}" id="visitors" ></iframe>				
-	<iframe id="category" src=""></iframe>
+	<iframe id="category" src="getCategory.do?blogId=${layout.userid}"></iframe>
 	<iframe id="reply" src="/blog/newestReply.do?blogId=${layout.userid}"></iframe>
 	<iframe id="latest_posts" src="/blog/newestLetter.do?blogId=${layout.userid}"></iframe>
 	<iframe src="/blog/bestLetter.do?blogId=${layout.userid}" id="top"></iframe>
 	<iframe src="getTitleView.do?blogId=${layout.userid}" id="title" scrolling="no"></iframe>
 	<div id="mainView" class="container">
 		<div class="row"></div>
-		<iframe src="/blog/getLetterList.do" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
+		<iframe src="getLetterView.do?blogId=${layout.userid}" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
 		</iframe><br>
 		<iframe style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
 		</iframe>

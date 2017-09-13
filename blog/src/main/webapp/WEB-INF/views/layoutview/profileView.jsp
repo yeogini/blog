@@ -4,38 +4,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<style>
-
-</style>
-
+ <link href="resources/assets/css/jquery.contextMenu.css" rel="stylesheet" />
 <title>프로필뷰</title>
 <style>
 img{
-	width: 100px;
+	width: 120px;
 	height: auto;
 }
 </style>
+
+<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
+
+    <script src="resources/assets/js/jquery.contextMenu.js"></script>
+    <script src="resources/assets/js/jquery.ui.position.js"></script>
 <script>
+var a = 5;
+$(function() {
+	var sessionUId = "<%=session.getAttribute("login") %>"
+	var blogId = $("#myblog").text();
+	if(sessionUId==blogId) {
+		$.contextMenu({
+	        selector: '#myblog',
+	        trigger: 'left',
+	        callback: function(key, options) {
+	        	
+	            if(key=='BlogHome') {
+	            	document.location.href="getMainView.do?blogId="+blogId;
+	            } else {
+	            	document.location.href="adminView.do";
+	            }
+	        },
+	        	items: {	
+	                "BlogHome" :{name: "블로그홈"},
+	              	 "BlogAdmin":{name: "블로그 관리"}
+	               }
+	        });
+	} else {
+		$.contextMenu({
+	        selector: '#myblog',
+	        trigger: 'left',
+	        callback: function(key, options) {
+	            if(key=='BlogHome') {
+	            	
+	            } else if(key=='friend') {
+	            	
+	            } else {
+	            	
+	            }
+	        },
+	        	items: {	
+	                "BlogHome" :{name: "블로그홈"},
+	              	 "friend":{name: "친구요청"},
+	              	 "black": {name: "블랙리스트 추가"}
+	               }
+	        });
+	}
+	
+});
 </script>
 </head>
 <body>
-<div class="container">
-<div class="col-sm-6 col-md-4 col-md-offset-4">
-	<div class="account-wall">
-		<form class="form-signin">
-			<img src="resources/upload/${profile.userid}.jpg">
+		<form style="width: 280px;height: 190px;">
+			<img src="resources/upload/${profile.userid}.jpg" style="vertical-align:text-middle">
+			<span id="myblog">${profile.userid}</span>(${profile.nickName})
 			<br>
-			${profile.userid}(${profile.nickName})
-			<br>
-			블로그 소개<br>
-			<textarea rows="3" cols="20" readonly="readonly" style="resize:none; overflow-y:scroll;">
-			${profile.intro}
-			</textarea>
-			<a href=#>edit</a>	
+			<textarea rows="4" cols="20" readonly="readonly" style="resize:none; overflow-y:scroll; vertical-align: text-top;">${profile.intro}</textarea>
+			<a href="adminView.do" id="profileEdit" target="_parent">edit</a>	
 		</form>
-		</div>
-	</div>
-</div>
 </body>
 </html>
