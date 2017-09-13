@@ -6,7 +6,7 @@
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>프로필 관리</title>
-    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+ <link href="resources/assets/css/jquery.contextMenu.css" rel="stylesheet" />
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -16,18 +16,7 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <style>
-     #profile{ width: 100px; height: 100px; padding: 0.5em; 
-/*  <c:if test="${not empty profile}">
- 	top:()
- 
- </c:if> */
-   }
-  #category{ width: 100px; height: 100px; padding: 0.5em;  }
-#visitors{ width: 100px; height: 100px; padding: 0.5em;  }
-#reply{ width: 100px; height: 100px; padding: 0.5em;  }
-#latest_posts{ width: 100px; height: 100px; padding: 0.5em;  }
-#top{ width: 100px; height: 100px; padding: 0.5em;  }
-#title{ width: 100px; height: 100px; padding: 0.5em;  }
+     
    </style>
     <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
    <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
@@ -37,8 +26,8 @@
     <script src="resources/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="resources/assets/js/jquery.metisMenu.js"></script>
-    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="resources/assets/js/jquery.contextMenu.js"></script>
+    <script src="resources/assets/js/jquery.ui.position.js"></script>
    <script>  
    $(function() {
 	  var xmlhttp = new XMLHttpRequest();
@@ -82,27 +71,32 @@
 			}
 	   }
 	   
-	   //레이아웃
-	   $( "#profile" ).draggable({ scroll: true});
-    $( "#visitors" ).draggable({ scroll: true, scrollSensitivity: 100 });
-    $( "#category" ).draggable({ scroll: true, scrollSpeed: 100 });
-    $( "#reply" ).draggable({ scroll: true, scrollSpeed: 100 });
-    $( "#latest_posts" ).draggable({ scroll: true, scrollSpeed: 100 });
-    $( "#top" ).draggable({ scroll: true, scrollSpeed: 100 });
-    $( "#title" ).draggable({ scroll: true, scrollSpeed: 100 });
- 
 
-	$("#save").click(function(){
-		console.log("클릭");
-		 
-		$(".layoutdiv").each(function(){
-			console.log($(this).position());
-			var id = $(this).attr("id")
-			var position = $(this).position() 
-			$("#t_"+id).val(position.left+","+position.top);
-		});
-		$("#blog_form").submit();
-	})
+	 $.contextMenu({
+         selector: '#myblog',
+         trigger: 'left',
+         callback: function(key, options) {
+             var m = "clicked: " + key;
+             window.console && console.log(m) || alert(m); 
+         },
+         items: {
+             "edit": {name: "Edit"},
+             "cut": {name: "Cut"},
+            copy: {name: "Copy", icon: "copy"},
+             "paste": {name: "Paste", icon: "paste"},
+             "delete": {name: "Delete", icon: "delete"},
+             "sep1": "---------",
+             "quit": {name: "Quit", icon: function(){
+                 return 'context-menu-icon context-menu-icon-quit';
+             }}
+         }
+     });
+
+     $('.context-menu-one').on('click', function(e){
+         console.log('clicked', this);
+     })  
+
+
    }); 
    </script>
 </head>
@@ -122,7 +116,8 @@
 padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;"> 
-		<a href="getMainView.do" class="btn btn-info square-btn-adjust">내 블로그</a>
+		<span id="myblog">컨텍스트메뉴</span>
+		<a href="getMainView.do" class="btn btn-info square-btn-adjust" >내 블로그</a>
 		<a href="blog.do" class="btn btn-info square-btn-adjust">블로그 목록가기</a>
 		<a href="logout.do" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
