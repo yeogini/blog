@@ -78,7 +78,7 @@ function blogsearch() {
 	                    <c:if test="${empty list.blog_img}"><img src="resources/bloglist/css/profile.jpg"/></c:if></div>
 	                </div>
 	                <div class="profile-teaser-main">
-	                    <h2 class="profile-name"><a href="#" class="a">${list.userid}</a></h2>
+	                    <h2 class="profile-name"><a href="getMainView.do?blogId=${list.userid}" class="a">${list.userid}</a></h2>
 	                    <div class="profile-info">
 	                        <div class="info"><span class="">Title:</span>
 	                        <c:if test="${not empty list.blog_title}">${list.blog_title}</c:if>
