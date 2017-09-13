@@ -50,14 +50,7 @@ public class AdminController {
 		return "redirect:getBlogAdmin.do";
 	}
 
-	@RequestMapping("getProfileView.do")
-	public String getProfileView(ProfileVO vo,Model model){
-		vo.setUserid("a");
-		ProfileVO result = profileservice.getProfile(vo);
-		model.addAttribute("profile", result);
-		
-		return "/layoutview/profileView";
-	}
+	
 	
 	@RequestMapping("adminView.do")
 	public String adminView(){

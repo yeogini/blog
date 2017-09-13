@@ -4,64 +4,96 @@
 <html>
 <head>
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet"
 	href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-	<style>
-	#profile {
-	width: 100px;
-	height: 100px;
+<style>
+#profile {
+	width: 290px;
+	height: 200px;
 	padding: 0.5em;
 	position: absolute;
+	left: 10px;
+	top : 110px;
+	
 }
 
 #category {
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 600px;
 	padding: 0.5em;
 	position: absolute;
+	left: 10px;
+	top : 210px;
 }
 
 #visitors {
-	width: 100px;
-	height: 100px;
+	width: 250px;
+	height: 250px
 	padding: 0.5em;
 	position: absolute;
+	left: 10px;
+	top : 310px;
 }
 
 #reply {
-	width: 100px;
-	height: 100px;
+	width: 250px;
+	height: 250px;
 	padding: 0.5em;
 	position: absolute;
+	left: 10px;
+	top : 474px;
 }
 
 #latest_posts {
-	width: 100px;
-	height: 100px;
+	width: 250px;
+	height: 250px;
 	padding: 0.5em;
 	position: absolute;
+	left: 10px;
+	top : 584px;
 }
 
 #top {
-	width: 100px;
-	height: 100px;
+	width: 250px;
+	height: 250px;
 	padding: 0.5em;
 	position: absolute;
+	left: 10px;
+	top : 684px;
 }
 
 #title {
-	width: 100px;
-	height: 100px;
+	width: 400px;
+	height: 50px;
 	padding: 0.5em;
 	position: absolute;
+	left: 10px;
+	top : 794px;
+}
+#mainView {
+	border:1px solid black;
+	position: absolute;
+	top: 300px;
+	left: 460px;
+	width :1000px;
+	height :100%;
+	margin: 5px;
 }
 	</style>
+	<script src="resources/assets/js/jquery-3.2.1.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 <script>
 $(function(){
 	if ("${layout}" != "") {
+		console.log("ㅁㅁㅁ");
 		var profilePosition = "${layout.profile}".split(",")
 		$("#profile").css("left", profilePosition[0] + "px");
 		$("#profile").css("top", profilePosition[1] + "px");
@@ -91,40 +123,37 @@ $(function(){
 		$("#title").css("top", titlePosition[1] + "px");
 
 	}
+	console.log(screen.availHeight);
+	console.log(screen.availWidth);
 
 });
+function goBack(){
+	history.back();
+}
 </script>
 </head>
 <body>
-<div id="profile" class="layoutdiv ui-widget-content">
-		<p>프로필</p>
-	</div>
 
+<div class="row" align="right">
+                <p></p>
 
-	<div id="visitors" class="layoutdiv ui-widget-content">
-	
-<iframe src="/blog/mainviewVisit.do">
-		<p>방명록</p>
-</iframe>				
-	</div>
-
-	<div id="category" class="layoutdiv ui-widget-content">
-		<p>카테고리</p>
-	</div>
-
-	<div id="reply" class="layoutdiv ui-widget-content">
-		<p>리플</p>
-	</div>
-
-	<div id="latest_posts" class="layoutdiv ui-widget-content">
-		<p>최신글</p>
-	</div>
-
-	<div id="top" class="layoutdiv ui-widget-content">
-		<p>베스트글</p>
-	</div>
-	<div id="title" class="layoutdiv ui-widget-content">
-		<p>타이틀</p>
+                   <p align="right">
+					<strong><a href="blog.do">블로그 목록 가기</a></strong>
+           			</p>
+</div>
+	<iframe src="/blog/getProfileView.do?blogId=${layout.userid}" id="profile" scrolling="no"></iframe>
+	<iframe src="/blog/mainviewVisit.do?blogId=${layout.userid}" id="visitors" ></iframe>				
+	<iframe id="category" src=""></iframe>
+	<iframe id="reply" src="/blog/newestReply.do?blogId=${layout.userid}"></iframe>
+	<iframe id="latest_posts" src="/blog/newestLetter.do?blogId=${layout.userid}"></iframe>
+	<iframe src="/blog/bestLetter.do?blogId=${layout.userid}" id="top"></iframe>
+	<iframe src="getTitleView.do?blogId=${layout.userid}" id="title" scrolling="no"></iframe>
+	<div id="mainView" class="container">
+		<div class="row"></div>
+		<iframe src="/blog/getLetterList.do" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
+		</iframe><br>
+		<iframe style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
+		</iframe>
 	</div>
 </body>
 </html>

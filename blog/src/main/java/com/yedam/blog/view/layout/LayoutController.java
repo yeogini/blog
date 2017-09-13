@@ -1,5 +1,7 @@
 package com.yedam.blog.view.layout;
 
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ public class LayoutController {
 		layoutvo.setUserid((String)session.getAttribute("login"));
 		model.addAttribute("layout",layoutService.getLayout(layoutvo));
 		return "/blogLayout/getLayout";
+		
 	}
 	
 	//저장폼?
@@ -59,9 +62,11 @@ public class LayoutController {
 	
 	//메인 뷰 불러오기
 	@RequestMapping("getMainView.do")
-	public String getMainView(Model model, LayoutVO layoutvo, HttpSession session){
-		layoutvo.setUserid((String)session.getAttribute("login"));
-		model.addAttribute("layout",layoutService.getLayout(layoutvo));
+	public String getMainView(Model model, HttpServletRequest req, HttpSession session){
+		String blogId = req.getParameter("blogId");
+		LayoutVO vo = new LayoutVO();
+		vo.setUserid(blogId);
+		model.addAttribute("layout",layoutService.getLayout(vo));
 		return "/layoutview/layoutmain";
 	}
 

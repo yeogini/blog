@@ -6,7 +6,10 @@
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>프로필 관리</title>
+<<<<<<< HEAD
  <link href="resources/assets/css/jquery.contextMenu.css" rel="stylesheet" />
+=======
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -16,7 +19,11 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <style>
+<<<<<<< HEAD
      
+=======
+
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
    </style>
     <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
    <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
@@ -26,8 +33,11 @@
     <script src="resources/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="resources/assets/js/jquery.metisMenu.js"></script>
+<<<<<<< HEAD
     <script src="resources/assets/js/jquery.contextMenu.js"></script>
     <script src="resources/assets/js/jquery.ui.position.js"></script>
+=======
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
    <script>  
    $(function() {
 	  var xmlhttp = new XMLHttpRequest();
@@ -42,7 +52,7 @@
 		  } else if(menu == "category") {
 			  url ="/blog/test.do";
 		  } else if (menu =="layout") {
-			  url ="/blog/getBlogLayout.do";
+			  location.href="/blog/getBlogLayout.do";
 		  } else if(menu == "friend") {
 			  url ="/blog/adminFriend.do";
 		  } else if(menu == "blacklist") {
@@ -70,8 +80,14 @@
 				console.log("aaa");
 			}
 	   }
+<<<<<<< HEAD
 	   
+=======
 
+ 
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
+
+<<<<<<< HEAD
 	 $.contextMenu({
          selector: '#myblog',
          trigger: 'left',
@@ -97,6 +113,9 @@
      })  
 
 
+=======
+	
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
    }); 
    </script>
 </head>
