@@ -34,7 +34,7 @@
         <![CDATA[
         SELECT * 
         FROM BLACK
-     
+     	WHERE USERID = #{userid)
         ]]>
     </select>
 </mapper> 
