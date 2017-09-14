@@ -2,6 +2,7 @@ package com.yedam.blog.view.admin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,14 +15,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.yedam.blog.biz.admin.CategoryService;
+import com.yedam.blog.biz.admin.CategoryVO;
 import com.yedam.blog.biz.admin.ProfileService;
 import com.yedam.blog.biz.admin.ProfileVO;
+import com.yedam.blog.biz.friend.FriendService;
 
 
 @Controller
 public class AdminController {
 	@Autowired
 	ProfileService profileservice;
+	@Autowired
+	FriendService friendService;
 
 	//프로필 관리폼
 	@RequestMapping("adminProfile.do")
@@ -48,17 +54,31 @@ public class AdminController {
 		return "redirect:getBlogAdmin.do";
 	}
 
-	@RequestMapping("getProfileView.do")
-	public String getProfileView(ProfileVO vo,Model model){
-		vo.setUserid("a");
-		ProfileVO result = profileservice.getProfile(vo);
-		model.addAttribute("profile", result);
-		
-		return "/layoutview/profileView";
-	}
+	
 	
 	@RequestMapping("adminView.do")
 	public String adminView(){
 		return "/blogAdmin/admin";
 	}
+	
+	//친구관리
+	@RequestMapping("adminFriend.do")
+	public String adminFriend(){
+		return "/blogAdmin/friendad";
+	}
+	
+	//친구 요청
+	
+	
+	//친구 수락
+	
+	
+	//친구 거절 ,삭제
+	@RequestMapping("deleteFriend.do")
+	public String deleteFriend(){
+		return "";
+	}
+	
+	
+	
 }

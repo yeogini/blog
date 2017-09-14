@@ -6,7 +6,10 @@
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>프로필 관리</title>
-    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+
+
+
+
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -16,18 +19,7 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <style>
-     #profile{ width: 100px; height: 100px; padding: 0.5em; 
-/*  <c:if test="${not empty profile}">
- 	top:()
- 
- </c:if> */
-   }
-  #category{ width: 100px; height: 100px; padding: 0.5em;  }
-#visitors{ width: 100px; height: 100px; padding: 0.5em;  }
-#reply{ width: 100px; height: 100px; padding: 0.5em;  }
-#latest_posts{ width: 100px; height: 100px; padding: 0.5em;  }
-#top{ width: 100px; height: 100px; padding: 0.5em;  }
-#title{ width: 100px; height: 100px; padding: 0.5em;  }
+
    </style>
     <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
    <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
@@ -37,8 +29,8 @@
     <script src="resources/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="resources/assets/js/jquery.metisMenu.js"></script>
-    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+
    <script>  
    $(function() {
 	  var xmlhttp = new XMLHttpRequest();
@@ -53,9 +45,9 @@
 		  } else if(menu == "category") {
 			  url ="/blog/test.do";
 		  } else if (menu =="layout") {
-			  url ="/blog/getBlogLayout.do";
+			  location.href="/blog/getBlogLayout.do";
 		  } else if(menu == "friend") {
-			  url ="/blog/test.do";
+			  url ="/blog/adminFriend.do";
 		  } else if(menu == "blacklist") {
 			  url ="/blog/test.do";
 		  }
@@ -81,28 +73,6 @@
 				console.log("aaa");
 			}
 	   }
-	   
-	   //레이아웃
-	   $( "#profile" ).draggable({ scroll: true});
-    $( "#visitors" ).draggable({ scroll: true, scrollSensitivity: 100 });
-    $( "#category" ).draggable({ scroll: true, scrollSpeed: 100 });
-    $( "#reply" ).draggable({ scroll: true, scrollSpeed: 100 });
-    $( "#latest_posts" ).draggable({ scroll: true, scrollSpeed: 100 });
-    $( "#top" ).draggable({ scroll: true, scrollSpeed: 100 });
-    $( "#title" ).draggable({ scroll: true, scrollSpeed: 100 });
- 
-
-	$("#save").click(function(){
-		console.log("클릭");
-		 
-		$(".layoutdiv").each(function(){
-			console.log($(this).position());
-			var id = $(this).attr("id")
-			var position = $(this).position() 
-			$("#t_"+id).val(position.left+","+position.top);
-		});
-		$("#blog_form").submit();
-	})
    }); 
    </script>
 </head>
@@ -122,6 +92,8 @@
 padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;"> 
+
+		<a href="getMainView.do?blogId=<%=session.getAttribute("login") %>" class="btn btn-info square-btn-adjust" >내 블로그</a>
 		<a href="blog.do" class="btn btn-info square-btn-adjust">블로그 목록가기</a>
 		<a href="logout.do" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   

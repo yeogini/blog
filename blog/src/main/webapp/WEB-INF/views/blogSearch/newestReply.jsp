@@ -23,8 +23,8 @@
             <div class="card-body"></div>
             
             
-            
-<table border="0" width="500" height=" 100" align="center">
+ <div id="row" align="center">           
+<table>
 
 <tr> <td colspan="4"> 최신 댓글 </td> </tr>
 
@@ -34,9 +34,6 @@
 	  <th bgcolor="#EAEAEA"> 아이디 </th>
 	  <th bgcolor="#EAEAEA"> 날짜 </th>
 </tr>	
-
-
-
 	<c:forEach var="reply" items="${newestReplylist}">
 	<tr>
 	     <td> ${reply.rnum} 		</td>				<!-- 번호 (row number) -->
@@ -46,8 +43,7 @@
 	</tr>
 	</c:forEach>
 
-
-
 </table>
+</div>
 </body>
 </html>
