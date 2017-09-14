@@ -24,7 +24,7 @@
     </insert>
    
      <!-- 단건조한 -->
-	 <select id="getLayout" resultType="layout">
+	 <select id="getLayout" resultMap="layoutResult">
         <![CDATA[
         SELECT * 
         FROM LAYOUT

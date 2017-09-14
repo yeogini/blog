@@ -16,7 +16,7 @@
 #profile {
 	width: 290px;
 	height: 200px;
-	padding: 0.5em;
+	padding: 0.5em;	
 	position: absolute;
 }
 
@@ -82,9 +82,8 @@
 <script>
 
 	$(function() {
-		/*  var p = $( "p" );
-		 var position = p.position();
- 	  */
+
+
 		$("#profile").draggable({
 			scroll : true
 		});
