@@ -72,9 +72,6 @@
 
 <script>
 	$(function() {
-		/*  var p = $( "p" );
-		 var position = p.position();
- 	  */
 
 		$("#profile").draggable({
 			scroll : true

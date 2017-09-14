@@ -19,7 +19,7 @@
         <typeAlias alias="profile" type="com.yedam.blog.biz.admin.ProfileVO"/>
         <typeAlias alias="blogSearch" type="com.yedam.blog.search.BlogSearchVO"/>
         <typeAlias alias="letter" type="com.yedam.blog.letter.LetterVO"/>
-        
+        <typeAlias alias="black" type="com.yedam.blog.biz.black.BlackVO"/>
 	</typeAliases>
     	    
   
