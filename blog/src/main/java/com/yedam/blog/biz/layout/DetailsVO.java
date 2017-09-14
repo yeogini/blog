@@ -5,6 +5,7 @@ public class DetailsVO {
 	private String letterTitle;
 	private String letterSub;
 	private int categoryNo;
+	private String categoryName;
 	private String letterDate;
 	private int hits;
 	private String userid;
@@ -13,6 +14,12 @@ public class DetailsVO {
 	
 	
 	
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	public int getStart() {
 		return start;
 	}

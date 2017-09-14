@@ -56,7 +56,7 @@ function blogsearch() {
                     <div class="input-group">
                         <input class="form-control" type="text" name="search" placeholder="Search" required/>
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button" onclick="blogsearch()"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+                            <button class="btn btn-success" type="submit" ><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
                         </span>
                         </span>
                     </div>

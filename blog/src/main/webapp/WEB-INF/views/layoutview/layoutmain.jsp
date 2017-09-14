@@ -135,6 +135,9 @@ $(function(){
 function goBack(){
 	history.back();
 };
+function test(){
+	console.log("감사합니다");
+};
 
 </script>
 </head>
@@ -164,7 +167,7 @@ function goBack(){
 	<iframe src="getTitleView.do?blogId=${layout.userid}" id="title" scrolling="no"></iframe>
 	<div id="mainView" class="container">
 		<div class="row"></div>
-		<iframe src="getLetterView.do?blogId=${layout.userid}" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
+		<iframe id ="test" src="getLetterView.do?blogId=${layout.userid}" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;height: 200px">
 		</iframe><br>
 		<iframe style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
 		</iframe>
