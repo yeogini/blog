@@ -20,6 +20,7 @@ import com.yedam.blog.biz.admin.CategoryVO;
 import com.yedam.blog.biz.admin.ProfileService;
 import com.yedam.blog.biz.admin.ProfileVO;
 import com.yedam.blog.biz.friend.FriendService;
+import com.yedam.blog.biz.friend.FriendVO;
 
 
 @Controller
@@ -68,7 +69,11 @@ public class AdminController {
 	}
 	
 	//친구 요청
-	
+	@RequestMapping("insertFriend.do")
+	public String insertFriend(FriendVO vo){
+		
+		return "";
+	}
 	
 	//친구 수락
 	

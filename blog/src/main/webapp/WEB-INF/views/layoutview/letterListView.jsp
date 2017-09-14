@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<p>'전체 보기' 의 카테고리</p>
+<hr> 
 <c:forEach items="${datas}" var="list">
 ${list.letterTitle}<br>
 </c:forEach>
