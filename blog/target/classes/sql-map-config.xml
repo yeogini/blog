@@ -20,6 +20,8 @@
         <typeAlias alias="blogSearch" type="com.yedam.blog.search.BlogSearchVO"/>
         <typeAlias alias="letter" type="com.yedam.blog.letter.LetterVO"/>
         <typeAlias alias="friend" type="com.yedam.blog.biz.friend.FriendVO"/>
+        <typeAlias alias="category" type="com.yedam.blog.biz.admin.CategoryVO"/>
+        <typeAlias alias="details" type="com.yedam.blog.biz.layout.DetailsVO"/>
 	</typeAliases>
     	    
   

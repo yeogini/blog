@@ -51,7 +51,7 @@
 			select * from (select a.*, rownum rnum 
 							from ( SELECT 
 							LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
-							FROM LETTER order by LETTER_DATE desc) a ) b where rnum >= 1 and rnum <= 5 
+							FROM LETTER WHERE USERID = #{userId} order by LETTER_DATE desc) a ) b where rnum >= 1 and rnum <= 5 
 	        ]]>
     	</select>
     	
@@ -62,7 +62,7 @@
 	        select * from (select a.*, rownum rnum 
 							from ( SELECT
 							REPLY_NO, RE_DATE, REPLY_SUB, LETTER_NO, USERID			
-							FROM REPLY order by RE_DATE desc) a ) b where rnum >= 1 and rnum <= 5
+							FROM REPLY WHERE USERID = #{userId} order by RE_DATE desc) a ) b where rnum >= 1 and rnum <= 5
 	        ]]>
     	</select>
     	
@@ -73,7 +73,7 @@
 	       	select * from (select a.*, rownum rnum 
 							from ( SELECT 
 							LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
-							FROM LETTER order by HITS desc) a ) b where rnum >= 1 and rnum <= 5
+							FROM LETTER WHERE USERID = #{userId} order by HITS desc) a ) b where rnum >= 1 and rnum <= 5
 	        ]]>
     	</select>
     	

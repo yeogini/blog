@@ -2,6 +2,7 @@ package com.yedam.blog.view.admin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.yedam.blog.biz.admin.CategoryService;
+import com.yedam.blog.biz.admin.CategoryVO;
 import com.yedam.blog.biz.admin.ProfileService;
 import com.yedam.blog.biz.admin.ProfileVO;
 import com.yedam.blog.biz.friend.FriendService;
@@ -25,6 +28,7 @@ public class AdminController {
 	ProfileService profileservice;
 	@Autowired
 	FriendService friendService;
+
 	//프로필 관리폼
 	@RequestMapping("adminProfile.do")
 	public String adminProfile(HttpSession session,ProfileVO vo,Model model){
@@ -74,5 +78,7 @@ public class AdminController {
 	public String deleteFriend(){
 		return "";
 	}
+	
+	
 	
 }

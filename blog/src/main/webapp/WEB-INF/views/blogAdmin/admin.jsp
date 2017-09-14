@@ -6,6 +6,10 @@
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>프로필 관리</title>
+
+
+
+
 	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -25,6 +29,8 @@
     <script src="resources/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="resources/assets/js/jquery.metisMenu.js"></script>
+
+
    <script>  
    $(function() {
 	  var xmlhttp = new XMLHttpRequest();
@@ -67,10 +73,6 @@
 				console.log("aaa");
 			}
 	   }
-
- 
-
-	
    }); 
    </script>
 </head>
@@ -90,7 +92,8 @@
 padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;"> 
-		<a href="getMainView.do" class="btn btn-info square-btn-adjust">내 블로그</a>
+
+		<a href="getMainView.do?blogId=<%=session.getAttribute("login") %>" class="btn btn-info square-btn-adjust" >내 블로그</a>
 		<a href="blog.do" class="btn btn-info square-btn-adjust">블로그 목록가기</a>
 		<a href="logout.do" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
