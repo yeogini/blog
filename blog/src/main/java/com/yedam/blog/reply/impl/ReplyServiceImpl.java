@@ -15,15 +15,20 @@ public class ReplyServiceImpl implements ReplyService{
 
 	@Autowired
 	ReplyMapper replyDAO;
-	
-	
-	
+
 	@Override
-	public List<ReplyVO> thisLetterReply() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ReplyVO> getReplyList(ReplyVO replyvo) {
+		return replyDAO.getReplyList(replyvo);
 	}
-	
-	
-	
+
+	@Override
+	public void insertReply(ReplyVO replyvo) {
+		replyDAO.insertReply(replyvo);
+	}
+
+	@Override
+	public void deleteReply(ReplyVO replyvo) {
+		replyDAO.deleteReply(replyvo);
+	}
+
 }

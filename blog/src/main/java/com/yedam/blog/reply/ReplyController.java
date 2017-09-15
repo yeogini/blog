@@ -1,18 +1,13 @@
 package com.yedam.blog.reply;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.yedam.blog.search.*;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ReplyController {
@@ -24,11 +19,26 @@ public class ReplyController {
 
 
 	
-	// 최신 댓글 (=newestReply.jsp)
-	@RequestMapping(value="/thisLetterReply.do", method=RequestMethod.GET)
-	public String newestReply(Model model){
-		model.addAttribute("thisLetterReply", replyService.thisLetterReply());
-		return "blogSearch/newestReply";
+	// 댓글 목록
+	@RequestMapping(value="/getReplyList.do")
+	@ResponseBody
+	public List<ReplyVO> getReplyList(Model model, ReplyVO replyVO){
+		return replyService.getReplyList(replyVO);
+	}
+	
+	// 댓글 등록
+	@RequestMapping(value="/insertReply.do")
+	@ResponseBody
+	public ReplyVO insertReply(Model model, ReplyVO replyVO){
+		replyService.insertReply(replyVO);
+		return replyVO;
+	}
+	
+	// 댓글 삭제
+	@RequestMapping(value="/deleteReply.do")
+	@ResponseBody
+	public void deleteReply(Model model, ReplyVO replyVO){
+		replyService.deleteReply(replyVO);
 	}
 	
 	
