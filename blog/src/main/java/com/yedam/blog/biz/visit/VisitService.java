@@ -6,7 +6,7 @@ import java.util.Map;
 public interface VisitService {
 	
 	//방명록 조회
-	List<Map<String, Object>> getVisitList(VisitVO vo);
+	List<Map<String, Object>> getVisitList(VisitDaySearchVO vo);
 	
 	//방명록 등록
 	void insertVisit(VisitVO vo);
@@ -19,5 +19,7 @@ public interface VisitService {
 	
 	//방명록 전체삭제(유저 탈퇴시)
 	void deleteVisitList(VisitVO vo);
+
+	List<Map<String, Object>> getVisitList(VisitVO vo);
 	
 }

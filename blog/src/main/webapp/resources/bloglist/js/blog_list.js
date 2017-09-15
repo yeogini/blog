@@ -10,8 +10,5 @@ $(function() {
 			console.dir(data);
 		});
 	});*/
-	$(".a").click(function(event) {
-		event.preventDefault();
-		console.dir($(this).text());
-	});
+	
 });

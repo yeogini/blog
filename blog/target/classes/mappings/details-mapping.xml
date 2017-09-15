@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.blog.biz.layout.impl.DetailsMapper"> 
+	<resultMap type="details" id="detailsResult">
+		<id property="letterNo" column="letter_no"/>
+		<result property="letterTitle" column="letter_title"/>
+		<result property="letterSub" column="letter_sub"/>
+		<result property="categoryNo" column="category_no"/>
+		<result property="letterDate" column="letter_date"/>
+		<result property="categoryName" column="cotegory_name"/>
+		<result property="hits" column="hits"/>
+		<result property="userid" column="userid"/>
+	</resultMap>
+	<select id="getDetailsList" resultMap="detailsResult">
+		SELECT D.* FROM (SELECT ROWNUM RN, C.* FROM(
+		SELECT A.*,B.CATEGORY_NAME FROM LETTER A, CATEGORY B 
+		WHERE A.CATEGORY_NO = B.CATEGORY_NO
+		AND A.USERID = #{userid}
+		<if test="categoryNo !=null and categoryNo !=''">
+		AND A.CATEGORY_NO = #{categoryNo}
+		</if>
+		) C ) D WHERE RN BETWEEN #{start} and #{end}
+	</select>
+	<select id="getDetailsCount" resultType="int">
+		SELECT COUNT(*) FROM LETTER 
+		WHERE USERID = #{userid}
+		<if test="categoryNo !=null and categoryNo !=''">
+		AND CATEGORY_NO = #{categoryNo}
+		</if>
+	
+	</select>
+</mapper>

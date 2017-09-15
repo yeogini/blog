@@ -14,52 +14,61 @@
  
 <style>
 #profile {
-	width: 100px;
-	height: 100px;
-	padding: 0.5em;
+	width: 290px;
+	height: 200px;
+	padding: 0.5em;	
 	position: absolute;
 }
 
 #category {
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 600px;
 	padding: 0.5em;
 	position: absolute;
 }
 
 #visitors {
-	width: 100px;
-	height: 100px;
+	width: 250px;
+	height: 250px;
 	padding: 0.5em;
 	position: absolute;
 }
 
 #reply {
-	width: 100px;
-	height: 100px;
+	width: 250px;
+	height: 250px;
 	padding: 0.5em;
 	position: absolute;
 }
 
 #latest_posts {
-	width: 100px;
-	height: 100px;
+	width: 250px;
+	height: 250px;
 	padding: 0.5em;
 	position: absolute;
 }
 
 #top {
-	width: 100px;
-	height: 100px;
+	width: 250px;
+	height: 250px;
 	padding: 0.5em;
 	position: absolute;
 }
 
 #title {
-	width: 100px;
-	height: 100px;
+	width: 400px;
+	height: 50px;
 	padding: 0.5em;
 	position: absolute;
+}
+#mainView {
+	border:1px solid black;
+	position: absolute;
+	top: 300px;
+	left: 460px;
+	width :1000px;
+	height :100%;
+	margin: 5px;
 }
 </style>
 
@@ -71,10 +80,9 @@
 
 
 <script>
+
 	$(function() {
-		/*  var p = $( "p" );
-		 var position = p.position();
- 	  */
+
 
 		$("#profile").draggable({
 			scroll : true
@@ -145,8 +153,10 @@
 				$("#t_" + id).val(position.left + "," + position.top);
 			});
 			$("#blog_form").submit();
-		})
+		});
+		
 	});
+	
 </script>
 
 
@@ -168,6 +178,7 @@
 
 	<div id="profile" class="layoutdiv ui-widget-content">
 		<p>프로필</p>
+	
 	</div>
 
 	<div id="visitors" class="layoutdiv ui-widget-content">
@@ -199,7 +210,7 @@
 	<c:if test="${not empty layout }">
 		<c:set var="mode" value="upd"></c:set>
 	</c:if>
-
+	
 
 	<form id="blog_form" action="layoutInsert.do" method="post">
 
@@ -215,7 +226,15 @@
 
 	</form>
 
-
+	<div id="mainView" class="container">
+		<div class="row"></div>
+		<iframe  style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
+			목록
+		</iframe><br>
+		<iframe style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
+			상세보기
+		</iframe>
+	</div>
 
 
 
