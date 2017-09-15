@@ -10,4 +10,6 @@ public interface ReplyService {
 	
 	public void  deleteReply(ReplyVO replyvo);
 	
+	public ReplyVO getReply (ReplyVO replyvo);
+	
 }

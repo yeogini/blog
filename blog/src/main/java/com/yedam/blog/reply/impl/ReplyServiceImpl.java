@@ -31,4 +31,10 @@ public class ReplyServiceImpl implements ReplyService{
 		replyDAO.deleteReply(replyvo);
 	}
 
+	@Override
+	public ReplyVO getReply(ReplyVO replyvo) {
+		// TODO Auto-generated method stub
+		return replyDAO.getReply(replyvo);
+	}
+
 }

@@ -11,4 +11,6 @@ public interface ReplyMapper {
 	public void insertReply(ReplyVO replyvo);
 	
 	public void deleteReply(ReplyVO replyvo);
+	
+	public ReplyVO getReply (ReplyVO replyvo);
 }

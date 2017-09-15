@@ -26,10 +26,26 @@
 	        ]]>
 	</select>
 	<!-- 해당 글에 대한 댓글 -->
+	
+	
+	
+	<!-- 글 한건 불러오기  -->
+	<select id="getReply" resultType="reply">
+		<!-- 컬럼번호, 댓글내용, 아이디, 작성일 -->
+	        <![CDATA[
+	        				SELECT
+							REPLY_NO, RE_DATE, REPLY_SUB, LETTER_NO, USERID			
+							FROM REPLY 
+							WHERE REPLY_NO = #{replyNo}		
+	        ]]>
+	</select>
+	<!-- 글 한건 불러오기  -->
+
+
 
 	<!-- 댓글 등록 -->
 	<insert id="insertReply" parameterType="reply">
-		<selectKey keyProperty="replyNo" resultType="string" order="BEFORE">
+		<selectKey keyProperty="replyNo" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(REPLY_NO), 0) + 1 FROM REPLY
 		</selectKey>
 	        <![CDATA[
@@ -45,6 +61,8 @@
 	</insert>
 	<!-- 댓글 등록 -->
 
+
+
 	<!-- 댓글 제거 -->
 	<delete id="deleteReply" parameterType="reply">
 	        <![CDATA[
@@ -53,5 +71,18 @@
 		    ]]>
 	</delete>
 	<!-- 댓글 제거 -->
+	
+	
+	
+	<!-- 글 제거 + 댓글 제거 -->
+	
+<!-- 	<delete id="deleteReply" parameterType="reply">
+	        <![CDATA[
+		        DELETE FROM REPLY
+		        WHERE REPLY_NO = #{replyNo}
+		    ]]>
+	</delete> -->
+	
+	<!-- 글 제거 + 댓글 제거 -->
 
 </mapper>

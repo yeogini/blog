@@ -17,9 +17,6 @@ public class ReplyController {
 	@Autowired
 	ReplyService replyService;
 
-
-	
-	// 댓글 목록
 	@RequestMapping(value="/getReplyList.do")
 	@ResponseBody
 	public List<ReplyVO> getReplyList(Model model, ReplyVO replyVO){
@@ -31,14 +28,16 @@ public class ReplyController {
 	@ResponseBody
 	public ReplyVO insertReply(Model model, ReplyVO replyVO){
 		replyService.insertReply(replyVO);
+		replyVO=replyService.getReply(replyVO);			/*글 등록 후 바로 날짜와 삭제 버튼 바로 보이게 하기*/
 		return replyVO;
 	}
 	
 	// 댓글 삭제
 	@RequestMapping(value="/deleteReply.do")
 	@ResponseBody
-	public void deleteReply(Model model, ReplyVO replyVO){
+	public Integer deleteReply(Model model, ReplyVO replyVO){
 		replyService.deleteReply(replyVO);
+		return replyVO.getReplyNo();
 	}
 	
 	
