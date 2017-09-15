@@ -85,8 +85,14 @@
 	height :100%;
 	margin: 5px;
 }
+/* #test{
+	width:900px;
+	margin-left:50px;
+	margin-right:50px;
+	margin-top: 20px;
+} */
 	</style>
-	<script src="resources/assets/js/jquery-3.2.1.js"></script>
+<script src="resources/assets/js/jquery-3.2.1.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
@@ -128,6 +134,7 @@ $(function(){
 				function (data) {
 					$("#profile").html(data);
 		}); 
+	
 	}
 	
 
@@ -169,7 +176,7 @@ function test(){
 		<div class="row"></div>
 		<iframe id ="test" src="getLetterView.do?blogId=${layout.userid}" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;height: 200px">
 		</iframe><br>
-		<iframe style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
+		<iframe style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px; height: 100%;" id="test2">
 		</iframe>
 	</div>
 </body>

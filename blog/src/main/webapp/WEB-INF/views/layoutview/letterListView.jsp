@@ -7,7 +7,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-
+<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
+<script>
+	$(function(){
+		$(".letterName").click(function(event){
+			event.preventDefault();
+			var src = $(this).attr("href");
+			console.dir(src);
+			//parent.document.getElementById("reply").attr('src',src);
+			$("#test2",parent.document).attr('src',src);
+			
+			
+		});
+	});
+</script>
 </head>
 <body>
 <c:if test="${datas[0].categoryName==null || datas[0].categoryName==''}">
@@ -18,7 +31,7 @@
 </c:if>
 <hr> 
 <c:forEach items="${datas}" var="list">
-${list.letterTitle}<br>
+<a href="getLetter.do?letterNo=${list.letterNo}" class="letterName">${list.letterTitle}</a><br>
 </c:forEach>
 <div id="paging" class="row" align="center"><mytag:letterpaging paging="${paging}"></mytag:letterpaging></div>
 </body>
