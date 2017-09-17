@@ -37,4 +37,10 @@ public class CategoryServiceImpl implements CategoryService{
 		
 	}
 
+	@Override
+	public CategoryVO getCategoryName(CategoryVO vo) {
+		// TODO Auto-generated method stub
+		return categoryDAO.getCategoryName(vo);
+	}
+
 }
