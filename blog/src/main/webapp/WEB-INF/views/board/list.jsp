@@ -90,7 +90,7 @@ function blogsearch() {
 		</div>
 	</div>
 </c:forEach>	
-	<div id="paging" class="row" align="center"><mytag:paging paging="${paging}"></mytag:paging></div>
+	<div id="paging" class="row" align="center"><mytag:paging paging="${paging}" search="${search}"></mytag:paging></div>
 </div>
 </div>
 </body>

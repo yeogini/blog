@@ -23,11 +23,11 @@
 </script>
 </head>
 <body>
-<c:if test="${datas[0].categoryName==null || datas[0].categoryName==''}">
+<c:if test="${name.categoryName==null || name.categoryName==''}">
 <p>'전체보기' 의 카테고리</p>
 </c:if>
-<c:if test="${datas[0].categoryName!=null}">
-<p>'${datas[0].categoryName}' 의 카테고리</p>
+<c:if test="${name.categoryName!=null}">
+<p>'${name.categoryName}' 의 카테고리</p>
 </c:if>
 <hr> 
 <c:forEach items="${datas}" var="list">
