@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yedam.blog.biz.black.BlackSerivce;
+import com.yedam.blog.biz.black.BlackService;
 import com.yedam.blog.biz.black.BlackVO;
 
 
 
 @Service("blackService")
-public class BlackServiceImpl implements BlackSerivce{
+public class BlackServiceImpl implements BlackService{
 	
 	@Autowired
 	BlackMapper blackDAO;
