@@ -15,6 +15,9 @@ public interface LetterService {
 	// 글 삭제
 	void deleteLetter(LetterVO vo);
 	
+	// 댓글 + 글 삭제
+	void deleteReplyLetter(LetterVO vo);
+	
 	// 글 상세 조회
 	LetterVO getLetter(LetterVO vo);
 	

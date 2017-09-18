@@ -46,6 +46,7 @@ public class LetterServiceImpl implements LetterService {
 
 	@Override
 	public void deleteLetter(LetterVO vo) {
+		letterDAO.deleteReplyLetter(vo);
 		letterDAO.deleteLetter(vo);
 		
 	}
@@ -59,6 +60,12 @@ public class LetterServiceImpl implements LetterService {
 	public void deleteLetterList(LetterSearchVO vo) {
 		letterDAO.deleteLetterList(vo);
 		
+	}
+
+	@Override
+	public void deleteReplyLetter(LetterVO vo) {
+		// TODO Auto-generated method stub
+		letterDAO.deleteReplyLetter(vo);
 	}
 	
 	

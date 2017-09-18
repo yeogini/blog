@@ -53,6 +53,15 @@
 		        WHERE LETTER_NO = #{letterNo}
 		        ]]>
 	</select>
+	
+	<!-- 댓글 + 글 삭제 delete -->
+	<select id="deleteReplyLetter" resultType="letter">
+		        <![CDATA[
+		        DELETE 
+		        FROM REPLY
+		        WHERE LETTER_NO = #{letterNo}
+		        ]]>
+	</select>
 
 	<!-- 단건조회 -->
 	<select id="getLetter" resultType="letter">

@@ -98,10 +98,22 @@ function replyDelete(replyNo) {
 	
 	var formPara = {"replyNo":replyNo};
 	$.post("./deleteReply.do", formPara, function(data, status, xhr){
+
 		if (data != "") {
+				confirm("해당 댓글을 삭제할까요?");
 				$('#'+ replyNo)	.remove();
+
 		}
 	});
+}
+
+function LetterDelete() {
+	
+	if( confirm("해당 글과 댓글 모두 삭제하시겠습니까?")==true ) {
+		return true;
+	} else{
+		return false;
+	}
 }
 
 $(document).ready(function(){
@@ -147,7 +159,7 @@ $(document).ready(function(){
 	
 					}
 				} else {
-					alert('no data');
+					/* alert('댓글이 없는 글 입니다.'); */
 				}      
 			
 			},
@@ -175,7 +187,10 @@ $(document).ready(function(){
 											 + '<td>' +	delButton+ '</td>'
 											 + '</tr>';
 											 
-				$(".article:eq(1)").before(html);			
+				$(".article:eq(0)").after(html);	
+				
+				
+				
 			}
 		});
 	});
@@ -239,10 +254,16 @@ $(document).ready(function(){
 	<div class="mbr-section-btn" align="center">
 		<br /> <a class="btn btn-white"
 			href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a> <br />
-		<form name="frm" action="deleteLetter.do">
+			
+			
+			
+		<form name="frm" onclick="return LetterDelete()" action="deleteLetter.do">
 			<input type="hidden" name="letterNo" value="${letter.letterNo}" /> <input
-				class="btn btn-white" type="submit" value="삭제">
+				class="btn btn-white" type="submit"  value="삭제">
 		</form>
+		
+		
+		
 		<a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a>
 	</div>
 
@@ -282,8 +303,7 @@ $(document).ready(function(){
 				<input type="hidden" id="letterNo" name="letterNo"
 					value="${letter.letterNo}">
 				<!-- replySub -->
-				<textarea id="replySub" name="replySub" placeholder="내용입력" rows="2"
-					cols="60" /></textarea>
+				<textarea id="replySub" name="replySub" placeholder="내용입력" rows="2" cols="60" /></textarea>
 				<input type="submit" value="댓글 등록" />
 
 			</fieldset>
@@ -294,7 +314,7 @@ $(document).ready(function(){
 
 
 		<!-- 테이블 -->
-		<table border="1" width="500" height="500">
+		<table border="1" width="700">
 
 			<tr class="article" align="center" >
 				<!-- <td>번호 -->
