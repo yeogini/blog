@@ -19,18 +19,17 @@
     <select id="getBlogSearchList" resultMap="bloglistResult" parameterType="blogSearch">
     
     	SELECT B.USERID,B.BLOG_TITLE,B.BLOG_IMG FROM(SELECT ROWNUM RN, A.USERID,A.BLOG_TITLE,A.BLOG_IMG FROM
-    	<if test="search != null"> 
-    	(SELECT * FROM USERS WHERE USERID LIKE('%' || #{search} || '%') ORDER BY 1 ) A
-    	</if>
-    	<if test="search ==null || search ==''">
-    	(SELECT * FROM USERS ORDER BY 1 ) A
-    	</if>
     	
+    	(SELECT * FROM USERS 
+    	<if test="search != null || search ==''"> 
+    	WHERE USERID LIKE('%' || #{search} || '%') 
+    	</if>
+    	ORDER BY 1 ) A 
     	) B WHERE RN BETWEEN #{start} AND #{end}
     </select>
     <select id="getTotalBlogSearch" resultType="int">
     	SELECT count(*) FROM USERS 
-    	<if test="search != null"> 
+    	<if test="search != null || search ==''"> 
     	WHERE USERID LIKE('%' || #{search} || '%') 
     	</if>
     	ORDER BY 1

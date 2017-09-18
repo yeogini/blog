@@ -43,24 +43,10 @@ public class BlogListController {
 		
 		List<BlogListVO> list =bloglistService.getBlogSearchList(vo);
 		
+		mv.addObject("search", vo.getSearch());
 		mv.addObject("paging",paging);
 		mv.addObject("bloglist",list);
 		mv.setViewName("/board/list");
 		return mv;
-	}
-	
-	@RequestMapping("getBlogListAjax.do")
-	@ResponseBody
-	public List<BlogListVO> getBlogListAjax(BlogSearchListVO vo){
-		
-		Paging paging = new Paging();
-		int page = 1;
-		paging.setPage(page);
-		int start, end;
-		start = (page*paging.getPageUnit())-(paging.getPageUnit()-1);
-		end = start + paging.getPageUnit() -1;
-
-
-		return bloglistService.getBlogSearchList(vo);
 	}
 }

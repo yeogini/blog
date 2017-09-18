@@ -20,7 +20,7 @@
 	position: absolute;
 	left: 10px;
 	top : 110px;
-	
+	 border: 1px solid black;
 }
 
 #category {
@@ -30,15 +30,17 @@
 	position: absolute;
 	left: 10px;
 	top : 210px;
+	 border: 1px solid black;
 }
 
 #visitors {
 	width: 250px;
-	height: 250px
+	height: 150px;
 	padding: 0.5em;
 	position: absolute;
 	left: 10px;
 	top : 310px;
+	 border: 1px solid black;
 }
 
 #reply {
@@ -48,6 +50,7 @@
 	position: absolute;
 	left: 10px;
 	top : 474px;
+	 border: 1px solid black;
 }
 
 #latest_posts {
@@ -57,6 +60,7 @@
 	position: absolute;
 	left: 10px;
 	top : 584px;
+ border: 1px solid black;
 }
 
 #top {
@@ -66,6 +70,7 @@
 	position: absolute;
 	left: 10px;
 	top : 684px;
+ border: 1px solid black;
 }
 
 #title {
@@ -75,6 +80,7 @@
 	position: absolute;
 	left: 10px;
 	top : 794px;
+ border: 1px solid black;
 }
 #mainView {
 	border:1px solid black;
@@ -166,7 +172,7 @@ function test(){
 		</c:if>
 </div>
 	<div id="profile" class="profile"></div>
-	<iframe src="/blog/mainviewVisit.do?blogId=${layout.userid}" id="visitors" ></iframe>				
+	<iframe src="/blog/mainviewVisit.do?blogId=${layout.userid}" id="visitors"></iframe>				
 	<iframe id="category" src="getCategory.do?blogId=${layout.userid}"></iframe>
 	<iframe id="reply" src="/blog/newestReply.do?blogId=${layout.userid}"></iframe>
 	<iframe id="latest_posts" src="/blog/newestLetter.do?blogId=${layout.userid}"></iframe>

@@ -12,4 +12,6 @@ public List<CategoryVO> getCategory(CategoryVO vo);
 	public void updateCategory(CategoryVO vo);
 	
 	public void deleteCategory(CategoryVO vo);
+	
+	public CategoryVO getCategoryName(CategoryVO vo);
 }
