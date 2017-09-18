@@ -22,7 +22,6 @@
 
    </style>
     <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
-   <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
      <!-- JQUERY SCRIPTS -->
     <script src="resources/assets/js/jquery-1.10.2.js"></script>
       <!-- BOOTSTRAP SCRIPTS -->
@@ -51,10 +50,10 @@
 		  } else if(menu == "blacklist") {
 			  url ="/blog/test.do";
 		  }
-		  xmlhttp.onreadystatechange = xmlOnready;
+		  /* xmlhttp.onreadystatechange = xmlOnready;
 		  xmlhttp.open("GET",url,true);
-		  xmlhttp.send();
-		 //$.get("/blog/adminProfile.do",xmlOnready());
+		  xmlhttp.send(); */
+		 $("#page-inner").load(url);
 	  });  
 	/*   $("#profile").click(function(envet) {
 		   event.preventDefault();
@@ -62,17 +61,7 @@
 			  xmlhttp.open("GET","/blog/adminProfile.do",true);
 			  xmlhttp.send();
 	   });  */
-	   function xmlOnready(){
-		   if(xmlhttp.readyState==4) {
-			   console.log("bbb");
-			   if(xmlhttp.status==200) {
-				   console.log("#page-inner");
-					document.getElementById("page-inner").innerHTML = xmlhttp.responseText;  
-			   }
-			}  else {
-				console.log("aaa");
-			}
-	   }
+	  
    }); 
    </script>
 </head>

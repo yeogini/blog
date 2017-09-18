@@ -2,7 +2,7 @@ package com.yedam.blog.biz.black;
 
 import java.util.List;
 
-public interface BlackSerivce {
+public interface BlackService {
 	
 	//유저차단
 	public void insertBlack(BlackVO vo);

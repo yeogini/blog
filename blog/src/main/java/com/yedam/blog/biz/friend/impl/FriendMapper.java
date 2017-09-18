@@ -13,4 +13,6 @@ public List<FriendVO> getFriendList(FriendVO vo);
 	public void updateFrined(FriendVO vo);
 	
 	public void deleteFriend(FriendVO vo);
+	
+	public FriendVO getFriend(FriendVO vo);
 }

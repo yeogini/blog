@@ -13,10 +13,12 @@
 
 <!-- 유저차단 -->
     <insert id="insertBlack" parameterType="black">
-        <![CDATA[
-        INSERT INTO BLACK(d_no, userid, d_id, reason_code) 
+        <selectKey keyProperty="d_no" resultType="int" order="BEFORE">
+      	SELECT NVL(MAX(D_NO), 0) + 1 FROM BLACK
+      </selectKey>
+     	INSERT INTO BLACK(d_no, userid, d_id, reason_code) 
         VALUES(#{d_no},#{userid},#{d_id},#{reason_code})
-        ]]>
+       
     </insert>
 
 <!-- 차단해제  -->
@@ -32,9 +34,9 @@
 
     <select id="getBlackList" resultMap="BlackResult">
         <![CDATA[
-        SELECT * 
+        SELECT D_NO, D_ID, REASON_CODE
         FROM BLACK
-     	WHERE USERID = #{userid)
+     	WHERE USERID = #{userid}
         ]]>
     </select>
 </mapper> 
