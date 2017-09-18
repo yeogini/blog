@@ -122,8 +122,23 @@ public class AdminController {
 	
 	//친구 거절 ,삭제
 	@RequestMapping("deleteFriend.do")
-	public String deleteFriend(){
-		return "";
+	@ResponseBody
+	public String deleteFriend(HttpServletRequest req,FriendVO vo){
+		int no = Integer.parseInt(req.getParameter("no"));
+
+		System.out.println("친구 = " + no);
+		vo.setF_no(no);
+		FriendVO f1 = new FriendVO();
+		FriendVO f2 = new FriendVO();
+		
+		f1 = friendService.getFriend(vo);
+		f2.setF_id(f1.getUserid());
+		f2.setUserid(f1.getF_id());
+		
+		friendService.deleteFriend(f1);
+		friendService.deleteFriend(f2);
+		
+		return req.getParameter("no");
 	}
 	
 	

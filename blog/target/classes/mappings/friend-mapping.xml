@@ -44,7 +44,8 @@
 		</update>
 	<delete id="deleteFriend">
 		DELETE FROM F_LIST
-		WHERE F_NO = #{f_no}
+		WHERE USERID = #{userid}
+		and F_ID = #{f_id}
 	</delete>
 
 
