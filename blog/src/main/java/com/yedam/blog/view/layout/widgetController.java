@@ -113,7 +113,10 @@ public class widgetController {
 			vo.setStart(start);
 			vo.setEnd(end);
 			List<DetailsVO> result = detailsService.getDetailsList(vo);
-			
+			CategoryVO test = new CategoryVO();
+			test.setCategoryNo(Integer.parseInt(categoryNo));
+			CategoryVO name= categoryService.getCategoryName(test);
+			model.addAttribute("name", name);
 			model.addAttribute("paging",paging);
 			model.addAttribute("datas", result);
 			return "/layoutview/letterListView";

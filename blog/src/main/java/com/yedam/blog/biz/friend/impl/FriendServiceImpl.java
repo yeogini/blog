@@ -23,19 +23,25 @@ public class FriendServiceImpl implements FriendService{
 	@Override
 	public void insertFriend(FriendVO vo) {
 		// TODO Auto-generated method stub
-		
+		friendDAO.insertFriend(vo);
 	}
 
 	@Override
 	public void updateFrined(FriendVO vo) {
 		// TODO Auto-generated method stub
-		
+		friendDAO.updateFrined(vo);
 	}
 
 	@Override
 	public void deleteFriend(FriendVO vo) {
 		// TODO Auto-generated method stub
-		
+		friendDAO.deleteFriend(vo);
+	}
+
+	@Override
+	public FriendVO getFriend(FriendVO vo) {
+		// TODO Auto-generated method stub
+		return friendDAO.getFriend(vo);
 	}
 
 }

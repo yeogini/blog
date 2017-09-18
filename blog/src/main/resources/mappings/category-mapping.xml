@@ -17,4 +17,8 @@
 		SELECT * FROM CATEGORY
 			WHERE USERID = #{userid}
 	</select>
+	<select id="getCategoryName" resultMap="categoryResult">
+		SELECT * FROM CATEGORY
+		WHERE CATEGORY_NO = #{categoryNo}
+	</select>
 </mapper>

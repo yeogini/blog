@@ -4,11 +4,6 @@
 <html>
 <head>
 <title>Insert title here</title>
-<style>
-</style>
-<script>
-</script>
-
 </head>
 <body>
 
