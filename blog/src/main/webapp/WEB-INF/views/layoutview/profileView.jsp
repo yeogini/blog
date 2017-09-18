@@ -83,7 +83,13 @@ $(function() {
 	            if(key=='BlogHome') {
 	            	
 	            } else if(key=='friend') {
-	            	
+	            	$.get("insertFriend.do",function(data){
+	            		if(data.result=="success") {
+	            			
+	            		} else {
+	            			
+	            		}
+	            	});
 	            } else {
 	            	
 	            	
@@ -101,11 +107,17 @@ $(function() {
 	               }
 	        });
 	}
+	var aa;
+	$("td").each(function(index, data){
+		
+	});
+		
 	
 });
 </script>
 </head>
 <body>
+
 	<div id="dialog-form" title="black">
 		<p class="validateTips">차단 사유를 입력하세요.</p>
 
@@ -117,7 +129,20 @@ $(function() {
 			<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			
 			</fieldset>
-		
+
+		<form style="width: 280px;height: 190px;">
+			<img src="resources/upload/${profile.userid}.jpg" style="vertical-align:text-middle">
+			<span id="myblog">${profile.userid}</span>(${profile.nickName})
+			<br>
+			<textarea rows="4" cols="20" readonly="readonly" style="resize:none; overflow-y:scroll; vertical-align: text-top;">${profile.intro}</textarea>
+			<c:if test="${sessionScope.login==profile.userid}">
+			<a href="adminView.do" id="profileEdit" target="_parent">edit</a>	
+			</c:if>
+		</form>
+		<form name="frm" id="frm" action="insertFriend.do">
+			<input type="hidden" name="userid" value="${sessionScope.login}">
+			<input type="hidden" name="f_id" value="${profile.userid }">
+
 		</form>
 	</div>
 
@@ -131,7 +156,7 @@ $(function() {
 		<a href="adminView.do" id="profileEdit" target="_parent">edit</a>
 	</form>
 
-	<!--  <input id="black" type="button" value="유저 차단"> -->s
+	<!--  <input id="black" type="button" value="유저 차단"> -->
 
 </body>
 </html>

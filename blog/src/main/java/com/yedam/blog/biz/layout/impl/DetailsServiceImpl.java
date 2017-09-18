@@ -19,4 +19,10 @@ public class DetailsServiceImpl implements DetailsService{
 		return detailsDAO.getDetailsList(vo);
 	}
 
+	@Override
+	public int getDetailsCount(DetailsVO vo) {
+		// TODO Auto-generated method stub
+		return detailsDAO.getDetailsCount(vo);
+	}
+
 }

@@ -7,4 +7,6 @@ import com.yedam.blog.biz.layout.DetailsVO;
 public interface DetailsMapper {
 
 	public List<DetailsVO> getDetailsList(DetailsVO vo);
+	
+	public int getDetailsCount(DetailsVO vo);
 }

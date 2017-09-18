@@ -14,7 +14,7 @@
 	</resultMap>
 
 	<select id="getCategory" resultMap="categoryResult">
-	SELECT * FROM CATEGORY
-	WHERE USERID = #{userid}
+		SELECT * FROM CATEGORY
+			WHERE USERID = #{userid}
 	</select>
 </mapper>

@@ -2,7 +2,9 @@ package com.yedam.blog.view.admin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -20,6 +23,7 @@ import com.yedam.blog.biz.admin.CategoryVO;
 import com.yedam.blog.biz.admin.ProfileService;
 import com.yedam.blog.biz.admin.ProfileVO;
 import com.yedam.blog.biz.friend.FriendService;
+import com.yedam.blog.biz.friend.FriendVO;
 
 
 @Controller
@@ -68,7 +72,14 @@ public class AdminController {
 	}
 	
 	//친구 요청
-	
+	@RequestMapping("insertFriend.do")
+	@ResponseBody
+	public Map<String,? extends Object> insertFriend(FriendVO vo){
+		
+		
+		
+		return Collections.singletonMap("result","sucess");
+	}
 	
 	//친구 수락
 	

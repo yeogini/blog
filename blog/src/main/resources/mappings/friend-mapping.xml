@@ -18,8 +18,14 @@
 		AND A.USERID =#{userid}
 	</select>
 	
-	<insert id="insertFriend"></insert>
-
+	<insert id="insertFriend" parameterType="friend">
+		<selectKey keyProperty="f_no" resultType="int" order="BEFORE">
+    		SELECT NVL(MAX(F_NO),0) +1 FROM F_LIST;
+    	</selectKey>
+    	
+	</insert>
+	
+    	
 	<update id="updateFrined"></update>
 	
 	<delete id="deleteFriend"></delete>

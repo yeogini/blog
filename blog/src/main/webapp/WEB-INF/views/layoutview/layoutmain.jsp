@@ -20,7 +20,7 @@
 	position: absolute;
 	left: 10px;
 	top : 110px;
-	
+	 border: 1px solid black;
 }
 
 #category {
@@ -30,15 +30,17 @@
 	position: absolute;
 	left: 10px;
 	top : 210px;
+	 border: 1px solid black;
 }
 
 #visitors {
 	width: 250px;
-	height: 250px
+	height: 150px;
 	padding: 0.5em;
 	position: absolute;
 	left: 10px;
 	top : 310px;
+	 border: 1px solid black;
 }
 
 #reply {
@@ -48,6 +50,7 @@
 	position: absolute;
 	left: 10px;
 	top : 474px;
+	 border: 1px solid black;
 }
 
 #latest_posts {
@@ -57,6 +60,7 @@
 	position: absolute;
 	left: 10px;
 	top : 584px;
+ border: 1px solid black;
 }
 
 #top {
@@ -66,6 +70,7 @@
 	position: absolute;
 	left: 10px;
 	top : 684px;
+ border: 1px solid black;
 }
 
 #title {
@@ -75,6 +80,7 @@
 	position: absolute;
 	left: 10px;
 	top : 794px;
+ border: 1px solid black;
 }
 #mainView {
 	border:1px solid black;
@@ -85,8 +91,14 @@
 	height :100%;
 	margin: 5px;
 }
+/* #test{
+	width:900px;
+	margin-left:50px;
+	margin-right:50px;
+	margin-top: 20px;
+} */
 	</style>
-	<script src="resources/assets/js/jquery-3.2.1.js"></script>
+<script src="resources/assets/js/jquery-3.2.1.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
@@ -128,12 +140,16 @@ $(function(){
 				function (data) {
 					$("#profile").html(data);
 		}); 
+	
 	}
 	
 
 });
 function goBack(){
 	history.back();
+};
+function test(){
+	console.log("감사합니다");
 };
 
 </script>
@@ -156,7 +172,7 @@ function goBack(){
 		</c:if>
 </div>
 	<div id="profile" class="profile"></div>
-	<iframe src="/blog/mainviewVisit.do?blogId=${layout.userid}" id="visitors" ></iframe>				
+	<iframe src="/blog/mainviewVisit.do?blogId=${layout.userid}" id="visitors"></iframe>				
 	<iframe id="category" src="getCategory.do?blogId=${layout.userid}"></iframe>
 	<iframe id="reply" src="/blog/newestReply.do?blogId=${layout.userid}"></iframe>
 	<iframe id="latest_posts" src="/blog/newestLetter.do?blogId=${layout.userid}"></iframe>
@@ -164,9 +180,9 @@ function goBack(){
 	<iframe src="getTitleView.do?blogId=${layout.userid}" id="title" scrolling="no"></iframe>
 	<div id="mainView" class="container">
 		<div class="row"></div>
-		<iframe src="getLetterView.do?blogId=${layout.userid}" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
+		<iframe id ="test" src="getLetterView.do?blogId=${layout.userid}" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;height: 200px">
 		</iframe><br>
-		<iframe style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;">
+		<iframe style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px; height: 100%;" id="test2">
 		</iframe>
 	</div>
 </body>
