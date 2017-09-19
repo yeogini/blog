@@ -47,5 +47,10 @@ public class UsersServiceImpl implements UsersService{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public int idChk(UsersVO vo) {
+		// TODO Auto-generated method stub
+		return usersDAO.idChk(vo);
+	}
 
 }

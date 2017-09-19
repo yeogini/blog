@@ -3,6 +3,7 @@ package com.yedam.blog.view.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yedam.blog.biz.admin.ProfileService;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yedam.blog.biz.users.UsersService;
 import com.yedam.blog.biz.users.UsersVO;
@@ -42,6 +44,20 @@ public class UsersController {
 	public String insertUser(UsersVO vo){
 		usersService.insertUsers(vo);
 		return "redirect:getUsersList.do";
+	}
+	
+	//아이디 체크
+	@RequestMapping("/idChk.do")
+	@ResponseBody 
+	public String idChk(UsersVO vo){
+		
+		int result = usersService.idChk(vo);
+		if(result==1) {
+			return "fail";
+		} else { 
+			return "success";
+		}
+		
 	}
 	
 	

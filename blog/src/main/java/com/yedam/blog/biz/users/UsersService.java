@@ -14,4 +14,6 @@ public interface UsersService {
 		public void updateUsers(UsersVO vo);
 
 		public void deleteUsers(UsersVO vo);
+		
+		public int idChk(UsersVO vo);
 }
