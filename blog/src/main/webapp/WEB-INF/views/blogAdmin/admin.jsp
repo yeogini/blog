@@ -32,6 +32,7 @@
 
    <script>  
    $(function() {
+	   $("#page-inner").load("adminProfile.do");
 	  var xmlhttp = new XMLHttpRequest();
 
 	   $("#main-menu").on('click','a',function(event){
@@ -92,29 +93,25 @@ font-size: 16px;">
             <ul class="nav" id="main-menu">
 				<li class="text-center">
                     <img src="./resources/images/adminlogo.jpg" class="user-image img-responsive"/>
-					</li>
-					<li>환영합니다</li>
-                    <li>
-                        <a href="index.html" id="profile"><i class="fa fa-user fa-3x"></i> 프로필</a>
-                    </li>
-                     <li>
-                        <a  href="ui.html" id="category"><i class="fa fa-bars fa-3x"></i> 카테고리</a>
-                    </li>
-                    <li>
-                        <a  href="tab-panel.html" id="layout"><i class="fa fa-th fa-3x"></i> 레이아웃</a>
-                    </li> 
-						   <li>
-                        <a   href="chart.html" id="friend"><i class="fa fa-users fa-3x"></i> 친구 관리</a>
-                    </li>	
-                      <li> 
-                        <a  href="table.html" id="blacklist"><i class="fa fa-list fa-3x"></i> 블랙 리스트</a>
-                    </li>
-                </ul>
+				</li>
+					<li><a href="index.html" id="profile"><i
+							class="fa fa-user fa-3x"></i> 프로필</a></li>
+					<li><a href="ui.html" id="category"><i
+							class="fa fa-bars fa-3x"></i> 카테고리</a></li>
+					<li><a href="tab-panel.html" id="layout"><i
+							class="fa fa-th fa-3x"></i> 레이아웃</a></li>
+					<li><a href="chart.html" id="friend"><i
+							class="fa fa-users fa-3x"></i> 친구 관리</a></li>
+					<li><a href="table.html" id="blacklist"><i
+							class="fa fa-list fa-3x"></i> 블랙 리스트</a></li>
+				</ul>
             </div>
         </nav>  
         <!-- /. NAV SIDE  -->
 		<div id="page-wrapper">
-			<div id="page-inner"></div>
+			<div id="page-inner">
+				
+			</div>
 		</div>
 </div>
    
