@@ -129,7 +129,7 @@ $(function() {
 			<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			
 			</fieldset>
-
+		</form>
 		<form style="width: 280px;height: 190px;">
 			<img src="resources/upload/${profile.userid}.jpg" style="vertical-align:text-middle">
 			<span id="myblog">${profile.userid}</span>(${profile.nickName})
