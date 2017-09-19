@@ -270,7 +270,7 @@ $(document).ready(function(){
 		
 		
 		
-		<a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a>
+		<!-- <a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a> -->
 	</div>
 
 	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -282,6 +282,8 @@ $(document).ready(function(){
 		<HR>
 
 		댓글 쓰기
+		
+		<HR>
 		
 		<br/>
 		<br/>
@@ -301,12 +303,12 @@ $(document).ready(function(){
 				<label>USER ID : ${sessionScope.login}</label> 
 				
 					<br/>
-				
+<%-- 				
 				<input  type="text" id="userId" 
 						name="userId" value="${sessionScope.login}" 
 						width="10" height="5" maxlength="15" readonly="readonly" />
-						
-					<br/>
+--%>
+					
 					<br/>
 					
 				<input type="hidden" id="letterNo" name="letterNo"

@@ -35,5 +35,10 @@
 		WHERE userID = #{userid}
 	</select>
 	
+	<select id="idChk" resultType="int">
+		SELECT COUNT(*) FROM USERS
+		WHERE USERID = #{userid}
+	</select>
+	
 
 </mapper>
