@@ -258,8 +258,8 @@ $(document).ready(function(){
 			
 			
 		<form name="frm" onclick="return LetterDelete()" action="deleteLetter.do">
-			<input type="hidden" name="letterNo" value="${letter.letterNo}" /> <input
-				class="btn btn-white" type="submit"  value="삭제">
+			<input type="hidden" name="letterNo" value="${letter.letterNo}" /> 
+			<input class="btn btn-white" type="submit"  value="삭제">
 		</form>
 		
 		

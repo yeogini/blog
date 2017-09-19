@@ -22,6 +22,9 @@ public interface LetterMapper {
 
 	// 글 상세 조회
 	LetterVO getLetter(LetterVO vo);
+	
+	// 글 조회수 카운트
+	LetterVO hitsLetter(LetterVO vo);
 
 	// 글 목록 조회
 	List<LetterVO> getLetterList(LetterSearchVO vo);
