@@ -23,13 +23,13 @@
   <h2>유저차단</h2>
  <table>
         <tr>
-        <th>번호</th><th>아이디</th><th>차단된 아이디</th><th>차단사유</th>
+        <th>번호</th><th>차단된 아이디</th><th>차단사유</th>
         </tr>
         
         
        	<c:forEach var="black" items="${blackList}">
 			  <tr>
-        <th>${black.d_no}</th> <th>${black.userid}</th><th>${black.d_id}</th><th>${black.reason_code}</th>
+        <th>${black.d_no}</th> <th>${black.d_id}</th><th>${black.reason_code}</th>
         </tr>
 			 </c:forEach>
 </table>
