@@ -94,13 +94,18 @@ public class LetterController {
 			return "redirect:getLetterList.do";
 		}
 	
+	// 댓글 + 글 삭제 deleteReplyLetterList.do
+	@RequestMapping("/deleteReplyLetter.do")
+	public String deleteReplyLetterList(LetterVO vo) {
+		letterService.deleteReplyLetter(vo);
+		return "redirect:getLetterList.do";
+		}
+		
 	// 다건 삭제
 	@RequestMapping("/deleteLetterList.do")
 	public String deleteLetterList(LetterSearchVO vo) {
 		letterService.deleteLetterList(vo);
 		return "redirect:getLetterList.do";
 	}
-	
-	
 	
 }

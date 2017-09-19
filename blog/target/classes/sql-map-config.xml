@@ -9,7 +9,10 @@
     
     <settings>
     	<setting name="mapUnderscoreToCamelCase" value="true"></setting>
-    </settings>	    
+    </settings>	  
+    
+    
+      
     <!-- Alias 설정 -->
     <typeAliases>
         <typeAlias alias="users" type="com.yedam.blog.biz.users.UsersVO"/>
@@ -23,6 +26,7 @@
         <typeAlias alias="friend" type="com.yedam.blog.biz.friend.FriendVO"/>
         <typeAlias alias="category" type="com.yedam.blog.biz.admin.CategoryVO"/>
         <typeAlias alias="details" type="com.yedam.blog.biz.layout.DetailsVO"/>
+        <typeAlias alias="reply" type="com.yedam.blog.reply.ReplyVO"/>
 	</typeAliases>
     	    
   

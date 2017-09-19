@@ -90,45 +90,161 @@
 
 
 
+<!-- 댓글 목록 불러오기 스크립트 -->
+
+<script>
+
+function replyDelete(replyNo) {
+	
+	var formPara = {"replyNo":replyNo};
+	$.post("./deleteReply.do", formPara, function(data, status, xhr){
+
+		if (data != "") {
+				confirm("해당 댓글을 삭제할까요?");
+				$('#'+ replyNo)	.remove();
+
+		}
+	});
+}
+
+function LetterDelete() {
+	
+	if( confirm("해당 글과 댓글 모두 삭제하시겠습니까?")==true ) {
+		return true;
+	} else{
+		return false;
+	}
+}
+
+$(document).ready(function(){
+
+	getBoard();
+	
+	// ajax 로 게시글 로딩
+	function getBoard() 
+	{
+		var requestData = {"letterNo":${letter.letterNo} };
+		console.log(requestData);
+		/* $('div.indicator').html('<img src="./images/indicator_01.gif">'); */
+		
+		$.ajaxSetup({
+			url:'./getReplyList.do',
+			type:'POST'			,
+			dataType : 'json'
+		});
+		
+		$.ajax({
+			data : requestData,
+			cache: false,
+			success : function(data) {
+			/* 	alert('success'); */
+				if (data != "") {
+					//var articles = $.parseJSON(data);
+
+					for( i=0; i< data.length; i++) {
+						
+					var delButton = '<input type="submit" onclick=replyDelete('+ data[i].replyNo + ') value="삭제" >';	
+					
+						if(data[i].userId != "${sessionScope.login}"){
+							delButton ="";
+						}
+						var html = '<tr class="article" id="'+ data[i].replyNo + '">' 
+									 + '<td>' +	data[i].userId 	 + '</td>'
+									 + '<td>' + data[i].replySub + '</td>'
+									 + '<td>' +	data[i].reDate 	 + '</td>'
+									 + '<td>' +	delButton+ '</td>'
+									 + '</tr>';
+									
+						$(".article:last").after(html);	
+	
+					}
+				} else {
+					/* alert('댓글이 없는 글 입니다.'); */
+				}      
+			
+			},
+		error: function(xhr, status, msg) { alert(status +":"+msg);}
+		})/* .always(function(){ $('div.indicator').empty(); } ) */;
+	}
+	
+/*-------------------------
+ *  form submit event (댓글 등록)
+ ------------------------- */
+	$("#replyForm").submit(function(event) {
+		event.preventDefault();
+		var formPara = $(this).serialize();
+		$.post("./insertReply.do", formPara, function(data, status, xhr){
+			if (data != "") {
+				var delButton = '<input type="submit" onclick=replyDelete('+ data.replyNo + ') value="삭제" >';	
+				
+				if(data.userId != "${sessionScope.login}"){
+					delButton ="";
+				}
+				var html = '<tr class="article" id="'+ data.replyNo + '">' 
+											 + '<td>' +	data.userId 	 + '</td>'
+											 + '<td>' + data.replySub    + '</td>'
+											 + '<td>' +	data.reDate 	 + '</td>'
+											 + '<td>' +	delButton+ '</td>'
+											 + '</tr>';
+											 
+				$(".article:eq(0)").after(html);	
+				
+				
+				
+			}
+		});
+	});
+
+/*-------------------------
+ *  scroll event
+ ------------------------- */
+	$(window).scroll(function(){
+		if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+			getBoard();
+		}
+	}); 
+});
+
+
+/* 댓글 목록 불러오기 스크립트 */
+
+</script>
+
 </head>
 <body>
 
-	<table border="0" width="100" height=" 200" align="center"
-		class="table table-striped table-bordered table-hover"
-		id="dataTables-example">
+	<div class="form-group" align="center">
 
+		<hr>
 
+		상세보기
 
-		<div class="form-group" align="center">
+		<hr>
 
-			<hr>
+		<table border="0" width="100" height=" 200" width="700" align="center"
+			class="table table-striped table-bordered table-hover"
+			id="dataTables-example">
 
-			상세보기
-
-			<hr>
 
 			<tr>
-				<td align="center"> 글 번호 </td>
+				<td align="center">글 번호</td>
 				<td align="center">${letter.letterNo}</td>
 			<tr>
-				<td align="center"> 카테고리 </td>
+				<td align="center">카테고리</td>
 				<td align="center">${letter.categoryNo}</td>
 			<tr>
-				<td align="center">제목 </td>
+				<td align="center">제목</td>
 				<td align="center">${letter.letterTitle}</td>
+			<tr>
+				<td align="center" colspan="5">내용</td>
+			</tr>
 
-					<tr>
-						<td align="center" colspan="5"> 내용 </td>
-					</tr>
+			<tr>
+				<td colspan="5">${letter.letterSub}</td>
+			</tr>
+		</table>
+	</div>
 
-					<tr>
-						<td colspan="5"> ${letter.letterSub} </td>
-					</tr>
-
-				</table>
-		</div>
-
-	</table>
 
 
 
@@ -138,12 +254,77 @@
 	<div class="mbr-section-btn" align="center">
 		<br /> <a class="btn btn-white"
 			href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a> <br />
-		<form name="frm" action="deleteLetter.do">
+			
+			
+			
+		<form name="frm" onclick="return LetterDelete()" action="deleteLetter.do">
 			<input type="hidden" name="letterNo" value="${letter.letterNo}" /> <input
-				class="btn btn-white" type="submit" value="삭제">
+				class="btn btn-white" type="submit"  value="삭제">
 		</form>
+		
+		
+		
 		<a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a>
 	</div>
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+	<div border="0" width="100" height=" 200" align="center"
+		class="table table-striped table-bordered table-hover"
+		id="dataTables-example">
+
+		<HR>
+
+		댓글 쓰기
+		
+		<br/>
+		<br/>
+		
+		<!-- 댓글쓰기 -->
+		<form id="replyForm">
+			<fieldset>
+
+				<!--<label for="userId"></label> 
+				 	<input type="hidden" id="userId" name="userId" placeholder="작성자" required="required" /> 
+						<label for="content"> </label> -->
+
+				<!-- userId -->
+				<label>사용자 ID : ${sessionScope.login}</label> 
+				
+					<br/>
+				
+				<input  type="text" id="userId" 
+						name="userId" value="${sessionScope.login}" 
+						width="10" height="5" maxlength="15" readonly="readonly" />
+						
+					<br/>
+					<br/>
+					
+				<input type="hidden" id="letterNo" name="letterNo"
+					value="${letter.letterNo}">
+				<!-- replySub -->
+				<textarea id="replySub" name="replySub" placeholder="내용입력" rows="2" cols="60" /></textarea>
+				<input type="submit" value="댓글 등록" />
+
+			</fieldset>
+		</form>
+		<!-- 댓글쓰기 -->
+
+
+
+
+		<!-- 테이블 -->
+		<table border="1" width="700">
+
+			<tr class="article" align="center" >
+				<!-- <td>번호 -->
+				<td>ID</td>
+				<td>댓글 내용</td>
+				<td>Date</td>
+				<td>삭제</td>
+			</tr>
+
+		</table>
 
 </body>
 </html>

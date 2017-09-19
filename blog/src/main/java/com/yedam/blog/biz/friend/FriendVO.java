@@ -4,7 +4,7 @@ public class FriendVO {
 	private int f_no;
 	private String userid;
 	private String f_id;
-	private String f_state;
+	private int f_state;
 	private String userName;
 	private int start;
 	private int end;
@@ -46,10 +46,10 @@ public class FriendVO {
 	public void setF_id(String f_id) {
 		this.f_id = f_id;
 	}
-	public String getF_state() {
+	public int getF_state() {
 		return f_state;
 	}
-	public void setF_state(String f_state) {
+	public void setF_state(int f_state) {
 		this.f_state = f_state;
 	}
 	

@@ -83,11 +83,13 @@ $(function() {
 	            if(key=='BlogHome') {
 	            	
 	            } else if(key=='friend') {
-	            	$.get("insertFriend.do",function(data){
+	            	var p = $("#frm").serializeObject();
+	            	$.postJSON("insertFriend.do",p,function(data){
+	            		console.log(data);
 	            		if(data.result=="success") {
-	            			
+	            			alert("친구 요청 보냈습니다");
 	            		} else {
-	            			
+	            			alert("친구 요청 실패");
 	            		}
 	            	});
 	            } else {

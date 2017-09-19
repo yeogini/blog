@@ -14,21 +14,39 @@
 	<select id="getFriendList" resultMap="friendResult" parameterType="friend">
 		SELECT A.F_NO, A.USERID, A.F_ID, A.f_STATE, B.USERNAME
 		FROM USERS B, F_LIST A
-		WHERE A.USERID = B.USERID
+		WHERE A.f_id = B.USERID
 		AND A.USERID =#{userid}
 	</select>
 	
+	<select id="getFriend" resultMap="friendResult" parameterType="friend">
+		SELECT A.F_NO, A.USERID, A.F_ID, A.f_STATE, B.USERNAME
+		FROM USERS B, F_LIST A
+		WHERE A.f_id = B.USERID
+		AND F_NO = #{f_no}
+	</select>
+	
+	
+	
 	<insert id="insertFriend" parameterType="friend">
 		<selectKey keyProperty="f_no" resultType="int" order="BEFORE">
-    		SELECT NVL(MAX(F_NO),0) +1 FROM F_LIST;
+    		SELECT NVL(MAX(F_NO),0) +1 FROM F_LIST
     	</selectKey>
-    	
+    	INSERT INTO F_LIST
+    	VALUES(#{f_no},#{userid},#{f_id},#{f_state})
 	</insert>
 	
     	
-	<update id="updateFrined"></update>
-	
-	<delete id="deleteFriend"></delete>
+	<update id="updateFrined">
+		UPDATE F_LIST 
+		SET F_STATE = 3
+		WHERE USERID = #{userid}
+		AND F_ID = #{f_id}
+		</update>
+	<delete id="deleteFriend">
+		DELETE FROM F_LIST
+		WHERE USERID = #{userid}
+		and F_ID = #{f_id}
+	</delete>
 
 
 </mapper> 
