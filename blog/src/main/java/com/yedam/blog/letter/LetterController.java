@@ -85,7 +85,9 @@ public class LetterController {
 		System.out.println("수정"+vo);
 		//수정처리
 		letterService.updateLetter(vo);
-		return "redirect:/getLetterList.do";
+		return "redirect:/getLetter.do?letterNo="+vo.getLetterNo();
+		/* return "redirect:/getLetterList.do"; */
+		
 	}
 	
 	// 단건 삭제 deleteLetter.do
