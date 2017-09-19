@@ -19,6 +19,7 @@
         <script src="//code.jquery.com/jquery.js"></script>
         <!-- 모든 합쳐진 플러그인을 포함하거나 (아래) 필요한 각각의 파일들을 포함하세요 -->
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+       <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
         <!-- Respond.js 으로 IE8 에서 반응형 기능을 활성화하세요 (https://github.com/scottjehl/Respond) -->
         <!-- 합쳐지고 최소화된 최신 CSS -->
 </head>
@@ -29,7 +30,7 @@
                 <p></p>
 
                    <p align="right">
-					<strong><a href="list.do">블로그 가기</a></strong>
+					<strong><a href="blog.do">블로그 가기</a></strong>
            			</p>
             </div>
             <!--// 헤더 들어가는 부분 -->
@@ -61,6 +62,7 @@
                 <div class="col-lg-10">
                     <input type="text" class="form-control onlyAlphabetAndNumber" id="userid" name="userid"
                     data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
+                    <button type="button" onclick="idchk()">아이디체크</button>
                 </div>
             </div>
             <div class="form-group" id="divPassword">
@@ -111,10 +113,26 @@
                 </div>
             </div> 
         </form>
-         
+          
          
         <script>
-         
+        	function idchk(){
+        		var data = $("#userid").val();
+        		console.log(data);
+        		var reqStr = {
+        				userid:data
+        		}
+        		$.get("idChk.do",reqStr,function(data){
+        				console.log(data);
+        				if(data=="success") {
+        					console.log("아이디 사용 가능");
+        				} else {
+        					console.log("아이디 사용 불가");
+        				}
+        			}
+        		)
+        	};
+        
             $(function(){
                 //모달을 전역변수로 선언
                 var modalContents = $(".modal-contents");

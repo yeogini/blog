@@ -5,9 +5,19 @@
 <head>
 <title>최신글</title>
 
-
+<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script>
-	
+$(function(){
+	$(".letterName").click(function(event){
+		event.preventDefault();
+		var src = $(this).attr("href");
+		console.dir(src);
+		//parent.document.getElementById("reply").attr('src',src);
+		$("#test2",parent.document).attr('src',src);
+		
+		
+	});
+});
 </script>
 
 <style>
@@ -34,7 +44,7 @@
 	<c:forEach var="letter" items="${newestLetterlist}">
 	<tr>
 	     <td> ${letter.rnum} 		</td>				<!-- 번호 (row number) -->
-		 <td><a href="" >${letter.letterTitle}</a> </td>				<!-- 글 제목 -->
+		 <td><a href="getLetter.do?letterNo=${letter.letterNo}" class="letterName">${letter.letterTitle}</a> </td>				<!-- 글 제목 -->
 		 <td> ${letter.letterDate} 		</td>				<!-- 아이디 -->
 	</tr>
 	</c:forEach>
