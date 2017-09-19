@@ -62,7 +62,7 @@
                 <div class="col-lg-10">
                     <input type="text" class="form-control onlyAlphabetAndNumber" id="userid" name="userid"
                     data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
-                    <button type="button" onclick="idchk()">아이디체크</button>
+                    <button type="button" onclick="idchk()" id="idBtn">아이디체크</button>
                 </div>
             </div>
             <div class="form-group" id="divPassword">
@@ -113,20 +113,27 @@
                 </div>
             </div> 
         </form>
-          
+                
          
         <script>
+        	var idChk = false;
         	function idchk(){
         		var data = $("#userid").val();
         		console.log(data);
         		var reqStr = {
         				userid:data
-        		}
+        		}   
         		$.get("idChk.do",reqStr,function(data){
         				console.log(data);
         				if(data=="success") {
+        					idChk = true;
+        					
+        					$("#idBtn").text("사용 가능");
         					console.log("아이디 사용 가능");
+        					
         				} else {
+        					idChk = false;
+        					$("#idBtn").text("아이디 체크");
         					console.log("아이디 사용 불가");
         				}
         			}
@@ -139,6 +146,7 @@
                 var modal = $("#defaultModal");
                  
                 $('.onlyAlphabetAndNumber').keyup(function(event){
+
                     if (!(event.keyCode >=37 && event.keyCode<=40)) {
                         var inputVal = $(this).val();
                         $(this).val($(this).val().replace(/[^_a-z0-9]/gi,'')); //_(underscore), 영어, 숫자만 가능
@@ -163,7 +171,7 @@
                 $('#id').keyup(function(event){
                      
                     var divId = $('#divId');
-                     
+                	console.log("키업");
                     if($('#id').val()==""){
                         divId.removeClass("has-success");
                         divId.addClass("has-error");
@@ -264,7 +272,10 @@
                     var divEmail = $('#divEmail');
                     var divPhoneNumber = $('#divPhoneNumber');
                      
-                    
+                    if(!idChk) {
+                    	alert("아이디 체크해주세요");
+                    	return false;
+                    }
                      
                     //아이디 검사
                     if($('#userid').val()==""){
