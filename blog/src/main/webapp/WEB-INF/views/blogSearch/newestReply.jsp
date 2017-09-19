@@ -5,9 +5,19 @@
 <head>
 <title>최신 댓글</title>
 
-
+<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script>
-	
+$(function(){
+	$(".letterName").click(function(event){
+		event.preventDefault();
+		var src = $(this).attr("href");
+		console.dir(src);
+		//parent.document.getElementById("reply").attr('src',src);
+		$("#test2",parent.document).attr('src',src);
+		
+		
+	});
+});
 </script>
 
 <style>
@@ -37,7 +47,7 @@
 	<c:forEach var="reply" items="${newestReplylist}">
 	<tr>
 	     <td> ${reply.rnum} 		</td>				<!-- 번호 (row number) -->
-		 <td> ${reply.replySub} 	</td>				<!-- 댓글 -->
+		 <td> <a href="getLetter.do?letterNo=${reply.letterNo}" class="letterName">${reply.replySub}</a> 	</td>				<!-- 댓글 -->
 		 <td> ${reply.userId} 		</td>				<!-- 아이디 -->
 		 <td> ${reply.reDate} 		</td>				<!-- 날짜 -->
 	</tr>

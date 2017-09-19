@@ -32,7 +32,10 @@ public class LetterServiceImpl implements LetterService {
 	
 
 	
-	public LetterVO getLetter(LetterVO vo) {
+	public LetterVO getLetter(LetterVO vo, String hitsyn) {
+		if(hitsyn.equals("yes")) {
+			letterDAO.hitsLetter(vo);
+		}
 		return letterDAO.getLetter(vo);
 	}
 
@@ -46,6 +49,7 @@ public class LetterServiceImpl implements LetterService {
 
 	@Override
 	public void deleteLetter(LetterVO vo) {
+		letterDAO.deleteReplyLetter(vo);
 		letterDAO.deleteLetter(vo);
 		
 	}
@@ -59,6 +63,20 @@ public class LetterServiceImpl implements LetterService {
 	public void deleteLetterList(LetterSearchVO vo) {
 		letterDAO.deleteLetterList(vo);
 		
+	}
+	
+	/*글 + 댓글 삭제*/
+	@Override
+	public void deleteReplyLetter(LetterVO vo) {
+		// TODO Auto-generated method stub
+		letterDAO.deleteReplyLetter(vo);
+	}
+
+	/*글 조회수*/
+	@Override
+	public LetterVO hitsLetter(LetterVO vo) {
+		// TODO Auto-generated method stub
+		return letterDAO.hitsLetter(vo);
 	}
 	
 	
