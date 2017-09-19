@@ -173,8 +173,12 @@ $(document).ready(function(){
 	$("#replyForm").submit(function(event) {
 		event.preventDefault();
 		var formPara = $(this).serialize();
+		
 		$.post("./insertReply.do", formPara, function(data, status, xhr){
-			if (data != "") {
+			
+			console.log(data+"===");
+			
+			if (data.replyNo != "") {
 				var delButton = '<input type="submit" onclick=replyDelete('+ data.replyNo + ') value="삭제" >';	
 				
 				if(data.userId != "${sessionScope.login}"){
@@ -191,6 +195,8 @@ $(document).ready(function(){
 				
 				
 				
+			} else {
+				alert("차단 되었습니다.");
 			}
 		});
 	});
@@ -289,7 +295,10 @@ $(document).ready(function(){
 						<label for="content"> </label> -->
 
 				<!-- userId -->
-				<label>사용자 ID : ${sessionScope.login}</label> 
+				<label>BLOG HOST ID : ${sessionScope.blogId}</label> 
+				<br/>
+				<!-- userId -->
+				<label>USER ID : ${sessionScope.login}</label> 
 				
 					<br/>
 				

@@ -64,6 +64,7 @@ public class LayoutController {
 	@RequestMapping("getMainView.do")
 	public String getMainView(Model model, HttpServletRequest req, HttpSession session){
 		String blogId = req.getParameter("blogId");
+		session.setAttribute("blogId", blogId);
 		LayoutVO vo = new LayoutVO();
 		vo.setUserid(blogId);
 		model.addAttribute("layout",layoutService.getLayout(vo));
