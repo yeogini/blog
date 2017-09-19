@@ -14,12 +14,12 @@ img {
 }
 </style>
 
-
 <link rel="stylesheet" href="resources/assets/js/jquery-ui.min.css"></link>
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script src="resources/assets/js/jquery-ui.min.js"></script>
 <script src="resources/assets/js/jquery.contextMenu.js"></script>
 <script src="resources/assets/js/jquery.ui.position.js"></script>
+    <script src="resources/assets/js/json.min.js"></script>
 <script>
 var a = 5;
 $(function() {
