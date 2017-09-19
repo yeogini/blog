@@ -15,5 +15,6 @@ public interface BlackService {
 	
 	BlackVO getBlack(BlackVO vo);
 	
-	
+	//차단유무 확인???
+		BlackVO selectBlack(BlackVO vo);
 }

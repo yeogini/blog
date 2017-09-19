@@ -39,4 +39,22 @@
      	WHERE USERID = #{userid}
         ]]>
     </select>
+    
+    
+    <!-- 차단유무 확인?? -->
+    <select id="selectBlack" resultMap="BlackResult">
+        <![CDATA[
+        SELECT D_NO, D_ID
+        FROM BLACK
+     	WHERE USERID = #{userid}
+     	AND D_ID = #{d_id}
+        ]]>
+    </select>
+    
+    
+    
+    
+    
+    
+    
 </mapper> 

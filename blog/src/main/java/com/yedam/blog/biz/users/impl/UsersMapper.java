@@ -16,4 +16,6 @@ public interface UsersMapper {
 		public void updateUsers(UsersVO vo);
 
 		public void deleteUsers(UsersVO vo);
+		
+		public int idChk(UsersVO vo);
 }
