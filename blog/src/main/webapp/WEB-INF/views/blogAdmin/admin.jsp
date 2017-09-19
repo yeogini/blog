@@ -42,7 +42,7 @@
 			  console.log("a");
 			  url = "/blog/adminProfile.do";
 		  } else if(menu == "category") {
-			  url ="/blog/test.do";
+			  url ="CategoryList.do";
 		  } else if (menu =="layout") {
 			  location.href="/blog/getBlogLayout.do";
 		  } else if(menu == "friend") {
