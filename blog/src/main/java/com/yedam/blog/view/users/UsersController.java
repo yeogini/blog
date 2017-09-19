@@ -6,23 +6,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yedam.blog.biz.admin.CategoryService;
+import com.yedam.blog.biz.admin.CategoryVO;
 import com.yedam.blog.biz.admin.ProfileService;
+
 import com.yedam.blog.biz.users.UsersService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yedam.blog.biz.users.UsersService;
 import com.yedam.blog.biz.users.UsersVO;
 
 @Controller
@@ -32,6 +32,10 @@ public class UsersController {
 	UsersService usersService;
 	@Autowired
 	ProfileService profileservice;
+	
+
+	@Autowired
+	CategoryService categoryService;
 	
 	@RequestMapping("/getUsersList.do")
 	public String getUsers(){
@@ -47,6 +51,11 @@ public class UsersController {
 	@RequestMapping("/insertUser.do")
 	public String insertUser(UsersVO vo){
 		usersService.insertUsers(vo);
+		CategoryVO category = new CategoryVO();
+		category.setUserId(vo.getUserid());
+		category.setCategoryName("낙서장");
+		category.setType("n");
+		categoryService.insertCategory(category);
 		return "redirect:getUsersList.do";
 	}
 	

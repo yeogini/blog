@@ -21,4 +21,15 @@
 		SELECT * FROM CATEGORY
 		WHERE CATEGORY_NO = #{categoryNo}
 	</select>
+	 
+	 <!-- 등록 -->
+    <insert id="insertCategory" parameterType="category">
+    	<selectKey keyProperty="categoryNo" resultType="int" order="BEFORE">
+    		SELECT NVL(MAX(CATEGORY_NO),0) + 1 FROM CATEGORY
+    	</selectKey>
+    	<![CDATA[
+    		INSERT INTO CATEGORY(CATEGORY_NO,CATEGORY_NAME,CATEGORY_CHK,CATEGORY_MOUSER,TYPE,USERID,BORDER_TYPE)
+    		VALUES(#{categoryNo},#{categoryName},1,0,#{type},#{userid},'l')
+    	]]>
+    </insert>
 </mapper>

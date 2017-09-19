@@ -13,12 +13,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.yedam.blog.biz.layout.LayoutService;
 import com.yedam.blog.biz.layout.LayoutVO;
+import com.yedam.blog.letter.LetterService;
+import com.yedam.blog.letter.LetterVO;
 
 @Controller
 public class LayoutController {
 
 	@Autowired
 	LayoutService layoutService;
+	
+	@Autowired 
+	LetterService letterService;
+	
 	
 	@RequestMapping("/getBlogLayout.do")
 	public String getBlogLayout(Model model, LayoutVO layoutvo, HttpSession session){
@@ -67,10 +73,22 @@ public class LayoutController {
 		session.setAttribute("blogId", blogId);
 		LayoutVO vo = new LayoutVO();
 		vo.setUserid(blogId);
+		model.addAttribute("id", blogId);
 		model.addAttribute("layout",layoutService.getLayout(vo));
 		return "/layoutview/layoutmain";
 	}
 
+	
+	//최신 글 불러오기
+	@RequestMapping("/newest.do")
+	public String newest(LetterVO vo,HttpServletRequest req,Model model){
+		String blogId = req.getParameter("blogId");
+		vo.setUserId(blogId);
+		vo = letterService.newest(vo);
+		if(vo!=null)
+		model.addAttribute("letter", letterService.getLetter(vo,"yes"));
+		return "letter/getLetter";
+	}
 	
 }
 

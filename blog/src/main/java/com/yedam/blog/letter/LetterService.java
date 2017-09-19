@@ -30,4 +30,7 @@ public interface LetterService {
 	//다건삭제
 	void deleteLetterList(LetterSearchVO vo);
 	
+	//최신 글
+	LetterVO newest(LetterVO vo);
+	
 }

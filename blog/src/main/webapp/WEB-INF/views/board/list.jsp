@@ -38,7 +38,7 @@ function blogsearch() {
 <c:if test="${not empty sessionScope.login}">
 <p/>
 				<p align="right"> 
-					<strong>${sessionScope.login} 님 <a href="logout.do" >로그아웃</a></strong><a href="adminView.do">내 블로그</a>
+					<strong>${sessionScope.login} 님 <a href="logout.do" >로그아웃</a></strong><a href="adminView.do">블로그 관리</a><a href="getMainView.do?blogId=<%=session.getAttribute("login") %>">블로그 가기</a>
 				</p>
 </c:if>
 </div>
