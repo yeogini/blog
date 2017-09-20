@@ -29,6 +29,7 @@ public class BlogSearchController {
 	public String newestLetter(Model model,HttpServletRequest req){
 		String blogId = req.getParameter("blogId");
 		model.addAttribute("newestLetterlist", blogSearchService.getBlogSearchNewestLetter(blogId));
+		model.addAttribute("id", blogId);
 		return "blogSearch/newestLetter";
 		
 	}
@@ -38,6 +39,7 @@ public class BlogSearchController {
 	public String newestReply(Model model,HttpServletRequest req){
 		String blogId = req.getParameter("blogId");
 		model.addAttribute("newestReplylist", blogSearchService.getBlogSearchNewestReply(blogId));
+		model.addAttribute("id", blogId);
 		return "blogSearch/newestReply";
 	}
 	
@@ -46,6 +48,7 @@ public class BlogSearchController {
 	public String bestLetter(Model model,HttpServletRequest req){
 		String blogId = req.getParameter("blogId");
 		model.addAttribute("bestLetterlist", blogSearchService.getBlogSearchBestLetter(blogId));
+		model.addAttribute("id", blogId);
 		return "blogSearch/bestLetter";
 	}
 	

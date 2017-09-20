@@ -19,12 +19,18 @@ public interface LetterService {
 	void deleteReplyLetter(LetterVO vo);
 	
 	// 글 상세 조회
-	LetterVO getLetter(LetterVO vo);
+	LetterVO getLetter(LetterVO vo, String hitsyn);
+	
+	// 글 조회수 카운트
+	LetterVO hitsLetter(LetterVO vo);
 	
 	// 글 목록 조회
 	List<LetterVO> getLetterList(LetterSearchVO vo);
 	
 	//다건삭제
 	void deleteLetterList(LetterSearchVO vo);
+	
+	//최신 글
+	LetterVO newest(LetterVO vo);
 	
 }

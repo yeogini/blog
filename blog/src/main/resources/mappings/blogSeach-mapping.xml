@@ -59,10 +59,12 @@
     	<select id="getBlogSearchNewestReply" resultType="blogSearch">
     		<!-- 컬럼번호, 댓글내용, 아이디, 작성일 -->
 	        <![CDATA[
-	        select * from (select a.*, rownum rnum 
-							from ( SELECT
-							REPLY_NO, RE_DATE, REPLY_SUB, LETTER_NO, USERID			
-							FROM REPLY WHERE USERID = #{userId} order by RE_DATE desc) a ) b where rnum >= 1 and rnum <= 5
+				SELECT D.* FROM (SELECT ROWNUM RN, C.* FROM(
+		SELECT A.* FROM REPLY A, LETTER B  
+		WHERE A.LETTER_NO = B.LETTER_NO
+		AND A.USERID = #{userId}
+		ORDER BY RE_DATE DESC
+		) C ) D WHERE RN BETWEEN 1 and 5
 	        ]]>
     	</select>
     	

@@ -68,9 +68,20 @@
 		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
 		        <![CDATA[
 				SELECT 
-				LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
-				FROM LETTER
-				WHERE LETTER_NO = #{letterNo}	 
+				A.*, B.CATEGORY_NAME	
+				FROM LETTER A, CATEGORY B
+				WHERE A.CATEGORY_NO = B.CATEGORY_NO
+				AND LETTER_NO = #{letterNo}	 
+		        ]]>
+	</select>
+	
+	<!-- 카운트 -->
+	<select id="hitsLetter" resultType="letter">
+		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
+		        <![CDATA[
+				UPDATE LETTER SET
+				HITS = NVL(HITS, 0) + 1
+		        WHERE LETTER_NO = #{letterNo}  
 		        ]]>
 	</select>
 
@@ -85,6 +96,12 @@
 		        ]]>
 	</select>
 
+
+	<select id="newest" resultType="letter">
+		SELECT * FROM LETTER
+		WHERE USERID = #{userId}
+		AND LETTER_NO = (SELECT MAX(LETTER_NO) FROM LETTER WHERE USERID=#{userId})
+	</select>
 
 
 </mapper>

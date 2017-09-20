@@ -1,6 +1,8 @@
 package com.yedam.blog.letter;
 
 import java.io.File;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -66,9 +69,10 @@ public class LetterController {
 	
 	//상세조회
 	@RequestMapping("/getLetter.do")
-	public String getletter(Model model, LetterVO vo) {
-		model.addAttribute("letter", letterService.getLetter(vo));
-		return "letter/getLetter";
+	public String getletter(Model model, LetterVO vo, HttpServletRequest request) {
+		String referer = request.getHeader("Referer");
+			model.addAttribute("letter", letterService.getLetter(vo,"yes"));
+			return "letter/getLetter";
 	}
 	
 	//수정폼
@@ -84,15 +88,18 @@ public class LetterController {
 		System.out.println("수정"+vo);
 		//수정처리
 		letterService.updateLetter(vo);
-		return "redirect:/getLetterList.do";
+		return "redirect:/getLetter.do?letterNo="+vo.getLetterNo();
+		/* return "redirect:/getLetterList.do"; */
+		
 	}
 	
 	// 단건 삭제 deleteLetter.do
 		@RequestMapping("/deleteLetter.do")
-		public String deleteLetterList(LetterVO vo) {
+		@ResponseBody
+		public Map<String,? extends Object> deleteLetterList(LetterVO vo) {
 			letterService.deleteLetter(vo);
-			return "redirect:getLetterList.do";
-		}
+			return Collections.singletonMap("result","sucess");
+		} 
 	
 	// 댓글 + 글 삭제 deleteReplyLetterList.do
 	@RequestMapping("/deleteReplyLetter.do")
@@ -108,4 +115,10 @@ public class LetterController {
 		return "redirect:getLetterList.do";
 	}
 	
+	// 글 조회수 카운팅
+	@RequestMapping("/hitsLetter.do")
+	public String hitsLetter(LetterVO vo) {
+		letterService.hitsLetter(vo);
+		return "redirect:getLetterList.do";
+		}
 }
