@@ -33,4 +33,7 @@ public interface LetterMapper {
 	void deleteLetterList(LetterSearchVO vo);
 
 	/*List<LetterVO> getLetterList(LetterVO vo);*/	
+	
+	//최신 글
+	LetterVO newest(LetterVO vo);
 }

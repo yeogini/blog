@@ -22,19 +22,19 @@ public class CategoryServiceImpl implements CategoryService{
 	@Override
 	public void insertCategory(CategoryVO vo) {
 		// TODO Auto-generated method stub
-		
+		categoryDAO.insertCategory(vo);
 	}
 
 	@Override
 	public void updateCategory(CategoryVO vo) {
 		// TODO Auto-generated method stub
-		
+		categoryDAO.updateCategory(vo);
 	}
 
 	@Override
 	public void deleteCategory(CategoryVO vo) {
 		// TODO Auto-generated method stub
-		
+		categoryDAO.deleteCategory(vo);
 	}
 
 	@Override

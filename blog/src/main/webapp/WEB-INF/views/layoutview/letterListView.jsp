@@ -31,7 +31,7 @@
 </c:if>
 <hr> 
 <c:forEach items="${datas}" var="list">
-<a href="getLetter.do?letterNo=${list.letterNo}" class="letterName">${list.letterTitle}</a><br>
+<a href="getLetter.do?letterNo=${list.letterNo}" class="letterName">${list.letterTitle}</a><span>${list.letterDate}</span><br>
 </c:forEach>
 <div id="paging" class="row" align="center"><mytag:letterpaging paging="${paging}"></mytag:letterpaging></div>
 </body>

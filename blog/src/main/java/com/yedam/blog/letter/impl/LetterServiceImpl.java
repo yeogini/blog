@@ -78,6 +78,16 @@ public class LetterServiceImpl implements LetterService {
 		// TODO Auto-generated method stub
 		return letterDAO.hitsLetter(vo);
 	}
+
+
+
+
+	//최신 글
+	@Override
+	public LetterVO newest(LetterVO vo) {
+		// TODO Auto-generated method stub
+		return letterDAO.newest(vo);
+	}
 	
 	
 	

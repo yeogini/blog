@@ -96,5 +96,11 @@
 	</select>
 
 
+	<select id="newest" resultType="letter">
+		SELECT * FROM LETTER
+		WHERE USERID = #{userId}
+		AND LETTER_NO = (SELECT MAX(LETTER_NO) FROM LETTER WHERE USERID=#{userId})
+	</select>
+
 
 </mapper>

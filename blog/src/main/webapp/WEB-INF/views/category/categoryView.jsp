@@ -21,6 +21,7 @@ select {
 }
 </style>
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
+<script src="resources/assets/js/json.min.js"></script>
 <script>
 $(function(){
 	$('.show').click(function(){
@@ -68,9 +69,32 @@ function change2(obj){
     obj.style.color = 'black';
 }
 
-$(documnet).ready(function(){
+$(function(){
 	$("#add").click(function(event){
-		var formPara = $("#cat").serialize();
+		console.log("클릭");
+		var choice = $("#choice").val();
+		console.log(choice)
+		if(choice=="c") {
+			alert("항목을 선택하세요");
+		} else {
+			var data =$("#userid").val();
+			var reqStr = {
+    				userId:data,
+    				type:choice
+    		} ;
+			$.get("insertCategory.do",reqStr,function(data) {
+				console.log(data);
+				if(data.type=="n") {
+					console.dir(data);
+					$("#tr1").prepend('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span></td></tr>');		
+				} else if(data.type=="t"){
+					$("#tr1").prepend('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span></td></tr>');		
+				} else {
+					$("#tr1").prepend('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span></td></tr>');		
+				}
+			});
+		}
+		/* var formPara = $("#cat").serialize();
 		$.post("./insertCategory.do", formPara, function(data, stauts, xhr){
 			if(data != ""){
 				var name = $('cat').val($(".show").find('span:eq(0)'));
@@ -87,7 +111,7 @@ $(documnet).ready(function(){
 					alert("항목을 선택해주세요");
 				}
 			}
-		});
+		}); */
 	});
 });
 </script>
@@ -96,22 +120,22 @@ $(documnet).ready(function(){
 <h2>카테고리 설정</h2>
 <hr style="border: solid 3px; "><br/>
 <form name="cat" id="cat" action="<%=request.getContextPath()%>/CategoryList.do" method="post">
-
-<select name="choice" id="choice">
-<option value="">선택</option>
-<option value="a" id="a">게시판</option>
-<option value="b" id="b">그룹</option>
-<option value="c" id="c">구분선</option>
+<input type="hidden" name="userid" id="userid" value="${sessionScope.login }"/>
+<select name="type" id="choice">
+<option value="c">선택</option>
+<option value="n" id="n">게시판</option>
+<option value="t" id="t">그룹</option>
+<option value="d" id="d">구분선</option>
 </select>
 <input type="button" id="add" value="추가" /><br>
-<table>
+<table id="t1">
 	<c:forEach var="cal" items="${CategoryList}">
 	<tr>	
-		<td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>${cal.categoryname}</span>
-		<span>${cal.cetegorychk}</span> <span>${cal.type}</span><span>${cal.cetegorymouser}</span></td>
+		<td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>${cal.categoryName}</span>
+		<span>${cal.categoryChk}</span> <span>${cal.type}</span><span>${cal.categoryMouser}</span></td>
 	</tr>
 	</c:forEach>
-	<tr>
+	<tr id=tr1>
 		<td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" >방명록</td>
 	</tr>
 </table>
