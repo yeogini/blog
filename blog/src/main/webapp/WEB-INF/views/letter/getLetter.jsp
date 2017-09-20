@@ -300,7 +300,7 @@ $(document).ready(function(){
 
 		<HR>
 
-		<br /> <br />
+		<br />
 
 		<!-- 댓글쓰기 -->
 		<form id="replyForm">
@@ -313,7 +313,7 @@ $(document).ready(function(){
 				<!-- userId -->
 				<label>BLOG HOST ID : ${sessionScope.blogId}</label> <br />
 				<!-- userId -->
-				<label>USER ID : ${sessionScope.login}</label> <br />
+				<label>현재 로그인 ID : ${sessionScope.login}</label> <br />
 				<%-- 				
 				<input  type="text" id="userId" 
 						name="userId" value="${sessionScope.login}" 
