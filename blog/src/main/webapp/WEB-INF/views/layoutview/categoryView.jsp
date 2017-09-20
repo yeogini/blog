@@ -6,6 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<style type="text/css">
+/* .abc {
+	background-color: black;
+	color: white;
+} */
+</style>
 </head>
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script>
@@ -31,7 +37,7 @@
 	
 </script>
 <body>
-<strong>카테고리</strong><br>
+<div class="abc"><strong>카테고리</strong></div>
 <a href="getLetterView.do?blogId=${category[0].userId}" class="categoryName" >전체보기 </a>/ <a href="getVisitList.do" id="visit">방명록</a>
 <hr>
 <form id="frm" name="frm" action="">
