@@ -11,6 +11,12 @@
 #abcd{
 	float: right;
 }
+body{
+	background-color:white;
+}
+#listViewTitle{
+	color: skyblue;
+}
 </style>
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script>
@@ -38,7 +44,7 @@
 </head>
 <body>
 <c:if test="${name.categoryName==null || name.categoryName==''}">
-<p>'전체보기' 의 카테고리</p>
+<p id="listViewTitle">'전체보기' 의 카테고리</p>
 </c:if>
 <c:if test="${name.categoryName!=null}">
 <p>'${name.categoryName}' 의 카테고리</p>

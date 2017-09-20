@@ -14,8 +14,8 @@
  
 <style>
 #profile {
-	width: 290px;
-	height: 200px;
+	width: 180px;
+	height: 290px;
 	padding: 0.5em;	
 	position: absolute;
 	left: 5px;

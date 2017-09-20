@@ -6,11 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+ <!-- FONTAWESOME STYLES-->
+    <link href="resources/assets/css/font-awesome.css" rel="stylesheet" />
 <style type="text/css">
-/* .abc {
-	background-color: black;
-	color: white;
-} */
+#viewCategory{
+	color: #83b14e;
+	font-size: 20px;
+}
+a{
+	text-decoration: none;
+}
+#vcname{
+	font-size: 20px;
+}
 </style>
 </head>
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
@@ -37,14 +45,14 @@
 	
 </script>
 <body>
-<div class="abc"><strong>카테고리</strong></div>
-<a href="getLetterView.do?blogId=${category[0].userId}" class="categoryName" >전체보기 </a>/ <a href="getVisitList.do" id="visit">방명록</a>
+<div id="viewCategory"><strong> 카테고리</strong></div><br>
+<a href="getLetterView.do?blogId=${category[0].userId}" class="fa fa-file-text-o" >전체보기 </a>/ <a href="getVisitList.do" id="visit">방명록</a>
 <hr>
 <form id="frm" name="frm" action="">
 <c:forEach items="${category}" var="result">
-<c:if test="${result.type=='t'}"><Strong>${result.categoryName}</Strong><br></c:if>
+<c:if test="${result.type=='t'}"><Strong><span id="vcname">${result.categoryName}</span></Strong><br></c:if>
 <c:if test="${result.type=='d'}">-------------<br></c:if>
-<c:if test="${result.type=='n'}"><a href="getCategoryList.do?blogId=${result.userId}&categoryNo=${result.categoryNo}" class="categoryName" ><input type="hidden" value="${result.categoryNo}"> ${result.categoryName}<br></a></c:if>
+<c:if test="${result.type=='n'}"><a href="getCategoryList.do?blogId=${result.userId}&categoryNo=${result.categoryNo}" class="categoryName" ><input type="hidden" value="${result.categoryNo}">&nbsp;&nbsp;${result.categoryName}<br></a></c:if>
 </c:forEach>
 
 </form>
