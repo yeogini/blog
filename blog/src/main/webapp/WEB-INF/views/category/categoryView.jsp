@@ -86,11 +86,11 @@ $(function(){
 				console.log(data);
 				if(data.type=="n") {
 					console.dir(data);
-					$("#tr1").prepend('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span></td></tr>');		
+					$("#t1").append('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span></td></tr>');		
 				} else if(data.type=="t"){
-					$("#tr1").prepend('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span></td></tr>');		
+					$("#t1").append('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span></td></tr>');		
 				} else {
-					$("#tr1").prepend('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span></td></tr>');		
+					$("#t1").append('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span></td></tr>');		
 				}
 			});
 		}
@@ -135,9 +135,6 @@ $(function(){
 		<span>${cal.categoryChk}</span> <span>${cal.type}</span><span>${cal.categoryMouser}</span></td>
 	</tr>
 	</c:forEach>
-	<tr id=tr1>
-		<td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" >방명록</td>
-	</tr>
 </table>
 <input type="button" value="▲" onclick="up()">
 <input type="button" value="▼" onclick="down()">

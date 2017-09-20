@@ -89,6 +89,7 @@ public class widgetController {
 			
 			model.addAttribute("paging",paging);
 			model.addAttribute("datas", result);
+			model.addAttribute("id", blogId);
 			return "/layoutview/letterListView";
 		}
 		
