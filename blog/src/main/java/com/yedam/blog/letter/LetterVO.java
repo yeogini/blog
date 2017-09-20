@@ -12,6 +12,9 @@ public class LetterVO {
 	private String userId;
 	private String letterDate;
 	private int hits;
+	private String categoryName;
+	
+	
 	
 	/*댓글*/
 	private int replyNo;
@@ -90,6 +93,12 @@ public class LetterVO {
 	
 	
 	
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	@Override
 	public String toString() {
 		return "LetterVO [letterNo=" + letterNo + ", letterTitle=" + letterTitle + ", letterSub=" + letterSub
