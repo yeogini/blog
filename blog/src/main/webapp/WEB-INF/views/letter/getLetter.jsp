@@ -149,7 +149,7 @@ $(document).ready(function(){
 						
 						
 
-						/* 본인 댓글만 삭제 */
+						/* 블로그 주인은 모든 댓글 삭제 가능 / 본인 댓글만 삭제 */
 						if(data[i].userId != "${sessionScope.login}" && "${sessionScope.blogId}" != "${sessionScope.login}"){
 							delButton ="";
 						} 
@@ -281,11 +281,11 @@ $(document).ready(function(){
 
 
 	<!-- 블로그 주인 != 로그인ID -->
-	<c:if test="${ sessionScope.blogId != sessionScope.login }">
+<%-- 	<c:if test="${ sessionScope.blogId != sessionScope.login }">
 	
     	alert("해당 시스템에서 권한이 없습니다.");
     	
-	</c:if>
+	</c:if> --%>
 
 
 
