@@ -18,6 +18,9 @@
 	height: 200px;
 	padding: 0.5em;	
 	position: absolute;
+	left: 5px;
+	top : 39px;
+	 border: 1px solid black;
 }
 
 #category {
@@ -25,6 +28,9 @@
 	height: 600px;
 	padding: 0.5em;
 	position: absolute;
+	left: 1475px;
+	top : 304px;
+	 border: 1px solid black;
 }
 
 #visitors {
@@ -32,6 +38,9 @@
 	height: 250px;
 	padding: 0.5em;
 	position: absolute;
+	left: 6px;
+	top : 288px;
+	 border: 1px solid black;
 }
 
 #reply {
@@ -39,6 +48,9 @@
 	height: 250px;
 	padding: 0.5em;
 	position: absolute;
+	left: 1297px;
+	top : 23px;
+	 border: 1px solid black
 }
 
 #latest_posts {
@@ -46,6 +58,9 @@
 	height: 250px;
 	padding: 0.5em;
 	position: absolute;
+	left: 1024px;
+	top : 23px;
+ border: 1px solid black;
 }
 
 #top {
@@ -53,6 +68,9 @@
 	height: 250px;
 	padding: 0.5em;
 	position: absolute;
+	left: 749px;
+	top : 23px;
+ border: 1px solid black;
 }
 
 #title {
@@ -60,6 +78,9 @@
 	height: 50px;
 	padding: 0.5em;
 	position: absolute;
+	left: 326px;
+	top : 38px;
+ border: 1px solid black;
 }
 #mainView {
 	border:1px solid black;
@@ -144,15 +165,15 @@
 		}
 
 		$("#save").click(function() {
-
-
 			$(".layoutdiv").each(function() {
 				console.log($(this).position());
 				var id = $(this).attr("id")
 				var position = $(this).position()
 				$("#t_" + id).val(position.left + "," + position.top);
-			});
+			});  
+			
 			$("#blog_form").submit();
+
 		});
 		
 	});
@@ -164,17 +185,6 @@
 
 </head>
 <body>
-	<%-- ${layoutVO}<br>
-방명록${layout.visitors}<br>
-프로필${layout.profile}<br>
-카테고리${layout.category}<br>
-리플${layout.reply}<br>
-최신글${layout.latest_posts}<br>
-베스트글${layout.top}<br>
-타이틀${layout.title}<br>
- --%>
-
-
 
 	<div id="profile" class="layoutdiv ui-widget-content">
 		<p>프로필</p>

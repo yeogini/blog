@@ -23,7 +23,7 @@
 <c:forEach items="${friendList}" var="list">
 	<c:if test="${list.f_state==3}">
 	<tr id="${list.f_no}">
-		<td>${list.f_id}</td><td>${list.userName}</td><td><a href="deleteFriend.do?no=${list.f_no}" class="delete">삭제</a></td>
+		<td>${list.f_id}</td><td><a href="getMainView.do?blogId=${list.f_id}">${list.userName}</a></td><td><a href="deleteFriend.do?no=${list.f_no}" class="delete">삭제</a></td>
 	</tr>
 	</c:if>
 </c:forEach>
@@ -38,12 +38,12 @@
 					<th>아이디</th>
 					<th>이름</th>
 					<th>상태</th>
-				</tr>
+				</tr> 
 					<c:forEach items="${friendList}" var="list">
 						<c:if test="${list.f_state==1}">
 							<tr>
 								<td>${list.f_id}</td>
-								<td>${list.userName}</td>
+								<td><a href="getMainView.do?blogId=${list.f_id}">${list.userName}</a></td>
 								<td>요청중</td>
 							</tr>
 						</c:if>

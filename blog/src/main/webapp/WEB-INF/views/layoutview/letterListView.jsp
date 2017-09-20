@@ -7,10 +7,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<style type="text/css">
+#abcd{
+	float: right;
+}
+</style>
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script>
 	$(function(){
 		$(".letterName").click(function(event){
+			event.preventDefault();
+			var src = $(this).attr("href");
+			console.dir(src);
+			//parent.document.getElementById("reply").attr('src',src);
+			$("#test2",parent.document).attr('src',src);
+			
+			
+		});
+		$("#insert").click(function(event){
 			event.preventDefault();
 			var src = $(this).attr("href");
 			console.dir(src);
@@ -31,8 +45,9 @@
 </c:if>
 <hr> 
 <c:forEach items="${datas}" var="list">
-<a href="getLetter.do?letterNo=${list.letterNo}" class="letterName">${list.letterTitle}</a><span>${list.letterDate}</span><br>
+<div><a href="getLetter.do?letterNo=${list.letterNo}" class="letterName">${list.letterTitle}</a><div id="abcd" align="right">${list.letterDate}</div></div>
 </c:forEach>
-<div id="paging" class="row" align="center"><mytag:letterpaging paging="${paging}"></mytag:letterpaging></div>
+<div id="paging" class="row" align="center"><mytag:letterpaging paging="${paging}" id="${blogId}"></mytag:letterpaging></div>
+<a href="letterInsert.do" class="btn btn-white" id = "insert">글 등록</a>
 </body>
 </html>

@@ -85,7 +85,7 @@
 #mainView {
 	border:1px solid black;
 	position: absolute;
-	top: 450px;
+	top: 300px;
 	left: 460px;
 	width :1000px;
 	height :100%;
@@ -136,13 +136,13 @@ $(function(){
 		$("#title").css("left", titlePosition[0] + "px");
 		$("#title").css("top", titlePosition[1] + "px");
 	
-		 $.get('getProfileView.do?blogId=${layout.userid}',
-				function (data) {
-					$("#profile").html(data);
-		}); 
+		  
 	
 	}
-	
+	$.get('getProfileView.do?blogId=${id}',
+			function (data) {
+				$("#profile").html(data);
+	}); 
 
 });
 function goBack(){

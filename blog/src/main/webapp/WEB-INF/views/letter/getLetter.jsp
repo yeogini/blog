@@ -31,40 +31,11 @@
 <!-- FONTAWESOME STYLES-->
 <link href="resources/assets/css/font-awesome.css" rel="stylesheet" />
 
-<!-- MORRIS CHART STYLES-->
-<link href="resources/assets/js/morris/morris-0.4.3.min.css"
-	rel="stylesheet" />
-
-<!-- CUSTOM STYLES-->
-<link href="resources/assets/css/custom.css" rel="stylesheet" />
-
 <!-- GOOGLE FONTS-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
-<script src="resources/assets/js/jquery-3.2.1.js"></script>
-
-<!-- BOOTSTRAP SCRIPTS -->
-<script src="resources/assets/js/bootstrap.min.js"></script>
-
-<!-- METISMENU SCRIPTS -->
-<script src="resources/assets/js/jquery.metisMenu.js"></script>
-
-<!-- MORRIS CHART SCRIPTS -->
-<script src="resources/assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="resources/assets/js/morris/morris.js"></script>
-
-<!-- CUSTOM SCRIPTS -->
-<script src="resources/assets/js/custom.js"></script>
-
-<!-- TABLE STYLES-->
-<link href="assets/js/dataTables/dataTables.bootstrap.css"
-	rel="stylesheet" />
-
-
-
-<title>상세보기</title>
-
-
+<link href="resources/css/blog.css" rel="stylesheet" />
+	
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
@@ -86,7 +57,32 @@
 	href="resources/assets/animate.css/animate.min.css">
 <link rel="stylesheet" href="resources/assets/theme/css/style.css">
 <link rel="stylesheet"
-	href="resources/assets/mobirise/css/mbr-additional.css" type="text/css">
+	href="resources/assets/mobirise/css/mbr-additional.css" type="text/css">	
+	
+	<!-- TABLE STYLES-->
+<link href="assets/js/dataTables/dataTables.bootstrap.css"
+	rel="stylesheet" />
+
+  <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
+     <!-- JQUERY SCRIPTS -->
+    <script src="resources/assets/js/jquery-1.10.2.js"></script>
+
+
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="resources/assets/js/bootstrap.min.js"></script>
+
+<!-- METISMENU SCRIPTS -->
+<script src="resources/assets/js/jquery.metisMenu.js"></script>
+   <script src="resources/assets/js/json.min.js"></script>
+
+
+
+
+
+<title>상세보기</title>
+
+
+
 
 
 
@@ -110,12 +106,29 @@ function replyDelete(replyNo) {
 function LetterDelete() {
 	
 	if( confirm("해당 글과 댓글 모두 삭제하시겠습니까?")==true ) {
+		del();
 		return true;
 	} else{
 		return false;
 	}
 }
 
+function del(){
+	var data = $("#delLetterNo").val();
+	console.log("클릭 data = " +data);
+	$.ajax({
+		url:"deleteLetter.do",
+		data:{letterNo:data},
+		dataType:"json",
+		success: function(data){
+			console.log(data);
+			console.log("성공");
+			 var id  = "<%=session.getAttribute("blogId")%>"
+			$("#test",parent.document).attr('src',"getLetterView.do?blogId="+id); 
+			$("#test2",parent.document).attr('src',"newest.do?blogId="+id); 
+		}	
+	});
+}
 $(document).ready(function(){
 
 	getBoard();
@@ -144,14 +157,10 @@ $(document).ready(function(){
 					for( i=0; i< data.length; i++) {
 						
 					var delButton = '<input type="submit" onclick=replyDelete('+ data[i].replyNo + ') value="삭제" >';	
-						
-						
-						
-
-						/* 본인 댓글만 삭제 */
-						if(data[i].userId != "${sessionScope.login}" && "${sessionScope.blogId}" != "${sessionScope.login}"){
+					
+						if(data[i].userId != "${sessionScope.login}"){
 							delButton ="";
-						} 
+						}
 						var html = '<tr class="article" id="'+ data[i].replyNo + '">' 
 									 + '<td>' +	data[i].userId 	 + '</td>'
 									 + '<td>' + data[i].replySub + '</td>'
@@ -160,13 +169,8 @@ $(document).ready(function(){
 									 + '</tr>';
 									
 						$(".article:last").after(html);	
-						/* if */
-						
-					} /* for */
-					
-					
-					
-				/* if */	
+	
+					}
 				} else {
 					/* alert('댓글이 없는 글 입니다.'); */
 				}      
@@ -221,14 +225,13 @@ $(document).ready(function(){
 });
 
 
-/* 댓글 목록 불러오기 스크립트 */
 
 </script>
 
 </head>
 <body>
 
-	<div class="form-group" align="center">
+	<div class="form-group" align="center" style="font-size:14px;">
 
 		<hr>
 
@@ -238,7 +241,7 @@ $(document).ready(function(){
 
 		<table border="0" width="100" height=" 200" width="700" align="center"
 			class="table table-striped table-bordered table-hover"
-			id="dataTables-example">
+				id="dataTables-example" style="font-size:14px;">
 
 
 			<tr>
@@ -246,12 +249,12 @@ $(document).ready(function(){
 				<td align="center">${letter.letterNo}</td>
 			<tr>
 				<td align="center">카테고리</td>
-				<td align="center">${letter.categoryNo}</td>
+				<td align="center">${letter.categoryName}</td>
 			<tr>
 				<td align="center">제목</td>
 				<td align="center">${letter.letterTitle}</td>
 			<tr>
-				<td align="center" colspan="5"> < 내용 > </td>
+				<td align="center" colspan="5">내용</td>
 			</tr>
 
 			<tr>
@@ -261,32 +264,26 @@ $(document).ready(function(){
 	</div>
 
 
-	<!-- 블로그 주인 == 로그인ID -->
-	<c:if test="${ sessionScope.blogId == sessionScope.login }">
-		<div class="mbr-section-btn" align="center">
-
-			<br /> <a class="btn btn-white"
-				href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a> <br />
-
-			<form name="frm" onclick="return LetterDelete()"
-				action="deleteLetter.do">
-				<input type="hidden" name="letterNo" value="${letter.letterNo}" />
-				<input class="btn btn-white" type="submit" value="삭제">
-			</form>
-
-			<!-- <a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a> -->
-		</div>
-	</c:if>
 
 
-	<!-- 블로그 주인 != 로그인ID -->
-	<c:if test="${ sessionScope.blogId != sessionScope.login }">
-	
-    	alert("해당 시스템에서 권한이 없습니다.");
-    	
-	</c:if>
+	<br />
 
 
+	<div class="mbr-section-btn" align="center">
+		<br /> <a class="btn btn-white"
+			href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a> <br />
+			
+			
+			
+		<form name="frm" onclick="return LetterDelete()" action="deleteLetter.do">
+			<input type="hidden" name="letterNo" id="delLetterNo" value="${letter.letterNo}" /> 
+			<input class="btn btn-white" type="button" onclick="del" value="삭제">
+		</form>
+		
+		
+		
+	<!-- 	<a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a> -->
+	</div>
 
 	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
@@ -297,11 +294,10 @@ $(document).ready(function(){
 		<HR>
 
 		댓글 쓰기
-
-		<HR>
-
-		<br /> <br />
-
+		
+		<br/>
+		<br/>
+		
 		<!-- 댓글쓰기 -->
 		<form id="replyForm">
 			<fieldset>
@@ -311,20 +307,24 @@ $(document).ready(function(){
 						<label for="content"> </label> -->
 
 				<!-- userId -->
-				<label>BLOG HOST ID : ${sessionScope.blogId}</label> <br />
+				<label>BLOG HOST ID : ${sessionScope.blogId}</label> 
+				<br/>
 				<!-- userId -->
-				<label>USER ID : ${sessionScope.login}</label> <br />
-				<%-- 				
+				<label>USER ID : ${sessionScope.login}</label> 
+				
+					<br/>
+				
 				<input  type="text" id="userId" 
 						name="userId" value="${sessionScope.login}" 
 						width="10" height="5" maxlength="15" readonly="readonly" />
---%>
-
-				<br /> <input type="hidden" id="letterNo" name="letterNo"
+						
+					<br/>
+					<br/>
+					
+				<input type="hidden" id="letterNo" name="letterNo"
 					value="${letter.letterNo}">
 				<!-- replySub -->
-				<textarea id="replySub" name="replySub" placeholder="내용입력" rows="2"
-					cols="60" /></textarea>
+				<textarea id="replySub" name="replySub" placeholder="내용입력" rows="2" cols="60" /></textarea>
 				<input type="submit" value="댓글 등록" />
 
 			</fieldset>
@@ -337,7 +337,7 @@ $(document).ready(function(){
 		<!-- 테이블 -->
 		<table border="1" width="700">
 
-			<tr class="article" align="center">
+			<tr class="article" align="center" >
 				<!-- <td>번호 -->
 				<td>ID</td>
 				<td>댓글 내용</td>
@@ -346,5 +346,6 @@ $(document).ready(function(){
 			</tr>
 
 		</table>
+
 </body>
 </html>

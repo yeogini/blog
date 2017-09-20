@@ -68,9 +68,10 @@
 		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
 		        <![CDATA[
 				SELECT 
-				LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
-				FROM LETTER
-				WHERE LETTER_NO = #{letterNo}	 
+				A.*, B.CATEGORY_NAME	
+				FROM LETTER A, CATEGORY B
+				WHERE A.CATEGORY_NO = B.CATEGORY_NO
+				AND LETTER_NO = #{letterNo}	 
 		        ]]>
 	</select>
 	
