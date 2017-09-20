@@ -109,7 +109,7 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                    <button type="submit" class="btn btn-default">가입</button>
+                    <button type="submit" class="btn btn-default">가입</button> <button type="button" class="btn btn-default" onclick="cancel()">취소</button>
                 </div>
             </div> 
         </form>
@@ -389,11 +389,17 @@
                         divPhoneNumber.addClass("has-success");
                     }
                      
+                    $("#cancel").click(function () {
+                    	
+					});
                  
                 });
                   
             });
-             
+             function cancel(){
+            	 console.log("aaa");
+             	history.back();
+             };
         </script>
             
         </div>

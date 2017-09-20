@@ -30,6 +30,10 @@ public class BlackVO {
 	public void setReason_code(String reason_code) {
 		this.reason_code = reason_code;
 	}
+	@Override
+	public String toString() {
+		return "BlackVO [d_no=" + d_no + ", userid=" + userid + ", d_id=" + d_id + ", reason_code=" + reason_code + "]";
+	}
 	
 	
 }

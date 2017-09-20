@@ -83,7 +83,7 @@ $(function() {
 	            if(key=='BlogHome') {
 	            	
 	            } else if(key=='friend') {
-	            	var p = $("#frm").serializeObject();
+	            	var p = $("#friendFrm").serializeObject();
 	            	$.postJSON("insertFriend.do",p,function(data){
 	            		console.log(data);
 	            		if(data.result=="success") {
@@ -155,9 +155,14 @@ $(function() {
 		<br>
 		<textarea rows="4" cols="20" readonly="readonly"
 			style="resize: none; overflow-y: scroll; vertical-align: text-top;">${profile.intro}</textarea>
-		<a href="adminView.do" id="profileEdit" target="_parent">edit</a>
+		<c:if test="${sessionScope.login==profile.userid}">
+			<a href="adminView.do" id="profileEdit" target="_parent">edit</a>	
+		</c:if>
 	</form>
-
+	<form name="friendFrm" id="friendFrm" action="insertFriend.do" method="post">
+			<input type="hidden" name="userid" value="${sessionScope.login}">
+			<input type="hidden" name="f_id" value="${profile.userid}">
+	</form>
 	<!--  <input id="black" type="button" value="유저 차단"> -->
 
 </body>

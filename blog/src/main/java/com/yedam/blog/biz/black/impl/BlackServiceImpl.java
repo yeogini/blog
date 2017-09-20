@@ -38,7 +38,8 @@ public class BlackServiceImpl implements BlackService{
 		// TODO 자동 생성된 메소드 스텁
 		return blackDAO.getBlack(vo);
 	}
-
+	
+	/*차단유무 확인???*/
 	@Override
 	public BlackVO selectBlack(BlackVO vo) {
 		// TODO 자동 생성된 메소드 스

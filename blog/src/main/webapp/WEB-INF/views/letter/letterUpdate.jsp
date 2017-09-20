@@ -77,7 +77,7 @@
 
 							<script>
 								function goBack() {
-									window.history.go(-1);
+									window.history.href="getLetter.do?letterNo=+${letter.letterNo}";
 								}
 							</script>
 
@@ -121,11 +121,12 @@
 									<button onclick="goBack()" class="btn btn-black">취소</button>
 									<!-- <input type="submit" value="저장"> -->
 								</div>
+								
+							</form>
 						</div>
 
 
 
-						</form>
 						
 						
 						

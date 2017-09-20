@@ -144,10 +144,14 @@ $(document).ready(function(){
 					for( i=0; i< data.length; i++) {
 						
 					var delButton = '<input type="submit" onclick=replyDelete('+ data[i].replyNo + ') value="삭제" >';	
-					
-						if(data[i].userId != "${sessionScope.login}"){
+						
+						
+						
+
+						/* 본인 댓글만 삭제 */
+						if(data[i].userId != "${sessionScope.login}" && "${sessionScope.blogId}" != "${sessionScope.login}"){
 							delButton ="";
-						}
+						} 
 						var html = '<tr class="article" id="'+ data[i].replyNo + '">' 
 									 + '<td>' +	data[i].userId 	 + '</td>'
 									 + '<td>' + data[i].replySub + '</td>'
@@ -156,8 +160,13 @@ $(document).ready(function(){
 									 + '</tr>';
 									
 						$(".article:last").after(html);	
-	
-					}
+						/* if */
+						
+					} /* for */
+					
+					
+					
+				/* if */	
 				} else {
 					/* alert('댓글이 없는 글 입니다.'); */
 				}      
@@ -173,8 +182,12 @@ $(document).ready(function(){
 	$("#replyForm").submit(function(event) {
 		event.preventDefault();
 		var formPara = $(this).serialize();
+		
 		$.post("./insertReply.do", formPara, function(data, status, xhr){
-			if (data != "") {
+			
+			console.log(data+"===");
+			
+			if (data.replyNo != "") {
 				var delButton = '<input type="submit" onclick=replyDelete('+ data.replyNo + ') value="삭제" >';	
 				
 				if(data.userId != "${sessionScope.login}"){
@@ -191,6 +204,8 @@ $(document).ready(function(){
 				
 				
 				
+			} else {
+				alert("차단 되었습니다.");
 			}
 		});
 	});
@@ -236,7 +251,7 @@ $(document).ready(function(){
 				<td align="center">제목</td>
 				<td align="center">${letter.letterTitle}</td>
 			<tr>
-				<td align="center" colspan="5">내용</td>
+				<td align="center" colspan="5"> < 내용 > </td>
 			</tr>
 
 			<tr>
@@ -246,26 +261,32 @@ $(document).ready(function(){
 	</div>
 
 
+	<!-- 블로그 주인 == 로그인ID -->
+	<c:if test="${ sessionScope.blogId == sessionScope.login }">
+		<div class="mbr-section-btn" align="center">
+
+			<br /> <a class="btn btn-white"
+				href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a> <br />
+
+			<form name="frm" onclick="return LetterDelete()"
+				action="deleteLetter.do">
+				<input type="hidden" name="letterNo" value="${letter.letterNo}" />
+				<input class="btn btn-white" type="submit" value="삭제">
+			</form>
+
+			<!-- <a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a> -->
+		</div>
+	</c:if>
 
 
-	<br />
+	<!-- 블로그 주인 != 로그인ID -->
+	<c:if test="${ sessionScope.blogId != sessionScope.login }">
+	
+    	alert("해당 시스템에서 권한이 없습니다.");
+    	
+	</c:if>
 
 
-	<div class="mbr-section-btn" align="center">
-		<br /> <a class="btn btn-white"
-			href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a> <br />
-			
-			
-			
-		<form name="frm" onclick="return LetterDelete()" action="deleteLetter.do">
-			<input type="hidden" name="letterNo" value="${letter.letterNo}" /> <input
-				class="btn btn-white" type="submit"  value="삭제">
-		</form>
-		
-		
-		
-		<a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a>
-	</div>
 
 	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
@@ -276,10 +297,11 @@ $(document).ready(function(){
 		<HR>
 
 		댓글 쓰기
-		
-		<br/>
-		<br/>
-		
+
+		<HR>
+
+		<br /> <br />
+
 		<!-- 댓글쓰기 -->
 		<form id="replyForm">
 			<fieldset>
@@ -289,21 +311,20 @@ $(document).ready(function(){
 						<label for="content"> </label> -->
 
 				<!-- userId -->
-				<label>사용자 ID : ${sessionScope.login}</label> 
-				
-					<br/>
-				
+				<label>BLOG HOST ID : ${sessionScope.blogId}</label> <br />
+				<!-- userId -->
+				<label>USER ID : ${sessionScope.login}</label> <br />
+				<%-- 				
 				<input  type="text" id="userId" 
 						name="userId" value="${sessionScope.login}" 
 						width="10" height="5" maxlength="15" readonly="readonly" />
-						
-					<br/>
-					<br/>
-					
-				<input type="hidden" id="letterNo" name="letterNo"
+--%>
+
+				<br /> <input type="hidden" id="letterNo" name="letterNo"
 					value="${letter.letterNo}">
 				<!-- replySub -->
-				<textarea id="replySub" name="replySub" placeholder="내용입력" rows="2" cols="60" /></textarea>
+				<textarea id="replySub" name="replySub" placeholder="내용입력" rows="2"
+					cols="60" /></textarea>
 				<input type="submit" value="댓글 등록" />
 
 			</fieldset>
@@ -316,7 +337,7 @@ $(document).ready(function(){
 		<!-- 테이블 -->
 		<table border="1" width="700">
 
-			<tr class="article" align="center" >
+			<tr class="article" align="center">
 				<!-- <td>번호 -->
 				<td>ID</td>
 				<td>댓글 내용</td>
@@ -325,6 +346,5 @@ $(document).ready(function(){
 			</tr>
 
 		</table>
-
 </body>
 </html>

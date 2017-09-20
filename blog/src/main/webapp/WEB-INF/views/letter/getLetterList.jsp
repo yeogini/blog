@@ -100,7 +100,13 @@
 		frm.action = "<%=request.getContextPath()%>/deleteLetterList.do";
 		frm.submit();
 
-	}
+/* 	/* 글 조회수 카운트 */
+	function hitsLetter() {
+		var formPara = {"hits":hits};
+		$.post("./hitsLetter.do", formPara, function(data, status, xhr) {
+		} );
+	} */
+	
 </script>
 </head>
 <body>
@@ -207,12 +213,26 @@
 							<c:forEach var="letter" items="${LetterList}">
 								<tr>
 									<td>${letter.rnum}</td>
-									<%-- <td>${letter.letterNo}																</td> --%>
+									<%-- <td> ${letter.letterNo} </td> --%>
+
+
+									
 									<td><a href="getLetter.do?letterNo=${letter.letterNo}">${letter.letterTitle}</a>
+									
+									
+									
+
 									</td>
 									<td>${letter.userId}</td>
 									<td>${letter.letterDate}</td>
 									<td>${letter.hits}</td>
+
+									<%-- 
+									<form name="frm" onclick="return LetterDelete()" action="hitsLetter.do">
+										<input type="hidden" name="letterNo" value="${letter.letterNo}" /> 
+										<input class="btn btn-white" type="submit"  value="삭제">
+									</form> 
+									--%>
 
 								</tr>
 							</c:forEach>

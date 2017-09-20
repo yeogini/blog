@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: User
 Build-Jdk: 1.8.0_131
+=======
+Built-By: yongwoo
+Build-Jdk: 1.8.0_144
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 Created-By: Maven Integration for Eclipse
 

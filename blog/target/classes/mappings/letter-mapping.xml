@@ -73,6 +73,16 @@
 				WHERE LETTER_NO = #{letterNo}	 
 		        ]]>
 	</select>
+	
+	<!-- 카운트 -->
+	<select id="hitsLetter" resultType="letter">
+		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
+		        <![CDATA[
+				UPDATE LETTER SET
+				HITS = NVL(HITS, 0) + 1
+		        WHERE LETTER_NO = #{letterNo}  
+		        ]]>
+	</select>
 
 	<!-- 블로그 글 -->
 	<select id="getLetterList" resultType="letter">
@@ -85,6 +95,12 @@
 		        ]]>
 	</select>
 
+
+	<select id="newest" resultType="letter">
+		SELECT * FROM LETTER
+		WHERE USERID = #{userId}
+		AND LETTER_NO = (SELECT MAX(LETTER_NO) FROM LETTER WHERE USERID=#{userId})
+	</select>
 
 
 </mapper>

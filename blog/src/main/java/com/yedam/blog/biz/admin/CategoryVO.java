@@ -8,6 +8,7 @@ public class CategoryVO {
 	private String userid;
 	private String type;
 	private String borderType;
+	
 	public int getCategoryNo() {
 		return categoryNo;
 	}
@@ -50,6 +51,12 @@ public class CategoryVO {
 	}
 	public void setBorderType(String borderType) {
 		this.borderType = borderType;
+	}
+	@Override
+	public String toString() {
+		return "CategoryVO [categoryNo=" + categoryNo + ", categoryName=" + categoryName + ", categoryChk="
+				+ categoryChk + ", categoryMouser=" + categoryMouser + ", userid=" + userid + ", type=" + type
+				+ ", borderType=" + borderType + "]";
 	}
 	
 	
