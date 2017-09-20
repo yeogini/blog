@@ -164,17 +164,6 @@
 
 </head>
 <body>
-	<%-- ${layoutVO}<br>
-방명록${layout.visitors}<br>
-프로필${layout.profile}<br>
-카테고리${layout.category}<br>
-리플${layout.reply}<br>
-최신글${layout.latest_posts}<br>
-베스트글${layout.top}<br>
-타이틀${layout.title}<br>
- --%>
-
-
 
 	<div id="profile" class="layoutdiv ui-widget-content">
 		<p>프로필</p>

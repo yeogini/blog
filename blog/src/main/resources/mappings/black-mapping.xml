@@ -26,6 +26,7 @@
         <![CDATA[
         DELETE BLACK
         WHERE D_NO = #{d_no}
+        
         ]]>
     </delete>
 
@@ -34,9 +35,9 @@
 
     <select id="getBlackList" resultMap="BlackResult">
         <![CDATA[
-        SELECT D_NO, D_ID, REASON_CODE
+        SELECT D_NO, D_ID, REASON_CODE, USERID
         FROM BLACK
-     	WHERE USERID = #{userid}
+     	WHERE USERID = #{userid} 
         ]]>
     </select>
     
