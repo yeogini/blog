@@ -16,7 +16,7 @@
 	
 <!-- BLOG CSS -->
 <link href="resources/css/blog.css" rel="stylesheet" />
-
+<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script>
 $(function(){
 	$(".letterName").click(function(event){
@@ -24,6 +24,8 @@ $(function(){
 		var src = $(this).attr("href");
 		console.dir(src);
 		//parent.document.getElementById("reply").attr('src',src);
+		 var id = $("#id").val();
+		$("#test",parent.document).attr('src',"getLetterView.do?blogId="+id); 
 		$("#test2",parent.document).attr('src',src);
 		
 		

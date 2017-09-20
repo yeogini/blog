@@ -1,6 +1,8 @@
 package com.yedam.blog.letter;
 
 import java.io.File;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -94,10 +96,10 @@ public class LetterController {
 	// 단건 삭제 deleteLetter.do
 		@RequestMapping("/deleteLetter.do")
 		@ResponseBody
-		public String deleteLetterList(LetterVO vo) {
+		public Map<String,? extends Object> deleteLetterList(LetterVO vo) {
 			letterService.deleteLetter(vo);
-			return "success";
-		}
+			return Collections.singletonMap("result","sucess");
+		} 
 	
 	// 댓글 + 글 삭제 deleteReplyLetterList.do
 	@RequestMapping("/deleteReplyLetter.do")
