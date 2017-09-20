@@ -29,7 +29,8 @@
    </style>
 
 
-
+<!-- BLOG CSS -->
+<link href="resources/css/blog.css" rel="stylesheet" />
 
 <title>상세보기</title>
 
@@ -216,7 +217,7 @@ function del(){
 </head>
 <body>
 
-	<div class="form-group" align="center">
+	<div class="form-group" align="center" style="font-size:14px;">
 
 		<hr>
 
@@ -280,7 +281,7 @@ function del(){
 
 	<div style='border:"0"; width:"100" ;height:"200" ;align:"center"'
 		class="table table-striped table-bordered table-hover"
-		id="dataTables-example">
+		id="dataTables-example" style="font-size:14px;">
 
 		<HR>
 
@@ -288,7 +289,7 @@ function del(){
 
 		<HR>
 
-		<br /> <br />
+		<br />
 
 		<!-- 댓글쓰기 -->
 		<form id="replyForm">
@@ -301,7 +302,7 @@ function del(){
 				<!-- userId -->
 				<label>BLOG HOST ID : ${sessionScope.blogId}</label> <br />
 				<!-- userId -->
-				<label>USER ID : ${sessionScope.login}</label> <br />
+				<label>현재 로그인 ID : ${sessionScope.login}</label> <br />
 				<%-- 				
 				<input  type="text" id="userId" 
 						name="userId" value="${sessionScope.login}" 
