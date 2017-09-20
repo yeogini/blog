@@ -85,7 +85,7 @@
 #mainView {
 	border:1px solid black;
 	position: absolute;
-	top: 450px;
+	top: 300px;
 	left: 460px;
 	width :1000px;
 	height :100%;

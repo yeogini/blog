@@ -165,15 +165,15 @@
 		}
 
 		$("#save").click(function() {
-
-
 			$(".layoutdiv").each(function() {
 				console.log($(this).position());
 				var id = $(this).attr("id")
 				var position = $(this).position()
 				$("#t_" + id).val(position.left + "," + position.top);
-			});
+			});  
+			
 			$("#blog_form").submit();
+
 		});
 		
 	});

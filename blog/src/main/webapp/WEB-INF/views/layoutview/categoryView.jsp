@@ -36,7 +36,7 @@
 <hr>
 <form id="frm" name="frm" action="">
 <c:forEach items="${category}" var="result">
-<c:if test="${result.type=='t'}"><h5>${result.categoryName}<br></h5></c:if>
+<c:if test="${result.type=='t'}"><Strong>${result.categoryName}</Strong><br></c:if>
 <c:if test="${result.type=='d'}">-------------<br></c:if>
 <c:if test="${result.type=='n'}"><a href="getCategoryList.do?blogId=${result.userId}&categoryNo=${result.categoryNo}" class="categoryName" ><input type="hidden" value="${result.categoryNo}"> ${result.categoryName}<br></a></c:if>
 </c:forEach>
