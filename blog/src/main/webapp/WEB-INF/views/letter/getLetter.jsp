@@ -15,42 +15,30 @@
 
 <head>
 
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="shortcut icon" href="assets/images/logo.png"
+	type="image/x-icon"> -->
+<meta name="description"
+	content="Responsive Bootstrap HTML Mobile Application Template - Free Download">
 
 
 
-<!-- BOOTSTRAP STYLES-->
+
+<title>상세보기</title>
+
+	<!-- BOOTSTRAP STYLES-->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
-
+    <link href="resources/assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="resources/assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <style>
 
    </style>
-
-
-<!-- BLOG CSS -->
-<link href="resources/css/blog.css" rel="stylesheet" />
-
-<title>상세보기</title>
-
-
-
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-<link rel="stylesheet"
-	href="resources/assets/et-line-font-plugin/style.css">
-<link rel="stylesheet" href="resources/assets/tether/tether.min.css">
-<link rel="stylesheet"
-	href="resources/assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="resources/assets/theme/css/style.css">
-
-	
-	
     <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
      <!-- JQUERY SCRIPTS -->
     <script src="resources/assets/js/jquery-1.10.2.js"></script>
@@ -58,6 +46,7 @@
     <script src="resources/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="resources/assets/js/jquery.metisMenu.js"></script>
+
 
 
 <!-- 댓글 목록 불러오기 스크립트 -->
@@ -192,25 +181,6 @@ $(document).ready(function(){
 
 
 /* 댓글 목록 불러오기 스크립트 */
-function del(){
-	console.log("삭제 함수 실행");
-	var delLetter = $("#delLetterNo").val();
-	var reqStr = {
-			letterNo:delLetter
-	}   
-	$.get("deleteLetter.do",reqStr,function(data){
-			console.log("aaaaaaaaa"+data);
-			 if(data=="success") {
-				var id =  "<%=session.getAttribute("blogId")%>";
-				console.log("id ==" +id);
-				$("#test",parent.document).attr('src',"getLetterView.do?blogId="+id);
-				$("#test2",parent.document).attr('src',"newest.do?blogId="+id);
-			 }
-		}
-	)
-};
-
-
 
 </script>
 
@@ -225,7 +195,7 @@ function del(){
 
 		<hr>
 
-		<table style='border:"0"; width:"100" ;height:"200" ;align:"center"'
+		<table border="0" width="100" height=" 200" width="700" align="center"
 			class="table table-striped table-bordered table-hover"
 			id="dataTables-example">
 
@@ -235,7 +205,7 @@ function del(){
 				<td align="center">${letter.letterNo}</td>
 			<tr>
 				<td align="center">카테고리</td>
-				<td align="center">${letter.categoryName}</td>
+				<td align="center">${letter.categoryNo}</td>
 			<tr>
 				<td align="center">제목</td>
 				<td align="center">${letter.letterTitle}</td>
@@ -259,8 +229,8 @@ function del(){
 
 			<form name="frm" onclick="return LetterDelete()"
 				action="deleteLetter.do">
-				<input type="hidden" name="letterNo" id="delLetterNo" value="${letter.letterNo}" />
-				<input class="btn btn-white" type="button" value="삭제" onclick="del()">
+				<input type="hidden" name="letterNo" value="${letter.letterNo}" />
+				<input class="btn btn-white" type="submit" value="삭제">
 			</form>
 
 			<!-- <a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a> -->
@@ -279,7 +249,7 @@ function del(){
 
 	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-	<div style='border:"0"; width:"100" ;height:"200" ;align:"center"'
+	<div border="0" width="100" height=" 200" align="center"
 		class="table table-striped table-bordered table-hover"
 		id="dataTables-example" style="font-size:14px;">
 
@@ -324,7 +294,7 @@ function del(){
 
 
 		<!-- 테이블 -->
-		<table style='border:"1"; width:"700"'>
+		<table border="1" width="700">
 
 			<tr class="article" align="center">
 				<!-- <td>번호 -->
@@ -335,6 +305,5 @@ function del(){
 			</tr>
 
 		</table>
-	</div>
 </body>
 </html>

@@ -23,6 +23,8 @@ $(function(){
 		var src = $(this).attr("href");
 		console.dir(src);
 		//parent.document.getElementById("reply").attr('src',src);
+		/* var id = $("#id").val();
+		$("#test",parent.document).attr('src',"getLetterView.do?blogId="+id); */
 		$("#test2",parent.document).attr('src',src);
 		
 		
@@ -68,7 +70,9 @@ $(function(){
 		</c:forEach>
 		
 	</table>	
-
+	<form id="frm">
+		<input type="hidden" id="id" value="${id}">
+	</form>
 </div>
 
 </body>
