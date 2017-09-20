@@ -60,7 +60,8 @@
 <link href="assets/js/dataTables/dataTables.bootstrap.css"
 	rel="stylesheet" />
 
-
+<!-- BLOG CSS -->
+<link href="resources/css/blog.css" rel="stylesheet" />
 
 <title>상세보기</title>
 
@@ -228,7 +229,7 @@ $(document).ready(function(){
 </head>
 <body>
 
-	<div class="form-group" align="center">
+	<div class="form-group" align="center" style="font-size:14px;">
 
 		<hr>
 
@@ -292,7 +293,7 @@ $(document).ready(function(){
 
 	<div border="0" width="100" height=" 200" align="center"
 		class="table table-striped table-bordered table-hover"
-		id="dataTables-example">
+		id="dataTables-example" style="font-size:14px;">
 
 		<HR>
 
