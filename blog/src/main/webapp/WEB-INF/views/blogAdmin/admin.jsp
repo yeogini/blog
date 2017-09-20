@@ -49,7 +49,7 @@
 		  } else if(menu == "friend") {
 			  url ="/blog/adminFriend.do";
 		  } else if(menu == "blacklist") {
-			  url ="/blog/test.do";
+			  url ="getBlackList.do";
 		  }
 		  /* xmlhttp.onreadystatechange = xmlOnready;
 		  xmlhttp.open("GET",url,true);
