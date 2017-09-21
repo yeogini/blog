@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yedam.blog.biz.admin.CategoryService;
+import com.yedam.blog.biz.admin.CategoryVO;
+
 
 
 @Controller
@@ -32,31 +36,42 @@ public class LetterController {
 	@Autowired 
 	LetterService letterService;
 	
+	@Autowired 
+	CategoryService categoryService;
+	
+	
 	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("1", "여행");
-		conditionMap.put("2", "취미");
-		conditionMap.put("3", "IT");
-		return conditionMap;
+	public List<CategoryVO> searchConditionMap(HttpSession session) {
+		CategoryVO categoryVo = new CategoryVO();							// 새로운 객체 categoryVo 생성
+		categoryVo.setUserId((String)session.getAttribute("login"));		// 세션에 저정된 login 값을 불러 categoryVo에 넣고 
+		return categoryService.getOnlyCategory(categoryVo);					// categoryService의 getOnlyCategory에 categoryVo를 넣는다
 	}
 	
 	// 등록 폼 페이지
 	@RequestMapping(value="/letterInsert.do",method=RequestMethod.GET)			// 응답 멤핑 맞으면
 	public String boardInsertForm() {
+		
 		return "/letter/letterInsert";
 	}
 	
 	//등록
 	@RequestMapping(value="/letterInsert.do",method=RequestMethod.POST)
 	public String letterInsert(
-			LetterVO vo,
-			SessionStatus sessionStatus) {
-		vo.setUserId("aaa");
+			LetterVO vo, LetterSearchVO vo1,
+			SessionStatus sessionStatus, HttpSession session) {
+		vo.setUserId((String)session.getAttribute("login"));
 		letterService.insertLetter(vo);
+		letterService.getLetterList(vo1);
+		/*글 바로 등록 보기*/
 		sessionStatus.setComplete();
+
 		return "redirect:/getLetter.do?letterNo="+vo.getLetterNo();
 	}
+	
+
+
+	
+	
 	
 	//목록
 	@RequestMapping(value="/getLetterList.do")
