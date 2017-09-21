@@ -54,8 +54,6 @@
 
 	<div id="menu-0" custom-code="true">
 
-
-
 		<section
 			class="mbr-section mbr-section-hero mbr-section-full header2 mbr-parallax-background mbr-after-navbar"
 			id="header2-1"
@@ -95,12 +93,14 @@
 
 								<div class="form-group">
 								
-									<select name="categoryNo" id="disabledSelect"
-										class="form-control">
+									<select name="categoryNo" id="disabledSelect" class="form-control">
 										<c:forEach items="${conditionMap}" var="map">
-											<option value="${map.key}">${map.value}</option>
+											<option value="${map.categoryNo}">${map.categoryName}</option>
 										</c:forEach>
-									</select> <br>
+									</select>
+									
+									<br>
+									
 								</div>
 								
 								

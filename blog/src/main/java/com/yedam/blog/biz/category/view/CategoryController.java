@@ -92,4 +92,5 @@ public class CategoryController {
 		model.addAttribute("CategoryList",list);
 		return "category/categoryView";
 	}
+		
 }

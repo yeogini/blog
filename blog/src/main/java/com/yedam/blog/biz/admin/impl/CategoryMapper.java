@@ -16,4 +16,6 @@ public List<CategoryVO> getCategory(CategoryVO vo);
 	public CategoryVO getCategoryName(CategoryVO vo);
 	
 	
+	
+	public List<CategoryVO> getOnlyCategory(CategoryVO vo);
 }

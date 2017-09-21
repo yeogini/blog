@@ -13,4 +13,6 @@ public interface CategoryService {
 	
 	public CategoryVO getCategoryName(CategoryVO vo);
 	
+	
+	public List<CategoryVO> getOnlyCategory(CategoryVO vo);
 }
