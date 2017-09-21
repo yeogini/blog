@@ -15,14 +15,6 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="shortcut icon" href="assets/images/logo.png"
-	type="image/x-icon"> -->
-<meta name="description"
-	content="Responsive Bootstrap HTML Mobile Application Template - Free Download">
-
 
 
 <!-- BOOTSTRAP STYLES-->
@@ -65,7 +57,7 @@
 
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
     <!-- JQUERY SCRIPTS -->
-<script src="resources/assets/js/jquery-1.10.2.js"></script>s
+<script src="resources/assets/js/jquery-1.10.2.js"></script>
 
 <!-- BOOTSTRAP SCRIPTS -->
 <script src="resources/assets/js/bootstrap.min.js"></script>
@@ -302,17 +294,11 @@ $(document).ready(function(){
 
 	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-<<<<<<< HEAD
+
 	<div border="0" width="100" height=" 200" align="center"
 		class="table table-striped table-bordered table-hover"
 		id="dataTables-example">
-	
-=======
-	<div border="0" width="100" height=" 200" align="center" 
-		 class="table table-striped table-bordered table-hover"
-		 id="dataTables-example">
 
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 		<HR>
 
 		댓글 쓰기
