@@ -57,9 +57,5 @@
 		    ,BORDER_TYPE = #{borderType}
 		    WHERE CATEGORY_NO = #{categoryNo}
     </update>
-<<<<<<< HEAD
-   
-=======
-    
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
+
 </mapper>
