@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,8 +52,8 @@ public class LetterController {
 	@RequestMapping(value="/letterInsert.do",method=RequestMethod.POST)
 	public String letterInsert(
 			LetterVO vo,
-			SessionStatus sessionStatus) {
-		vo.setUserId("aaa");
+			SessionStatus sessionStatus, HttpSession session) {
+		vo.setUserId((String)session.getAttribute("login"));
 		letterService.insertLetter(vo);
 		sessionStatus.setComplete();
 		return "redirect:/getLetter.do?letterNo="+vo.getLetterNo();

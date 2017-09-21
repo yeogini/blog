@@ -200,14 +200,17 @@ function goBack(){
 		<iframe id ="test" src="getLetterView.do?blogId=${id}" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;height: 300px">
 		</iframe><br>
 		
-		<c:if test="${chk == 'f'}">
+		 <c:if test="${chk == 'f'}">
 			<c:if test="${sessionScope.login == id}">
 				<!-- 글  없을 때 글 쓰기 링크 뛰우기-->
+					<a href=""></a>				
 			</c:if>
 			<c:if test="${sessionScope.login != id }">
 				<!-- 작성된 글이 없습니다 뛰우기  src값만 바꾸기 -->
+				
+				
 			</c:if>
-		</c:if>
+		</c:if> 
 		
 		
 		<iframe src="newest.do?blogId=${id}"style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px; height: 100%;" id="test2">

@@ -230,7 +230,10 @@ $(document).ready(function(){
 
 </head>
 <body>
-
+	<c:if test="${empty requestScope.letter.letterNo }">
+		작성된 글이 없습니다.
+	</c:if>
+	<c:if test="${not empty requestScope.letter.letterNo }">
 	<div class="form-group" align="center" style="font-size:14px;">
 
 		<hr>
@@ -290,7 +293,7 @@ $(document).ready(function(){
 	<div border="0" width="100" height=" 200" align="center"
 		class="table table-striped table-bordered table-hover"
 		id="dataTables-example">
-
+	
 		<HR>
 
 		댓글 쓰기
@@ -346,6 +349,6 @@ $(document).ready(function(){
 			</tr>
 
 		</table>
-
+</c:if>
 </body>
 </html>
