@@ -1,5 +1,6 @@
 package com.yedam.blog.biz.category.view;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -45,17 +46,20 @@ public class CategoryController {
 	
 	//카테고리 수정
 	@RequestMapping("/updateCategory.do")
-	public String updateCategory(CategoryVO vo){
-		
+	@ResponseBody
+	public CategoryVO updateCategory(@RequestBody CategoryVO vo){
+		System.err.println(vo);
 		categoryService.updateCategory(vo);
-		return "redirect:/getCategoryList.do";
+		return vo;
 	}
-	
+	 
 	//카테고리 삭제
 	@RequestMapping("/deleteCategory.do")
-	public String deleteCategory(CategoryVO vo){
+	@ResponseBody
+	public CategoryVO deleteCategory(CategoryVO vo){
+		System.out.println("삭제 ==" +vo.getCategoryNo());
 		categoryService.deleteCategory(vo);
-		return "redirect:/getCategoryList.do";
+		return vo;
 	}
 	
 	//카테고리 목록

@@ -21,6 +21,17 @@
 
 
 <title>Insert title here</title>
+<style type="text/css">
+#abcd{
+	float: right;
+}
+body{
+	background-color:white;
+}
+#listViewTitle{
+	color: skyblue;
+}
+</style>
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script>
 	$(function(){
@@ -48,16 +59,16 @@
 </head>
 <body>
 <c:if test="${name.categoryName==null || name.categoryName==''}">
-<p>'전체보기' 의 카테고리</p>
+<p id="listViewTitle">'전체보기' 의 카테고리</p>
 </c:if>
 <c:if test="${name.categoryName!=null}">
 <p>'${name.categoryName}' 의 카테고리</p>
 </c:if>
 <hr> 
 <c:forEach items="${datas}" var="list">
-<a href="getLetter.do?letterNo=${list.letterNo}" class="letterName">${list.letterTitle}</a><span>${list.letterDate}</span><br>
+<div><a href="getLetter.do?letterNo=${list.letterNo}" class="letterName">${list.letterTitle}</a><div id="abcd" align="right">${list.letterDate}</div></div>
 </c:forEach>
-<div id="paging" class="row" align="center"><mytag:letterpaging paging="${paging}"></mytag:letterpaging></div>
+<div id="paging" class="row" align="center"><mytag:letterpaging paging="${paging}" id="${blogId}"></mytag:letterpaging></div>
 <a href="letterInsert.do" class="btn btn-white" id = "insert">글 등록</a>
 </body>
 </html>

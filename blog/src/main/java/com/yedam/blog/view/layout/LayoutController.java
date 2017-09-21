@@ -49,7 +49,7 @@ public class LayoutController {
 		else{
 			layoutService.updateLayout(vo);
 		}
-			return "redirect:/getBlogLayout.do";
+			return "redirect:/getMainView.do?blogId="+vo.getUserid();
 	}
 	
 	
