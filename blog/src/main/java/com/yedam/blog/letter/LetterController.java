@@ -56,13 +56,7 @@ public class LetterController {
 	
 	//등록
 	@RequestMapping(value="/letterInsert.do",method=RequestMethod.POST)
-	public String letterInsert(
-<<<<<<< HEAD
-			LetterVO vo,
-=======
-			LetterVO vo, LetterSearchVO vo1,
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
-			SessionStatus sessionStatus, HttpSession session) {
+	public String letterInsert(LetterVO vo, LetterSearchVO vo1,	SessionStatus sessionStatus, HttpSession session) {
 		vo.setUserId((String)session.getAttribute("login"));
 		letterService.insertLetter(vo);
 		letterService.getLetterList(vo1);
@@ -84,7 +78,7 @@ public class LetterController {
 		mv.addObject("LetterList", list);  				// getBoardList에 아이템
 		mv.setViewName("/letter/getLetterList");			// 리턴에는 처리후에 보여질 뷰페이지
 		return mv;
-	} 
+	}  
 	
 	//상세조회
 	@RequestMapping("/getLetter.do")
