@@ -143,24 +143,12 @@ $(document).ready(function(){
 					for( i=0; i< data.length; i++) {
 						
 					var delButton = '<input type="submit" onclick=replyDelete('+ data[i].replyNo + ') value="삭제" >';	
-<<<<<<< HEAD
-			
-=======
 
-						
-						
-						
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 
 						/* 블로그 주인은 모든 댓글 삭제 가능 / 본인 댓글만 삭제 */
-						if(data[i].userId != "${sessionScope.login}" && "${sessionScope.blogId}" != "${sessionScope.login}"){
 
-<<<<<<< HEAD
-=======
 					
 						if(data[i].userId != "${sessionScope.login}"){
-
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 							delButton ="";
 						}
 						var html = '<tr class="article" id="'+ data[i].replyNo + '">' 
@@ -272,8 +260,7 @@ $(document).ready(function(){
 
 
 
-<<<<<<< HEAD
-=======
+
 	<!-- 블로그 주인 != 로그인ID -->
 <%-- 	<c:if test="${ sessionScope.blogId != sessionScope.login }">
 	
@@ -281,7 +268,6 @@ $(document).ready(function(){
     	
 	</c:if> --%>     
 
->>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 	<br />
 
 
@@ -324,7 +310,7 @@ $(document).ready(function(){
 				 	<input type="hidden" id="userId" name="userId" placeholder="작성자" required="required" /> 
 						<label for="content"> </label> -->
 
-				<!-- userId -->
+				<%-- <!-- userId -->
 				<label>BLOG HOST ID : ${sessionScope.blogId}</label> 
 				<br/>
 				<!-- userId -->
@@ -335,7 +321,7 @@ $(document).ready(function(){
 				<input  type="text" id="userId" 
 						name="userId" value="${sessionScope.login}" 
 						width="10" height="5" maxlength="15" readonly="readonly" />
-						
+						 --%>
 					<br/>
 					<br/>
 					

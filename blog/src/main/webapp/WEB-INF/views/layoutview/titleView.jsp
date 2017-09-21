@@ -13,7 +13,7 @@ body{
 <script>
 </script>
 </head>
-<body>
-<div class="row" align="left"><strong>${title.blog_title}</strong></div>
+<body>		
+<div class="row" align="left"><strong><marquee behavior="alternate" scrolldelay="10" direction="right">${title.blog_title}</marquee></strong></div>
 </body>
 </html>
