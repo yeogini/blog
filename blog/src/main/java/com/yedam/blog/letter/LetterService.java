@@ -33,4 +33,6 @@ public interface LetterService {
 	//최신 글
 	LetterVO newest(LetterVO vo);
 	
+	List<LetterAllVO> getLetterAll(LetterAllVO vo);
+	
 }

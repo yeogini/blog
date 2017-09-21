@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.yedam.blog.biz.common.LogAdvice;
+import com.yedam.blog.letter.LetterAllVO;
 import com.yedam.blog.letter.LetterSearchVO;
 import com.yedam.blog.letter.LetterService;
 import com.yedam.blog.letter.LetterVO;
@@ -87,6 +88,16 @@ public class LetterServiceImpl implements LetterService {
 	public LetterVO newest(LetterVO vo) {
 		// TODO Auto-generated method stub
 		return letterDAO.newest(vo);
+	}
+
+
+
+
+
+	@Override
+	public List<LetterAllVO> getLetterAll(LetterAllVO vo) {
+		// TODO Auto-generated method stub
+		return letterDAO.getLetterAll(vo);
 	}
 	
 	

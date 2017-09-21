@@ -44,4 +44,10 @@ public class FriendServiceImpl implements FriendService{
 		return friendDAO.getFriend(vo);
 	}
 
+	@Override
+	public int addFriendSession(FriendVO vo) {
+		// TODO Auto-generated method stub
+		return friendDAO.addFriendSession(vo);
+	}
+
 }

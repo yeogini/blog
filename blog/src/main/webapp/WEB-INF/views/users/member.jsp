@@ -142,6 +142,7 @@
         
             $(function(){
                 //모달을 전역변수로 선언
+                console.log("aaa");
                 var modalContents = $(".modal-contents");
                 var modal = $("#defaultModal");
                  
@@ -166,7 +167,10 @@
                         $(this).val(inputVal.replace(/[^0-9]/gi,''));
                     }
                 });
-                 
+                 $('#userid').change(function(){
+                	 $("#idBtn").text("아이디 체크");
+                	 idChk = false;
+                 });
                 //------- 검사하여 상태를 class에 적용
                 $('#id').keyup(function(event){
                      
@@ -397,7 +401,6 @@
                   
             });
              function cancel(){
-            	 console.log("aaa");
              	history.back();
              };
         </script>

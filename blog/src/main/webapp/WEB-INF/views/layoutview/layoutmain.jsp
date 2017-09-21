@@ -102,9 +102,12 @@ body{
 }
 #test {
 	border: 1px green solid;
+	background-color: white;
 	
 }
 #test2{
+	border:0;
+	
 }
 .meny{
 	color: skyblue;
@@ -123,7 +126,9 @@ body{
 
 <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 <script>
+
 $(function(){
+	
 	if ("${layout}" != "") {
 		console.log("ㅁㅁㅁ");
 		var profilePosition = "${layout.profile}".split(",")
