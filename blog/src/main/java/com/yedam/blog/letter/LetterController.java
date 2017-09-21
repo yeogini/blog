@@ -31,7 +31,7 @@ import com.yedam.blog.biz.admin.CategoryVO;
 @SessionAttributes("letter")		// 모델에 board 저장될 때 세션에도 저장
 public class LetterController {
 	
-	
+	   
 	
 	@Autowired 
 	LetterService letterService;
