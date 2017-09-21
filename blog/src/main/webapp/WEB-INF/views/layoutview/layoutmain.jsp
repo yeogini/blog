@@ -13,14 +13,19 @@
 <link rel="stylesheet"
 	href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 <style>
+body{
+	background-color: white;
+}
 #profile {
-	width: 290px;
-	height: 200px;
+	width: 180px;
+	height: 290px;
 	padding: 0.5em;
 	position: absolute;
 	left: 5px;
 	top : 39px;
-	 border: 1px solid black;
+	background-color: white;
+	border: 1px green solid;
+	
 }
 
 #category {
@@ -30,7 +35,8 @@
 	position: absolute;
 	left: 1475px;
 	top : 304px;
-	 border: 1px solid black;
+	 border: 0;
+	 background-color: white;
 }
 
 #visitors {
@@ -40,7 +46,8 @@
 	position: absolute;
 	left: 6px;
 	top : 288px;
-	 border: 1px solid black;
+	 border: 0;
+	 background-color: white;
 }
 
 #reply {
@@ -50,7 +57,7 @@
 	position: absolute;
 	left: 1297px;
 	top : 23px;
-	 border: 1px solid black;
+	 border: 0;
 }
 
 #latest_posts {
@@ -60,7 +67,7 @@
 	position: absolute;
 	left: 1024px;
 	top : 23px;
- border: 1px solid black;
+ border: 0;
 }
 
 #top {
@@ -70,7 +77,7 @@
 	position: absolute;
 	left: 749px;
 	top : 23px;
- border: 1px solid black;
+ 	border: 0;
 }
 
 #title {
@@ -80,16 +87,27 @@
 	position: absolute;
 	left: 326px;
 	top : 38px;
- border: 1px solid black;
+ 	border: 0;
+ 	border-radius: 5px;
+ 	background-color: white;
 }
 #mainView {
-	border:1px solid black;
+	border:0;
 	position: absolute;
-	top: 450px;
+	top: 300px;
 	left: 460px;
 	width :1000px;
 	height :100%;
 	margin: 5px;
+}
+#test {
+	border: 1px green solid;
+	
+}
+#test2{
+}
+.meny{
+	color: skyblue;
 }
 /* #test{
 	width:900px;
@@ -158,14 +176,14 @@ function goBack(){
 		<c:if test="${empty sessionScope.login }">
 			<p />
 			<p align="right">
-				<strong><a href="/blog">로그인</a></strong>
+				<strong><a href="/blog" class="meny">로그인</a></strong>
 			</p>
 		</c:if>
 		<c:if test="${not empty sessionScope.login}">
 			<p />
 			<p align="right">
-			<strong>${sessionScope.login}님 <a href="logout.do">로그아웃</a></strong>
-				<a href="adminView.do">블로그 관리하기</a> <a href="blog.do">블로그 목록 가기</a>
+			<strong>${sessionScope.login}님 <a href="logout.do" class="meny">로그아웃</a></strong>
+				<a href="adminView.do" class="meny">블로그 관리하기</a> <a href="blog.do" class="meny">블로그 목록 가기</a>
 			</p>
 		</c:if>
 </div>

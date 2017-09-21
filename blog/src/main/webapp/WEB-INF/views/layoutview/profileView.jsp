@@ -9,8 +9,11 @@
 <title>프로필뷰</title>
 <style>
 img {
-	width: 120px;
-	height: auto;
+	width: 161px;
+	height: 161px;
+}
+#myblog{
+	font
 }
 </style>
 
@@ -149,15 +152,14 @@ $(function() {
 	</div>
 
 
-	<form style="width: 280px; height: 190px;">
+	<form style="width: 180px; height: 270px;">
 		<img src="resources/upload/${profile.userid}.jpg"
-			style="vertical-align: text-middle"> <span id="myblog">${profile.userid}</span>(${profile.nickName})
-		<br>
-		<textarea rows="4" cols="20" readonly="readonly"
-			style="resize: none; overflow-y: scroll; vertical-align: text-top;">${profile.intro}</textarea>
-		<c:if test="${sessionScope.login==profile.userid}">
+			style="vertical-align: text-middle"> <Strong><span id="myblog">${profile.userid}</span></Strong>(${profile.nickName})<c:if test="${sessionScope.login==profile.userid}">
 			<a href="adminView.do" id="profileEdit" target="_parent">edit</a>	
 		</c:if>
+		<br>
+		${profile.intro}
+		
 	</form>
 	<form name="friendFrm" id="friendFrm" action="insertFriend.do" method="post">
 			<input type="hidden" name="userid" value="${sessionScope.login}">

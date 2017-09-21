@@ -32,4 +32,17 @@
     		VALUES(#{categoryNo},#{categoryName},1,0,#{type},#{userid},'l')
     	]]>
     </insert>
+    <delete id="deleteCategory">
+    	DELETE FROM CATEGORY WHERE CATEGORY_NO = #{categoryNo}
+    </delete>
+    <update id="updateCategory">
+		UPDATE CATEGORY
+		SET CATEGORY_NAME = #{categoryName},
+		    CATEGORY_CHK = #{categoryChk},
+		    CATEGORY_MOUSER = #{categoryMouser}
+		    <if test="type !=null and type !=''">
+		    ,TYPE = #{type}
+		    </if>
+		    WHERE CATEGORY_NO = #{categoryNo}
+    </update>
 </mapper>

@@ -14,8 +14,8 @@
  
 <style>
 #profile {
-	width: 290px;
-	height: 200px;
+	width: 180px;
+	height: 290px;
 	padding: 0.5em;	
 	position: absolute;
 	left: 5px;
@@ -165,15 +165,15 @@
 		}
 
 		$("#save").click(function() {
-
-
 			$(".layoutdiv").each(function() {
 				console.log($(this).position());
 				var id = $(this).attr("id")
 				var position = $(this).position()
 				$("#t_" + id).val(position.left + "," + position.top);
-			});
+			});  
+			
 			$("#blog_form").submit();
+
 		});
 		
 	});

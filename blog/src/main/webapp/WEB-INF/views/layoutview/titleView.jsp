@@ -5,11 +5,15 @@
 <head>
 <title>Insert title here</title>
 <style>
+body{
+	color: #5487A4;
+	
+}
 </style>
 <script>
 </script>
 </head>
 <body>
-<strong>${title.blog_title}</strong>
+<div class="row" align="left"><strong>${title.blog_title}</strong></div>
 </body>
 </html>
