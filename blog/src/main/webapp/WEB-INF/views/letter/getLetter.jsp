@@ -63,10 +63,9 @@
 <link href="assets/js/dataTables/dataTables.bootstrap.css"
 	rel="stylesheet" />
 
-  <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
-     <!-- JQUERY SCRIPTS -->
-    <script src="resources/assets/js/jquery-1.10.2.js"></script>
-
+<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
+    <!-- JQUERY SCRIPTS -->
+<script src="resources/assets/js/jquery-1.10.2.js"></script>s
 
 <!-- BOOTSTRAP SCRIPTS -->
 <script src="resources/assets/js/bootstrap.min.js"></script>
@@ -74,15 +73,10 @@
 <!-- METISMENU SCRIPTS -->
 <script src="resources/assets/js/jquery.metisMenu.js"></script>
    <script src="resources/assets/js/json.min.js"></script>
-
-
-
-
-
+   
+   
+   
 <title>상세보기</title>
-
-
-
 
 
 
@@ -157,8 +151,17 @@ $(document).ready(function(){
 					for( i=0; i< data.length; i++) {
 						
 					var delButton = '<input type="submit" onclick=replyDelete('+ data[i].replyNo + ') value="삭제" >';	
+
+						
+						
+						
+
+						/* 블로그 주인은 모든 댓글 삭제 가능 / 본인 댓글만 삭제 */
+						if(data[i].userId != "${sessionScope.login}" && "${sessionScope.blogId}" != "${sessionScope.login}"){
+
 					
 						if(data[i].userId != "${sessionScope.login}"){
+
 							delButton ="";
 						}
 						var html = '<tr class="article" id="'+ data[i].replyNo + '">' 
@@ -243,8 +246,8 @@ $(document).ready(function(){
 		<hr>
 
 		<table border="0" width="100" height=" 200" width="700" align="center"
-			class="table table-striped table-bordered table-hover"
-				id="dataTables-example" style="font-size:14px;">
+			   class="table table-striped table-bordered table-hover"
+			   id="dataTables-example" style="font-size:14px;">
 
 
 			<tr>
@@ -269,7 +272,16 @@ $(document).ready(function(){
 
 
 
+
+	<!-- 블로그 주인 != 로그인ID -->
+<%-- 	<c:if test="${ sessionScope.blogId != sessionScope.login }">
+	
+    	alert("해당 시스템에서 권한이 없습니다.");
+    	
+	</c:if> --%>     
+
 	<br />
+
 
 
 	<div class="mbr-section-btn" align="center">
@@ -290,10 +302,17 @@ $(document).ready(function(){
 
 	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
+<<<<<<< HEAD
 	<div border="0" width="100" height=" 200" align="center"
 		class="table table-striped table-bordered table-hover"
 		id="dataTables-example">
 	
+=======
+	<div border="0" width="100" height=" 200" align="center" 
+		 class="table table-striped table-bordered table-hover"
+		 id="dataTables-example">
+
+>>>>>>> branch 'master' of https://github.com/yeogini/blog.git
 		<HR>
 
 		댓글 쓰기

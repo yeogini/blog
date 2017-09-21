@@ -12,4 +12,6 @@ public interface CategoryService {
 	public void deleteCategory(CategoryVO vo);
 	
 	public CategoryVO getCategoryName(CategoryVO vo);
+	
+	public List<CategoryVO> getOnlyCategory(CategoryVO vo);
 }

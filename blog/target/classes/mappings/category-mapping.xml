@@ -13,16 +13,26 @@
 		<result property="borderType" column="border_type"/>
 	</resultMap>
 
+
+
 	<select id="getCategory" resultMap="categoryResult">
 		SELECT * FROM CATEGORY
 			WHERE USERID = #{userid}
 	</select>
+	
 	<select id="getCategoryName" resultMap="categoryResult">
 		SELECT * FROM CATEGORY
 		WHERE CATEGORY_NO = #{categoryNo}
 	</select>
-	 
-	 <!-- 등록 -->
+	
+	<!-- 카테고리 추출 -->
+	<select id="getOnlyCategory" resultMap="categoryResult">
+		SELECT CATEGORY_NO, CATEGORY_NAME
+		FROM CATEGORY
+		WHERE TYPE = 'n' AND USERID=#{userid}
+	</select>
+	
+	<!-- 등록 -->
     <insert id="insertCategory" parameterType="category">
     	<selectKey keyProperty="categoryNo" resultType="int" order="BEFORE">
     		SELECT NVL(MAX(CATEGORY_NO),0) + 1 FROM CATEGORY
@@ -32,9 +42,13 @@
     		VALUES(#{categoryNo},#{categoryName},1,0,#{type},#{userid},'l')
     	]]>
     </insert>
+    
+    <!-- 삭제 -->
     <delete id="deleteCategory">
     	DELETE FROM CATEGORY WHERE CATEGORY_NO = #{categoryNo}
     </delete>
+    
+    <!-- 수정 -->
     <update id="updateCategory">
 		UPDATE CATEGORY
 		SET CATEGORY_NAME = #{categoryName},
@@ -45,4 +59,5 @@
 		    </if>
 		    WHERE CATEGORY_NO = #{categoryNo}
     </update>
+    
 </mapper>

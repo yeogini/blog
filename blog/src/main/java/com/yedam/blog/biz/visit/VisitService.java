@@ -3,6 +3,8 @@ package com.yedam.blog.biz.visit;
 import java.util.List;
 import java.util.Map;
 
+import com.yedam.blog.reply.ReplyVO;
+
 public interface VisitService {
 	
 	//방명록 조회
@@ -21,5 +23,7 @@ public interface VisitService {
 	void deleteVisitList(VisitVO vo);
 
 	List<Map<String, Object>> getVisitList(VisitVO vo);
+	
+	public VisitVO getVisit (VisitVO vo);
 	
 }

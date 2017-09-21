@@ -2,11 +2,12 @@ package com.yedam.blog.biz.visit;
 
 public class VisitVO {
 	
-	private String id;
-	private String viNo;
-	private String viId;
-	private String vDate;
-	private String vSub;
+	private String id;		/* USERID */
+	private String viNo;	/* VI_NO */
+	private String viId;	/* V_ID */
+	private String vDate;	/* V_DATE */
+	private String vSub;	/* V_SUB */
+
 	
 	public String getId() {
 		return id;
