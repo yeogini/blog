@@ -40,9 +40,18 @@ body{
 			var src = $(this).attr("href");
 			console.dir(src);
 			//parent.document.getElementById("reply").attr('src',src);
-			$("#test2",parent.document).attr('src',src);
-			$(".letterName").removeClass("important blue");
-			$(this).addClass("important blue");
+			var chk = $(this).find(":hidden");
+			console.log(chk[0].value);
+			if(chk[0].value==1) {
+				$("#test2",parent.document).attr('src',src);
+				$(".letterName").removeClass("important blue");
+				$(this).addClass("important blue");
+			} else if(chk[0].value==2) {
+				
+			} else {
+				alert("비공개 입니다");
+			}
+			
 	    		
 		});
 		$("#insert").click(function(event){
@@ -66,7 +75,7 @@ body{
 </c:if>
 <hr> 
 <c:forEach items="${datas}" var="list">
-<div><a href="getLetter.do?letterNo=${list.letterNo}" class="letterName">${list.letterTitle}</a><div id="abcd" align="right">${list.letterDate}</div></div>
+<div><a href="getLetter.do?letterNo=${list.letterNo}" class="letterName"><input type="hidden" value="${list.categoryChk}">${list.letterTitle}</a><div id="abcd" align="right">${list.letterDate}</div></div>
 </c:forEach>
 <div id="paging" class="row" align="center"><mytag:letterpaging paging="${paging}" id="${blogId}"></mytag:letterpaging></div>
 <a href="letterInsert.do" class="btn btn-white" id = "insert">글 등록</a>

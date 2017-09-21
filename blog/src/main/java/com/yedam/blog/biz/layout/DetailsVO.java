@@ -7,6 +7,8 @@ public class DetailsVO {
 	private int categoryNo;
 	private String categoryName;
 	private String letterDate;
+	private int categoryChk;
+	private int categoryMouser;
 	private int hits;
 	private String userid;
 	private int start;
@@ -14,6 +16,18 @@ public class DetailsVO {
 	
 	
 	
+	public int getCategoryChk() {
+		return categoryChk;
+	}
+	public void setCategoryChk(int categoryChk) {
+		this.categoryChk = categoryChk;
+	}
+	public int getCategoryMouser() {
+		return categoryMouser;
+	}
+	public void setCategoryMouser(int categoryMouser) {
+		this.categoryMouser = categoryMouser;
+	}
 	public String getCategoryName() {
 		return categoryName;
 	}

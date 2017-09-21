@@ -40,9 +40,8 @@
 		SET CATEGORY_NAME = #{categoryName},
 		    CATEGORY_CHK = #{categoryChk},
 		    CATEGORY_MOUSER = #{categoryMouser}
-		    <if test="type !=null and type !=''">
-		    ,TYPE = #{type}
-		    </if>
+		    ,BORDER_TYPE = #{borderType}
 		    WHERE CATEGORY_NO = #{categoryNo}
     </update>
+   
 </mapper>

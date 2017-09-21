@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yedam.blog.biz.admin.CategoryService;
@@ -52,6 +53,26 @@ public class CategoryController {
 		categoryService.updateCategory(vo);
 		return vo;
 	}
+	   
+	@RequestMapping(value="/moveCategory.do",method=RequestMethod.POST) 
+	@ResponseBody
+	public Map<String,? extends Object> moveCategory(@RequestBody Map<String, Object> map){
+
+		CategoryVO vo = new CategoryVO();
+		vo.setCategoryNo(Integer.parseInt((String) map.get("a")));
+		CategoryVO setCate = categoryService.getCategoryName(vo);
+		vo.setCategoryNo(Integer.parseInt((String) map.get("b")));
+		CategoryVO getCate = categoryService.getCategoryName(vo);
+		int swap = setCate.getCategoryNo();
+		setCate.setCategoryNo(getCate.getCategoryNo());
+		getCate.setCategoryNo(swap);
+		
+		categoryService.updateCategory(getCate);
+		categoryService.updateCategory(setCate);
+		
+		return Collections.singletonMap("result","sucess");
+	}
+	
 	 
 	//카테고리 삭제
 	@RequestMapping("/deleteCategory.do")

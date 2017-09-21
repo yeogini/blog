@@ -14,7 +14,7 @@
 	href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 <style>
 body{
-	background-color: white;
+	background-color: #83b14e;
 }
 #profile {
 	width: 180px;
@@ -23,7 +23,7 @@ body{
 	position: absolute;
 	left: 5px;
 	top : 39px;
-	background-color: white;
+	background-color: #CFCFCF;
 	border: 1px green solid;
 	
 }

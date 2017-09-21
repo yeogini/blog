@@ -49,9 +49,7 @@ $(function(){
 				test[i].checked = true;	
 			}
 		}
-		console.log(setting[2].value);
 		for(i=0;i<test2.length;i++) {
-			console.log(test2[i].value);
 			if(test2[i].value == setting[2].value) {
 				test2[i].checked = true;	
 			}
@@ -75,18 +73,13 @@ function save(){
 		$.postJSON("updateCategory.do",p,function(data) {
 			console.log("쿼리문자열 파라미터");
 			//$("#result").html(data.writer)
-			alert("수정"+data.categoryChk);
-			console.dir(data);
+			alert("수정완료");
 			var b = document.getElementById("no"+data.categoryNo).parentNode.firstChild;
 			var c = document.getElementById("no"+data.categoryNo).parentNode;
 			var setting = $(c).find(":hidden");
-			
-			console.dir(setting);
 			setting[1].value = data.categoryChk;
 			setting[2].value = data.borderType;
 			setting[3].value = data.categoryMouser;
-			
-			console.log(setting[2].value);
 			b.innerHTML=data.categoryName;
 			
 		});
@@ -94,6 +87,62 @@ function save(){
 	}else{
 		return;
 	}
+}
+function up(){
+	console.log(no);
+	var setName = document.getElementById("no"+no); //자기번호
+	console.log(setName);
+	var getTr = $(setName).parents(".show").parents().prev("tr");
+	var getName = $(getTr).find(":hidden");
+	if(getName.length > 0) {
+		console.log(getName[0].value);
+		
+	} else {
+		
+	}
+}
+function down(){
+	console.log(no);
+	var setName = document.getElementById("no"+no);
+	var setTr = $(setName).parents(".show").parent();
+	var getTr = $(setName).parents(".show").parent().next("tr");
+	var getName = $(getTr).find(":hidden");
+	
+	if(getName.length > 0) {
+		console.log(getName[0].value);
+		$("#categoryNo").val(no);
+		var p = $("#frm").serializeObject();
+		var p1= {
+			"a":no,
+			"b":getName[0].value
+		}
+		var p2 = JSON.stringify(p1);
+		console.dir(p1);
+		console.dir(p2);
+		$.ajax({
+			url:"moveCategory.do",
+			data:p2,
+			type:"json",
+			method:"post",
+			contentType:"application/json",
+			success :function(data) {
+			
+				console.log($(setTr));
+				console.log($(getTr));
+				$(getTr).after($(setTr));
+				
+			/* 	 var temp = $(setTr).html();
+				
+				$(getTr).after(); 
+			 */}
+			
+		});
+		
+		
+	} else {
+		//아무작업 안하면됨
+	}
+	
 }
 function delcat(){
 	$.ajax({
