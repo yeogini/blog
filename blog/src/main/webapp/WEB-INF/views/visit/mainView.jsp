@@ -29,9 +29,9 @@ function myTimer() {
 
 </head>
 <body>
-
+		${sessionScope.login}
 	<form id="vit" name="vit" action="" method="post">
-		<input type="hidden" id="" name="" value=${visit.viId} }>
+		<input type="text" id="id" name="id" value="${sessionScope.blogId}" />
 		<input type="hidden" name="mv" value="Main" />
 		
 		<table border="1">

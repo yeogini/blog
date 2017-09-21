@@ -136,13 +136,13 @@ $(function(){
 		$("#title").css("left", titlePosition[0] + "px");
 		$("#title").css("top", titlePosition[1] + "px");
 	
-		 $.get('getProfileView.do?blogId=${layout.userid}',
-				function (data) {
-					$("#profile").html(data);
-		}); 
+		  
 	
 	}
-	
+	$.get('getProfileView.do?blogId=${id}',
+			function (data) {
+				$("#profile").html(data);
+	}); 
 
 });
 function goBack(){

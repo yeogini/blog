@@ -19,6 +19,15 @@
 			
 			
 		});
+		$("#insert").click(function(event){
+			event.preventDefault();
+			var src = $(this).attr("href");
+			console.dir(src);
+			//parent.document.getElementById("reply").attr('src',src);
+			$("#test2",parent.document).attr('src',src);
+			
+			
+		});
 	});
 </script>
 </head>
@@ -34,5 +43,6 @@
 <a href="getLetter.do?letterNo=${list.letterNo}" class="letterName">${list.letterTitle}</a><span>${list.letterDate}</span><br>
 </c:forEach>
 <div id="paging" class="row" align="center"><mytag:letterpaging paging="${paging}"></mytag:letterpaging></div>
+<a href="letterInsert.do" class="btn btn-white" id = "insert">글 등록</a>
 </body>
 </html>

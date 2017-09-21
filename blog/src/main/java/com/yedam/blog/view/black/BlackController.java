@@ -2,6 +2,7 @@ package com.yedam.blog.view.black;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.yedam.blog.biz.black.impl.BlackServiceImpl;
 
 
 
+
 @Controller
 public class BlackController {
 
@@ -28,8 +30,9 @@ public class BlackController {
 	
 	//조회??
 	@RequestMapping("getBlackList.do" ) 
-		public ModelAndView getBoardList(ModelAndView mv,BlackVO vo){
-			List<BlackVO> list = blackService.getBlackList(vo);
+		public ModelAndView getBoardList(ModelAndView mv,BlackVO vo, HttpSession session){
+			vo.setUserid((String)session.getAttribute("login"));
+		List<BlackVO> list = blackService.getBlackList(vo);
 			mv.addObject("blackList",list);
 			mv.setViewName("/blogblack/getBlackList");
 			return mv;
@@ -51,10 +54,12 @@ public class BlackController {
 	}
 	
 	
-		//차단
-	//@RequestMapping(value="login.do")
-		
-	
-	
+		//삭제
+	@RequestMapping("/Deleteblack.do")
+	@ResponseBody	
+	public int deleteBlack(HttpServletRequest req,BlackVO vo){
+			blackService.deleteBlack(vo);
+			return vo.getD_no();
+	}	
 	
 }

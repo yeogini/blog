@@ -52,4 +52,10 @@ public class VisitServiceImpl implements VisitService{
 		return null;
 	}
 
+	@Override
+	public VisitVO getVisit(VisitVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

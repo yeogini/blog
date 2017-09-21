@@ -19,6 +19,9 @@
         ]]>
     </select>
     
+    
+    
+    
     <!-- 등록 -->
     <insert id="insertVisit" parameterType="visit">
     	<selectKey keyProperty="viNo" resultType="string" order="BEFORE">
