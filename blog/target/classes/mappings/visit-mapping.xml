@@ -4,6 +4,10 @@
 
 <mapper namespace="com.yedam.blog.biz.visit.impl.VisitMapper"> 
 
+
+
+
+
 	<!-- 목록 조회 -->
     <select id="getVisitList" resultType="map">
         <![CDATA[
