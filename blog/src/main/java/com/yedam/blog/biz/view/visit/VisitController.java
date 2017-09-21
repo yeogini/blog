@@ -11,10 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.SessionScope;
 
+import com.yedam.blog.biz.black.BlackService;
+import com.yedam.blog.biz.black.BlackVO;
 import com.yedam.blog.biz.visit.VisitDaySearchVO;
 import com.yedam.blog.biz.visit.VisitService;
 import com.yedam.blog.biz.visit.VisitVO;
+import com.yedam.blog.reply.ReplyVO;
 
 @Controller
 public class VisitController {
@@ -22,18 +27,45 @@ public class VisitController {
 	@Autowired
 	VisitService visitService;
 	
+	@Autowired
+	BlackService blackService;
+	
+	
+	/*여기*/
 	//방명록 추가
 	@RequestMapping("/insertVisit.do")
-	public String insertVisit(VisitVO vo, @RequestParam(value="mv",required=false,defaultValue="Visit") String mv){
-		vo.setId("a");
-		vo.setViId("test22");
-		visitService.insertVisit(vo);
-		System.out.println(vo);
-		if(mv.equals("Main"))
+	public String insertVisit(VisitVO vo, 
+							  @RequestParam(value="mv",required=false,defaultValue="Visit") 
+							  String mv, VisitVO visitVO,  HttpSession session) {
+		
+		/*블로그 주인 작성자 value값 가져오기*/
+		vo.setId(visitVO.getId());								// 블로그 주인
+		vo.setViId((String)session.getAttribute("login"));		// 작성자
+
+		
+		
+		BlackVO blackVo = new BlackVO();
+		blackVo.setD_id((String)session.getAttribute("login"));			// 블랙
+		blackVo.setUserid(visitVO.getId());								// 차단하는 사람
+		blackVo = blackService.selectBlack(blackVo);
+		
+		if(blackVo == null) {
+			visitService.insertVisit(vo);
+			System.out.println(vo);
+			if(mv.equals("Main"))
+				return "visit/mainView";
+			else
+				return "redirect:/getVisitList.do";
+		} else {
 			return "visit/mainView";
-		else
-			return "redirect:/getVisitList.do";
+		}
+		
+		
+		
+		
 	}
+	
+	
 	
 	//방명록 목록 조회
 	@RequestMapping("/getVisitList.do")

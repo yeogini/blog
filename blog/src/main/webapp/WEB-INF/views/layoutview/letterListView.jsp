@@ -6,6 +6,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
+<style>
+.important {
+    font-weight: bold;
+    
+}
+
+.blue {
+    color: blue;
+}
+</style>
+
+
+
 <title>Insert title here</title>
 <style type="text/css">
 #abcd{
@@ -27,8 +41,9 @@ body{
 			console.dir(src);
 			//parent.document.getElementById("reply").attr('src',src);
 			$("#test2",parent.document).attr('src',src);
-			
-			
+			$(".letterName").removeClass("important blue");
+			$(this).addClass("important blue");
+	    		
 		});
 		$("#insert").click(function(event){
 			event.preventDefault();
