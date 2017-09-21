@@ -275,7 +275,7 @@ $(document).ready(function(){
 	
     	alert("해당 시스템에서 권한이 없습니다.");
     	
-	</c:if> --%>
+	</c:if> --%>     
 
 	<br />
 
