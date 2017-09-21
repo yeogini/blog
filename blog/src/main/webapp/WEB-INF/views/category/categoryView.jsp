@@ -37,13 +37,32 @@ $(function(){
 		$(this).css('color','white');
 		
 		var setting = $(this).find(":hidden");
-		console.dir(setting);
+		console.dir(setting[1].value);
 		no = setting[0].value;
-		console.log("확인22");
+		console.log("클릭");
 		$('#calname').val($(this).find('span:eq(0)').html());
-		$('[name="cetegoryChk"]').val(setting[1].value);
-		$('[name="type"]').val(setting[2].value);
-		$('[name="categoryMouser"]').val(setting[3].value);
+		var test = $('[name="categoryChk"]');
+		var test2 = $('[name="borderType"]');
+		var test3 = $('[name="categoryMouser"]');
+		for(i=0;i<test.length;i++) {
+			if(test[i].value == setting[1].value) {
+				test[i].checked = true;	
+			}
+		}
+		console.log(setting[2].value);
+		for(i=0;i<test2.length;i++) {
+			console.log(test2[i].value);
+			if(test2[i].value == setting[2].value) {
+				test2[i].checked = true;	
+			}
+		}
+		for(i=0;i<test3.length;i++) {
+			if(test3[i].value == setting[3].value) {
+				test3[i].checked = true;	
+			}
+		}
+
+		
 	});
 });
 
@@ -56,12 +75,19 @@ function save(){
 		$.postJSON("updateCategory.do",p,function(data) {
 			console.log("쿼리문자열 파라미터");
 			//$("#result").html(data.writer)
-			alert("수정"+data.categoryName);
+			alert("수정"+data.categoryChk);
+			console.dir(data);
+			var b = document.getElementById("no"+data.categoryNo).parentNode.firstChild;
+			var c = document.getElementById("no"+data.categoryNo).parentNode;
+			var setting = $(c).find(":hidden");
 			
-			var b = document.getElementById(data.categoryNo).parentNode.firstChild;
-			console.log(b);
+			console.dir(setting);
+			setting[1].value = data.categoryChk;
+			setting[2].value = data.borderType;
+			setting[3].value = data.categoryMouser;
+			
+			console.log(setting[2].value);
 			b.innerHTML=data.categoryName;
-			console.log(b)
 			
 		});
 		
@@ -76,7 +102,7 @@ function delcat(){
 		dataType:"json",
 		success: function(data){
 			console.dir(data);
-			var parent = document.getElementById(data.categoryNo).parentNode.parentNode.remove();
+			var parent = document.getElementById("no"+data.categoryNo).parentNode.parentNode.remove();
 		}	
 	});
 }
@@ -124,15 +150,8 @@ $(function(){
 				data:reqStr,
 				dataType:"json",
 				success: function(data){
-					console.log(data);
-					if(data.type=="n") {
-						console.dir(data);
-						$("#t1").append('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span><input type="hidden" id='+data.categoryNo+' value='+data.categoryNo+'><input type="hidden" id='+data.categoryChk+' value='+data.categoryChk+'><input type="hidden" id='+data.type+' value='+data.type+'><input type="hidden" id='+data.categoryMouser+' value='+data.categoryMouser+'></td></tr>');		
-					} else if(data.type=="t"){
-						$("#t1").append('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span><input type="hidden" id='+data.categoryNo+' value='+data.categoryNo+'><input type="hidden" id='+data.categoryChk+' value='+data.categoryChk+'><input type="hidden" id='+data.type+' value='+data.type+'><input type="hidden" id='+data.categoryMouser+' value='+data.categoryMouser+'></td></tr>');
-					} else {
-						$("#t1").append('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span><input type="hidden" id='+data.categoryNo+' value='+data.categoryNo+'><input type="hidden" id='+data.categoryChk+' value='+data.categoryChk+'><input type="hidden" id='+data.type+' value='+data.type+'><input type="hidden" id='+data.categoryMouser+' value='+data.categoryMouser+'></td></tr>');
-					} 
+					$("#t1").append('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span><input type="hidden" id=no'+data.categoryNo+' value='+data.categoryNo+'><input type="hidden" id='+data.categoryChk+' value='+data.categoryChk+'><input type="hidden" id='+data.borderType+' value='+data.borderType+'><input type="hidden" id='+data.categoryMouser+' value='+data.categoryMouser+'></td></tr>');		
+					
 				}	  
 			}); 
 		}
@@ -174,9 +193,9 @@ $(function(){
 	<c:forEach var="cal" items="${CategoryList}">
 	<tr>	
 		<td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>${cal.categoryName}</span>
-		<input type="hidden" id="${cal.categoryNo}" value="${cal.categoryNo }">
+		<input type="hidden" id="no${cal.categoryNo}" value="${cal.categoryNo }">
 		<input type="hidden" id="${cal.categoryChk}" value="${cal.categoryChk}">
-		<input type="hidden" id="${cal.type}" value="${cal.type}">
+		<input type="hidden" id="${cal.borderType}" value="${cal.borderType}">
 		<input type="hidden" id="${cal.categoryMouser}" value="${cal.categoryMouser}">
 	</tr>
 	</c:forEach>
@@ -188,8 +207,8 @@ $(function(){
 <h4> 정보 설정</h4>
 <form name="frm" id="frm" action="updateCategory.do">
 이름 : <input type="text" class="calname" name="categoryName" id="calname"> <br>
-설정: <input type="radio" name="cetegoryChk" value="1" >전체공개  <input type="radio" name="cetegoryChk" value="2"> 친구공개<input type="radio" name="cetegoryChk" value="3"> 비공개 <br/>
-형태: <input type="radio" name="type" value="l"> 목록 <input type="radio" name="type" value="a"> 펼쳐보기 <br/>
+설정: <input type="radio" name="categoryChk" value="1" >전체공개  <input type="radio" name="categoryChk" value="2"> 친구공개<input type="radio" name="categoryChk" value="3"> 비공개 <br/>
+형태: <input type="radio" name="borderType" value="l"> 목록 <input type="radio" name="borderType" value="a"> 펼쳐보기 <br/>
 마우스: <input type="radio" name="categoryMouser" value="1"> 허용
 <input type="radio" name="categoryMouser" value="0"> 비허용 <br/>
 <input type="button" value="적용" onclick="save()"> <input type="button" value="취소" onclick="back()">
