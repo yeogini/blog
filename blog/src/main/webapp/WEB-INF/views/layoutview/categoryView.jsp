@@ -29,8 +29,16 @@ a{
 			var src = $(this).attr("href");
 			console.dir(src);
 			//parent.document.getElementById("reply").attr('src',src);
-			$("#test",parent.document).attr('src',src);
-			$("#test2",parent.document).attr('src',"newest.do?blogId=${id}");
+			var borderType = $(this).find(":hidden");
+			console.log(borderType);
+			if(borderType[0].value=="l") {
+				$("#test",parent.document).attr('src',src);
+				$("#test2",parent.document).attr('src',"newest.do?blogId=${id}");
+			} else {
+				//펼쳐보기 나중에 하기 
+			}
+			
+		
 			
 		});
 	
@@ -46,13 +54,13 @@ a{
 </script>
 <body>
 <div id="viewCategory"><strong> 카테고리</strong></div><br>
-<a href="getLetterView.do?blogId=${category[0].userId}" class="fa fa-file-text-o" >전체보기 </a>/ <a href="getVisitList.do" id="visit">방명록</a>
+<a href="getLetterView.do?blogId=${category[0].userId}" class="categoryName" class="fa fa-file-text-o" ><input type="hidden" value="l">전체보기 </a>/ <a href="getVisitList.do" id="visit">방명록</a>
 <hr>
 <form id="frm" name="frm" action="">
 <c:forEach items="${category}" var="result">
 <c:if test="${result.type=='t'}"><Strong><span id="vcname">${result.categoryName}</span></Strong><br></c:if>
 <c:if test="${result.type=='d'}">-------------<br></c:if>
-<c:if test="${result.type=='n'}"><a href="getCategoryList.do?blogId=${result.userId}&categoryNo=${result.categoryNo}" class="categoryName" ><input type="hidden" value="${result.categoryNo}">&nbsp;&nbsp;${result.categoryName}<br></a></c:if>
+<c:if test="${result.type=='n'}"><a href="getCategoryList.do?blogId=${result.userId}&categoryNo=${result.categoryNo}" class="categoryName" ><input type="hidden" value="${result.borderType}"><input type="hidden" value="${result.categoryNo}">&nbsp;&nbsp;${result.categoryName}<br></a></c:if>
 </c:forEach>
 
 </form>

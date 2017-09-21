@@ -15,14 +15,6 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="shortcut icon" href="assets/images/logo.png"
-	type="image/x-icon"> -->
-<meta name="description"
-	content="Responsive Bootstrap HTML Mobile Application Template - Free Download">
-
 
 
 <!-- BOOTSTRAP STYLES-->
@@ -63,10 +55,9 @@
 <link href="assets/js/dataTables/dataTables.bootstrap.css"
 	rel="stylesheet" />
 
-  <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
-     <!-- JQUERY SCRIPTS -->
-    <script src="resources/assets/js/jquery-1.10.2.js"></script>
-
+<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
+    <!-- JQUERY SCRIPTS -->
+<script src="resources/assets/js/jquery-1.10.2.js"></script>
 
 <!-- BOOTSTRAP SCRIPTS -->
 <script src="resources/assets/js/bootstrap.min.js"></script>
@@ -74,15 +65,10 @@
 <!-- METISMENU SCRIPTS -->
 <script src="resources/assets/js/jquery.metisMenu.js"></script>
    <script src="resources/assets/js/json.min.js"></script>
-
-
-
-
-
+   
+   
+   
 <title>상세보기</title>
-
-
-
 
 
 
@@ -157,6 +143,10 @@ $(document).ready(function(){
 					for( i=0; i< data.length; i++) {
 						
 					var delButton = '<input type="submit" onclick=replyDelete('+ data[i].replyNo + ') value="삭제" >';	
+
+
+						/* 블로그 주인은 모든 댓글 삭제 가능 / 본인 댓글만 삭제 */
+
 					
 						if(data[i].userId != "${sessionScope.login}"){
 							delButton ="";
@@ -230,7 +220,10 @@ $(document).ready(function(){
 
 </head>
 <body>
-
+	<c:if test="${empty requestScope.letter.letterNo }">
+		작성된 글이 없습니다.
+	</c:if>
+	<c:if test="${not empty requestScope.letter.letterNo }">
 	<div class="form-group" align="center" style="font-size:14px;">
 
 		<hr>
@@ -240,8 +233,8 @@ $(document).ready(function(){
 		<hr>
 
 		<table border="0" width="100" height=" 200" width="700" align="center"
-			class="table table-striped table-bordered table-hover"
-				id="dataTables-example" style="font-size:14px;">
+			   class="table table-striped table-bordered table-hover"
+			   id="dataTables-example" style="font-size:14px;">
 
 
 			<tr>
@@ -266,7 +259,17 @@ $(document).ready(function(){
 
 
 
+
+
+	<!-- 블로그 주인 != 로그인ID -->
+<%-- 	<c:if test="${ sessionScope.blogId != sessionScope.login }">
+	
+    	alert("해당 시스템에서 권한이 없습니다.");
+    	
+	</c:if> --%>     
+
 	<br />
+
 
 
 	<div class="mbr-section-btn" align="center">
@@ -287,6 +290,7 @@ $(document).ready(function(){
 
 	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
+
 	<div border="0" width="100" height=" 200" align="center"
 		class="table table-striped table-bordered table-hover"
 		id="dataTables-example">
@@ -306,7 +310,7 @@ $(document).ready(function(){
 				 	<input type="hidden" id="userId" name="userId" placeholder="작성자" required="required" /> 
 						<label for="content"> </label> -->
 
-				<!-- userId -->
+				<%-- <!-- userId -->
 				<label>BLOG HOST ID : ${sessionScope.blogId}</label> 
 				<br/>
 				<!-- userId -->
@@ -317,7 +321,7 @@ $(document).ready(function(){
 				<input  type="text" id="userId" 
 						name="userId" value="${sessionScope.login}" 
 						width="10" height="5" maxlength="15" readonly="readonly" />
-						
+						 --%>
 					<br/>
 					<br/>
 					
@@ -346,6 +350,6 @@ $(document).ready(function(){
 			</tr>
 
 		</table>
-
+</c:if>
 </body>
 </html>

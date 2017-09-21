@@ -14,7 +14,7 @@
 	</resultMap>
 	<select id="getDetailsList" resultMap="detailsResult">
 		SELECT D.* FROM (SELECT ROWNUM RN, C.* FROM(
-		SELECT A.*,B.CATEGORY_NAME FROM LETTER A, CATEGORY B 
+		SELECT A.*,B.CATEGORY_NAME,B.CATEGORY_CHK,B.CATEGORY_MOUSER FROM LETTER A, CATEGORY B 
 		WHERE A.CATEGORY_NO = B.CATEGORY_NO
 		AND A.USERID = #{userid}
 		<if test="categoryNo !=null and categoryNo !=''">

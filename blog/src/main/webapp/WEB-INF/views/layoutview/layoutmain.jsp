@@ -14,7 +14,7 @@
 	href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 <style>
 body{
-	background-color: white;
+	background-color: #83b14e;
 }
 #profile {
 	width: 180px;
@@ -23,7 +23,7 @@ body{
 	position: absolute;
 	left: 5px;
 	top : 39px;
-	background-color: white;
+	background-color: #CFCFCF;
 	border: 1px green solid;
 	
 }
@@ -199,6 +199,20 @@ function goBack(){
 		<div class="row"></div>
 		<iframe id ="test" src="getLetterView.do?blogId=${id}" style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px;height: 300px">
 		</iframe><br>
+		
+		 <c:if test="${chk == 'f'}">
+			<c:if test="${sessionScope.login == id}">
+				<!-- 글  없을 때 글 쓰기 링크 뛰우기-->
+					<a href=""></a>				
+			</c:if>
+			<c:if test="${sessionScope.login != id }">
+				<!-- 작성된 글이 없습니다 뛰우기  src값만 바꾸기 -->
+				
+				
+			</c:if>
+		</c:if> 
+		
+		
 		<iframe src="newest.do?blogId=${id}"style="width:900px;margin-left:50px;margin-right:50px;margin-top: 20px; height: 100%;" id="test2">
 		</iframe>
 	</div>
