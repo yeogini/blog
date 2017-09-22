@@ -40,8 +40,8 @@ body{
 }
 
 #visitors {
-	width: 250px;
-	height: 150px;
+	width: 200px;
+	height: 117px;
 	padding: 0.5em;
 	position: absolute;
 	left: 6px;
