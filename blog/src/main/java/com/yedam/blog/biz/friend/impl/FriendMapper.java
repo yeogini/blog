@@ -15,4 +15,6 @@ public List<FriendVO> getFriendList(FriendVO vo);
 	public void deleteFriend(FriendVO vo);
 	
 	public FriendVO getFriend(FriendVO vo);
+	
+	public int addFriendSession(FriendVO vo);
 }

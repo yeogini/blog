@@ -49,12 +49,15 @@
     </delete>
     
     <!-- 수정 -->
-    <update id="updateCategory">
-		UPDATE CATEGORY
+    <update id="updateCategory"> 
+		UPDATE CATEGORY 
 		SET CATEGORY_NAME = #{categoryName},
 		    CATEGORY_CHK = #{categoryChk},
-		    CATEGORY_MOUSER = #{categoryMouser}
-		    ,BORDER_TYPE = #{borderType}
+		    CATEGORY_MOUSER = #{categoryMouser},
+		    BORDER_TYPE = #{borderType} 
+		    <if test="type !=null and type !=''">
+		    ,TYPE = #{type}
+		    </if>
 		    WHERE CATEGORY_NO = #{categoryNo}
     </update>
 

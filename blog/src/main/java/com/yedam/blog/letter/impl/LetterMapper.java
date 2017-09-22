@@ -2,6 +2,7 @@ package com.yedam.blog.letter.impl;
 
 import java.util.List;
 
+import com.yedam.blog.letter.LetterAllVO;
 import com.yedam.blog.letter.LetterSearchVO;
 import com.yedam.blog.letter.LetterVO;
 
@@ -36,4 +37,6 @@ public interface LetterMapper {
 	
 	//최신 글
 	LetterVO newest(LetterVO vo);
+	
+	List<LetterAllVO> getLetterAll(LetterAllVO vo);
 }

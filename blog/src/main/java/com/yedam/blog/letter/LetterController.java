@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,6 +68,16 @@ public class LetterController {
 	}
 	
 
+	@RequestMapping(value="/insertLetter.do",method=RequestMethod.POST)
+	@ResponseBody
+	public LetterVO insertLetter(@RequestBody LetterVO vo,HttpSession session)
+	{
+		String userid = (String)session.getAttribute("login");
+		vo.setUserId(userid);
+		letterService.insertLetter(vo);
+		System.err.println(vo);
+		return vo;
+	}
 
 	
 	
@@ -133,5 +144,16 @@ public class LetterController {
 	public String hitsLetter(LetterVO vo) {
 		letterService.hitsLetter(vo);
 		return "redirect:getLetterList.do";
+		} 
+	
+	//상세조회
+		@RequestMapping("/getLetterAll.do")
+		public String getLetterAll(Model model,HttpServletRequest request) {
+			LetterVO vo = new LetterVO();  
+			String no = (String)request.getParameter("letterNo");
+			System.err.println("진짜바보" +no);
+			vo.setLetterNo(no);
+			model.addAttribute("letter", letterService.getLetter(vo,"yes"));
+				return "letter/getLetter";
 		}
 }

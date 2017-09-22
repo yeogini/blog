@@ -91,15 +91,33 @@ function save(){
 function up(){
 	console.log(no);
 	var setName = document.getElementById("no"+no); //자기번호
-	console.log(setName);
-	var getTr = $(setName).parents(".show").parents().prev("tr");
+	var setTr = $(setName).parents(".show").parent();
+	var getTr = $(setName).parents(".show").parent().prev("tr");
 	var getName = $(getTr).find(":hidden");
 	if(getName.length > 0) {
 		console.log(getName[0].value);
-		
-	} else {
-		
-	}
+		$("#categoryNo").val(no);
+		var p = $("#frm").serializeObject();
+		var p1= {
+			"a":no,
+			"b":getName[0].value
+		}
+		var p2 = JSON.stringify(p1);
+		console.dir(p1);
+		console.dir(p2);
+		$.ajax({
+			url:"moveCategory.do",
+			data:p2,
+			type:"json",
+			method:"post",
+			contentType:"application/json",
+			success :function(data) {
+				$(setTr).after($(getTr));
+				
+			}
+			
+		});
+	} 
 }
 function down(){
 	console.log(no);
@@ -126,22 +144,11 @@ function down(){
 			method:"post",
 			contentType:"application/json",
 			success :function(data) {
-			
-				console.log($(setTr));
-				console.log($(getTr));
 				$(getTr).after($(setTr));
-				
-			/* 	 var temp = $(setTr).html();
-				
-				$(getTr).after(); 
-			 */}
+			}
 			
 		});
-		
-		
-	} else {
-		//아무작업 안하면됨
-	}
+	} 
 	
 }
 function delcat(){
@@ -199,8 +206,14 @@ $(function(){
 				data:reqStr,
 				dataType:"json",
 				success: function(data){
-					$("#t1").append('<tr><td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>'+data.categoryName+'</span><input type="hidden" id=no'+data.categoryNo+' value='+data.categoryNo+'><input type="hidden" id='+data.categoryChk+' value='+data.categoryChk+'><input type="hidden" id='+data.borderType+' value='+data.borderType+'><input type="hidden" id='+data.categoryMouser+' value='+data.categoryMouser+'></td></tr>');		
-					
+					if(data=='n') {
+						$("#t1").append('<tr><td class="show" style="background-color:white;" ><span class="n">'+data.categoryName+'</span><input type="hidden" id=no'+data.categoryNo+' value='+data.categoryNo+'><input type="hidden" id='+data.categoryChk+' value='+data.categoryChk+'><input type="hidden" id='+data.borderType+' value='+data.borderType+'><input type="hidden" id='+data.categoryMouser+' value='+data.categoryMouser+'></td></tr>');		
+					} else if(data=='t'){
+						$("#t1").append('<tr><td class="show" style="background-color:white;" ><span class="t">'+data.categoryName+'</span><input type="hidden" id=no'+data.categoryNo+' value='+data.categoryNo+'><input type="hidden" id='+data.categoryChk+' value='+data.categoryChk+'><input type="hidden" id='+data.borderType+' value='+data.borderType+'><input type="hidden" id='+data.categoryMouser+' value='+data.categoryMouser+'></td></tr>');
+					} else {
+						$("#t1").append('<tr><td class="show" style="background-color:white;" ><span class="d">'+data.categoryName+'</span><input type="hidden" id=no'+data.categoryNo+' value='+data.categoryNo+'><input type="hidden" id='+data.categoryChk+' value='+data.categoryChk+'><input type="hidden" id='+data.borderType+' value='+data.borderType+'><input type="hidden" id='+data.categoryMouser+' value='+data.categoryMouser+'></td></tr>');
+					}
+				
 				}	  
 			}); 
 		}
@@ -240,12 +253,22 @@ $(function(){
 <input type="button" id="add" value="추가" /><br>
 <table id="t1">
 	<c:forEach var="cal" items="${CategoryList}">
-	<tr>	
-		<td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" ><span>${cal.categoryName}</span>
+	<tr>
+		
+		<td class="show" onmouseout="change2(this)" onclick="change1(this)" style="background-color:white;" >
+		<c:if test="${cal.type=='n'}">
+			<span class="n">${cal.categoryName}</span>
+		</c:if>
+		<c:if test="${cal.type=='t'}">
+			<span class="t">${cal.categoryName}</span>
+		</c:if>
+		<c:if test="${cal.type=='d'}">
+			<span class="d">${cal.categoryName}</span>
+		</c:if>
 		<input type="hidden" id="no${cal.categoryNo}" value="${cal.categoryNo }">
 		<input type="hidden" id="${cal.categoryChk}" value="${cal.categoryChk}">
 		<input type="hidden" id="${cal.borderType}" value="${cal.borderType}">
-		<input type="hidden" id="${cal.categoryMouser}" value="${cal.categoryMouser}">
+		<input type="hidden" id="${cal.categoryMouser}" value="${cal.categoryMouser}"></td>
 	</tr>
 	</c:forEach>
 </table>

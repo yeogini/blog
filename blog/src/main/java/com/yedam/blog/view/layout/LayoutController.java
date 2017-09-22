@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.yedam.blog.biz.friend.FriendService;
+import com.yedam.blog.biz.friend.FriendVO;
 import com.yedam.blog.biz.layout.LayoutService;
 import com.yedam.blog.biz.layout.LayoutVO;
 import com.yedam.blog.letter.LetterService;
@@ -25,6 +27,8 @@ public class LayoutController {
 	@Autowired 
 	LetterService letterService;
 	
+	@Autowired
+	FriendService friendService;
 	
 	@RequestMapping("/getBlogLayout.do")
 	public String getBlogLayout(Model model, LayoutVO layoutvo, HttpSession session){
@@ -69,8 +73,19 @@ public class LayoutController {
 	//메인 뷰 불러오기
 	@RequestMapping("getMainView.do")
 	public String getMainView(Model model, HttpServletRequest req, HttpSession session){
+		
+		String userid = (String)session.getAttribute("login");
 		String blogId = req.getParameter("blogId");
 		session.setAttribute("blogId", blogId);
+		
+		if(userid!=null &&userid!=blogId ) {
+			FriendVO fvo = new FriendVO();
+			fvo.setF_id(userid);
+			fvo.setUserid(blogId);
+			int index = friendService.addFriendSession(fvo);
+			if(index==1)session.setAttribute("friendId", userid);
+		}
+		
 		LayoutVO vo = new LayoutVO();
 		vo.setUserid(blogId);
 		model.addAttribute("id", blogId);

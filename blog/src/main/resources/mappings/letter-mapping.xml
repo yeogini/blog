@@ -104,4 +104,12 @@
 	</select>
 
 
+	<select id="getLetterAll" resultType="letterAll">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+		(SELECT * FROM LETTER
+		WHERE CATEGORY_NO = #{categoryNo}
+		ORDER BY 1 DESC ) A 
+		) B WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+
 </mapper>

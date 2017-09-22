@@ -35,7 +35,8 @@ a{
 				$("#test",parent.document).attr('src',src);
 				$("#test2",parent.document).attr('src',"newest.do?blogId=${id}");
 			} else {
-				//펼쳐보기 나중에 하기 
+				//펼쳐보기 나중에 하기  받아온 글 갯수만큼 보이게하기
+				$("#test2",parent.document).attr('src',src);
 			}
 			
 		
@@ -60,7 +61,7 @@ a{
 <c:forEach items="${category}" var="result">
 <c:if test="${result.type=='t'}"><Strong><span id="vcname">${result.categoryName}</span></Strong><br></c:if>
 <c:if test="${result.type=='d'}">-------------<br></c:if>
-<c:if test="${result.type=='n'}"><a href="getCategoryList.do?blogId=${result.userId}&categoryNo=${result.categoryNo}" class="categoryName" ><input type="hidden" value="${result.borderType}"><input type="hidden" value="${result.categoryNo}">&nbsp;&nbsp;${result.categoryName}<br></a></c:if>
+<c:if test="${result.type=='n'}"><a href="getCategoryList.do?blogId=${result.userId}&categoryNo=${result.categoryNo}&borderType=${result.borderType}" class="categoryName" ><input type="hidden" value="${result.borderType}"><input type="hidden" value="${result.categoryNo}">&nbsp;&nbsp;${result.categoryName}<br></a></c:if>
 </c:forEach>
 
 </form>

@@ -116,13 +116,13 @@ function del(){
 	});
 }
 $(document).ready(function(){
-
+	//document.oncontextmenu=function(){return false;}; 마우스 우클릭 금지
 	getBoard();
 	
 	// ajax 로 게시글 로딩
 	function getBoard() 
 	{
-		var requestData = {"letterNo":${letter.letterNo} };
+		var requestData = {"letterNo":"${letter.letterNo}" };
 		console.log(requestData);
 		/* $('div.indicator').html('<img src="./images/indicator_01.gif">'); */
 		
@@ -324,7 +324,7 @@ $(document).ready(function(){
 						 --%>
 					<br/>
 					<br/>
-					
+				<input type="hidden" id="userId" name="userId" value="${sessionScope.login}" >	
 				<input type="hidden" id="letterNo" name="letterNo"
 					value="${letter.letterNo}">
 				<!-- replySub -->

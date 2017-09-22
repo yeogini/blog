@@ -47,6 +47,13 @@
 		WHERE USERID = #{userid}
 		and F_ID = #{f_id}
 	</delete>
-
+	
+	<select id="addFriendSession" resultType="int">
+		SELECT COUNT(*) FROM F_LIST
+		WHERE USERID = #{userid}
+		AND F_ID = #{f_id}
+		AND F_STATE = 3
+	
+	</select>
 
 </mapper> 

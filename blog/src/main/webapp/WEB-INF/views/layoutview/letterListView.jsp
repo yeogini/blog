@@ -42,15 +42,35 @@ body{
 			//parent.document.getElementById("reply").attr('src',src);
 			var chk = $(this).find(":hidden");
 			console.log(chk[0].value);
-			if(chk[0].value==1) {
+			
+			console.log("${blogId}");
+			var id  = "<%=session.getAttribute("login")%>";
+			var blogid = "${blogId}";
+			if(id!=blogid) {
+				if(chk[0].value==1) {
+					$("#test2",parent.document).attr('src',src);
+					$(".letterName").removeClass("important blue");
+					$(this).addClass("important blue");
+				} else if(chk[0].value==2) {
+					var fId = "<%=session.getAttribute("friendId")%>";
+					if(fId==id) {
+						console.log("^^"+fId);
+						$("#test2",parent.document).attr('src',src);
+						$(".letterName").removeClass("important blue");
+						$(this).addClass("important blue");
+					} else {
+						alert("친구공개 입니다");
+					}
+				} else {
+					alert("비공개 입니다");
+				}
+			} else {
 				$("#test2",parent.document).attr('src',src);
 				$(".letterName").removeClass("important blue");
 				$(this).addClass("important blue");
-			} else if(chk[0].value==2) {
-				
-			} else {
-				alert("비공개 입니다");
 			}
+			
+			
 			
 	    		
 		});
@@ -68,10 +88,10 @@ body{
 </head>
 <body>
 <c:if test="${name.categoryName==null || name.categoryName==''}">
-<p id="listViewTitle">'전체보기' 의 카테고리</p>
+<p id="listViewTitle">'전체보기' 의 카테고리(${paging.totalRecord})</p>
 </c:if>
 <c:if test="${name.categoryName!=null}">
-<p>'${name.categoryName}' 의 카테고리</p>
+<p>'${name.categoryName}' 의 카테고리(${paging.totalRecord})</p>
 </c:if>
 <hr> 
 <c:forEach items="${datas}" var="list">

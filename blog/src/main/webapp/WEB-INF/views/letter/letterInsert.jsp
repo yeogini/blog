@@ -45,8 +45,23 @@
 	href="resources/assets/mobirise/css/mbr-additional.css" type="text/css">
 
 
+<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
+<script src="resources/assets/js/json.min.js"></script>
+<script type="text/javascript">
 
-
+	$(function () {  
+		console.log("페이지 로딩");
+		$("#save").click(function() {
+			var p = $("#frm").serializeObject();
+			$.postJSON("insertLetter.do",p,function(data) {
+				console.dir(data);
+				$("#test",parent.document).attr('src',"getCategoryList.do?blogId="+data.userId+"&categoryNo="+data.categoryNo); 
+				$("#test2",parent.document).attr('src',"getLetter.do?letterNo="+data.letterNo);
+			});
+		});
+	
+	});
+</script>
 </head>
 <body>
 
@@ -87,7 +102,7 @@
 							
 							</div>
 							
-							<form action="letterInsert.do" method="post">
+							<form action="letterInsert.do" method="post" id="frm" name="frm">
 
 							<label class="nav-link link mbr-editable-menu-item">카테고리</label>
 
@@ -126,7 +141,7 @@
 									<!-- 	<input type="submit" value="저장"> -->
 									
 									<div class="mbr-section-btn">
-										<button type="submit" class="btn btn-primary">저장</button>
+										<button type="button" id="save" class="btn btn-primary">저장</button>
 										<button onclick="goBack()" class="btn btn-default">취소</button>
 									</div>
 							</form>
