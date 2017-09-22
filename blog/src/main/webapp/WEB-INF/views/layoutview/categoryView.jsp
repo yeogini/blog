@@ -32,11 +32,14 @@ a{
 			var borderType = $(this).find(":hidden");
 			console.log(borderType);
 			if(borderType[0].value=="l") {
+				$("#test",parent.document).css('height',"300px");
 				$("#test",parent.document).attr('src',src);
 				$("#test2",parent.document).attr('src',"newest.do?blogId=${id}");
 			} else {
 				//펼쳐보기 나중에 하기  받아온 글 갯수만큼 보이게하기
-				$("#test2",parent.document).attr('src',src);
+				$("#test",parent.document).css('height',"100%");
+				$("#test",parent.document).attr('src',src);
+				$("#test2",parent.document).attr("src"," ");
 			}
 			
 		

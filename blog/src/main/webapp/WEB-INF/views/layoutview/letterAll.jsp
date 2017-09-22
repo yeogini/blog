@@ -12,7 +12,7 @@
 <div>
 <c:forEach items="${result}" var="list">
 	${list.letterNo}
-	<iframe src="getLetterAll.do?letterNo=${list.letterNo}" style="width:900px;margin-top: 20px;height: 100%;"></iframe><br>
+	<iframe src="getLetterAll.do?letterNo=${list.letterNo}" style="width:900px;margin-top: 20px;height: 1000px;"></iframe><br>
 </c:forEach>
 </div>
 </body>
