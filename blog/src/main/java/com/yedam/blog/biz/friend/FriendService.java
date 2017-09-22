@@ -13,4 +13,6 @@ public interface FriendService {
 	public void deleteFriend(FriendVO vo);
 	
 	public FriendVO getFriend(FriendVO vo);
+	
+	public int addFriendSession(FriendVO vo);
 }

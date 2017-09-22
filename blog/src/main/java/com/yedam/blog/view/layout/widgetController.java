@@ -17,6 +17,8 @@ import com.yedam.blog.biz.layout.DetailsService;
 import com.yedam.blog.biz.layout.DetailsVO;
 import com.yedam.blog.biz.users.UsersService;
 import com.yedam.blog.biz.users.UsersVO;
+import com.yedam.blog.letter.LetterAllVO;
+import com.yedam.blog.letter.LetterService;
 import com.yedam.util.Paging;
 
 @Controller
@@ -32,6 +34,9 @@ public class widgetController {
 	
 	@Autowired
 	DetailsService detailsService;
+	
+	@Autowired 
+	LetterService letterService;
 	
 	@RequestMapping("getProfileView.do")
 	public String getProfileView(ProfileVO vo,Model model,HttpServletRequest req){
@@ -104,6 +109,19 @@ public class widgetController {
 			paging.setPage(page);
 			String blogId = req.getParameter("blogId");
 			String categoryNo = req.getParameter("categoryNo");
+			String borderType = req.getParameter("borderType");
+			System.err.println("멍청이"+borderType);
+			if(borderType.equals("a")) {
+				
+				LetterAllVO allVo = new LetterAllVO();
+				allVo.setCategoryNo(Integer.parseInt(categoryNo));
+				allVo.setStart(1);
+				allVo.setEnd(2);
+				List<LetterAllVO> allResult = letterService.getLetterAll(allVo);
+				System.err.println("바보" + allResult.get(0).getLetterNo());
+				model.addAttribute("result", allResult);
+				return "/layoutview/letterAll";
+			}
 			vo.setCategoryNo(Integer.parseInt(categoryNo));
 			vo.setUserid(blogId);
 			paging.setTotalRecord(detailsService.getDetailsCount(vo));
@@ -117,6 +135,7 @@ public class widgetController {
 			CategoryVO test = new CategoryVO();
 			test.setCategoryNo(Integer.parseInt(categoryNo));
 			CategoryVO name= categoryService.getCategoryName(test);
+			
 			model.addAttribute("name", name);
 			model.addAttribute("paging",paging);
 			model.addAttribute("datas", result);
