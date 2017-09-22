@@ -35,7 +35,7 @@ $("[name='delete']").click(function(event) {
   <h2>유저차단</h2>
  <table>
         <tr>
-        <th>번호</th> <th>차단된 아이디</th><th>차단사유</th>
+        <th>번호</th> <th>차단된 아이디</th><th>차단사유</th><th>상태</th>
         </tr>        
         
        

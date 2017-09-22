@@ -19,6 +19,7 @@ import com.yedam.blog.biz.users.UsersService;
 import com.yedam.blog.biz.users.UsersVO;
 import com.yedam.blog.letter.LetterAllVO;
 import com.yedam.blog.letter.LetterService;
+import com.yedam.blog.letter.LetterVO;
 import com.yedam.util.Paging;
 
 @Controller
@@ -111,23 +112,30 @@ public class widgetController {
 			String categoryNo = req.getParameter("categoryNo");
 			String borderType = req.getParameter("borderType");
 			System.err.println("멍청이"+borderType);
+			int start, end;
+			start = (page*paging.getPageUnit())-(paging.getPageUnit()-1);
+			end = start + paging.getPageUnit() -1;
 			if(borderType.equals("a")) {
 				
 				LetterAllVO allVo = new LetterAllVO();
+				LetterVO totalvo = new LetterVO();
+				totalvo.setCategoryNo(Integer.parseInt(categoryNo));
 				allVo.setCategoryNo(Integer.parseInt(categoryNo));
-				allVo.setStart(1);
-				allVo.setEnd(2);
+				allVo.setStart(start);
+				allVo.setEnd(end);
 				List<LetterAllVO> allResult = letterService.getLetterAll(allVo);
-				System.err.println("바보" + allResult.get(0).getLetterNo());
+				paging.setTotalRecord(letterService.getTotalLetter(totalvo));
+				
+				
+				model.addAttribute("borderType", borderType);
+				model.addAttribute("paging",paging);
 				model.addAttribute("result", allResult);
 				return "/layoutview/letterAll";
 			}
 			vo.setCategoryNo(Integer.parseInt(categoryNo));
 			vo.setUserid(blogId);
 			paging.setTotalRecord(detailsService.getDetailsCount(vo));
-			int start, end;
-			start = (page*paging.getPageUnit())-(paging.getPageUnit()-1);
-			end = start + paging.getPageUnit() -1;
+			
 			
 			vo.setStart(start);
 			vo.setEnd(end);
