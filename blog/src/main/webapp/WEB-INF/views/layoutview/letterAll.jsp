@@ -10,10 +10,18 @@
 </head>
 <body>
 <div>
+<c:if test="${empty result}">
+글이없습니다.
+</c:if>	
 <c:forEach items="${result}" var="list">
-	${list.letterNo}
 	<iframe src="getLetterAll.do?letterNo=${list.letterNo}" style="width:900px;margin-top: 20px;height: 1000px;"></iframe><br>
 </c:forEach>
-</div>
+<c:if test="${result[0]!=null}">
+<div id="paging" class="row" align="center"><mytag:allLetterPaging paging="${paging}" borderType="borderType" letter="${result[0]}"></mytag:allLetterPaging></div>
+ </c:if>
+ <c:if test="${result[0]==null}">
+<div id="paging" class="row" align="center"><mytag:allLetterPaging paging="${paging}" borderType="borderType"></mytag:allLetterPaging></div>
+ </c:if>
+ </div>
 </body>
 </html>
