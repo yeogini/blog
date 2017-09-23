@@ -49,7 +49,7 @@ $(function() {
 			method : "post",
 			type : "json",
 			success :function(data){ 
-				alert(data);
+				alert("차단 완료");
 				 dialog.dialog( "close" );
 			} 
 			
@@ -113,10 +113,7 @@ $(function() {
 	        });
 	}
 	var aa;
-	$("td").each(function(index, data){
-		
-	});
-		
+
 	
 });
 </script>
@@ -145,8 +142,15 @@ $(function() {
 
 
 	<form style="width: 180px; height: 270px;">
-		<img src="resources/upload/${profile.userid}.jpg"
-			style="vertical-align: text-middle"> <Strong><span id="myblog">${profile.userid}</span></Strong>(${profile.nickName})<c:if test="${sessionScope.login==profile.userid}">
+		<c:if test="${empty profile.blog_img }">
+			<img src="resources/images/noimage.jpg"
+			style="vertical-align: text-middle">
+		</c:if>
+		<c:if test="${not empty profile.blog_img }">
+			<img src="resources/upload/${profile.userid}.jpg"
+			style="vertical-align: text-middle"> 
+		</c:if>
+		<Strong><span id="myblog">${profile.userid}</span></Strong>(${profile.nickName})<c:if test="${sessionScope.login==profile.userid}">
 			<a href="adminView.do" id="profileEdit" target="_parent">edit</a>	
 		</c:if>
 		<br>

@@ -6,20 +6,6 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- TABLE STYLES-->
-<link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-
-<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
-    <!-- JQUERY SCRIPTS -->
-<script src="resources/assets/js/jquery-1.10.2.js"></script>
-
-<!-- BOOTSTRAP SCRIPTS -->
-<script src="resources/assets/js/bootstrap.min.js"></script>
-
-<!-- METISMENU SCRIPTS -->
-<script src="resources/assets/js/jquery.metisMenu.js"></script>
-   <script src="resources/assets/js/json.min.js"></script>
-   
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
@@ -42,6 +28,18 @@
 <link rel="stylesheet" href="resources/assets/theme/css/style.css">
 <link rel="stylesheet"
 	href="resources/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+<script src="resources/assets/js/jquery-3.2.1.min.js"></script>
+    <!-- JQUERY SCRIPTS -->
+<script src="resources/assets/js/jquery-1.10.2.js"></script>
+
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="resources/assets/js/bootstrap.min.js"></script>
+
+<!-- METISMENU SCRIPTS -->
+<script src="resources/assets/js/jquery.metisMenu.js"></script>
+   <script src="resources/assets/js/json.min.js"></script>
+   
 
    
 

@@ -20,7 +20,10 @@ import com.yedam.blog.biz.visit.VisitDaySearchVO;
 import com.yedam.blog.biz.visit.VisitService;
 import com.yedam.blog.biz.visit.VisitVO;
 import com.yedam.blog.reply.ReplyVO;
-
+/*
+ *  2017-09-23 김용우
+ *  블랙인 사람 방명록 글 사용 시 경고창 추가
+ */
 @Controller
 public class VisitController {
 	
@@ -57,7 +60,7 @@ public class VisitController {
 			else
 				return "redirect:/getVisitList.do";
 		} else {
-			return "visit/mainView";
+			return "visit/error";
 		}
 		
 		

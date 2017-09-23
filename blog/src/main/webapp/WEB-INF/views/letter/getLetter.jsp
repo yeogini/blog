@@ -50,10 +50,6 @@
 <link rel="stylesheet" href="resources/assets/theme/css/style.css">
 <link rel="stylesheet"
 	href="resources/assets/mobirise/css/mbr-additional.css" type="text/css">	
-	
-	<!-- TABLE STYLES-->
-<link href="assets/js/dataTables/dataTables.bootstrap.css"
-	rel="stylesheet" />
 
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
     <!-- JQUERY SCRIPTS -->
@@ -273,27 +269,19 @@ $(document).ready(function(){
 
 
 	<div class="mbr-section-btn" align="center">
-		<br /> <a class="btn btn-white"
-			href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a> <br />
+		<br /> 
 			
 			
 			
 		<form name="frm" onclick="return LetterDelete()" action="deleteLetter.do">
 			<input type="hidden" name="letterNo" id="delLetterNo" value="${letter.letterNo}" /> 
+			<a class="btn btn-white"
+			href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a>
 			<input class="btn btn-white" type="button" onclick="del" value="삭제">
 		</form>
-		
-		
-		
-	<!-- 	<a href="getLetterList.do" class="btn btn-black">목록으로 돌아가기</a> -->
 	</div>
 
-	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
-
-	<div border="0" width="100" height=" 200" align="center"
-		class="table table-striped table-bordered table-hover"
-		id="dataTables-example">
+	<div style='border:"0";width:"100"; height:" 200";' align="center">
 
 		<HR>
 
@@ -305,23 +293,6 @@ $(document).ready(function(){
 		<!-- 댓글쓰기 -->
 		<form id="replyForm">
 			<fieldset>
-
-				<!--<label for="userId"></label> 
-				 	<input type="hidden" id="userId" name="userId" placeholder="작성자" required="required" /> 
-						<label for="content"> </label> -->
-
-				<%-- <!-- userId -->
-				<label>BLOG HOST ID : ${sessionScope.blogId}</label> 
-				<br/>
-				<!-- userId -->
-				<label>USER ID : ${sessionScope.login}</label> 
-				
-					<br/>
-				
-				<input  type="text" id="userId" 
-						name="userId" value="${sessionScope.login}" 
-						width="10" height="5" maxlength="15" readonly="readonly" />
-						 --%>
 					<br/>
 					<br/>
 				<input type="hidden" id="userId" name="userId" value="${sessionScope.login}" >	
@@ -339,7 +310,7 @@ $(document).ready(function(){
 
 
 		<!-- 테이블 -->
-		<table border="1" width="700">
+		<table border="1" style='width:"700"' class="table table-striped table-bordered table-hover">
 
 			<tr class="article" align="center" >
 				<!-- <td>번호 -->
@@ -350,6 +321,7 @@ $(document).ready(function(){
 			</tr>
 
 		</table>
+	</div>
 </c:if>
 </body>
 </html>

@@ -81,22 +81,29 @@ public class AdminController {
 	//친구 요청
 	@RequestMapping("insertFriend.do")
 	@ResponseBody
-	public Map<String,? extends Object> insertFriend(@RequestBody FriendVO vo){
-
-		FriendVO f1 = new FriendVO();
-		FriendVO f2 = new FriendVO();
-		f1.setUserid(vo.getUserid());
-		f1.setF_id(vo.getF_id());
-		f1.setF_state(1);
-		f2.setUserid(vo.getF_id());
-		f2.setF_id(vo.getUserid());
-		f2.setF_state(2);
+	public Map<String,? extends Object> insertFriend(@RequestBody FriendVO vo,HttpSession session){
+		String id = (String)session.getAttribute("login");
+		
+		if(id!=null && id!="") {
+			FriendVO f1 = new FriendVO();
+			FriendVO f2 = new FriendVO();
+			f1.setUserid(vo.getUserid());
+			f1.setF_id(vo.getF_id());
+			f1.setF_state(1);
+			f2.setUserid(vo.getF_id());
+			f2.setF_id(vo.getUserid());
+			f2.setF_state(2);
+			
+			
+			friendService.insertFriend(f1);
+			friendService.insertFriend(f2);
+			 
+			return Collections.singletonMap("result","success");
+		} else {
+			return Collections.singletonMap("result","false");
+		}
 		
 		
-		friendService.insertFriend(f1);
-		friendService.insertFriend(f2);
-		 
-		return Collections.singletonMap("result","success");
 	}
 	
 	//친구 수락
@@ -123,11 +130,12 @@ public class AdminController {
 	//친구 거절 ,삭제
 	@RequestMapping("deleteFriend.do")
 	@ResponseBody
-	public String deleteFriend(HttpServletRequest req,FriendVO vo){
-		int no = Integer.parseInt(req.getParameter("no"));
+	public Map<String,? extends Object> deleteFriend(FriendVO vo){
+		System.out.println(vo.getF_no()+"0000000000000000000000");
+		//int no = Integer.parseInt(deleteNo);
 
-		System.out.println("친구 = " + no);
-		vo.setF_no(no);
+		//System.out.println("친구 = " + no);
+		//vo.setF_no(no);
 		FriendVO f1 = new FriendVO();
 		FriendVO f2 = new FriendVO();
 		
@@ -138,7 +146,7 @@ public class AdminController {
 		friendService.deleteFriend(f1);
 		friendService.deleteFriend(f2);
 		
-		return req.getParameter("no");
+		return Collections.singletonMap("result",f1.getF_no());  
 	}
 	
 	

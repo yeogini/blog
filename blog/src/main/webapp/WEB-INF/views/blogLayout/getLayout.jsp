@@ -4,6 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 
+	2017-09-23 김용우
+	뒤로가기 버튼 추가
+ -->
 <meta charset="utf-8">
 <link rel="stylesheet"
 	href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
@@ -175,6 +179,9 @@
 			$("#blog_form").submit();
 
 		});
+		$("#back").click(function() {
+			history.back();
+		});
 		
 	});
 	
@@ -233,6 +240,7 @@
 		<input name="title" id="t_title" type="hidden"> 
 		<input type="hidden" name="mode" value="${mode }"> 
 		<input id="save" type="button" value="저장">
+		<input id="back" type="button" value="뒤로가기">
 
 	</form>
 

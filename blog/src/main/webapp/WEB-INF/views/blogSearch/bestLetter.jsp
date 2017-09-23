@@ -7,9 +7,6 @@
 <!-- BOOTSTRAP STYLES-->
 <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
 
-<!-- TABLE STYLES-->
-<link href="assets/js/dataTables/dataTables.bootstrap.css"
-	rel="stylesheet" />
 	
 <!-- BLOG CSS -->
 <link href="resources/css/blog.css" rel="stylesheet" />
@@ -48,15 +45,6 @@ $(function(){
 	<table class="table table-striped table-bordered table-hover">
 
 			<tr> <td colspan="4"> 베스트 글 </td> </tr>
-		
-			<tr> 
-				  <th bgcolor="#EAEAEA"> NO </th> 
-				  <th bgcolor="#EAEAEA"> 제목 </th>
-				  <th bgcolor="#EAEAEA"> 조회수 </th>
-			</tr>	
-
-
-
 		<c:forEach var="letter" items="${bestLetterlist}">
 	
 	

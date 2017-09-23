@@ -10,9 +10,7 @@
 <!-- BOOTSTRAP STYLES-->
 <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
 
-<!-- TABLE STYLES-->
-<link href="assets/js/dataTables/dataTables.bootstrap.css"
-	rel="stylesheet" />
+
 	
 <!-- BLOG CSS -->
 <link href="resources/css/blog.css" rel="stylesheet" />
@@ -36,43 +34,33 @@ $(function(){
 
 
 <style>
+a{
+	color: black;
+	font-style: bold;
+}
+body {
+	background-color: #83b14e;
+}
+span{
+	width: 10px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
 </style>
 
 
 
 </head>
 <body>
-
-
-
-	<div id="row" align="center">
-		<!-- style="font-size:11px;" -->
-		<table class="table table-striped table-bordered table-hover" >
-
-			<tr>
-				<td colspan="4">최신 글</td>
-			</tr>
-
-			<tr>
-				<th bgcolor="#EAEAEA">NO</th>
-				<th bgcolor="#EAEAEA">제목</th>
-				<th bgcolor="#EAEAEA">날짜</th>
-
-			</tr>
-
+	<div id="row" align="left">
+			<span>최신 글</span>
+			<ul>
 			<c:forEach var="letter" items="${newestLetterlist}">
-				<tr>
-					<td>${letter.rnum}</td>
-					<!-- 번호 (row number) -->
-					<td><a href="getLetter.do?letterNo=${letter.letterNo}"
-						class="letterName">${letter.letterTitle}</a></td>
-					<!-- 글 제목 -->
-					<td>${letter.letterDate}</td>
-					<!-- 아이디 -->
-				</tr>
+			<li><a href="getLetter.do?letterNo=${letter.letterNo}"
+						class="letterName"><span>${letter.letterTitle}</span></a></li>
+				
 			</c:forEach>
-
-		</table>
+			</ul>
 	</div>
 	
 	
