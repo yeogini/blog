@@ -275,9 +275,11 @@ $(document).ready(function(){
 			
 		<form name="frm" onclick="return LetterDelete()" action="deleteLetter.do">
 			<input type="hidden" name="letterNo" id="delLetterNo" value="${letter.letterNo}" /> 
+			<c:if test="${sessionScope.login==sessionScope.blogId}">
 			<a class="btn btn-white"
 			href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a>
 			<input class="btn btn-white" type="button" onclick="del" value="삭제">
+			</c:if>
 		</form>
 	</div>
 
