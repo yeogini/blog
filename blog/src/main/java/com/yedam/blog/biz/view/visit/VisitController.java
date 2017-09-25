@@ -106,5 +106,5 @@ public class VisitController {
 		visitService.deleteVisitList(vo);
 		return "redirect:/getVisitList.do";
 	}
-	
+	   
 }
