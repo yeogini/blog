@@ -3,6 +3,7 @@ package com.yedam.blog.biz.visit.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.yedam.blog.biz.visit.VisitDaySearchVO;
 import com.yedam.blog.biz.visit.VisitVO;
 
 public interface VisitMapper {
@@ -20,5 +21,5 @@ public interface VisitMapper {
 	void deleteAllVisit(VisitVO vo);
 	
 	//방명록 조회
-	List<Map<String, Object>> getVisitList(VisitVO vo);
+	List<Map<String, Object>> getVisitList(VisitDaySearchVO vo);
 }

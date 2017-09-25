@@ -78,7 +78,7 @@ public class VisitController {
 		model.addAttribute("year",ca.get(Calendar.YEAR));
 		int mon = ca.get(Calendar.MONTH)+1;
 		if(mon <= 10)
-		model.addAttribute("mon");
+		model.addAttribute("mon",mon);
 		model.addAttribute("day",ca.getActualMaximum(Calendar.DAY_OF_MONTH));
 		model.addAttribute("VisitList",list);
 		System.out.println(list);
