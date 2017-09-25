@@ -68,7 +68,6 @@ public class VisitController {
 		
 	}
 	
-	  
 	
 	
 	//방명록 목록 조회
