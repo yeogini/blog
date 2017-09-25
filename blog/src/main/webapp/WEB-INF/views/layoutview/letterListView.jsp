@@ -98,6 +98,8 @@ body{
 <div><a href="getLetter.do?letterNo=${list.letterNo}" class="letterName"><input type="hidden" value="${list.categoryChk}">${list.letterTitle}</a><div id="abcd" align="right">${list.letterDate}</div></div>
 </c:forEach>
 <div id="paging" class="row" align="center"><mytag:letterpaging paging="${paging}" id="${blogId}"></mytag:letterpaging></div>
+<c:if test="${sessionScope.login == blogId }">
 <a href="letterInsert.do" class="btn btn-white" id = "insert">글 등록</a>
+</c:if>
 </body>
 </html>
