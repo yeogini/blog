@@ -50,9 +50,6 @@ $(function(){
 });
 </script>
 
-
-
-<<<<<<< Upstream, based on branch 'master' of https://github.com/yeogini/blog.git
 <style>
 a{
 	color: black;
