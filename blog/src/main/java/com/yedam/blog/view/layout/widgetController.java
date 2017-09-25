@@ -115,7 +115,8 @@ public class widgetController {
 			int start, end;
 			start = (page*paging.getPageUnit())-(paging.getPageUnit()-1);
 			end = start + paging.getPageUnit() -1;
-			if(borderType.equals("a")) {
+			
+			if(borderType!=null && borderType.equals("a")) {
 				
 				LetterAllVO allVo = new LetterAllVO();
 				LetterVO totalvo = new LetterVO();

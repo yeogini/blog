@@ -40,7 +40,7 @@ public class CategoryController {
 		} else {
 			vo.setCategoryName("-----");
 		}
-	
+		vo.setBorderType("l");
 		categoryService.insertCategory(vo);
 		return vo;
 	}

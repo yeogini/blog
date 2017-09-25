@@ -67,7 +67,8 @@ body{
 	position: absolute;
 	left: 1024px;
 	top : 23px;
- border: 0;
+	 border: 0;
+ 	
 }
 
 #top {

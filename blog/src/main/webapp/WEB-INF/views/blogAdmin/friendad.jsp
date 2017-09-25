@@ -23,7 +23,7 @@
 <c:forEach items="${friendList}" var="list">
 	<c:if test="${list.f_state==3}">
 	<tr id="${list.f_no}">
-		<td>${list.f_id}</td><td><a href="getMainView.do?blogId=${list.f_id}">${list.userName}</a></td><td><a href="deleteFriend.do?no=${list.f_no}" class="delete">삭제</a></td>
+		<td>${list.f_id}</td><td><a href="getMainView.do?blogId=${list.f_id}">${list.userName}</a></td><td><span><input type="hidden" value="${list.f_no}">삭제</span></td>
 	</tr>
 	</c:if>
 </c:forEach>
@@ -51,7 +51,7 @@
 							<tr id="${list.f_no}">
 								<td>${list.f_id}</td>
 								<td>${list.userName}</td>
-								<td><a href="updateFriend.do?no=${list.f_no}" class="update">수락</a>/<a href="deleteFriend.do?no=${list.f_no}" class="delete">거절</a></td>
+								<td><a href="updateFriend.do?no=${list.f_no}" class="update">수락</a>/<span><input type="hidden" value="${list.f_no}">거절</span></td>
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -66,24 +66,28 @@
 		url :src,
 		success:function(data){
 			console.dir(data);
-			$("#f1").append("<tr><td>"+data.f_id+"</td><td>"+data.userName+"</td><td><a class='delete' href='deleteFriend.do?"+data.f_no+"'>삭제</a></td>'")
+			$("#f1").append("<tr><td>"+data.f_id+"</td><td><a href='getMainView.do?blogId='"+data.userName+"'>"+data.userName+"</a></td><td><span><input type='hidden' value='"+data.f_no+"'>삭제</span></td></tr>")
 			$("#"+data.f_no).remove();
 		}
 		});
 		return false;
 	});
-	$(".delete").click(function(event) {
-		event.preventDefault();
-		var src = $(this).attr("href");
-		console.log(src);
-		$.ajax({
-		url :src,
-		success:function(data){
-			console.dir(data);
-			$("#"+data).remove();
-		}
-		});
-		return false;
+
+	$("td").on("click","span",function(event) {
+			console.log("딜리트");
+			event.preventDefault();
+			var src = $(this).find(":hidden");
+			
+			console.log(src[0].value);  
+			$.ajax({
+				url :"deleteFriend.do",
+				data : {f_no:src[0].value},
+				dataType: "json",
+				success:function(data){
+					console.dir("성공");
+					$("#"+data.result).remove();
+				}
+			});
 	});
 
 </script>
