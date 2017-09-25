@@ -70,11 +70,10 @@ public class VisitController {
 	
 	  
 	
+	
 	//방명록 목록 조회
 	@RequestMapping("/getVisitList.do")
-	public String getVisitList(Model model, VisitVO vo,HttpServletRequest req){
-		String userid = (String)req.getParameter("userid");
-		vo.setViId(userid);
+	public String getVisitList(Model model, VisitDaySearchVO vo){
 		List<Map<String, Object>> list = visitService.getVisitList(vo);
 		Calendar ca = Calendar.getInstance();
 		model.addAttribute("year",ca.get(Calendar.YEAR));
