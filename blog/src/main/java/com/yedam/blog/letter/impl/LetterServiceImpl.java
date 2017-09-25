@@ -99,6 +99,16 @@ public class LetterServiceImpl implements LetterService {
 		// TODO Auto-generated method stub
 		return letterDAO.getLetterAll(vo);
 	}
+
+
+
+
+
+	@Override
+	public int getTotalLetter(LetterVO vo) {
+		// TODO Auto-generated method stub
+		return letterDAO.getTotalLetter(vo);
+	}
 	
 	
 	

@@ -41,7 +41,7 @@ $(function() {
 	      });
 	
 	function addblack(){
-		var param = $("#frm").serialize();
+		var param = $("#blacklist").serialize();
 		console.log(param);
 		$.get({
 			url :"/blog/insertBlack.do",
@@ -49,7 +49,7 @@ $(function() {
 			method : "post",
 			type : "json",
 			success :function(data){ 
-				alert(data);
+				alert("차단 완료");
 				 dialog.dialog( "close" );
 			} 
 			
@@ -113,10 +113,7 @@ $(function() {
 	        });
 	}
 	var aa;
-	$("td").each(function(index, data){
-		
-	});
-		
+
 	
 });
 </script>
@@ -126,7 +123,7 @@ $(function() {
 	<div id="dialog-form" title="black">
 		<p class="validateTips">차단 사유를 입력하세요.</p>
 
-		<form name="frm" id="frm" action="blackInsert.do" method="post">
+		<form name="blacklist" id="blacklist" action="blackInsert.do" method="post">
 			<input type="hidden" name="userid" value="${sessionScope.login}">
 			<input type="hidden" name="d_id" value="${profile.userid}">
 			<fieldset>
@@ -135,26 +132,25 @@ $(function() {
 			
 			</fieldset>
 		</form>
-		<form style="width: 280px;height: 190px;">
-			<img src="resources/upload/${profile.userid}.jpg" style="vertical-align:text-middle">
-			<span id="myblog">${profile.userid}</span>(${profile.nickName})
-			<br>
-			<textarea rows="4" cols="20" readonly="readonly" style="resize:none; overflow-y:scroll; vertical-align: text-top;">${profile.intro}</textarea>
-			<c:if test="${sessionScope.login==profile.userid}">
-			<a href="adminView.do" id="profileEdit" target="_parent">edit</a>	
-			</c:if>
-		</form>
+		
 		<form name="frm" id="frm" action="insertFriend.do">
 			<input type="hidden" name="userid" value="${sessionScope.login}">
 			<input type="hidden" name="f_id" value="${profile.userid }">
 
 		</form>
-	</div>
+	</div>	
 
 
 	<form style="width: 180px; height: 270px;">
-		<img src="resources/upload/${profile.userid}.jpg"
-			style="vertical-align: text-middle"> <Strong><span id="myblog">${profile.userid}</span></Strong>(${profile.nickName})<c:if test="${sessionScope.login==profile.userid}">
+		<c:if test="${empty profile.blog_img }">
+			<img src="resources/images/noimage.jpg"
+			style="vertical-align: text-middle">
+		</c:if>
+		<c:if test="${not empty profile.blog_img }">
+			<img src="resources/upload/${profile.userid}.jpg"
+			style="vertical-align: text-middle"> 
+		</c:if>
+		<Strong><span id="myblog">${profile.userid}</span></Strong>(${profile.nickName})<c:if test="${sessionScope.login==profile.userid}">
 			<a href="adminView.do" id="profileEdit" target="_parent">edit</a>	
 		</c:if>
 		<br>

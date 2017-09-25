@@ -20,7 +20,7 @@
 		<if test="categoryNo !=null and categoryNo !=''">
 		AND A.CATEGORY_NO = #{categoryNo}
 		</if>
-		ORDER BY B.CATEGORY_NO DESC
+		ORDER BY A.LETTER_NO DESC
 		) C ) D WHERE RN BETWEEN #{start} and #{end}
 	</select>
 	<select id="getDetailsCount" resultType="int">

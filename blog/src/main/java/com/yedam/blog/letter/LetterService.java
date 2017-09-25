@@ -35,4 +35,6 @@ public interface LetterService {
 	
 	List<LetterAllVO> getLetterAll(LetterAllVO vo);
 	
+	int getTotalLetter(LetterVO vo);
+	
 }

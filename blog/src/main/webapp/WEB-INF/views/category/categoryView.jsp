@@ -19,6 +19,14 @@ select {
 .show{
 	cursor:pointer;
 }
+#categoryA{
+	padding: 1em;
+	float: left;
+}
+#categoryB{
+	padding: 1em;
+	margin-left: 280px;
+}
 </style>
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script src="resources/assets/js/json.min.js"></script>
@@ -74,6 +82,7 @@ function save(){
 			console.log("쿼리문자열 파라미터");
 			//$("#result").html(data.writer)
 			alert("수정완료");
+			console.dir(data);
 			var b = document.getElementById("no"+data.categoryNo).parentNode.firstChild;
 			var c = document.getElementById("no"+data.categoryNo).parentNode;
 			var setting = $(c).find(":hidden");
@@ -112,7 +121,22 @@ function up(){
 			method:"post",
 			contentType:"application/json",
 			success :function(data) {
-				$(setTr).after($(getTr));
+				
+				var setHidden =$(setTr).find(":hidden")[0];
+				var hiddenTemp = $(setTr).find(":hidden")[0].value;
+				var getHidden = $(getTr).find(":hidden")[0];
+				
+				$(setHidden).val($(getHidden).val());
+				$(setHidden).attr("id","no"+getName[0].value);
+				$(getHidden).val(hiddenTemp);
+				$(getHidden).attr("id","no"+hiddenTemp);
+				
+				no = $(setHidden).val(); 
+				console.log(no);
+				
+				var temp = $(setTr).html();
+				$(setTr).html($(getTr).html());
+				$(getTr).html(temp);
 				
 			}
 			
@@ -144,7 +168,23 @@ function down(){
 			method:"post",
 			contentType:"application/json",
 			success :function(data) {
-				$(getTr).after($(setTr));
+				var setHidden =$(setTr).find(":hidden")[0];
+				var hiddenTemp = $(setTr).find(":hidden")[0].value;
+				var getHidden = $(getTr).find(":hidden")[0];
+				
+				$(setHidden).val($(getHidden).val());
+				$(setHidden).attr("id","no"+getName[0].value);
+				$(getHidden).val(hiddenTemp);
+				$(getHidden).attr("id","no"+hiddenTemp);
+				
+				no = $(setHidden).val(); 
+				console.log(no);
+				
+				var temp = $(setTr).html();
+				$(setTr).html($(getTr).html());
+				$(getTr).html(temp);
+				
+				//$(getTr).after($(setTr));
 			}
 			
 		});
@@ -240,6 +280,7 @@ $(function(){
 </script>
 </head>
 <body>
+<div id="categoryA">
 <h2>카테고리 설정</h2>
 <hr style="border: solid 3px; "><br/>
 <form name="cat" id="cat" action="<%=request.getContextPath()%>CategoryList.do" method="post">
@@ -276,6 +317,8 @@ $(function(){
 <input type="button" value="▼" onclick="down()">
 <input type="button" value="삭제" onclick="delcat()"/>
 </form>
+</div>
+<div id="categoryB">
 <h4> 정보 설정</h4>
 <form name="frm" id="frm" action="updateCategory.do">
 이름 : <input type="text" class="calname" name="categoryName" id="calname"> <br>
@@ -286,5 +329,6 @@ $(function(){
 <input type="button" value="적용" onclick="save()"> <input type="button" value="취소" onclick="back()">
 <input type="hidden" name="categoryNo" id="categoryNo" value="">
 </form>
+</div>
 </body>
 </html>

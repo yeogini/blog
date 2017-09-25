@@ -39,4 +39,6 @@ public interface LetterMapper {
 	LetterVO newest(LetterVO vo);
 	
 	List<LetterAllVO> getLetterAll(LetterAllVO vo);
+	
+	int getTotalLetter(LetterVO vo);
 }

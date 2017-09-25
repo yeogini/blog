@@ -15,6 +15,8 @@
 <script src="resources/assets/js/jquery-3.2.1.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script>
+	
+
 function insertUser(){
 	frm.action="<%=request.getContextPath()%>/insertUserForm.do";
 	frm.submit();

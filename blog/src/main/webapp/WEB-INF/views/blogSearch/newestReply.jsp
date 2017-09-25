@@ -10,12 +10,24 @@
 <!-- BOOTSTRAP STYLES-->
 <link href="resources/assets/css/bootstrap.css" rel="stylesheet" />
 
-<!-- TABLE STYLES-->
-<link href="assets/js/dataTables/dataTables.bootstrap.css"
-	rel="stylesheet" />
+
 	
 <!-- BLOG CSS -->
 <link href="resources/css/blog.css" rel="stylesheet" />
+<style>
+body{
+	background-color: #83b14e;
+}
+#over{
+	text-overflow: ellipsis;
+	width: 100px;
+}
+div {
+	overflow: hidden;
+}
+
+</style>
+
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script>
 $(function(){
@@ -33,8 +45,6 @@ $(function(){
 });
 </script>
 
-<style>
-</style>
 
 </head>
 <body>
@@ -45,35 +55,20 @@ $(function(){
 	<h5 class="card-header">최신 댓글 (newestReply)</h5>
 	<div class="card-body"></div>
  -->
-	<!-- style="font-size:11px;" -->
-	<div id="row" align="center">
-		<table class="table table-striped table-bordered table-hover" >
-
+	<!-- style="font-size:11px;" --> 
+	<div id="row" align="left" >
+			<span>최신 댓글</span>
+			<table class="table">		
+			<c:forEach var="reply" items="${newestReplylist}" >
 			<tr>
-				<td colspan="4">최신 댓글</td>
-			</tr>
-
-			<tr>
-				<th bgcolor="#EAEAEA">NO</th>
-				<th bgcolor="#EAEAEA">댓글</th>
-				<th bgcolor="#EAEAEA">아이디</th>
-				<th bgcolor="#EAEAEA">날짜</th>
-			</tr>
-			<c:forEach var="reply" items="${newestReplylist}">
-				<tr>
-					<td>${reply.rnum}</td>
-					<!-- 번호 (row number) -->
-					<td><a href="getLetter.do?letterNo=${reply.letterNo}"
-						class="letterName">${reply.replySub}</a></td>
 					<!-- 댓글 -->
-					<td>${reply.userId}</td>
+					<td><div id="over"><nobr><a href="getLetter.do?letterNo=${reply.letterNo}"
+						class="letterName">${reply.replySub}</a></nobr></div></td>
 					<!-- 아이디 -->
-					<td>${reply.reDate}</td>
-					<!-- 날짜 -->
-				</tr>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="right">${reply.userId}</td>
+			</tr>
 			</c:forEach>
-
-		</table>
+			</table>	
 	</div>
 	
 	

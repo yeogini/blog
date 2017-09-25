@@ -3,11 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 2017-09-23 김용우
+	프로필 저장후 알림창 뛰움
+ -->
 <title>프로필 관리</title>
 <style>
 
 </style>
 <script>
+function save() {
+	frm.submit();
+	alert("저장되었습니다");
+}
 </script>
 </head>
 <body>
@@ -47,7 +54,7 @@
 			<hr>
 			 <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                    <button type="submit" class="btn btn-default">저장</button>
+                    <button type="button" class="btn btn-default" onclick="save()">저장</button>
                     <button type="button" class="btn btn-default">취소</button>
                 </div>
             </div> 

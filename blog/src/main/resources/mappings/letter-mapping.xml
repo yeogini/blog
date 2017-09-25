@@ -111,5 +111,11 @@
 		ORDER BY 1 DESC ) A 
 		) B WHERE RN BETWEEN #{start} AND #{end}
 	</select>
+	
+	<select id="getTotalLetter" resultType="int">
+		SELECT COUNT(*) FROM LETTER
+		WHERE CATEGORY_NO = #{categoryNo}
+		
+	</select>
 
 </mapper>
