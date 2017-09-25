@@ -49,9 +49,10 @@
     		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
 	        <![CDATA[
 			select * from (select a.*, rownum rnum 
-							from ( SELECT 
-							LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
-							FROM LETTER WHERE USERID = #{userId} order by LETTER_DATE desc) a ) b where rnum >= 1 and rnum <= 5 
+							from ( SELECT C.*,D.CATEGORY_CHK,D.CATEGORY_MOUSER	
+							FROM LETTER C,CATEGORY D
+							WHERE C.CATEGORY_NO=D.CATEGORY_NO
+							AND C.USERID = #{userId} order by LETTER_DATE desc) a ) b where rnum >= 1 and rnum <= 5 
 	        ]]>
     	</select>
     	
@@ -60,9 +61,10 @@
     		<!-- 컬럼번호, 댓글내용, 아이디, 작성일 -->
 	        <![CDATA[
 				SELECT D.* FROM (SELECT ROWNUM RN, C.* FROM(
-		SELECT A.* FROM REPLY A, LETTER B  
+		SELECT A.*,E.CATEGORY_CHK,E.CATEGORY_MOUSER FROM REPLY A, LETTER B , CATEGORY E  
 		WHERE A.LETTER_NO = B.LETTER_NO
-		AND A.USERID = #{userId}
+		AND E.CATEGORY_NO = B.CATEGORY_NO
+		AND B.USERID = #{userId}
 		ORDER BY RE_DATE DESC
 		) C ) D WHERE RN BETWEEN 1 and 5
 	        ]]>
@@ -73,9 +75,10 @@
     		<!-- 컬럼번호, 글제목, 아이디, 작성일 -->
 	        <![CDATA[
 	       	select * from (select a.*, rownum rnum 
-							from ( SELECT 
-							LETTER_NO, LETTER_TITLE, LETTER_SUB, CATEGORY_NO, LETTER_DATE, HITS, USERID		
-							FROM LETTER WHERE USERID = #{userId} order by HITS desc) a ) b where rnum >= 1 and rnum <= 5
+							from ( SELECT C.*,D.CATEGORY_CHK,D.CATEGORY_MOUSER	
+							FROM LETTER C,CATEGORY D
+							WHERE C.CATEGORY_NO=D.CATEGORY_NO
+							AND C.USERID = #{userId} order by HITS desc) a ) b where rnum >= 1 and rnum <= 5
 	        ]]>
     	</select>
     	

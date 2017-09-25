@@ -11,7 +11,37 @@ public class BlogSearchVO {
 	private String userId;
 	private Date letterDate;
 	private int hits;
+	private int categoryNo;
+	private String categoryChk;
+	private String categoryMouser;
 	
+	
+	
+
+
+
+
+
+
+
+	public int getCategoryNo() {
+		return categoryNo;
+	}
+	public void setCategoryNo(int categoryNo) {
+		this.categoryNo = categoryNo;
+	}
+	public String getCategoryChk() {
+		return categoryChk;
+	}
+	public void setCategoryChk(String categoryChk) {
+		this.categoryChk = categoryChk;
+	}
+	public String getCategoryMouser() {
+		return categoryMouser;
+	}
+	public void setCategoryMouser(String categoryMouser) {
+		this.categoryMouser = categoryMouser;
+	}
 	/*댓글*/
 	private int replyNo;
 	private Date reDate;
@@ -81,21 +111,17 @@ public class BlogSearchVO {
 	public void setReplySub(String replySub) {
 		this.replySub = replySub;
 	}
-	
-	
-	
 	@Override
 	public String toString() {
-		return "UsersVO [  letterNo =" + letterNo + ","
-						+ "letterTitle=" + letterTitle + ","
-						+ "letterSub=" + letterSub + ","
-						+ "userId=" + userId + ","
-						+ "letterDate=" + letterDate + ","
-						+ "hits=" + hits + ","
-						+ "replyNo=" + replyNo + ","
-						+ "reDate=" + reDate + ","
-						+ "replySub=" + replySub + "]";
+		return "BlogSearchVO [letterNo=" + letterNo + ", letterTitle=" + letterTitle + ", letterSub=" + letterSub
+				+ ", userId=" + userId + ", letterDate=" + letterDate + ", hits=" + hits + ", categoryNo=" + categoryNo
+				+ ", categoryChk=" + categoryChk + ", categoryMouser=" + categoryMouser + ", replyNo=" + replyNo
+				+ ", reDate=" + reDate + ", replySub=" + replySub + ", rnum=" + rnum + "]";
 	}
+	
+	
+	
+	
 
 	
 	

@@ -17,6 +17,10 @@
 <style>
 body{
 	background-color: #83b14e;
+	color:black;
+}
+a{
+color:black;
 }
 #over{
 	text-overflow: ellipsis;
@@ -36,9 +40,34 @@ $(function(){
 		var src = $(this).attr("href");
 		console.dir(src);
 		//parent.document.getElementById("reply").attr('src',src);
-		 var id = $("#id").val();
-		$("#test",parent.document).attr('src',"getLetterView.do?blogId="+id); 
-		$("#test2",parent.document).attr('src',src);
+		 var blogid = $("#id").val();
+		 var chk = $(this).parent().find(":hidden");
+		 console.log(chk);
+		 var id  = "<%=session.getAttribute("login")%>";
+		 
+		 if(id!=blogid) {
+				if(chk[0].value==1) {
+					console.log("일루 11111111");
+					$("#test",parent.document).attr('src',"getLetterView.do?blogId="+blogid); 
+					$("#test2",parent.document).attr('src',src);
+				} else if(chk[0].value==2) {
+					var fId = "<%=session.getAttribute("friendId")%>";
+					if(fId==id) {
+						console.log("^^"+fId);
+						$("#test2",parent.document).attr('src',src);
+						$(".letterName").removeClass("important blue");
+						$(this).addClass("important blue");
+					} else {
+						alert("친구공개 입니다");
+					}
+				} else {
+					alert("비공개 입니다");
+				}
+		} else {
+				$("#test",parent.document).attr('src',"getLetterView.do?blogId="+blogid); 
+				$("#test2",parent.document).attr('src',src);
+		}
+		
 		
 		
 	});
@@ -63,14 +92,19 @@ $(function(){
 			<tr>
 					<!-- 댓글 -->
 					<td><div id="over"><nobr><a href="getLetter.do?letterNo=${reply.letterNo}"
-						class="letterName">${reply.replySub}</a></nobr></div></td>
+						class="letterName">${reply.replySub}<input type="hidden" value="${reply.categoryChk}">
+			<input type="hidden" value="${reply.categoryMouser}"></a></nobr></div></td>
 					<!-- 아이디 -->
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="right">${reply.userId}</td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="right">${reply.userId}</td>			
 			</tr>
+			
+		
 			</c:forEach>
 			</table>	
 	</div>
-	
+	<form id="frm">
+		<input type="hidden" id="id" value="${id}">
+	</form>
 	
 </body>
 </html>

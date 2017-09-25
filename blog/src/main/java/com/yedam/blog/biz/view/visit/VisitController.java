@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,11 +69,13 @@ public class VisitController {
 		
 	}
 	
-	
+	  
 	
 	//방명록 목록 조회
 	@RequestMapping("/getVisitList.do")
-	public String getVisitList(Model model, VisitDaySearchVO vo){
+	public String getVisitList(Model model, VisitVO vo,HttpServletRequest req){
+		String userid = (String)req.getParameter("userid");
+		vo.setViId(userid);
 		List<Map<String, Object>> list = visitService.getVisitList(vo);
 		Calendar ca = Calendar.getInstance();
 		model.addAttribute("year",ca.get(Calendar.YEAR));

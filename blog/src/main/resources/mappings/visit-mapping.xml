@@ -18,9 +18,9 @@
                 TO_CHAR(V_DATE,'hh24:mi') AS "vdate"
         FROM USERS, BLOG_VISITORS
         WHERE USERS.USERID = BLOG_VISITORS.V_ID
-        AND BLOG_VISITORS.USERID = 'a'
-        AND to_char(V_DATE,'yyyy/mm/dd') LIKE #{year} || '/' || #{mon} || '/' || #{day}
-        ]]>
+        AND BLOG_VISITORS.USERID = #{viId}
+       
+        ]]><!--  AND to_char(V_DATE,'yyyy/mm/dd') LIKE #{year} || '/' || #{mon} || '/' || #{day} -->
     </select>
     
     

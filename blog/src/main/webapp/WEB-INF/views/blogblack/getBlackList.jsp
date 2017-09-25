@@ -31,7 +31,7 @@ $("[name='delete']").click(function(event) {
 </head>
 <body>
 <form>
-
+<div id="row" align="center">
   <h2>유저차단</h2>
  <table>
         <tr>
@@ -47,7 +47,7 @@ $("[name='delete']").click(function(event) {
         
         </c:forEach>
 </table>
-
+</div>
 </form>
 </body>
 </html>
