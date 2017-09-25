@@ -188,7 +188,7 @@ function goBack(){
 		<c:if test="${not empty sessionScope.login}">
 			<p />
 			<p align="right">
-			<strong>${sessionScope.login}님 <a href="logout.do" class="meny">로그아웃</a></strong>
+			<strong><a href="getMainView.do?blogId=${sessionScope.login}">${sessionScope.login}님 </a><a href="logout.do" class="meny">로그아웃</a></strong>
 				<a href="adminView.do" class="meny">블로그 관리하기</a> <a href="blog.do" class="meny">블로그 목록 가기</a>
 			</p>
 		</c:if>

@@ -36,13 +36,14 @@ $(function(){
 		console.dir(src);
 		//parent.document.getElementById("reply").attr('src',src);
 		 var blogid = $("#id").val();
-		 var chk = $("#chk").val();
+		 var chk = $(this).parent().find(":hidden");
+		 console.log(chk);
 		 var id  = "<%=session.getAttribute("login")%>";
 			if(id!=blogid) {
-				if(chk==1) {
+				if(chk[0].value==1) {
 					$("#test",parent.document).attr('src',"getLetterView.do?blogId="+blogid); 
 					$("#test2",parent.document).attr('src',src);
-				} else if(chk==2) {
+				} else if(chk[0].value==2) {
 					var fId = "<%=session.getAttribute("friendId")%>";
 					if(fId==id) {
 						console.log("^^"+fId);
@@ -85,7 +86,8 @@ $(function(){
 	
 	
 			<tr>
-				 <td> <div id="over"><nobr><a href="getLetter.do?letterNo=${letter.letterNo}" class="letterName">${letter.letterTitle}</a></nobr></div></td>				<!-- 글 제목 -->
+				 <td> <div id="over"><nobr><a href="getLetter.do?letterNo=${letter.letterNo}" class="letterName"><input type="hidden" value="${letter.categoryChk}">
+			<input type="hidden" value="${letter.categoryMouser}">${letter.letterTitle}</a></nobr></div></td>				<!-- 글 제목 -->
 				 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				 <td> ${letter.hits} 		</td>				<!-- 조회수 -->
 			</tr>

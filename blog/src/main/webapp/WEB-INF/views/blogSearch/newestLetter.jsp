@@ -41,9 +41,31 @@ $(function(){
 		var src = $(this).attr("href");
 		console.dir(src);
 		//parent.document.getElementById("reply").attr('src',src);
-		 var id = $("#id").val();
-		$("#test",parent.document).attr('src',"getLetterView.do?blogId="+id); 
-		$("#test2",parent.document).attr('src',src);
+		var blogid = $("#id").val();
+		 var chk = $(this).parent().find(":hidden");
+		 console.log(chk);
+		 var id  = "<%=session.getAttribute("login")%>";
+			if(id!=blogid) {
+				if(chk[0].value==1) {
+					$("#test",parent.document).attr('src',"getLetterView.do?blogId="+blogid); 
+					$("#test2",parent.document).attr('src',src);
+				} else if(chk[0].value==2) {
+					var fId = "<%=session.getAttribute("friendId")%>";
+					if(fId==id) {
+						console.log("^^"+fId);
+						$("#test2",parent.document).attr('src',src);
+						$(".letterName").removeClass("important blue");
+						$(this).addClass("important blue");
+					} else {
+						alert("친구공개 입니다");
+					}
+				} else {
+					alert("비공개 입니다");
+				}
+			} else {
+				$("#test",parent.document).attr('src',"getLetterView.do?blogId="+blogid); 
+				$("#test2",parent.document).attr('src',src);
+			}
 		
 		
 	});
@@ -64,12 +86,6 @@ span{
 	overflow: hidden;
 }
 </style>
-  
-=======
-
-
-
->>>>>>> d842725 FFF
 
 </head>
 <body>
@@ -79,7 +95,8 @@ span{
 			<c:forEach var="letter" items="${newestLetterlist}">
 			<tr>
 			<td><div id="over"><nobr><a href="getLetter.do?letterNo=${letter.letterNo}"
-						class="letterName"><span>${letter.letterTitle}</span></a></nobr></div></td>
+						class="letterName"><span>${letter.letterTitle}<input type="hidden" value="${letter.categoryChk}">
+			<input type="hidden" value="${letter.categoryMouser}"></span></a></nobr></div></td>
 			</tr>	
 			</c:forEach>
 			</table>
