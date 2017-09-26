@@ -29,7 +29,11 @@
 	<select id="getOnlyCategory" resultMap="categoryResult">
 		SELECT CATEGORY_NO, CATEGORY_NAME
 		FROM CATEGORY
-		WHERE TYPE = 'n' AND USERID=#{userid}
+		
+		WHERE TYPE = 'n' 
+		<if test="userid!=null and userid!=''">
+		AND USERID=#{userid}
+		</if>
 	</select>
 	
 	<!-- 등록 -->
