@@ -14,6 +14,25 @@
 	
 <!-- BLOG CSS -->
 <link href="resources/css/blog.css" rel="stylesheet" />
+
+<link href="resources/css/blog.css" rel="stylesheet" />
+<style>
+body{
+	background-color: #83b14e;
+	color:black;
+}
+a{
+color:black;
+}
+#over{
+	text-overflow: ellipsis;
+	width: 100px;
+}
+div {
+	overflow: hidden;
+}
+
+</style>
 <script src="resources/assets/js/jquery-3.2.1.min.js"></script>
 <script>
 $(function(){
@@ -22,16 +41,36 @@ $(function(){
 		var src = $(this).attr("href");
 		console.dir(src);
 		//parent.document.getElementById("reply").attr('src',src);
-		 var id = $("#id").val();
-		$("#test",parent.document).attr('src',"getLetterView.do?blogId="+id); 
-		$("#test2",parent.document).attr('src',src);
+		var blogid = $("#id").val();
+		 var chk = $(this).parent().find(":hidden");
+		 console.log(chk);
+		 var id  = "<%=session.getAttribute("login")%>";
+			if(id!=blogid) {
+				if(chk[0].value==1) {
+					$("#test",parent.document).attr('src',"getLetterView.do?blogId="+blogid); 
+					$("#test2",parent.document).attr('src',src);
+				} else if(chk[0].value==2) {
+					var fId = "<%=session.getAttribute("friendId")%>";
+					if(fId==id) {
+						console.log("^^"+fId);
+						$("#test2",parent.document).attr('src',src);
+						$(".letterName").removeClass("important blue");
+						$(this).addClass("important blue");
+					} else {
+						alert("친구공개 입니다");
+					}
+				} else {
+					alert("비공개 입니다");
+				}
+			} else {
+				$("#test",parent.document).attr('src',"getLetterView.do?blogId="+blogid); 
+				$("#test2",parent.document).attr('src',src);
+			}
 		
 		
 	});
 });
 </script>
-
-
 
 <style>
 a{
@@ -48,21 +87,23 @@ span{
 }
 </style>
 
-
-
 </head>
 <body>
 	<div id="row" align="left">
 			<span>최신 글</span>
-			<ul>
+			<table class="table">
 			<c:forEach var="letter" items="${newestLetterlist}">
-			<li><a href="getLetter.do?letterNo=${letter.letterNo}"
-						class="letterName"><span>${letter.letterTitle}</span></a></li>
-				
+			<tr>
+			<td><div id="over"><nobr><a href="getLetter.do?letterNo=${letter.letterNo}"
+						class="letterName"><span>${letter.letterTitle}<input type="hidden" value="${letter.categoryChk}">
+			<input type="hidden" value="${letter.categoryMouser}"></span></a></nobr></div></td>
+			</tr>	
 			</c:forEach>
-			</ul>
+			</table>
 	</div>
-	
+	<form id="frm">
+		<input type="hidden" id="id" value="${id}">
+	</form>
 	
 	
 </body>

@@ -2,6 +2,7 @@ package com.yedam.blog.search;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,8 @@ public class BlogSearchController {
 	@RequestMapping(value="/newestLetter.do", method=RequestMethod.GET)
 	public String newestLetter(Model model,HttpServletRequest req){
 		String blogId = req.getParameter("blogId");
-		model.addAttribute("newestLetterlist", blogSearchService.getBlogSearchNewestLetter(blogId));
+		List<BlogSearchVO> result =blogSearchService.getBlogSearchNewestLetter(blogId);
+		model.addAttribute("newestLetterlist", result);
 		model.addAttribute("id", blogId);
 		return "blogSearch/newestLetter";
 		
@@ -38,7 +40,8 @@ public class BlogSearchController {
 	@RequestMapping(value="/newestReply.do", method=RequestMethod.GET)
 	public String newestReply(Model model,HttpServletRequest req){
 		String blogId = req.getParameter("blogId");
-		model.addAttribute("newestReplylist", blogSearchService.getBlogSearchNewestReply(blogId));
+		List<BlogSearchVO> result = blogSearchService.getBlogSearchNewestReply(blogId);
+		model.addAttribute("newestReplylist", result);
 		model.addAttribute("id", blogId);
 		return "blogSearch/newestReply";
 	}
@@ -47,7 +50,8 @@ public class BlogSearchController {
 	@RequestMapping(value="/bestLetter.do", method=RequestMethod.GET)
 	public String bestLetter(Model model,HttpServletRequest req){
 		String blogId = req.getParameter("blogId");
-		model.addAttribute("bestLetterlist", blogSearchService.getBlogSearchBestLetter(blogId));
+		List<BlogSearchVO> result = blogSearchService.getBlogSearchBestLetter(blogId);
+		model.addAttribute("bestLetterlist", result);
 		model.addAttribute("id", blogId);
 		return "blogSearch/bestLetter";
 	}

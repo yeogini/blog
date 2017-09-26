@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,12 +73,26 @@ public class VisitController {
 	
 	//방명록 목록 조회
 	@RequestMapping("/getVisitList.do")
-	public String getVisitList(Model model, VisitDaySearchVO vo){
-		List<Map<String, Object>> list = visitService.getVisitList(vo);
+	public String getVisitList(Model model, VisitDaySearchVO vo,HttpServletRequest req){
+		String userid = req.getParameter("userid");
+		if(userid!=null) {
+			vo.setViId(userid);
+		}
 		Calendar ca = Calendar.getInstance();
+		int year = ca.get(Calendar.YEAR);
+		
 		model.addAttribute("year",ca.get(Calendar.YEAR));
 		int mon = ca.get(Calendar.MONTH)+1;
 		if(mon <= 10)
+		if(vo.equals("null")) {
+			System.err.println(ca.get(Calendar.DATE)+"---------------------------------");
+			vo.setYear(String.valueOf(year));
+			vo.setMon(String.valueOf(mon));
+			vo.setDay((String.valueOf(ca.get(Calendar.DATE))));
+		}
+
+		List<Map<String, Object>> list = visitService.getVisitList(vo);
+
 		model.addAttribute("mon",mon);
 		model.addAttribute("day",ca.getActualMaximum(Calendar.DAY_OF_MONTH));
 		model.addAttribute("VisitList",list);

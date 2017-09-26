@@ -34,7 +34,7 @@ a{
 			if(borderType[0].value=="l") {
 				$("#test",parent.document).css('height',"300px");
 				$("#test",parent.document).attr('src',src);
-				$("#test2",parent.document).attr('src',"newest.do?blogId=${id}");
+				//$("#test2",parent.document).attr('src',"newest.do?blogId=${id}");
 			} else {
 				//펼쳐보기 나중에 하기  받아온 글 갯수만큼 보이게하기
 				$("#test",parent.document).css('height',"100%");
@@ -58,7 +58,7 @@ a{
 </script>
 <body>
 <div id="viewCategory"><strong> 카테고리</strong></div><br>
-<a href="getLetterView.do?blogId=${category[0].userId}" class="categoryName" class="fa fa-file-text-o" ><input type="hidden" value="l">전체보기 </a>/ <a href="getVisitList.do" id="visit">방명록</a>
+<a href="getLetterView.do?blogId=${category[0].userId}" class="categoryName" class="fa fa-file-text-o" ><input type="hidden" value="l">전체보기 </a>/ <a href="getVisitList.do?userid=${category[0].userId}" id="visit">방명록</a>
 <hr>
 <form id="frm" name="frm" action="">
 <c:forEach items="${category}" var="result">
