@@ -21,9 +21,5 @@ public interface VisitService {
 	
 	//방명록 전체삭제(유저 탈퇴시)
 	void deleteVisitList(VisitVO vo);
-
-	List<Map<String, Object>> getVisitList(VisitVO vo);
-	
-	public VisitVO getVisit (VisitVO vo);
 	
 }

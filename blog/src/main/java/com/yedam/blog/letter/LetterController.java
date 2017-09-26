@@ -95,6 +95,7 @@ public class LetterController {
 	@RequestMapping("/getLetter.do")
 	public String getletter(Model model, LetterVO vo, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
+		System.err.println("바보멍충이");
 			model.addAttribute("letter", letterService.getLetter(vo,"yes"));
 			return "letter/getLetter";
 	}

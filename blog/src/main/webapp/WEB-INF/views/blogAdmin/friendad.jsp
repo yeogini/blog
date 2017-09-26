@@ -73,7 +73,7 @@
 		return false;
 	});
 
-	$("td").on("click","span",function(event) {
+	$("table").on("click","span",function(event) {
 			console.log("딜리트");
 			event.preventDefault();
 			var src = $(this).find(":hidden");

@@ -273,12 +273,15 @@ $(document).ready(function(){
 			
 			
 			
-		<form name="frm" onclick="return LetterDelete()" action="deleteLetter.do">
-			<input type="hidden" name="letterNo" id="delLetterNo" value="${letter.letterNo}" /> 
-			<c:if test="${sessionScope.login==sessionScope.blogId}">
+		<form name="frm"  action="deleteLetter.do">
+		<c:if test="${sessionScope.login==sessionScope.blogId}">
 			<a class="btn btn-white"
 			href="letterUpdate.do?letterNo=${letter.letterNo}">수정</a>
-			<input class="btn btn-white" type="button" onclick="del" value="삭제">
+			</c:if>
+			<input type="hidden" name="letterNo" id="delLetterNo" value="${letter.letterNo}" /> 
+			<c:if test="${sessionScope.login==sessionScope.blogId}">
+			
+			<input class="btn btn-white" type="button" onclick="LetterDelete()" value="삭제">
 			</c:if>
 		</form>
 	</div>

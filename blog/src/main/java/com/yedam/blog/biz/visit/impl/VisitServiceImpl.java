@@ -17,7 +17,7 @@ public class VisitServiceImpl implements VisitService{
 	VisitMapper visitDAO;
 	
 	@Override
-	public List<Map<String, Object>> getVisitList(VisitVO vo) {
+	public List<Map<String, Object>> getVisitList(VisitDaySearchVO vo) {
 		
 		return visitDAO.getVisitList(vo);
 	}
@@ -45,17 +45,4 @@ public class VisitServiceImpl implements VisitService{
 
 		visitDAO.deleteAllVisit(vo);
 	}
-
-	@Override
-	public List<Map<String, Object>> getVisitList(VisitDaySearchVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public VisitVO getVisit(VisitVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

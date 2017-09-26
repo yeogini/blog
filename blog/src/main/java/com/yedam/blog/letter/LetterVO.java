@@ -13,9 +13,9 @@ public class LetterVO {
 	private String letterDate;
 	private int hits;
 	private String categoryName;
+
 	
-	
-	
+
 	/*댓글*/
 	private int replyNo;
 	private Date reDate;
