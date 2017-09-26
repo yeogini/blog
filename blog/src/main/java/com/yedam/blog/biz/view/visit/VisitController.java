@@ -83,19 +83,26 @@ public class VisitController {
 		
 		model.addAttribute("year",ca.get(Calendar.YEAR));
 		int mon = ca.get(Calendar.MONTH)+1;
-		if(mon <= 10)
+		String mom1 =null;
+		if(mon >= 10) {
+			mom1 = String.valueOf(mon);
+		}
+		else {
+			mom1 ="0"+String.valueOf(mon);
+		}
 		if(vo.equals("null")) {
 			System.err.println(ca.get(Calendar.DATE)+"---------------------------------");
 			vo.setYear(String.valueOf(year));
-			vo.setMon(String.valueOf(mon));
+			vo.setMon(mom1);
 			vo.setDay((String.valueOf(ca.get(Calendar.DATE))));
 		}
 
 		List<Map<String, Object>> list = visitService.getVisitList(vo);
 
-		model.addAttribute("mon",mon);
+		model.addAttribute("mon",mom1);
 		model.addAttribute("day",ca.getActualMaximum(Calendar.DAY_OF_MONTH));
 		model.addAttribute("VisitList",list);
+		model.addAttribute("viId", vo.getViId());
 		System.out.println(list);
 		return "/visit/viewVisit";
 	}
